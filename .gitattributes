@@ -1,11 +1,14 @@
-# Sources
-*.cpp text diff=cpp linguist-language=cpp
-*.hpp text diff=cpp linguist-language=cpp
-*.rhai text diff=rust linguist-language=rust
-
+* text=auto
 *.png binary
 *.jpg binary
 *.paa binary
+
+# Change GitHub language categorization
+addons/**/*.cpp linguist-language=SQF
+addons/**/*.hpp linguist-language=SQF
+
+optionals/**/*.cpp linguist-language=SQF
+optionals/**/*.hpp linguist-language=SQF
 
 # Linguistics
 # Exclude included files and examples from stats
