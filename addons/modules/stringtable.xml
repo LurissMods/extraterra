@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="modules">
+        <Key ID="STR_exterra_modules_displayName">
+            <English>modules</English>
+        </Key>
+
+        <Key ID="STR_exterra_modules_lifeSupportMainLoop_main_displayName">
+            <English>Life Support Main Loop</English>
+        </Key>
+        <Key ID="STR_exterra_modules_lifeSupportMainLoop_main_desc">
+            <English>This module initalizes the pressure system. It checks if any player is not within the pressuirzed area modules.</English>
+        </Key>
+        <Key ID="STR_exterra_modules_lifeSupportMainLoop_checkTime_displayName">
+            <English>Player present check interval</English>
+        </Key>
+        <Key ID="STR_exterra_modules_lifeSupportMainLoop_checkTime_tooltip">
+            <English>How often the module checks if a player is present in seconds. Done in case of performance issues.</English>
+        </Key>
+
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_main_displayName">
+            <English>Pressurized/Rad Shield Area</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_main_desc">
+            <English>This module allows you to define areas which are pressurized. A selection of preset atmospheric compositions/temperatures are avaliable. Note that the vacuum option is added for flexibility (e.g. trigger activated airlock). Everywhere outside of the trigger area is a vacuum by default.</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_atmoComp_displayName">
+            <English>Atmospheric composition</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_atmoComp_tooltip">
+            <English>Select the atmospheric composition of this area.</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_atmoComp_option0">
+            <English>0 Atmosphere (Hard Vacuum)</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_atmoComp_option1">
+            <English>1 Atmosphere (Earth N2/O2 mix)</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_atmoComp_option2">
+            <English>0.3 Atmosphere (Pure Oxygen)</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_displayName">
+            <English>Radiation Shielding Ammount</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_tooltip">
+            <English>Select the how well this area is shielded from ionizing radiation.</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_option0">
+            <English>No Shielding</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_option1">
+            <English>Light Shielding</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_option2">
+            <English>Medium Shielding</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_option3">
+            <English>Heavy Shielding</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_option4">
+            <English>Light Underground Shielding</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_shieldingValue_option5">
+            <English>Heavy Underground Shielding</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_checkTime_displayName">
+            <English>Player present check interval</English>
+        </Key>
+        <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_checkTime_tooltip">
+            <English>How often the module checks if a player is present in seconds. Done in case of performance issues.</English>
+        </Key>
+
+         <Key ID="STR_exterra_modules_noSolarStorm_main_displayName">
+            <English>Normal Background Radiation</English>
+        </Key>
+        <Key ID="STR_exterra_modules_noSolarStorm_main_desc">
+            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
+        </Key>
+
+        <Key ID="STR_exterra_modules_lightSolarStorm_main_displayName">
+            <English>Light Solar Storm</English>
+        </Key>
+        <Key ID="STR_exterra_modules_lightSolarStorm_main_desc">
+            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
+        </Key>
+
+        <Key ID="STR_exterra_modules_moderateSolarStorm_main_displayName">
+            <English>Moderate Solar Storm</English>
+        </Key>
+        <Key ID="STR_exterra_modules_moderateSolarStorm_main_desc">
+            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
+        </Key>
+
+        <Key ID="STR_exterra_modules_heavySolarStorm_main_displayName">
+            <English>Heavy Solar Storm</English>
+        </Key>
+        <Key ID="STR_exterra_modules_heavySolarStorm_main_desc">
+            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
+        </Key>
+    </Package>
+</Project>

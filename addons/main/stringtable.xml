@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="Main">
+        <Key ID="STR_exterra_main_displayName">
+            <English>Main</English>
+        </Key>
+        <Key ID="STR_exterra_main_url">
+            <English>https://github.com/LurissMods/extraterra</English>
+            <Czech>https://github.com/LurissMods/extraterra</Czech>
+            <French>https://github.com/LurissMods/extraterra</French>
+            <Spanish>https://github.com/LurissMods/extraterra</Spanish>
+            <Italian>https://github.com/LurissMods/extraterra</Italian>
+            <Polish>https://github.com/LurissMods/extraterra</Polish>
+            <Portuguese>https://github.com/LurissMods/extraterra</Portuguese>
+            <Russian>https://github.com/LurissMods/extraterra</Russian>
+            <German>https://github.com/LurissMods/extraterra</German>
+            <Korean>https://github.com/LurissMods/extraterra</Korean>
+            <Japanese>https://github.com/LurissMods/extraterra</Japanese>
+            <Chinese>https://github.com/LurissMods/extraterra</Chinese>
+            <Chinesesimp>https://github.com/LurissMods/extraterra</Chinesesimp>
+            <Turkish>https://github.com/LurissMods/extraterra</Turkish>
+        </Key>
+    </Package>
+</Project>

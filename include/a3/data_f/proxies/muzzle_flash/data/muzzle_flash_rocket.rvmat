@@ -1,0 +1,22 @@
+////////////////////////////////////////////////////////////////////
+//DeRap: proxies\muzzle_flash\data\muzzle_flash_rocket.rvmat
+//Produced from mikero's Dos Tools Dll version 9.90
+//https://mikero.bytex.digital/Downloads
+//'now' is Fri Feb 14 17:19:53 2025 : 'file' last modified on Thu Aug 15 19:14:40 2019
+////////////////////////////////////////////////////////////////////
+
+#define _ARMA_
+
+class StageTI
+{
+	texture = "a3\data_f\default_hot_ti_ca.paa";
+};
+ambient[] = {80,80,80,1};
+diffuse[] = {0,0,0,1};
+forcedDiffuse[] = {0,0,0,1};
+emmisive[] = {800,800,800,1};
+specular[] = {0,0,0,0};
+specularPower = 0;
+renderFlags[] = {"NoZWrite","NoAlphaWrite","AddBlend"};
+PixelShaderID = "Normal";
+VertexShaderID = "Basic";

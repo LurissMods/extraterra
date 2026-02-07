@@ -1,0 +1,15 @@
+PREP(addMedicationAdjustment);
+PREP(conditionExecutionDeath);
+PREP(conditionSecondChance);
+PREP(getBloodPressure);
+PREP(handleUnitVitals);
+PREP(hasStableVitals);
+PREP(medicationLocal);
+PREP(setUnconscious);
+PREP(tourniquetRemove);
+PREP(treatment);
+PREP(treatmentSuccess);
+PREP(updateDamageEffects);
+PREP(updateHeartRate);
+PREP(useItem);
+PREP(handleEffects);

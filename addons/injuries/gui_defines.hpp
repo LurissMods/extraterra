@@ -1,0 +1,2 @@
+#define IDC_VOMIT 45000
+#define IDC_VOMIT_MILD 45001

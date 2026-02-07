@@ -1,0 +1,11 @@
+PREP(handlePlayerChanged);
+PREP(localTemperature);
+PREP(solarIrradiance);
+PREP(coreTemp);
+PREP(thermalSimulation);
+PREP(radiationExposure);
+PREP(mainLoop);
+PREP(breathingSimulation);
+PREP(batterySimulation);
+PREP(prebreathing);
+PREP(testList);

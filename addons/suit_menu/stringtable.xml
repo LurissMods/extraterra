@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="suit_menu">
+        <Key ID="STR_exterra_suit_menu_displayName">
+            <English>suit_menu</English>
+        </Key>
+
+        <Key ID="STR_exterra_suit_menu_suitMenuKeybind_title">
+            <English>Suit Menu</English>
+        </Key>
+
+    </Package>
+</Project>

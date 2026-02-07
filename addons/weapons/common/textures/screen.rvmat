@@ -1,0 +1,21 @@
+////////////////////////////////////////////////////////////////////
+//DeRap: Charges\data\screen.rvmat
+//Produced from mikero's Dos Tools Dll version 9.90
+//https://mikero.bytex.digital/Downloads
+//'now' is Mon Feb 10 17:23:18 2025 : 'file' last modified on Fri Jan 31 21:00:53 2025
+////////////////////////////////////////////////////////////////////
+
+#define _ARMA_
+
+class StageTI
+{
+	texture = "a3\data_f\default_vehicle_ti_ca.paa";
+};
+ambient[] = {1,1,1,1};
+diffuse[] = {1,1,1,1};
+forcedDiffuse[] = {0,0,0,1};
+emmisive[] = {200,200,200,1};
+specular[] = {0,0,0,1};
+specularPower = 1;
+PixelShaderID = "Normal";
+VertexShaderID = "Basic";

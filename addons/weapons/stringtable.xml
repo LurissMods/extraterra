@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="weapons">
+        <Key ID="STR_exterra_weapons_displayName">
+            <English>weapons</English>
+        </Key>
+
+    </Package>
+</Project>

@@ -1,0 +1,10 @@
+////////////////////////////////////////////////////////////////////
+//DeRap: Penetration\meatbones.rvmat
+//Produced from mikero's Dos Tools Dll version 9.90
+//https://mikero.bytex.digital/Downloads
+//'now' is Fri Feb 14 17:19:52 2025 : 'file' last modified on Wed Jul 03 00:59:59 2019
+////////////////////////////////////////////////////////////////////
+
+#define _ARMA_
+
+surfaceInfo = "A3\data_f\Penetration\meatbones.bisurf";

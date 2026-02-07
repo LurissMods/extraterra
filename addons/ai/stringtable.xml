@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="ai">
+        <Key ID="STR_exterra_ai_displayName">
+            <English>ai</English>
+        </Key>
+
+
+    </Package>
+</Project>

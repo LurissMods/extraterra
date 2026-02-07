@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="injuries">
+        <Key ID="STR_exterra_injuries_displayName">
+            <English>injuries</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_CBA_title">
+            <English>Extraterra - Injuries</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_CBA_cat0">
+            <English>General Settings</English>
+        </Key>
+
+
+    </Package>
+</Project>
