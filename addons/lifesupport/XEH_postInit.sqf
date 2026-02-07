@@ -10,7 +10,7 @@ if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
     SETVAR(ace_player,GVAR(suitTemp),NORMAL_TEMP);
     SETVAR(ace_player,GVAR(coreTemp),HUMAN_NATURAL_CORETEMP);
 
-    GVAR(testList_handler) = [{
+    /*GVAR(testList_handler) = [{
 
 
         [ace_medical_gui_updateInjuryListWounds, [[] call FUNC(testList)], 0] call CBA_fnc_waitAndExecute;
@@ -18,12 +18,12 @@ if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
 
 
     }, 0, []
-    ] call CBA_fnc_addPerFrameHandler;
+    ] call CBA_fnc_addPerFrameHandler;*/
 
 
 
-    ["unit", LINKFUNC(handlePlayerChanged)] call CBA_fnc_addPlayerEventHandler;
+    //["unit", LINKFUNC(handlePlayerChanged)] call CBA_fnc_addPlayerEventHandler;
 
     // - Add main loop at 1 second interval -------------------------------------------------------------
-    [FUNC(mainLoop), [], 1] call CBA_fnc_waitAndExecute;
+    //[FUNC(mainLoop), [], 1] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;

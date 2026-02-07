@@ -21,8 +21,6 @@
 private _deltaT = (CBA_missionTime - _lastTimeUpdated) min 10;
 if (_deltaT < 1) exitWith { false };*/
 
-// Note to self: CHECK THE FUCKING FRAMEWORK FOLDER IN THE ACE SOURCE FILES!!!!!!!!!!!
-
 private _currentAtmo = GETVAR(player,GVAR(inAtmo),-1);
 private _inSuit = call EFUNC(huds,isInHelmAndSuit);
 private _coreTempResults = [player] call FUNC(coreTemp);
