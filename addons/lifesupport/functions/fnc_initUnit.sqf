@@ -31,11 +31,16 @@ if (!local _unit) exitWith {};
 if (_isRespawn) then {
     TRACE_1("reseting all vars on respawn",_isRespawn); // note: state is handled by ace_medical_statemachine_fnc_resetStateDefault
 
+    // Air and Pressure
     SETVAR(_unit,GVAR(inAtmo),ATMO_STATE_ERROR);
-    SETVAR(ace_player,GVAR(suitTemp),0);
-    SETVAR(ace_player,GVAR(lifetimeRadLevel),0);
-    SETVAR(ace_player,GVAR(coreTemp),0);
 
+    // Temperature
+    SETVAR(_unit,GVAR(suitTemp),0); // Note, need to rename define, that's why I haven't put it in yet
+    SETVAR(_unit,GVAR(coreTemp),HUMAN_NATURAL_CORETEMP);
+
+    // Radiation
+    SETVAR(_unit,GVAR(inRadShield),RAD_COEFF0_DEFAULT);
+    SETVAR(_unit,GVAR(lifetimeRadLevel),0);
 };
 
 [{

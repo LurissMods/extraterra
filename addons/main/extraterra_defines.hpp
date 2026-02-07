@@ -16,12 +16,6 @@
 #define SOLAR_RADIATION_WATTAGE_1AU 1361 // Watt per m^2
 #define STEFAN_BOLTZMANN_CONSTANT 5.670367e-8
 //#define STEFAN_BOLTZMANN_SIGMA (STEFAN_BOLTZMANN_CONSTANT*SUIT_EMMISSIVE_US*HUMAN_SURFACE_AREA_SUIT) | Consider making this a function that pulls an emissive value from the uniform config
-#define RAD_COEFF0_DEFAULT 1 // Multiplier for rad shielding. Rename?
-#define RAD_COEFF1_DEFAULT 0.8
-#define RAD_COEFF2_DEFAULT 0.4
-#define RAD_COEFF3_DEFAULT 0.1
-#define RAD_COEFF4_DEFAULT 0.01
-#define RAD_COEFF5_DEFAULT 0.001
 
 // Pressure
 #define EARTH_ATMO_PRESSURE_PA 101325
@@ -46,6 +40,14 @@
 #define DEFAULT_MAX_ACTIVE_COOL_US 1000 // Watts (Thermal)
 #define DEFAULT_MAX_ACTIVE_HEAT_US 300 // Watts (Thermal)
     // PRC
+
+// Radiation
+#define RAD_COEFF0_DEFAULT 1 // Multiplier for rad shielding. Rename?
+#define RAD_COEFF1_DEFAULT 0.8
+#define RAD_COEFF2_DEFAULT 0.4
+#define RAD_COEFF3_DEFAULT 0.1
+#define RAD_COEFF4_DEFAULT 0.01
+#define RAD_COEFF5_DEFAULT 0.001
 
 // Biologic
 #define HUMAN_MASS 70 // Kg
