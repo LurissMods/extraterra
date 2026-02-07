@@ -28,8 +28,6 @@ private _currentRad = GETVAR(_unit,EGVAR(lifesupport,lifetimeRadLevel),0); // in
 //systemChat str GVAR(randomRadLim1);
 //systemChat str GVAR(randomRadLim2);
 
-//test github 0.2.0.0 dev branch
-
 //private _radiationGradient = linearConversion [0,HYPOTHERMIA_STAGE_DEATH,_currentRad,0,1,true];
 
 /*

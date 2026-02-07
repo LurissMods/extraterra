@@ -21,9 +21,10 @@
 
 <p align="center">
     <b>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases/latest">CBA A3</a></b>
+    <b>Requires the latest version of <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a></b>
 </p>
 
-**Extraterra** aims to depict a future conflict on the moon in the late 21st/early 22nd century, adhering to a (mostly) "hard Sci-Fi" ethos.
+**Extraterra** is a mod for Amra 3 that aims to depict a future conflict on the moon in the late 21st/early 22nd century, adhering to a (mostly) "hard Sci-Fi" ethos.
 
 If something here is dumb, it's probably because I have no idea how to use GitHub properly.
 
@@ -34,4 +35,4 @@ If something here is dumb, it's probably because I have no idea how to use GitHu
 For new contributers, see the [Contributing Setup & Guidelines](./.github/CONTRIBUTING.md).
 
 ## License
-Extraterra is licensed under [APL-ND](./LICENSE.md).
+Extraterra is licensed under [APL-SA](./LICENSE.md).
