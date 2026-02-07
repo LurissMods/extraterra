@@ -12,7 +12,7 @@
         <img src="https://img.shields.io/steam/downloads/MOD_ID.svg?style=flat-square&label=Downloads" alt="Extraterra Downloads">
     </a>
     <a href="https://github.com/LurissMods/extraterra/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/License-APL ND-red?style=flat-square" alt="Extraterra License">
+        <img src="https://img.shields.io/badge/License-APL%20SA-green?style=flat-square" alt="Extraterra License">
     </a>
     <br>
     <img src="https://img.shields.io/github/actions/workflow/status/LurissMods/extraterra/hemtt.yml?style=flat-square&label=HEMTT" alt="HEMTT">
