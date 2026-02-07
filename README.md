@@ -26,7 +26,7 @@
     <b>Requires the latest version of <a href="https://github.com/acemod/ACE3/releases/latest">ACE3</a></b>
 </p>
 
-**Extraterra** is a mod for Amra 3 that aims to depict a future conflict on the moon in the late 21st/early 22nd century, adhering to a (mostly) "hard Sci-Fi" ethos.
+**Extraterra** is a mod for Arma 3 that aims to depict a future conflict on the moon in the late 21st/early 22nd century, adhering to a (mostly) "hard Sci-Fi" ethos.
 If you have any questions or the like, feel free to contact me on the mod's <a href="https://discord.gg/hJhzNB9XtP">discord</a> server.
 
 If something here is dumb, it's probably because I have no idea how to use GitHub properly.
