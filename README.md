@@ -25,7 +25,7 @@
 
 **Extraterra** aims to depict a future conflict on the moon in the late 21st/early 22nd century, adhering to a (mostly) "hard Sci-Fi" ethos.
 
-The project is entirely **open-source** and any contributions are welcome.
+If something here is dumb, it's probably because I have no idea how to use GitHub properly.
 
 ## Core Features
 - Feature
