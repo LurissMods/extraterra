@@ -25,6 +25,10 @@
 
 // Pressure
 #define EARTH_ATMO_PRESSURE_PA 101325
+#define ATMO_STATE_ERROR -1
+#define ATMO_STATE_VACUUM 0
+#define ATMO_STATE_1ATM 1
+#define ATMO_STATE_0P3ATM 2
 
 // Thermal
 #define THERMAL_CONDUCT_CONSTANT 7.6e-5

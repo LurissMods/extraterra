@@ -15,7 +15,7 @@
 * Public: No
 */
 
-//systemChat "Main loop running!";
+params ["_unit"];
 
 private _lastTimeUpdated = GETVAR(_unit,GVAR(lastTimeUpdated),0);
 private _deltaT = (CBA_missionTime - _lastTimeUpdated) min 10;

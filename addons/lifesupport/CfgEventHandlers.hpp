@@ -15,3 +15,12 @@ class Extended_PostInit_EventHandlers {
         init = QUOTE(call COMPILE_SCRIPT(XEH_postInit));
     };
 };
+
+class Extended_Init_EventHandlers {
+    class CAManBase {
+        class ADDON {
+            init = QUOTE([ARR_2((_this select 0),false)] call FUNC(initUnit)); // ARR_2 is just a macro for input arguments
+            exclude[] = {IGNORE_BASE_UAVPILOTS};
+        };
+    };
+};
