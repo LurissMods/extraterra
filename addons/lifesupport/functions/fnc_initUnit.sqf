@@ -54,6 +54,8 @@ if (_isRespawn) then {
     _unit setVariable [QGVAR(unitSuitBools),[false,false,false,false],true];
     _unit setVariable [QGVAR(unitSuitFaction),NO_SUIT_FACTION,true];
     _unit setVariable [QGVAR(unitSuitData),[DEFAULT_SUIT_OFF_AIR_RESERVE,DEFAULT_SUIT_MOBILITY,DEFAULT_SUIT_BLACK_BODY,DEFAULT_SUIT_SOLAR_ABSORB,DEFAULT_SUIT_THICKNESS],true];
+
+    systemChat "initUnit ran";
 };
 
 [{

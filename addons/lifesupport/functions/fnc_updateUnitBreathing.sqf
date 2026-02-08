@@ -17,7 +17,7 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),100);
+private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),1000);
 private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),_oxygenSupplyWhenFull);
 private _suitData = _unit getVariable [QGVAR(unitSuitData),"Error!"];
 
