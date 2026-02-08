@@ -21,9 +21,10 @@
 private _deltaT = (CBA_missionTime - _lastTimeUpdated) min 10;
 if (_deltaT < 1) exitWith { false };*/
 
-private _currentAtmo = GETVAR(player,GVAR(inAtmo),-1);
+/*
+private _currentAtmo = GETVAR(player,GVAR(unitInAtmo),-1);
 private _inSuit = call EFUNC(huds,isInHelmAndSuit);
-private _coreTempResults = [player] call FUNC(coreTemp);
+private _coreTempResults = [player] call FUNC(unitCoreTemp);
 private _thermalSimulationResults = [(_inSuit#1),(_coreTempResults#1)] call FUNC(thermalSimulation);
 private _radiationSimulationResults = call FUNC(radiationExposure);
 private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
@@ -52,10 +53,11 @@ if ((_inSuit#0)) then {
 
 //SETVAR(ace_player,GVAR(currentActiveCool),0);
 //SETVAR(ace_player,GVAR(currentActiveHeat),0);
-SETVAR(ace_player,GVAR(suitTemp),(_thermalSimulationResults#0));
-SETVAR(ace_player,GVAR(lifetimeRadLevel),(_radiationSimulationResults#0));
-SETVAR(ace_player,GVAR(coreTemp),(_coreTempResults#0));
+SETVAR(ace_player,GVAR(unitSuitTemp),(_thermalSimulationResults#0));
+SETVAR(ace_player,GVAR(unitLifetimeRadLevel),(_radiationSimulationResults#0));
+SETVAR(ace_player,GVAR(unitCoreTemp),(_coreTempResults#0));
 
 true;
 
 [LINKFUNC(mainLoop), [], 1] call CBA_fnc_waitAndExecute;
+*/

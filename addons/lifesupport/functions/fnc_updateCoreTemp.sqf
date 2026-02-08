@@ -15,16 +15,15 @@
 * Public: Yes
 */
 
-params ["_unit"];
+params ["_unit","_deltaT","_syncValue"];
 
 private _sigma = HUMAN_SURFACE_AREA*HUMAN_SKIN_BLACKBODY_EMISSIVE*STEFAN_BOLTZMANN_CONSTANT;
 private _currentMetabolicHeatWattage = 0;
 private _deltaTemp = 0;
 
-private _coreTemp = GETVAR(_unit,GVAR(unitCoreTemp),nil);
-
-private _bodyHomeostatisCapacity = GVAR(homeostasisPower);
-private _suitTemp = GETVAR(_unit,GVAR(unitSuitTemp),nil);
+private _coreTemp = GETVAR(_unit,GVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP);
+private _suitTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
+private _bodyHomeostatisCapacity = GVAR(homeostasisPower); // Defined in CBA settings
 
 // Note: I'm repurposing the first part of the ace_advanced_fatigue_fnc_mainloop function so I can get the params for the ace_advanced_fatigue_fnc_getMetabolicCosts function. The marked lines are from here: https://github.com/acemod/ACE3/blob/master/addons/advanced_fatigue/functions/fnc_mainLoop.sqf
 private _velocity = velocity _unit; // Mark start
@@ -71,13 +70,15 @@ if (isNull objectParent _unit && {_currentSpeed > 0.1} && {isTouchingGround _uni
 
 
     _currentMetabolicHeatWattage = [_gearMass, _terrainGradient * ACEGVAR(advanced_fatigue,terrainGradientFactor) * 0.1, _terrainFactor, _currentSpeed] call ACEFUNC(advanced_fatigue,getMetabolicCosts);
-}; // Mark end
+};
+// Mark end
 
 private _radiationHeatWattage = _sigma*((_coreTemp^4) - (_suitTemp^4));
 private _convectionTransferPower = HUMAN_SKIN_CONVECTION_COEFF*HUMAN_SURFACE_AREA*(_coreTemp - _suitTemp);
-private _totalRadiatedHeatAproxWattage = _radiationHeatWattage + _convectionTransferPower;
 
-private _netHeatPower = _currentMetabolicHeatWattage - _totalRadiatedHeatAproxWattage;
+private _totalRadiatedCoreHeat = _radiationHeatWattage + _convectionTransferPower;
+
+private _netHeatPower = _currentMetabolicHeatWattage - _totalRadiatedCoreHeat;
 private _currentBodyHomeostatisCapacityRemaining = 0 max (_bodyHomeostatisCapacity - abs _netHeatPower);
 private _currentBodyHomeostatisUsed = _bodyHomeostatisCapacity - _currentBodyHomeostatisCapacityRemaining;
 
@@ -87,38 +88,29 @@ if (GVAR(homeostasisDebug)) then {
     systemChat format ['Core Temp: %1 C', _coreTemp - 273.15];
 };
 
-private _currentRadiatedHeat =  _currentBodyHomeostatisUsed;
-
-
 if (_netHeatPower > 0) then {
     _netHeatPower = 0 max (_netHeatPower - _bodyHomeostatisCapacity);
     _deltaTemp = ((abs _netHeatPower)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
-    _coreTemp = _coreTemp + _deltaTemp;
+    _coreTemp = _coreTemp + (_deltaTemp*_deltaT);
 } else {
     if (_netHeatPower < 0) then {
         _netHeatPower = (_netHeatPower + _bodyHomeostatisCapacity) min 0;
         _deltaTemp = ((abs _netHeatPower)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
-        _coreTemp = _coreTemp - _deltaTemp;
+        _coreTemp = _coreTemp - (_deltaTemp*_deltaT);
     };
 };
-
 
 if (_netHeatPower == 0 && {(_coreTemp > HUMAN_NATURAL_CORETEMP) && {(abs( _coreTemp - HUMAN_NATURAL_CORETEMP) > 0.001)}}) then {
 
     _deltaTemp = ((_currentBodyHomeostatisCapacityRemaining)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
-    _coreTemp = _coreTemp - _deltaTemp;
+    _coreTemp = _coreTemp - (_deltaTemp*_deltaT);
 } else {
     if (_netHeatPower == 0 && {(_coreTemp < HUMAN_NATURAL_CORETEMP) && {(abs( _coreTemp - HUMAN_NATURAL_CORETEMP) > 0.001)}}) then {
 
         _deltaTemp = ((_currentBodyHomeostatisCapacityRemaining)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
-        _coreTemp = _coreTemp + _deltaTemp;
+        _coreTemp = _coreTemp + (_deltaTemp*_deltaT);
     };
 };
 
-[_coreTemp, _totalRadiatedHeatAproxWattage];
-
-
-
-
-//player setVariable ["LRSS_LS_coreTemp", _coreTemp];
-//player setVariable ["LRSS_LS_metabolicHeatPower", (_totalRadiatedHeatAproxWattage)];
+_unit setVariable [QGVAR(unitCoreTemp),_coreTemp,_syncValue];
+_unit setVariable [QGVAR(unitRadiatedCoreTemp),_totalRadiatedCoreHeat,_syncValue];

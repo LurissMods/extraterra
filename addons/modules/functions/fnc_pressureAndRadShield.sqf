@@ -30,14 +30,14 @@ _area params ["_pivot","_a","_b"];
 	{
 		_inArea = (allUnits - entities "HeadlessClient_F") inAreaArray (_this getVariable "params" select 0);
 		{
-			if (GETVAR(_x,EGVAR(lifesupport,inAtmo),-1) != (_this getVariable "params" select 1)) then {
-				_x setVariable [QEGVAR(lifesupport,inAtmo), (_this getVariable "params" select 1), true];
+			if (GETVAR(_x,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_ERROR) != (_this getVariable "params" select 1)) then {
+				_x setVariable [QEGVAR(lifesupport,unitInAtmo), (_this getVariable "params" select 1), true];
 				_x removePrimaryWeaponItem QUOTE(exterra_vacuumMuzzle);
 				_x removeSecondaryWeaponItem QUOTE(exterra_vacuumMuzzle);
 				//systemChat "Set atmo fired";
 			};
-			if (GETVAR(_x,EGVAR(lifesupport,inRadShield),-1) != (_this getVariable "params" select 4)) then {
-				_x setVariable [QEGVAR(lifesupport,inRadShield), (_this getVariable "params" select 4), true];
+			if (GETVAR(_x,EGVAR(lifesupport,unitInRadShield),RAD_SHIELD_ERROR) != (_this getVariable "params" select 4)) then {
+				_x setVariable [QEGVAR(lifesupport,unitInRadShield), (_this getVariable "params" select 4), true];
 				//systemChat "Set atmo fired";
 			};
 		} forEach _inArea;

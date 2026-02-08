@@ -23,15 +23,38 @@ if (_deltaT < 1) exitWith { false }; // state machines could be calling this ver
 
 SETVAR(_unit,GVAR(lastTimeUpdated),CBA_missionTime);
 private _lastTimeValuesSynced = GETVAR(_unit,GVAR(lastMomentValuesSynced),0);
-private _syncValues = (CBA_missionTime - _lastTimeValuesSynced) >= (10 + floor(random 10)); // Randomness is to avoid every unit syncing at the same time and killing the server
+private _syncValue = (CBA_missionTime - _lastTimeValuesSynced) >= (10 + floor(random 10)); // Randomness is to avoid every unit syncing at the same time and killing the server
 
-if (_syncValues) then {
+if (_syncValue) then {
     SETVAR(_unit,GVAR(lastMomentValuesSynced),CBA_missionTime);
 };
 
-private _currentAtmo = GETVAR(player,GVAR(inAtmo),-1);
+//BEGIN_COUNTER(lifeSupport);
+
+// Check what suit a unit is wearing and retrieve it's stats
+[_unit, _syncValue] call FUNC(updateUnitSuit);
+
+if (hasInterface) then {
+
+    // Updates current air intake for players
+    [_unit, _deltaT, _syncValue] call FUNC(updateUnitBreathing);
+
+    // Updates the core temperature for players
+    [_unit, _deltaT, _syncValue] call FUNC(updateCoreTemp);
+
+    // Updates the suit temperature for players
+    [_unit, _deltaT, _syncValue] call FUNC(updateSuitTemp);
+
+    // Updates the radiation exposure for players
+    [_unit, _syncValue] call FUNC(updateUnitRadiation);
+
+} else {
+
+};
+
+private _currentAtmo = GETVAR(player,GVAR(unitInAtmo),-1);
 private _inSuit = call EFUNC(huds,isInHelmAndSuit);
-private _coreTempResults = [player] call FUNC(coreTemp);
+private _coreTempResults = [player] call FUNC(unitCoreTemp);
 private _thermalSimulationResults = [(_inSuit#1),(_coreTempResults#1)] call FUNC(thermalSimulation);
 private _radiationSimulationResults = call FUNC(radiationExposure);
 private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
@@ -58,10 +81,6 @@ if ((_inSuit#0)) then {
     [(_inSuit#1),(_thermalSimulationResults#1),(_thermalSimulationResults#2)] call FUNC(batterySimulation);
 };
 
-//SETVAR(ace_player,GVAR(currentActiveCool),0);
-//SETVAR(ace_player,GVAR(currentActiveHeat),0);
-SETVAR(ace_player,GVAR(suitTemp),(_thermalSimulationResults#0));
-SETVAR(ace_player,GVAR(lifetimeRadLevel),(_radiationSimulationResults#0));
-SETVAR(ace_player,GVAR(coreTemp),(_coreTempResults#0));
+//END_COUNTER(lifeSupport);
 
 true

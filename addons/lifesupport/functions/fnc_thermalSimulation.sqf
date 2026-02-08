@@ -15,11 +15,13 @@
  * Public: Yes
  */
 
-params ["_suitFaction", "_metabolicHeatPower"];
+/*params ["_suitFaction", "_metabolicHeatPower"];
 
 private _suitEmissive = 0.7; // This also counts as insulation (lower = better insulation).
 private _sigma = STEFAN_BOLTZMANN_CONSTANT*_suitEmissive*HUMAN_SURFACE_AREA_SUIT;
 private _distCheck = [1,1,1]; // here just in case, remove later
+
+// https://ntrs.nasa.gov/api/citations/20230014577/downloads/ATA%202023%20Presentation.pdf Stuff on suit thermals
 
 
 private _convectionTransferPower = 0;
@@ -30,7 +32,7 @@ private _currentActiveCool = 0;
 private _currentActiveHeat = 0;
 private _moonSurfaceTemp = [223.15,366.15];
 
-private _currentTemp = GETVAR(ace_player,GVAR(suitTemp),NORMAL_TEMP);
+private _currentTemp = GETVAR(ace_player,GVAR(unitSuitTemp),ROOM_TEMP);
 
 if (GVAR(solarIrradianceSim)) then {
     private _isPlayerInSun = [ace_player,"VIEW"] checkVisibility [eyePos ace_player, eyePos ace_player vectorDiff ((getLighting#2) vectorMultiply IS_IN_SUN_CHECK_VECTOR_LENGTH)];
@@ -39,7 +41,7 @@ if (GVAR(solarIrradianceSim)) then {
     _solarHeatingPower = ((AREAHUMAN_FRONT*AREAHUMAN_SIDE*AREAHUMAN_TOP)/3)*SOLAR_RADIATION_WATTAGE_1AU;
 };
 
-_atmAroundPlayer = GETVAR(ace_player,GVAR(inAtmo),-1);
+_atmAroundPlayer = GETVAR(ace_player,GVAR(unitInAtmo),-1);
 switch _atmAroundPlayer do {
     case 0: {
         if (sunOrMoon > 0) then {
@@ -49,13 +51,13 @@ switch _atmAroundPlayer do {
         };
     };
     case 1: {
-        _tempAroundPlayer = NORMAL_TEMP;
+        _tempAroundPlayer = ROOM_TEMP;
         _conductionTransferCoefficient = (1/(1+(THERMAL_CONDUCT_CONSTANT/((EARTH_ATMO_PRESSURE_PA*SUIT_THICKNESS)/_tempAroundPlayer))))*0.026;
         _convectionTransferPower = THERMAL_CONVECTION_COEFF_1ATM*HUMAN_SURFACE_AREA_SUIT*(_currentTemp - _tempAroundPlayer);
         _conductionTransferPower = ((_conductionTransferCoefficient*HUMAN_SURFACE_AREA_SUIT)*(_currentTemp - _tempAroundPlayer)/SUIT_THICKNESS);
     };
     case 2: {
-        _tempAroundPlayer = NORMAL_TEMP;
+        _tempAroundPlayer = ROOM_TEMP;
         _convectionTransferCoefficient = 0 max ((1.13285*(((EARTH_ATMO_PRESSURE_PA*0.3)/EARTH_ATMO_PRESSURE_PA)^3)) - (0.798924*(((EARTH_ATMO_PRESSURE_PA*0.3)/EARTH_ATMO_PRESSURE_PA)^2)) + (4.67225*((EARTH_ATMO_PRESSURE_PA*0.3)/EARTH_ATMO_PRESSURE_PA)) - 0.0064124);
         _conductionTransferCoefficient = (1/(1+(THERMAL_CONDUCT_CONSTANT/(((EARTH_ATMO_PRESSURE_PA*0.3)*SUIT_THICKNESS)/_tempAroundPlayer))))*0.026;
         _convectionTransferPower = _convectionTransferCoefficient*HUMAN_SURFACE_AREA_SUIT*(_currentTemp - _tempAroundPlayer);
@@ -117,4 +119,4 @@ if (GETVAR(player,EGVAR(huds,suitEnabled),false)) then {
 private _deltaTemp = ((_netHeatPower)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS)); // Specific heat capacity formula. Finds the change in temperature per second for the current thermal power balance.
 private _newTemp = _currentTemp + _deltaTemp;
 
-[_newTemp, _currentActiveCool, _currentActiveHeat, _tempAroundPlayer, _netHeatPower, _deltaTemp];
+[_newTemp, _currentActiveCool, _currentActiveHeat, _tempAroundPlayer, _netHeatPower, _deltaTemp];*/

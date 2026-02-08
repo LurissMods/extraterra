@@ -25,6 +25,12 @@ class CfgWeapons
 		author="Luriss";// explaned in CfgVehicles Above
 		displayName="Lunar Combat Suit"; // self explanatory
 		model="\A3\Characters_F\Common\Suitpacks\suitpack_blufor_diver"; // Always use a suitpack for this portion correct model is inherited below.
+
+        exterra_uniforms_suitMobility = 0.7;
+        exterra_uniforms_blackBodyEmmissive = 0.75;
+        exterra_uniforms_solarAbsorptance = 0.2;
+        exterra_uniforms_suitThickness = 0.003; // In metres
+
 		class ItemInfo: UniformItem
 		{
 			uniformModel="-";// we inherit this from CfgVehicles
@@ -43,6 +49,12 @@ class CfgWeapons
 		author="Luriss";// explaned in CfgVehicles Above
 		displayName="Lunar Combat Uniform"; // self explanatory
 		model="\A3\Characters_F\Common\Suitpacks\suitpack_blufor_diver"; // Always use a suitpack for this portion correct model is inherited below.
+
+        exterra_uniforms_suitMobility = 0.7;
+        exterra_uniforms_blackBodyEmmissive = 0.85;
+        exterra_uniforms_solarAbsorptance = 0.6;
+        exterra_uniforms_suitThickness = 0.008; // In metres
+
 		class ItemInfo: UniformItem
 		{
 			uniformModel="-";// we inherit this from CfgVehicles
@@ -64,9 +76,11 @@ class CfgWeapons
 		hiddenSelections[] = { "camo" };
 		hiddenSelectionsTextures[] = { "z\exterra\addons\uniforms\data\uniforms\us\helmet0\textures\exterra_uniforms_usHelmet0_main_co.paa" };
         subItems[] = {"exterra_uniforms_integrated_NVG_TI_0"};
+
         ace_hearing_protection = 1;
         ace_hearing_lowerVolume = 0.05;
         ace_hearing_hasEHP = 1;
+        exterra_uniforms_passiveAirReserve = 1000;
 
 		class ItemInfo : HeadgearItem
 		{

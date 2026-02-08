@@ -23,7 +23,7 @@ _airCombo = _display displayCtrl 2100;
 _listNBox = _display displayCtrl 1503;
 
 private _currentPlayerAirTank = GETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-private _currentTankAirReserve = GETVAR(player,EGVAR(lifesupport,playerAirReserve),nil);
+private _currentTankAirReserve = GETVAR(player,EGVAR(lifesupport,unitAirReserve),nil);
 private _currentTankMaxAirReserve = 100;
 
 
@@ -43,8 +43,8 @@ if (lnbCurSelRow _listNBox != GVAR(currentSelectedAirTank)) then {
         private _oldTankAirReserve = _currentTankAirReserve;
 
         SETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-        SETVAR(player,EGVAR(lifesupport,playerAirReserve),100); //temp value
-        SETVAR(player,EGVAR(lifesupport,playerAirMaxReserve),_currentTankMaxAirReserve);
+        SETVAR(player,EGVAR(lifesupport,unitAirReserve),100); //temp value
+        SETVAR(player,EGVAR(lifesupport,unitAirMaxReserve),_currentTankMaxAirReserve);
 
         player addMagazine [_oldTankName, _oldTankAirReserve];
     } else {
@@ -59,10 +59,10 @@ if (lnbCurSelRow _listNBox != GVAR(currentSelectedAirTank)) then {
         private _selectedAirTank = "";
 
         SETVAR(player,EGVAR(lifesupport,currentAirTank),_newTankName);
-        SETVAR(player,EGVAR(lifesupport,playerAirReserve),parseNumber _newTankAirReserve);
-        SETVAR(player,EGVAR(lifesupport,playerAirMaxReserve),_currentTankMaxAirReserve);
+        SETVAR(player,EGVAR(lifesupport,unitAirReserve),parseNumber _newTankAirReserve);
+        SETVAR(player,EGVAR(lifesupport,unitAirMaxReserve),_currentTankMaxAirReserve);
 
-        _test = GETVAR(player,EGVAR(lifesupport,playerAirReserve),nil);
+        _test = GETVAR(player,EGVAR(lifesupport,unitAirReserve),nil);
         //systemChat format ["%1 After setvar",_test];
         //systemChat format ["%1 stored var",_oldTankAirReserve];
 
@@ -90,7 +90,7 @@ if (lnbCurSelRow _listNBox != GVAR(currentSelectedAirTank)) then {
         GVAR(currentSelectedAirTank) = (lbCurSel _listNBox);
 
         SETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-        SETVAR(player,EGVAR(lifesupport,playerAirReserve),100); // 100 is temp, add define
+        SETVAR(player,EGVAR(lifesupport,unitAirReserve),100); // 100 is temp, add define
 
         player addMagazine [_currentPlayerAirTank, _currentTankAirReserve];
         //[_airCombo] call FUNC(updateAirTanks);
@@ -101,7 +101,7 @@ if (lnbCurSelRow _listNBox != GVAR(currentSelectedAirTank)) then {
         private _selectedAirTank = _allAirTanksInInv select (lbCurSel _listNBox - 1);
 
         SETVAR(player,EGVAR(lifesupport,currentAirTank),(_selectedAirTank select 0));
-        SETVAR(player,EGVAR(lifesupport,playerAirReserve),(_selectedAirTank select 1));
+        SETVAR(player,EGVAR(lifesupport,unitAirReserve),(_selectedAirTank select 1));
 
         if (!isNil QUOTE(_currentPlayerAirTank)) then {
             player addMagazine [_currentPlayerAirTank, _currentTankAirReserve];

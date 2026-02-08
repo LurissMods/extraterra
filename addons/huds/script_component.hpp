@@ -103,5 +103,5 @@
 #define THERMAL_CONDUCT_CONSTANT 7.6e-5
 #define THERMAL_CONVECTION_COEFF_1ATM 5
 
-#define NORMAL_TEMP 294.15// 21C in Kelvin
+#define ROOM_TEMP 294.15// 21C in Kelvin
 #define SUIT_THICKNESS 0.005// in metres, 5mm*/

@@ -25,7 +25,7 @@ private _currentPlayerAirTank = GETVAR(player,EGVAR(lifesupport,currentAirTank),
 
 if (!isNil "_currentPlayerAirTank") then {
     systemChat "Tank true fired";
-    private _airTankReserve = GETVAR(player,EGVAR(lifesupport,playerAirReserve),nil);
+    private _airTankReserve = GETVAR(player,EGVAR(lifesupport,unitAirReserve),nil);
     _airCombo lbAdd format["%1 (%2 L)",_currentPlayerAirTank,_airTankReserve];
     _airCombo lbAdd "No Air Tank";
 } else {

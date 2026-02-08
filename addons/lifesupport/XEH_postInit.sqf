@@ -7,8 +7,8 @@ if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
     if (!GVAR(masterToggle)) exitWith {};
     //systemChat "Post init running";
 
-    SETVAR(ace_player,GVAR(suitTemp),NORMAL_TEMP);
-    SETVAR(ace_player,GVAR(coreTemp),HUMAN_NATURAL_CORETEMP);
+    //SETVAR(ace_player,GVAR(unitSuitTemp),ROOM_TEMP);
+    //SETVAR(ace_player,GVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP);
 
     /*GVAR(testList_handler) = [{
 

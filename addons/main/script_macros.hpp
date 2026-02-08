@@ -183,3 +183,4 @@
 // BEGIN Extraterra macros
 
 #include "\z\exterra\addons\main\extraterra_defines.hpp"
+//#include "script_debug.hpp"

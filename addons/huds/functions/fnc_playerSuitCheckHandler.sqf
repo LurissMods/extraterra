@@ -21,7 +21,7 @@ GVAR(playerOutSuit_handler) = ["playerOutSuit", {SETVAR(player,GVAR(hasHelmAndSu
 GVAR(playerSuitCheck_handler) = [{
 
     private _inSuit = call FUNC(isInHelmAndSuit);
-    private _currentAtmo = GETVAR(player,EGVAR(lifesupport,inAtmo),-1);
+    private _currentAtmo = GETVAR(player,EGVAR(lifesupport,unitInAtmo),-1);
 
     if (_inSuit#0) then {
         ["playerInSuit", []] call CBA_fnc_localEvent;

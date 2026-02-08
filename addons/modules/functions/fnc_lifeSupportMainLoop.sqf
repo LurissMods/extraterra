@@ -15,8 +15,6 @@
 * Public: No
 */
 
-// Note to self: Consider implementing hashmap, should be more efficient than array method.
-
 private _logic = _this param [0,objnull,[objnull]];
 private _checkTime = _logic getVariable ["checkTime", 0.5];
 
@@ -30,16 +28,16 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 		} forEach GVAR(allLifeSupportAreas);
 
         {
-			if (GETVAR(_X,EGVAR(lifesupport,inAtmo),-1) != 0) then {
-                SETPVAR(_x,EGVAR(lifesupport,inAtmo),0);
+			if (GETVAR(_x,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_ERROR) != ATMO_STATE_VACUUM) then {
+                SETPVAR(_x,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_VACUUM);
 				_x addPrimaryWeaponItem  QUOTE(exterra_vacuumMuzzle);
 				_x addSecondaryWeaponItem  QUOTE(exterra_vacuumMuzzle);
 			};
 		} forEach (_allUnits - _unitsInArea);
 
         {
-			if (GETVAR(_X,EGVAR(lifesupport,inRadShield),-1) != 0) then {
-				SETPVAR(_x,EGVAR(lifesupport,inRadShield),0);
+			if (GETVAR(_x,EGVAR(lifesupport,unitInRadShield),RAD_SHIELD_ERROR) != 0) then {
+				SETPVAR(_x,EGVAR(lifesupport,unitInRadShield),0);
 			};
 		} forEach (_allUnits - _unitsInArea);
 
@@ -48,7 +46,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 				SETVAR(_x,LRSS_hasSuit,uniform _x in LRSS_spaceSuits OR (getNumber (configFile >> 'CfgWeapons' >> (uniform _x) >> 'MJOLNIR_isArmor')) == 1);
                 SETVAR(_x,LRSS_hasHelmet,headgear _x in LRSS_spaceHelmets OR (getNumber (configFile >> 'CfgWeapons' >> (headgear _x) >> 'MJOLNIR_isHelmet')) == 1);
 
-				if ((GETVAR(_x,lrss_inAtmo,-1) == 0) && {!(GETVAR(_x,LRSS_hasHelmet,false) && GETVAR(_x,LRSS_hasSuit,false))}) then {
+				if ((GETVAR(_x,lrss_unitInAtmo,-1) == 0) && {!(GETVAR(_x,LRSS_hasHelmet,false) && GETVAR(_x,LRSS_hasSuit,false))}) then {
 					[_x, _this,"params" select 1,nil] call lrss_fnc_vacExposure_AI;
 				} else {
 					SETVAR(_x,lrss_vacExposeInit,false)
@@ -57,7 +55,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 				if (
 					(isPlayer _x)
 					&& {!GETVAR(_x,lrss_vacExposeInit,false)
-					&& {(GETVAR(_x,lrss_inAtmo,-1) == 0)
+					&& {(GETVAR(_x,lrss_unitInAtmo,-1) == 0)
 					&& {alive _x
 					&& {!(GETVAR(_x,LRSS_hasHelmet,false) && GETVAR(_x,LRSS_hasSuit,false))
 					}}}}) then {
@@ -68,7 +66,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 				} else {
 					if (
 						(isPlayer _x)
-						&& {GETVAR(_x,lrss_vacExposeInit,false) && {(GETVAR(_x,lrss_inAtmo,-1) != 0) && {!(GETVAR(_x,LRSS_hasHelmet,false) && GETVAR(_x,LRSS_hasSuit,false))}}}
+						&& {GETVAR(_x,lrss_vacExposeInit,false) && {(GETVAR(_x,lrss_unitInAtmo,-1) != 0) && {!(GETVAR(_x,LRSS_hasHelmet,false) && GETVAR(_x,LRSS_hasSuit,false))}}}
 						|| ((lifeState _x) == "DEAD")
 						) then {
 							SETVAR(_x,lrss_vacExposeInit,false);

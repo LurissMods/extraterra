@@ -27,7 +27,7 @@ _listNBox lnbSetColumnsPos [0,0.1,0.66];
 _listNBox lnbAddRow ["","No Air Tank",""];
 
 private _currentPlayerAirTank = GETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-private _currentTankAirReserve = GETVAR(player,EGVAR(lifesupport,playerAirReserve),nil);
+private _currentTankAirReserve = GETVAR(player,EGVAR(lifesupport,unitAirReserve),nil);
 
 private _airTanksInInv = call FUNC(airTanksInInv);
 

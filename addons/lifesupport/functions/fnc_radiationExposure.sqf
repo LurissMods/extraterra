@@ -15,9 +15,9 @@
  * Public: Yes
  */
 
-private _currentLifetimeExposure = GETVAR(ace_player,GVAR(lifetimeRadLevel),0); // in mSv
+private _currentLifetimeExposure = GETVAR(ace_player,GVAR(unitLifetimeRadLevel),0); // in mSv
 private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour);
-private _shielding = GETVAR(ACE_player,GVAR(inRadShield),-1);
+private _shielding = GETVAR(ACE_player,GVAR(unitInRadShield),-1);
 private _shieldCoeff = 0;
 
 switch _shielding do {

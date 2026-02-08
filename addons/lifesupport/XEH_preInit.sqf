@@ -4,6 +4,7 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
+/*
 GVAR(masterToggle);
 GVAR(solarIrradianceSim);
 GVAR(localTemperatureSim);
@@ -16,26 +17,28 @@ GVAR(radShield_coeff2);
 GVAR(radShield_coeff3);
 GVAR(radShield_coeff4);
 GVAR(radShield_coeff5);
-GVAR(maxActiveCool_US) = temp;
-GVAR(maxActiveHeat_US) = temp;
+GVAR(maxActiveCool_US);
+GVAR(maxActiveHeat_US);
 
 //GVAR(lifeSupportEnabled) = false;
-GVAR(inAtmo) = 0;
+GVAR(unitInAtmo) = 0;
 GVAR(atmoEnteredSuit) = 1;
 GVAR(prebreathingTimer) = TIME_TO_FULL_PREBREATHE;
-GVAR(inRadShield) = 0;
-GVAR(suitTemp) = NORMAL_TEMP;
-GVAR(coreTemp) = HUMAN_NATURAL_CORETEMP;
-GVAR(currentBatteryCapacity);
+GVAR(unitInRadShield) = 0;
+//GVAR(unitSuitTemp) = ROOM_TEMP;
+GVAR(unitCoreTemp) = HUMAN_NATURAL_CORETEMP;
+GVAR(unitCurrentBatteryCapacity);
 
-GVAR(playerAirReserve);
+GVAR(unitAirReserve);
 
-GVAR(lifetimeRadLevel) = 0;
+GVAR(unitLifetimeRadLevel) = 0;
 
 GVAR(currentAirTank) = objNull;
-GVAR(playerAirMaxReserve) = 100; //temp value
+GVAR(unitAirMaxReserve) = 100; //temp value
 
 // private _category = [QUOTE(MOD_NAME), LLSTRING(displayName)];
+
+*/
 
 #include "initSettings.inc.sqf"
 // #include "initKeybinds.inc.sqf"

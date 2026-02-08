@@ -38,7 +38,7 @@ switch (_suitFaction) do {
         _suitMaxActiveCool = GVAR(maxActiveCool_US);
         _suitMaxActiveHeat = GVAR(maxActiveHeat_US);
 
-        _currentBatteryCapacity = GETVAR(player,GVAR(currentBatteryCapacity),_suitBatteryCapacityAmpHoursInSeconds);
+        _currentBatteryCapacity = GETVAR(player,GVAR(unitCurrentBatteryCapacity),_suitBatteryCapacityAmpHoursInSeconds);
     };
 };
 
@@ -60,4 +60,4 @@ _currentBatteryCapacity = _currentBatteryCapacity - _currentCurrentDraw;
 if (GETVAR(player,EGVAR(huds,suitEnabled),false)) then {
     [_suitFaction,_currentBatteryCapacity,SUIT_BATTERY_CAP_US,_currentCurrentDraw] call EFUNC(huds,battHud);
 };
-SETVAR(player,GVAR(currentBatteryCapacity),_currentBatteryCapacity);
+SETVAR(player,GVAR(unitCurrentBatteryCapacity),_currentBatteryCapacity);

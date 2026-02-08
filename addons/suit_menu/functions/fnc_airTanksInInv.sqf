@@ -15,7 +15,7 @@
 * Public: No
 */
 
-private _currentSuitStatus = call EFUNC(huds,isInHelmAndSuit);
+//private _currentSuitStatus = call EFUNC(huds,isInHelmAndSuit);
 private _faction = _currentSuitStatus select 1;
 private _currentCompatibleTanks = "noSuit";
 

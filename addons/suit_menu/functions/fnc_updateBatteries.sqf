@@ -27,7 +27,7 @@ _listNBox lnbSetColumnsPos [0,0.1,0.66];
 _listNBox lnbAddRow ["","No Battery",""];
 
 private _currentPlayerBattery = GETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-private _currentBatteryCapacity = GETVAR(player,GVAR(currentBatteryCapacity),0);
+private _currentBatteryCapacity = GETVAR(player,GVAR(unitCurrentBatteryCapacity),0);
 
 private _batteriesInInv = call FUNC(batteriesInInv);
 

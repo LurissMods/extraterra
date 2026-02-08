@@ -26,7 +26,7 @@ switch (_selectedHud) do {
 };
 
 
-_atmAroundPlayer = (GETVAR(player,EGVAR(lifesupport,inAtmo),-1));
+_atmAroundPlayer = (GETVAR(player,EGVAR(lifesupport,unitInAtmo),-1));
 switch _atmAroundPlayer do {
     case 0: {
         (_extAtmText) ctrlSetStructuredText parseText "<t align='center'> VACUUM";

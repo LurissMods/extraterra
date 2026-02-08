@@ -21,7 +21,7 @@ _listBox = _display displayCtrl 1501;
 _airCombo = _display displayCtrl 2100;
 
 private _currentPlayerAirTank = GETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-private _currentTankAirReserve = GETVAR(player,EGVAR(lifesupport,playerAirReserve),nil);
+private _currentTankAirReserve = GETVAR(player,EGVAR(lifesupport,unitAirReserve),nil);
 
 //systemChat str _currentPlayerAirTank;
 
@@ -31,7 +31,7 @@ if ((lbCurSel _airCombo) != GVAR(currentSelectedAirTank)) then {
         GVAR(currentSelectedAirTank) = (lbCurSel _airCombo);
 
         SETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
-        SETVAR(player,EGVAR(lifesupport,playerAirReserve),100); // 100 is temp, add define
+        SETVAR(player,EGVAR(lifesupport,unitAirReserve),100); // 100 is temp, add define
 
         player addMagazine [_currentPlayerAirTank, _currentTankAirReserve];
         //[_airCombo] call FUNC(updateAirTanks);
@@ -42,7 +42,7 @@ if ((lbCurSel _airCombo) != GVAR(currentSelectedAirTank)) then {
         private _selectedAirTank = _allAirTanksInInv select (lbCurSel _airCombo - 1);
 
         SETVAR(player,EGVAR(lifesupport,currentAirTank),(_selectedAirTank select 0));
-        SETVAR(player,EGVAR(lifesupport,playerAirReserve),(_selectedAirTank select 1));
+        SETVAR(player,EGVAR(lifesupport,unitAirReserve),(_selectedAirTank select 1));
 
         if (!isNil QUOTE(_currentPlayerAirTank)) then {
             player addMagazine [_currentPlayerAirTank, _currentTankAirReserve];
@@ -61,11 +61,11 @@ if ((lbCurSel _airCombo) != GVAR(currentSelectedAirTank)) then {
     private _currentPlayerAirTank = GETVAR(player,EGVAR(lifesupport,currentAirTank),nil);
 
     if (!isNull _currentPlayerAirTank) then {
-        private _oldTankAirReserve = GETVAR(player,EGVAR(lifesupport,playerAirReserve),nil);
+        private _oldTankAirReserve = GETVAR(player,EGVAR(lifesupport,unitAirReserve),nil);
         player addMagazine [_currentPlayerAirTank, _oldTankAirReserve];
     };
 
-    SETVAR(player,EGVAR(lifesupport,playerAirReserve),((_airTanksInInv select (GVAR(currentSelectedAirTank)-1)) select 1));
+    SETVAR(player,EGVAR(lifesupport,unitAirReserve),((_airTanksInInv select (GVAR(currentSelectedAirTank)-1)) select 1));
 
     systemChat str _airTanksInInv;
     player removeMagazine ((_airTanksInInv select (GVAR(currentSelectedAirTank)-1)) select 0);

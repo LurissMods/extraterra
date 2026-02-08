@@ -19,7 +19,7 @@ PREP(rangefinderDisplay);
 PREP(groupDisplay);
 PREP(hudWeaponIcons);
 PREP(secondsToBase60Time);
-PREP(isInHelmAndSuit);
+//PREP(isInHelmAndSuit);
 PREP(airHud);
 PREP(battHud);
 PREP(radHud);
