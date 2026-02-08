@@ -24,8 +24,10 @@ if (GETVAR(player,GVAR(hasHelmet),false) && GETVAR(player,GVAR(hasSuit),false)) 
     SETVAR(player,GVAR(hasHelmAndSuit),true);
 };*/
 
-private _inSuit = ACE_player getVariable [QEGVAR(lifesupport,unitSuitBools),[false,false,false,false]];
-systemChat str _inSuit;
+//private _inSuit = ACE_player getVariable [QEGVAR(lifesupport,unitSuitBools),[false,false,false,false]];
+
+//["ActivateSuit", "Activate Suit", "", {}, {(GETVAR(ACE_player,(EGVAR(lifesupport,unitSuitBools) select 0),false))}, {}, [parameters], [0, 0, 0], 100] call ace_interact_menu_fnc_createAction;
+
 
 //systemChat str GETVAR(player,GVAR(hasHelmet),"Failed");
 //systemChat str GETVAR(player,GVAR(hasSuit),"Failed");*
@@ -37,7 +39,7 @@ systemChat str _inSuit;
     }, [_inSuit#1], 6, false, true,"", "!(player getVariable ['exterra_huds_suitEnabled', false])"
 ];*/
 
-GVAR(hudActivateAction) = [["<t color='#B1EE58'>Activate suit</t>", {
+/*GVAR(hudActivateAction) = [["<t color='#B1EE58'>Activate suit</t>", {
     params ["_target", "_caller", "_actionId", "_arguments"];
     [(_this select 3) select 0] call FUNC(suitActivation);
     }, [_inSuit#0], 6, false, true,"", "!(player getVariable ['exterra_huds_suitEnabled', false]) && (player getVariable ['exterra_lifesupport_unitSuitBools', false]) select 0"

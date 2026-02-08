@@ -3,10 +3,17 @@ class exterra_lifesupport_statemachine {
     skipNull = 1;
     class Default {
         onState = QFUNC(handleStateDefault);
-        /*class Injury {
-            targetState = "Injured";
-            events[] = {QEGVAR(medical,injured), QEGVAR(medical,LoweredVitals)};
-        };*/
+        class SuitActivation {
+            targetState = "SuitActivated";
+            events[] = {QEGVAR(huds,suitActivated)};
+        };
+    };
+    class SuitActivated {
+        onState = QFUNC(handleStateSuitActivated);
+        class SuitDeactivation {
+            targetState = "Default";
+            events[] = {QEGVAR(huds,suitDeactivated)};
+        };
     };
     class Dead {
         // When the unit is killed it's no longer handled by the statemachine

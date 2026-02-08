@@ -408,6 +408,7 @@ if (GVAR(toggleBootUp)) then {
 
             player setvariable ['exterra_huds_suitEnabled', true];
             player setvariable ['LRSS_MJOLNIR_HUD_ALLOWED', true];
+            ['exterra_huds_suitActivated', ACE_player] call CBA_fnc_localEvent;
             ", 53
         ]
     ];
@@ -618,7 +619,8 @@ if (GVAR(toggleBootUp)) then {
         GVAR(weapon_addressArray_US),
         GVAR(grenade_addressArray_US),
         GVAR(weaponIcons_addressArray_US)
-    ] call FUNC(initHudHandler)
+    ] call FUNC(initHudHandler);
+    [QGVAR(suitActivated), ACE_player] call CBA_fnc_localEvent;
 };
 
 //LRSS_systemMessageAllowed = true;

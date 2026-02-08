@@ -9,7 +9,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             QUOTE(exterra_main),
-            QUOTE(ace_advanced_fatigue),
+            QUOTE(ace_common),
         };
         units[] = {};
         weapons[] = {};

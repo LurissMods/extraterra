@@ -54,9 +54,10 @@ The resultant _currentVO2 will equal the current VO2 of the player in ml/kg/minu
 private _currentVO2 = BREATHING_VO2_FUNCTION(_respiratoryRate,(_suitData#1));
 private _currentO2Consumption = (((_currentVO2 * _unitMass)/60) min 56)*_deltaT;
 
-if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
-    //[_suitFaction, _oxygenSupply, _oxygenSupplyWhenFull, _currentO2Consumption] call EFUNC(huds,airHud);
-};
 _newOxygenSupply = (0 max (_oxygenSupply-_currentO2Consumption));
+
+/*if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
+    [GETVAR(_unit,GVAR(unitSuitFaction),-1), _oxygenSupply, _oxygenSupplyWhenFull, _currentO2Consumption] call EFUNC(huds,airHud);
+};*/
 
 _unit setVariable [QGVAR(unitAirReserve),_newOxygenSupply,_syncValue];
