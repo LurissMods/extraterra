@@ -5,6 +5,8 @@ PREP(updateSuitTemp);
 PREP(updateLocalTemp);
 PREP(updateUnitRadiation);
 PREP(updateUnitBreathing);
+PREP(updateSolarIrradiance);
+PREP(updateBattery);
 PREP(handlePlayerChanged);
 PREP(localTemperature);
 PREP(solarIrradiance);

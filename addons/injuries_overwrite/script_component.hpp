@@ -9,4 +9,4 @@
 //#include "\z\exterra\addons\injuries_overwrite\script_macros_medical.hpp"
 #include "\z\exterra\addons\main\script_macros.hpp"
 
-#define PREBREATHE_SAFE_THRESHOLD 0.5
+//#define PREBREATHE_SAFE_THRESHOLD 0.5

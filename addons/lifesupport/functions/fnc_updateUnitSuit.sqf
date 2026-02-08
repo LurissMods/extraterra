@@ -20,6 +20,10 @@ params ["_unit", "_syncValue"];
 private _helmetFaction = nil;
 private _suitFaction = nil;
 private _packFaction = nil;
+private _helmetBool = nil;
+private _suitBool = nil;
+private _packBool = nil;
+
 private _helmetPassiveAirReserve = nil;
 private _suitMobility = nil;
 private _blackBodyEmissive = nil;
@@ -28,9 +32,9 @@ private _suitThickness = nil;
 private _unitSuitData = [];
 
 {
-private _helmetBool = headgear _unit in _x;
+_helmetBool = headgear _unit in _x;
 if (_helmetBool) exitWith {
-    _helmetFaction = (_x#1)
+    _helmetFaction = (_x#1);
     _helmetPassiveAirReserve = getNumber (configFile >> "CfgWeapons" >> (_x#0) >> "exterra_uniforms_passiveAirReserve");
     };
 
@@ -42,9 +46,9 @@ if (_helmetBool) exitWith {
 } forEach GVAR(whitelistHelmets);
 
 {
-private _suitBool = uniform _unit in _x;
+_suitBool = uniform _unit in _x;
 if (_suitBool) exitWith {
-    _suitFaction = (_x#1)
+    _suitFaction = (_x#1);
     _suitMobility = getNumber (configFile >> "CfgWeapons" >> (_x#0) >> "exterra_uniforms_suitMobility");
     _blackBodyEmissive = getNumber (configFile >> "CfgWeapons" >> (_x#0) >> "exterra_uniforms_blackBodyEmmissive");
     _solarAbsorptance = getNumber (configFile >> "CfgWeapons" >> (_x#0) >> "exterra_uniforms_solarAbsorptance");
@@ -71,7 +75,7 @@ if (_suitBool) exitWith {
 } forEach GVAR(whitelistSuits);
 
 {
-private _packBool = backpack _unit in _x;
+_packBool = backpack _unit in _x;
 if (_packBool) exitWith {_packFaction = (_x#1)};
 } forEach GVAR(whitelistPacks);
 

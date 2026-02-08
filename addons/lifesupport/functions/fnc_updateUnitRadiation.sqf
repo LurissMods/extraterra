@@ -15,7 +15,7 @@
 * Public: Yes
 */
 
-params ["_unit", "_syncValue"]
+params ["_unit","_syncValue"];
 
 private _currentLifetimeExposure = GETVAR(_unit,GVAR(unitLifetimeRadLevel),0); // in mSv
 private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour); // Defined by module, global

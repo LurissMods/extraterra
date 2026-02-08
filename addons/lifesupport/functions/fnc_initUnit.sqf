@@ -40,7 +40,8 @@ if (_isRespawn) then {
     _unit setVariable [QGVAR(unitSuitTemp),ROOM_TEMP,true];
     _unit setVariable [QGVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP,true];
     _unit setVariable [QGVAR(unitRadiatedCoreTemp),0,true];
-    _unit setVariable [QGVAR(unitActiveThermal),0,true];
+    _unit setVariable [QGVAR(unitActiveThermalCool),0,true];
+    _unit setVariable [QGVAR(unitActiveThermalHeat),0,true];
 
     // Radiation
     _unit setVariable [QGVAR(unitInRadShield),RAD_COEFF0_DEFAULT,true];

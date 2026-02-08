@@ -17,7 +17,7 @@
 
 params ["_unit","_deltaT","_syncValues"];
 
-if (!isPlayer _unit) exitWith {}; // temp fix
+/*if (!isPlayer _unit) exitWith {}; // temp fix
 
 private _coreTemp = ([_unit] call EFUNC(lifeSupport,coreTemp) select 0);
 

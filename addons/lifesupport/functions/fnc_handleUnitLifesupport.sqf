@@ -34,37 +34,28 @@ if (_syncValue) then {
 // Check what suit a unit is wearing and retrieve it's stats
 [_unit, _syncValue] call FUNC(updateUnitSuit);
 
-if (hasInterface) then {
+// Updates current air intake for units
+[_unit, _deltaT, _syncValue] call FUNC(updateUnitBreathing);
 
-    // Updates current air intake for players
-    [_unit, _deltaT, _syncValue] call FUNC(updateUnitBreathing);
+// Updates the core temperature for units
+[_unit, _deltaT, _syncValue] call FUNC(updateCoreTemp);
 
-    // Updates the core temperature for players
-    [_unit, _deltaT, _syncValue] call FUNC(updateCoreTemp);
+// Updates the suit temperature for units
+[_unit, _deltaT, _syncValue] call FUNC(updateSuitTemp);
 
-    // Updates the suit temperature for players
-    [_unit, _deltaT, _syncValue] call FUNC(updateSuitTemp);
+// Updates the radiation exposure for units
+[_unit, _syncValue] call FUNC(updateUnitRadiation);
 
-    // Updates the radiation exposure for players
-    [_unit, _syncValue] call FUNC(updateUnitRadiation);
-
-} else {
-
+if (EGVAR(huds,suitEnabled)) then {
+    [_unit, _deltaT, _syncValue] call FUNC(updateBattery);
 };
 
-private _currentAtmo = GETVAR(player,GVAR(unitInAtmo),-1);
-private _inSuit = call EFUNC(huds,isInHelmAndSuit);
-private _coreTempResults = [player] call FUNC(unitCoreTemp);
-private _thermalSimulationResults = [(_inSuit#1),(_coreTempResults#1)] call FUNC(thermalSimulation);
-private _radiationSimulationResults = call FUNC(radiationExposure);
-private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
+//private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
 
-//[false,(_prebreatheReturn#0),(_prebreatheReturn#1),_currentAtmo] call EFUNC(injuries,barotrauma);
+//[(_inSuit#1),(_prebreatheReturn#0)] call EFUNC(huds,externalAtmoHud);
+//[(_inSuit#1),(_radiationSimulationResults#0),(_radiationSimulationResults#1),(_radiationSimulationResults#2)] call EFUNC(huds,radHud);
 
-[(_inSuit#1),(_prebreatheReturn#0)] call EFUNC(huds,externalAtmoHud);
-[(_inSuit#1),(_radiationSimulationResults#0),(_radiationSimulationResults#1),(_radiationSimulationResults#2)] call EFUNC(huds,radHud);
-
-if (GETVAR(player,EGVAR(huds,suitEnabled),false)) then {
+/*if (GETVAR(player,EGVAR(huds,suitEnabled),false)) then {
     [
         (_inSuit#1),
         (_thermalSimulationResults#0),
@@ -79,7 +70,7 @@ if (GETVAR(player,EGVAR(huds,suitEnabled),false)) then {
 if ((_inSuit#0)) then {
     [(_inSuit#1)] call FUNC(breathingSimulation);
     [(_inSuit#1),(_thermalSimulationResults#1),(_thermalSimulationResults#2)] call FUNC(batterySimulation);
-};
+};*/
 
 //END_COUNTER(lifeSupport);
 

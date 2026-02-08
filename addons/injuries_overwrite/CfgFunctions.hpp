@@ -24,7 +24,7 @@ class CfgFunctions {
             };*/
         };
     };
-    class overwrite_ace_medical_statemachine {
+   /* class overwrite_ace_medical_statemachine {
         tag = "ace_medical_statemachine";
         class ace_medical_statemachine {
             class handleStateDefault {
@@ -32,10 +32,10 @@ class CfgFunctions {
             };
             /*class updateHeartRate {
                 file = QPATHTOF(functions\fnc_updateHeartRate.sqf);
-            };*/
+            };
         };
     };
-    /*class overwrite_ace_medical_feedback {
+    class overwrite_ace_medical_feedback {
         tag = "ace_medical_feedback";
         class ace_medical_feedback {
             class handleEffects {

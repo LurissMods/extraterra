@@ -15,7 +15,7 @@
 * Public: No
 */
 
-GVAR(playerInSuit_handler) = ["playerInSuit", {SETVAR(player,GVAR(hasHelmAndSuit),true)}] call CBA_fnc_addEventHandler;
+/*GVAR(playerInSuit_handler) = ["playerInSuit", {SETVAR(player,GVAR(hasHelmAndSuit),true)}] call CBA_fnc_addEventHandler;
 GVAR(playerOutSuit_handler) = ["playerOutSuit", {SETVAR(player,GVAR(hasHelmAndSuit),false)}] call CBA_fnc_addEventHandler;
 
 GVAR(playerSuitCheck_handler) = [{
@@ -49,4 +49,4 @@ GVAR(playerSuitCheck_handler) = [{
     };
 
     }, 0.05, []
-] call CBA_fnc_addPerFrameHandler;
+] call CBA_fnc_addPerFrameHandler;*/

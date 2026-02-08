@@ -3,9 +3,15 @@
 ---------------------------------- Macros ----------------------------------
 */
 
+// General use
 #define KELVIN_TO_CELCIUS(input) (input - 273.15)
 #define CELCIUS_TO_KELVIN(input) (input + 273.15)
 #define SYS_STR(input) (systemChat str input) // I like to use systemChat *a lot* for live debugging. Hopefully that's not terrible practice
+
+// Maths
+#define BREATHING_PAIN_FUNCTION(coeff,pain) (coeff*(0.00052652*(exp(7.26135*pain))))
+#define BREATHING_VO2_FUNCTION(respRate,suitMobility) ((respRate^3 * (linearConversion[0,1,suitMobility,110.756,138.975])) + (respRate^2 * -(linearConversion[0,1,suitMobility,127.42,222.781])) + (respRate * (linearConversion[0,1,suitMobility,61.1643,128.306])) + 3.5)
+#define THERMAL_GENERALIZED_CONVECTION_COEFF_FUNCTION(pressure) (0 max ((1.13285*((pressure/PRESSURE_PA_1ATM)^3)) - (0.798924*((pressure/PRESSURE_PA_1ATM)^2)) + (4.67225*(pressure/PRESSURE_PA_1ATM)) - 0.0064124)) // Not used, just in case I add variable pressure
 
 /*
 ---------------------------------- Defines ----------------------------------
@@ -30,6 +36,7 @@
 // Thermal
 #define THERMAL_CONDUCT_CONSTANT 7.6e-5
 #define THERMAL_CONVECTION_COEFF_1ATM 5
+#define THERMAL_CONVECTION_COEFF_0P3ATM 1.504
 
 #define IS_IN_SUN_CHECK_VECTOR_LENGTH 200
 #define LOCAL_TEMP_VECTOR_HEIGHT_AGL 0.5

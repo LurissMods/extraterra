@@ -19,6 +19,7 @@ params ["_unit", "_moonSurfaceTemp"];
 
 private _distCheck = [];
 private _tempAroundUnit = nil;
+private _presetSelection = nil;
 
 if (GVAR(localTemperatureSim)) then { // Checks if temp simulation is enabled in the CBA settings.
     /* Behold the CPU muncher 9000. This thing is basically a primitive form of path tracing. I've locked down the user input just in case someone tries to brick their PC.
@@ -28,23 +29,27 @@ if (GVAR(localTemperatureSim)) then { // Checks if temp simulation is enabled in
     The theory is that due to the 2 week long lunar day/night combined with the hard vacuum, the temperature gradient between lit and shaded areas would be quite large, hence the temperature in a given area would be the average of the extremes.
     */
 
-    private _presetSelection = missionNamespace getVariable [QGVAR(localTemperatureSim_setting), 2]; // This selects detail setting selected in the CBA settings.
+    if (isPlayer _unit) then {
+        _presetSelection = missionNamespace getVariable [QGVAR(localTemperatureSim_setting), 2]; // This selects detail setting selected in the CBA settings.
+    } else {
+        _presetSelection = 4;
+    };
+
     switch _presetSelection do {
         case 0: {
-            _distCheck = [50,12.5,2];
-            //systemChat "test";
+            _distCheck = [50,12.5,2]; // 64 Points
         };
         case 1: {
-            _distCheck = [50,(50/3),2];
+            _distCheck = [50,(50/3),2]; // 48 Points
         };
         case 2: {
-            _distCheck = [50,25,2];
+            _distCheck = [50,25,2]; // 32 Points
         };
         case 3: {
-            _distCheck = [50,25,1];
+            _distCheck = [50,25,1]; // 16 Points
         };
         case 4: {
-            _distCheck = [50,50,1];
+            _distCheck = [50,50,1]; // 8 Points
         };
     };
     private _surroundingPosArray = []; // Initalizations. Needs to be redone every loop anyways.

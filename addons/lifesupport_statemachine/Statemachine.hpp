@@ -3,12 +3,13 @@ class exterra_lifesupport_statemachine {
     skipNull = 1;
     class Default {
         onState = QFUNC(handleStateDefault);
-        class Injury {
+        /*class Injury {
             targetState = "Injured";
             events[] = {QEGVAR(medical,injured), QEGVAR(medical,LoweredVitals)};
-        };
+        };*/
     };
-    class newThing1 {
-
+    class Dead {
+        // When the unit is killed it's no longer handled by the statemachine
+        //onStateEntered = QFUNC(enteredStateDeath);
     };
 };

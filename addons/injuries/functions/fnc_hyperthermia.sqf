@@ -17,7 +17,7 @@
 
 params ["_unit","_deltaT","_syncValues"];
 
-if (!isPlayer _unit) exitWith {}; // temp fix
+/*if (!isPlayer _unit) exitWith {}; // temp fix
 
 private _coreTemp = ([_unit] call EFUNC(lifeSupport,coreTemp) select 0);
 
@@ -40,12 +40,13 @@ ACEGVAR(advanced_fatigue,performanceFactor) = GVAR(originalPerformanceFactor) * 
 ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor) * (1 - _hyperthermiaGradient);
 
 private _heartRate = GET_HEART_RATE(_unit);
-private _bloodPressure = ([_unit] call ACEFUNC(medical_status,getBloodPressure));
+private _bloodPressure = ([_unit] call ACEFUNC(medical_status,getBloodPressure));*/
+
 /*systemChat format ["Hyp. Gradient: %1",_hyperthermiaGradient];
 systemChat format ["BP. Gradient: %1",_bloodPressureGradient];*/
 //systemChat format ["Core Temp: %1",_coreTemp];
 //systemChat format ["HR: %1",_heartRate];
-systemChat format ["Sys/Dias: %2/%1",(_bloodPressure select 0),(_bloodPressure select 1)];
+/*systemChat format ["Sys/Dias: %2/%1",(_bloodPressure select 0),(_bloodPressure select 1)];
 //systemChat format ["Core Temp: %1",_coreTemp];
 
 switch (true) do {
@@ -76,7 +77,7 @@ switch (true) do {
             ["Your skin feels cold.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
         };
     };
-};
+};*/
 
 
 /*if (_coreTemp >= HYPERTHERMIA_STAGE_MILD && {_coreTemp < HYPERTHERMIA_STAGE_MODERATE}) then {

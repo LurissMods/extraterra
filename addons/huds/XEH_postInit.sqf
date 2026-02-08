@@ -6,7 +6,7 @@ if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
 ["CBA_settingsInitialized", {
     //if (!GVAR(masterToggle)) exitWith {};
 
-    call FUNC(playerSuitCheckHandler);
+    //call FUNC(playerSuitCheckHandler); Redundant - moved check to statemachine
     call FUNC(hudInit_US);
     for "_i" from 0 to 0 do {
         [_i] call FUNC(hudInertia);

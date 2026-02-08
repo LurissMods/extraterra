@@ -108,6 +108,17 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(breathingPain_coeff),
+    "SLIDER",
+    [LSTRING(breathingPain_coeff_title), LSTRING(breathingPain_coeff_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat2)],
+    [0, 1, RAD_COEFF0_DEFAULT, 2],
+    1,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(radShield_coeff0),
     "SLIDER",
     [LSTRING(radShield_coeff0_title), LSTRING(radShield_coeff_desc)],

@@ -23,9 +23,9 @@ if (!alive _unit || {!local _unit}) exitWith {};
 //SYS_STR(_unit);
 //SYS_STR(CBA_missionTime);
 
-if ([_unit] call EFUNC(medical_vitals,handleUnitVitals)) then { // returns true when update ran
+/*if ([_unit] call EFUNC(medical_vitals,handleUnitVitals)) then { // returns true when update ran
     private _painLevel = GET_PAIN_PERCEIVED(_unit);
     if (_painLevel > 0) then {
         [QEGVAR(medical,moan), [_unit, _painLevel]] call CBA_fnc_localEvent;
     };
-};
+};*/

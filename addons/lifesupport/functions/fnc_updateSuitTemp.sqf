@@ -35,9 +35,9 @@ private _currentTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
 
 if (GVAR(solarIrradianceSim)) then {
     private _isUnitInSun = [_unit,"VIEW"] checkVisibility [eyePos _unit, eyePos _unit vectorDiff ((getLighting#2) vectorMultiply IS_IN_SUN_CHECK_VECTOR_LENGTH)];
-    _solarHeatingPower = [_isUnitInSun] call FUNC(solarIrradiance);
+    _solarHeatingPower = [_isUnitInSun,(_suitData#3),_unit] call FUNC(updateSolarIrradiance);
 } else {
-    _solarHeatingPower = ((AREAHUMAN_FRONT*AREAHUMAN_SIDE*AREAHUMAN_TOP)/3)*SOLAR_RADIATION_WATTAGE_1AU;
+    _solarHeatingPower = ((AREAHUMAN_FRONT*AREAHUMAN_SIDE*AREAHUMAN_TOP)/3)*(SOLAR_RADIATION_WATTAGE_1AU*(_suitData#3)); // _suitData#3 is solar absorbtion. Pulled from uniform config
 };
 
 switch (GETVAR(_unit,GVAR(unitInAtmo),ATMO_STATE_ERROR)) do {
@@ -59,10 +59,9 @@ switch (GETVAR(_unit,GVAR(unitInAtmo),ATMO_STATE_ERROR)) do {
     case ATMO_STATE_0P3ATM: {
         _tempAroundUnit = ROOM_TEMP; // Kept seperate just in case I want to make this variable in future.
 
-        _convectionTransferCoefficient = 0 max ((1.13285*((PRESSURE_PA_0P3ATM/PRESSURE_PA_1ATM)^3)) - (0.798924*((PRESSURE_PA_0P3ATM/PRESSURE_PA_1ATM)^2)) + (4.67225*(PRESSURE_PA_0P3ATM/PRESSURE_PA_1ATM)) - 0.0064124); // Function that models any coeff between 0 and 1 atm
         _conductionTransferCoefficient = (1/(1+(THERMAL_CONDUCT_CONSTANT/((PRESSURE_PA_0P3ATM*(_suitData#4))/_tempAroundUnit))))*0.026;
 
-        _convectionTransferPower = _convectionTransferCoefficient*HUMAN_SURFACE_AREA_SUIT*(_currentTemp - _tempAroundUnit);
+        _convectionTransferPower = THERMAL_CONVECTION_COEFF_0P3ATM*HUMAN_SURFACE_AREA_SUIT*(_currentTemp - _tempAroundUnit);
         _conductionTransferPower = ((_conductionTransferCoefficient*HUMAN_SURFACE_AREA_SUIT)*(_currentTemp - _tempAroundUnit)/(_suitData#4));
     };
 };
@@ -95,17 +94,20 @@ if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
         if (_currentTemp > ROOM_TEMP) then {
             _currentActiveCool = _suitMaxActiveCool;
             _netHeatPower = _netHeatPower - _currentActiveCool;
-            _unit setVariable [QGVAR(unitActiveThermal),(-1*_currentActiveCool),_syncValue];
+            _unit setVariable [QGVAR(unitActiveThermalCool),_currentActiveCool,_syncValue];
+            _unit setVariable [QGVAR(unitActiveThermalHeat),0,_syncValue];
         } else {
             if (_currentTemp < ROOM_TEMP && {(abs( _currentTemp - ROOM_TEMP) > 0.01)}) then {
                 _currentActiveHeat = _suitMaxActiveHeat;
                 _netHeatPower = _netHeatPower + _currentActiveHeat;
                 _currentActiveCool = 0;
-                _unit setVariable [QGVAR(unitActiveThermal),_currentActiveHeat,_syncValue];
+                _unit setVariable [QGVAR(unitActiveThermalHeat),_currentActiveHeat,_syncValue];
+                _unit setVariable [QGVAR(unitActiveThermalCool),0,_syncValue];
             } else {
                 _currentActiveCool = _currentActiveCool min _suitMaxActiveCool;
                 _netHeatPower = _netHeatPower - _currentActiveCool;
-                _unit setVariable [QGVAR(unitActiveThermal),(-1*_currentActiveCool),_syncValue];
+                _unit setVariable [QGVAR(unitActiveThermalCool),_currentActiveCool,_syncValue];
+                _unit setVariable [QGVAR(unitActiveThermalHeat),0,_syncValue];
             };
         };
     } else {
@@ -113,17 +115,20 @@ if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
             if (_currentTemp < ROOM_TEMP) then {
                 _currentActiveHeat = _suitMaxActiveHeat;
                 _netHeatPower = _netHeatPower + _currentActiveHeat;
-                _unit setVariable [QGVAR(unitActiveThermal),_currentActiveHeat,_syncValue];
+                _unit setVariable [QGVAR(unitActiveThermalHeat),_currentActiveHeat,_syncValue];
+                _unit setVariable [QGVAR(unitActiveThermalCool),0,_syncValue];
             } else {
                 if (_currentTemp > ROOM_TEMP && {(abs( _currentTemp - ROOM_TEMP) > 0.01)}) then {
                     _currentActiveCool = _suitMaxActiveCool;
                     _netHeatPower = _netHeatPower - _currentActiveCool;
                     _currentActiveHeat = 0;
-                    _unit setVariable [QGVAR(unitActiveThermal),(-1*_currentActiveCool),_syncValue];
+                    _unit setVariable [QGVAR(unitActiveThermalCool),_currentActiveCool,_syncValue];
+                    _unit setVariable [QGVAR(unitActiveThermalHeat),0,_syncValue];
                 } else {
                     _currentActiveHeat = _currentActiveHeat min _suitMaxActiveHeat;
                     _netHeatPower = _netHeatPower + _currentActiveHeat;
-                    _unit setVariable [QGVAR(unitActiveThermal),_currentActiveHeat,_syncValue];
+                    _unit setVariable [QGVAR(unitActiveThermalHeat),_currentActiveHeat,_syncValue];
+                    _unit setVariable [QGVAR(unitActiveThermalCool),0,_syncValue];
                 };
             };
         };

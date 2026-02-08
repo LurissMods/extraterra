@@ -68,10 +68,9 @@ if (isNull objectParent _unit && {_currentSpeed > 0.1} && {isTouchingGround _uni
         };
     };
 
-
     _currentMetabolicHeatWattage = [_gearMass, _terrainGradient * ACEGVAR(advanced_fatigue,terrainGradientFactor) * 0.1, _terrainFactor, _currentSpeed] call ACEFUNC(advanced_fatigue,getMetabolicCosts);
 };
-// Mark end
+// Mark end ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 private _radiationHeatWattage = _sigma*((_coreTemp^4) - (_suitTemp^4));
 private _convectionTransferPower = HUMAN_SKIN_CONVECTION_COEFF*HUMAN_SURFACE_AREA*(_coreTemp - _suitTemp);

@@ -24,7 +24,7 @@ if (GETVAR(player,GVAR(hasHelmet),false) && GETVAR(player,GVAR(hasSuit),false)) 
     SETVAR(player,GVAR(hasHelmAndSuit),true);
 };*/
 
-private _inSuit = call FUNC(isInHelmAndSuit);
+private _inSuit = player getVariable [QGVAR(unitSuitBools),[false,false,false,false]];
 
 //systemChat str GETVAR(player,GVAR(hasHelmet),"Failed");
 //systemChat str GETVAR(player,GVAR(hasSuit),"Failed");*
@@ -39,13 +39,13 @@ private _inSuit = call FUNC(isInHelmAndSuit);
 GVAR(hudActivateAction) = [["<t color='#B1EE58'>Activate suit</t>", {
     params ["_target", "_caller", "_actionId", "_arguments"];
     [(_this select 3) select 0] call FUNC(suitActivation);
-    }, [_inSuit#1], 6, false, true,"", "!(player getVariable ['exterra_huds_suitEnabled', false]) && (player getVariable ['exterra_huds_hasHelmAndSuit', false])"
+    }, [_inSuit#0], 6, false, true,"", "!(player getVariable ['exterra_huds_suitEnabled', false]) && (player getVariable ['exterra_huds_hasHelmAndSuit', false])"
 ]] call CBA_fnc_addPlayerAction;
 
 GVAR(hudDeactivateAction) = [["<t color='#ff0000'>Deactivate suit</t>", {
     params ["_target", "_caller", "_actionId", "_arguments"];
     [(_this select 3) select 0] call FUNC(suitDeactivation);
-    }, [_inSuit#1], 6, false, true,"", "(player getVariable ['exterra_huds_suitEnabled', false])"
+    }, [_inSuit#0], 6, false, true,"", "(player getVariable ['exterra_huds_suitEnabled', false])"
 ]] call CBA_fnc_addPlayerAction;
 
 //,"(alive _originalTarget) && !(player getVariable 'exterra_huds_suitEnabled')"
