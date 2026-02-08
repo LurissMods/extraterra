@@ -17,9 +17,9 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-private _suitData = _unit getVariable [QGVAR(unitSuitData),"Error!"];
+private _suitData = _unit getVariable [QGVAR(unitSuitData),ERROR("exterra_lifesupport_fnc_updateSuitTemp no suit data in GETVAR!")];
 private _sigma = STEFAN_BOLTZMANN_CONSTANT*(_suitData#2)*HUMAN_SURFACE_AREA_SUIT; // _suitData#2 is suit black body coefficient. Pulled from uniform config
-private _unitRadiatedCoreTemp = _unit getVariable [QGVAR(unitRadiatedCoreTemp),"Error!"];
+private _unitRadiatedCoreTemp = _unit getVariable [QGVAR(unitRadiatedCoreTemp),ERROR("exterra_lifesupport_fnc_updateSuitTemp no core temp radiated value in GETVAR!")];
 
 // https://ntrs.nasa.gov/api/citations/20230014577/downloads/ATA%202023%20Presentation.pdf Stuff on suit thermals
 

@@ -20,9 +20,12 @@ params ["_unit"];
 // If the unit died the loop is finished
 if (!alive _unit || {!local _unit}) exitWith {};
 
-if ([_unit] call EFUNC(lifesupport,handleUnitLifesupport)) then { // returns true when update ran
+[_unit] call EFUNC(lifesupport,handleUnitLifesupport);
+[_unit] call EFUNC(huds,handleUnitHUD);
+
+/*if ([_unit] call EFUNC(lifesupport,handleUnitLifesupport)) then { // returns true when update ran
     /*private _painLevel = GET_PAIN_PERCEIVED(_unit);
     if (_painLevel > 0) then {
         [QEGVAR(medical,moan), [_unit, _painLevel]] call CBA_fnc_localEvent;
-    };*/
-};
+    };
+};*/

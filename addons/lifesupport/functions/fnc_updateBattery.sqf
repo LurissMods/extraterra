@@ -58,8 +58,4 @@ if (GETVAR(_unit,GVAR(unitActiveThermalCool),0) > 0) then {
 private _currentCurrentDraw = ((_basePowerDraw +_currentPumpPowerDraw)/_suitTheveninVoltage)*_deltaT;
 _currentBatteryCapacity = _currentBatteryCapacity - _currentCurrentDraw;
 
-if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
-    //[_suitFaction,_currentBatteryCapacity,SUIT_BATTERY_CAP_US,_currentCurrentDraw] call EFUNC(huds,battHud);
-};
-
 _unit setVariable [QGVAR(unitCurrentBatteryCapacity),_currentBatteryCapacity,_syncValue];

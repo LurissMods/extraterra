@@ -18,7 +18,7 @@
 params ["_unitsNearPlayer"];
 LRSS_showIcons = true; // Not properly implemented yet
 
-if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == player}}) then {
+if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == ACE_player}}) then {
     {
     private _offset = [0,0,0];
     private _datalink = nil;
@@ -28,9 +28,9 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == p
     private _color = [0,0,0,0];
     private _size = 0;
     private _sideUnit = side _unit;
-    private _sidePlayer = side player;
+    private _sidePlayer = side ACE_player;
     private _hostileCheck = _sidePlayer getFriend _sideUnit;
-    private _fov = getObjectFOV vehicle player;
+    private _fov = getObjectFOV vehicle ACE_player;
     private _pos = [0,0,0];
 
     private _screenPosition = worldToScreen (_unit modelToWorldVisual _offset);
@@ -38,8 +38,8 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == p
 
     switch GVAR(fireControl_Datalink) do {
         case 0: {_datalink = _sidePlayer};
-        case 1: {_datalink = side group player};
-        case 2: {_datalink = player};
+        case 1: {_datalink = side group ACE_player};
+        case 2: {_datalink = ACE_player};
     };
 
     if (_unit isKindOf "MAN") then {
@@ -59,7 +59,7 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == p
                     _icon = GVAR(fireControl_humanIconEnemy);
                     _color = GVAR(fireControl_enemyColor);
                 } else {
-                    if (group player isEqualTo group _unit) then {
+                    if (group ACE_player isEqualTo group _unit) then {
                         private _transparency = GVAR(fireControl_groupColor) select 3;
                         _icon = GVAR(fireControl_humanIconFriend);
                         _color = switch (assignedTeam _unit) do {
@@ -91,7 +91,7 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == p
                 if (_hostileCheck < 0.6 && {(_datalink knowsAbout _unit) > 0.1}) then {
                     _color = GVAR(fireControl_enemyColor);
                 } else {
-                    if (group player isEqualTo group _unit) then {
+                    if (group ACE_player isEqualTo group _unit) then {
                         _color = GVAR(fireControl_groupColor);
                     } else {
                         if (_sideUnit == _sidePlayer OR {_hostileCheck > 0.6 && {(_datalink knowsAbout _unit) > 0.1}}) then {

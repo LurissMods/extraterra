@@ -1,33 +1,21 @@
 #include "..\script_component.hpp"
 /*
- * Author: Luriss
- * Checks if player is in direct sunlight. Returns thermal heating in watts.
- *
- * Arguments:
- * None
- *
- * Return Value:
- * None
- *
- * Example:
- * [] call exterra_lifeSupport_fnc_mainLoop
- *
- * Public: No
- */
+* Author: Luriss
+* Checks if player is in direct sunlight. Returns thermal heating in watts.
+*
+* Arguments:
+* None
+*
+* Return Value:
+* None
+*
+* Example:
+* [] call exterra_lifeSupport_fnc_mainLoop
+*
+* Public: No
+*/
 
-//if (!(player getVariable [QGVAR(hasHelmet),false] && LRSS_firstPersonCheck)) exitWith {};
-
-player setVariable [QGVAR(hudBootInit), true];
-private _hudElementsBoot = [];
-
-//_airTankTemp = 500000;
-//player setVariable ["LRSS_LS_airLevel", _airTankTemp]; // air volume in milliliters
-//player setVariable ["LRSS_LS_suitTemp", 294.15]; // suit temp in kelvin
-//SETVAR(player,GVAR(suitEnabled),true);
-
-//LRSS_systemMessageAllowed = false;
-
-//call FUNC(terminateFireControl);
+private _bootStartMissionTime = CBA_missionTime;
 
 _hudElementsBoot = [
     (GVAR(hudOutline_US)#0),
@@ -99,80 +87,31 @@ _hudElementsBoot = [
 (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
 (GVAR(helmetOutline_US)#0) ctrlCommit 0;
 
-///////////////////////////////////
-//LRSS_MJOLNIR_SKIPBOOT = true;
+ACE_player setVariable [QEGVAR(lifesupport,suitActivated), true, true];
+
+if (GVAR(toggleHUDppEffects)) then {
+    GVAR(hudPixelation_PP) ppEffectEnable true;
+    GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(hudPixelation_power)];
+    GVAR(hudPixelation_PP) ppEffectCommit 0;
+
+    GVAR(hudChromAb_PP) ppEffectEnable true;
+    GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(hudChromAb_power), GVAR(hudChromAb_power), true];
+    GVAR(hudChromAb_PP) ppEffectCommit 0;
+
+    GVAR(hudRadialBlur_PP) ppEffectEnable true;
+    GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_offset), GVAR(hudRadialBlur_offset)];
+    GVAR(hudRadialBlur_PP) ppEffectCommit 0;
+
+    GVAR(filmGrain_PP) ppEffectEnable true;
+    GVAR(filmGrain_PP) ppEffectAdjust [GVAR(filmGrain_power), 1.5, 2.01, 0.75, 1.0, 0];
+    GVAR(filmGrain_PP) ppEffectCommit 0;
+};
+
+
+// Checks if quickbooting is disabled in CBA settings
 if (GVAR(toggleBootUp)) then {
-    player setVariable [QGVAR(suitEnabled), true];
     private _input = "";
     private _bootupText = [];
-
-
-    /*if (LRSS_HUD_PIXELATION) then {
-        ["Resolution", 1, [1000]] spawn {
-        params ["_name", "_priority", "_effect", "_handle"];
-
-        _handle = ppEffectCreate [_name, _priority];
-
-        _handle ppEffectEnable true;
-        _handle ppEffectAdjust _effect;
-        _handle ppEffectCommit 0;
-        };
-    };
-
-    if (LRSS_HUD_CHROMAB) then {
-        ["ChromAberration", 200, [0.0035, 0.0035, true]] spawn {
-        params ["_name", "_priority", "_effect", "_handle"];
-
-        _handle = ppEffectCreate [_name, _priority];
-
-        _handle ppEffectEnable true;
-        _handle ppEffectAdjust _effect;
-        _handle ppEffectCommit 0;
-        };
-    };
-
-    if (LRSS_HUD_RADBLUR) then {
-        ["RadialBlur", 100, [0.01, 0.01, 0.35, 0.35]] spawn {
-        params ["_name", "_priority", "_effect", "_handle"];
-
-        _handle = ppEffectCreate [_name, _priority];
-
-        _handle ppEffectEnable true;
-        _handle ppEffectAdjust _effect;
-        _handle ppEffectCommit 0;
-        };
-    };
-
-    if (LRSS_HUD_DYNAMBLUR) then {
-        ["DynamicBlur", 400, [0.1]] spawn {
-        params ["_name", "_priority", "_effect", "_handle"];
-
-        _handle = ppEffectCreate [_name, _priority];
-
-        _handle ppEffectEnable true;
-        _handle ppEffectAdjust _effect;
-        _handle ppEffectCommit 0;
-        };
-    };*/
-
-    if (GVAR(toggleHUDppEffects)) then {
-        GVAR(hudPixelation_PP) ppEffectEnable true;
-        GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(hudPixelation_power)];
-        GVAR(hudPixelation_PP) ppEffectCommit 0;
-
-        GVAR(hudChromAb_PP) ppEffectEnable true;
-        GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(hudChromAb_power), GVAR(hudChromAb_power), true];
-        GVAR(hudChromAb_PP) ppEffectCommit 0;
-
-        GVAR(hudRadialBlur_PP) ppEffectEnable true;
-        GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_offset), GVAR(hudRadialBlur_offset)];
-        GVAR(hudRadialBlur_PP) ppEffectCommit 0;
-
-        GVAR(filmGrain_PP) ppEffectEnable true;
-        GVAR(filmGrain_PP) ppEffectAdjust [GVAR(filmGrain_power), 1.5, 2.01, 0.75, 1.0, 0];
-        GVAR(filmGrain_PP) ppEffectCommit 0;
-    };
-
 
     /*
     To input an empty line, put "&#160;" in the string.
@@ -406,221 +345,37 @@ if (GVAR(toggleBootUp)) then {
             ];
             {_x ctrlSetFade 1; _x ctrlCommit 0;} forEach _hudElements;
 
-            player setvariable ['exterra_huds_suitEnabled', true];
-            player setvariable ['LRSS_MJOLNIR_HUD_ALLOWED', true];
+            //player setvariable ['LRSS_MJOLNIR_HUD_ALLOWED', true];
             ['exterra_huds_suitActivated', ACE_player] call CBA_fnc_localEvent;
             ", 53
         ]
     ];
 
-    [
-        GVAR(squad_memberAddressArray_US),
-        GVAR(squad_heartAddressArray_US),
-        GVAR(rangefinder_addressArray_US),
-        GVAR(weapon_addressArray_US),
-        GVAR(grenade_addressArray_US),
-        GVAR(weaponIcons_addressArray_US)
-    ] call FUNC(initHudHandler);
-
+    private _bootUpLines = [];
     private _textField = (GVAR(bootup_text_US)#0);
+    _textField ctrlSetTextColor GVAR(bootTextColor);
+    _textField ctrlSetFade 0;
+    _textField ctrlCommit 0;
+
     private _textHeadline = (GVAR(bootup_headline_text_US)#0);
     private _bootLogo = (GVAR(bootup_logo_US)#0);
     private _bootBistGrid = (GVAR(bootup_bistGrid_US)#0);
-    _textField ctrlSetTextColor GVAR(bootTextColor);
-
-
-    _textField ctrlSetFade 0;
-    _textField ctrlCommit 0;
     private _textToShow = "";
-    LRSS_BOOT_OFFSET = 0.022;
+    //LRSS_BOOT_OFFSET = 0.022;
     private _textScale = safeZoneH / 3.5;
     private _structuredTextProperties = "<t align='left'" + format [" size='%1'>",_textScale] + "%1</t>";
-    //GVAR(bootUpLines) = [];
-
-    private _bootUpLines = [];
 
     playSound QGVAR(hudBootSound_US);
-
-
-    //sleep 0.5;
-
-    /*[_bootLogo] spawn {
-        params ["_element"];
-
-        _element ctrlSetPosition LRSS_MJOLNIR_bootBoxEndPos;
-        _element ctrlSetFade 0;
-        _element ctrlCommit 0;
-    };*/
-
     _bootLogo ctrlSetPosition BOOTUP_LOGO_US_POS;
     _bootLogo ctrlSetFade 0;
     _bootLogo ctrlCommit 0;
 
     private _delay = 0;
     private _currentHudAnim = 0;
-
-    for "_i" from 0 to (count(_bootupText) - 1) do {
-
-
-        /*scopeName "textLoop";
-        if (!(player getVariable [QGVAR(hasHelmet),false]) || !(player getVariable [QGVAR(hudBootInit),false])) exitWith {
-            breakOut "textLoop";
-        };*/
-
-        private _currentLine = _bootupText select _i;
-        private _isLineWithAnim = false;
-
-        private _line = _currentLine select 0;
-        if (_i == 33) then {
-            _delay = _delay + (_currentLine select 1);
-        } else {
-            _delay = _delay + (_currentLine select 1)/GVAR(bootUpSpeed);
-        };
-
-
-        if (((_bootUpAnims select _currentHudAnim) select 1) == _i) then {
-            _currentHudAnim = _currentHudAnim + 1;
-            _isLineWithAnim = true;
-        };
-
-
-        [{
-            _line = _this#0;
-            _bootUpLines = _this#1;
-            _bootUpAnims = _this#2;
-            _isLineWithAnim = _this#3;
-            _i = _this#4;
-            _currentHudAnim = (_this#5 - 1);
-
-            //systemChat str _i;
-
-            [_line, _bootUpLines, 0] call FUNC(addBootUpLine);
-
-            if (_line != "&#160;") then {
-                playSound QGVAR(hudTypingSound0);
-            };
-
-            if (_isLineWithAnim) then {
-                call compile ((_bootUpAnims select _currentHudAnim) select 0);
-            };
-        },
-        [_line, _bootUpLines, _bootUpAnims, _isLineWithAnim, _i, _currentHudAnim],
-        _delay] call CBA_fnc_waitAndExecute;
-
-    };
-
 } else {
-    player setVariable [QGVAR(suitEnabled), true];
-    playSound "Simulation_Restart";
-    playSound "Topic_Done";
+    playSound QGVAR(hudBootSound_US);
 
-    if (GVAR(toggleHUDppEffects)) then {
-        GVAR(hudPixelation_PP) ppEffectEnable true;
-        GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(hudPixelation_power)];
-        GVAR(hudPixelation_PP) ppEffectCommit 0;
-
-        GVAR(hudChromAb_PP) ppEffectEnable true;
-        GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(hudChromAb_power), GVAR(hudChromAb_power), true];
-        GVAR(hudChromAb_PP) ppEffectCommit 0;
-
-        GVAR(hudRadialBlur_PP) ppEffectEnable true;
-        GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_offset), GVAR(hudRadialBlur_offset)];
-        GVAR(hudRadialBlur_PP) ppEffectCommit 0;
-
-        GVAR(filmGrain_PP) ppEffectEnable true;
-        GVAR(filmGrain_PP) ppEffectAdjust [GVAR(filmGrain_power), 1.5, 2.01, 0.75, 1.0, 0];
-        GVAR(filmGrain_PP) ppEffectCommit 0;
-    };
-
-    /*_hudElementsBoot = [
-        (GVAR(hudOutline_US)#0),
-        (GVAR(info_background_US)#0),
-        (GVAR(info_background_text_US)#0),
-        (GVAR(weapon_background_US)#0),
-        (GVAR(info_airRemain_text_US)#0),
-        (GVAR(info_battRemain_text_US)#0),
-        (GVAR(info_internalTemp_text_US)#0),
-        (GVAR(info_externalTemp_text_US)#0),
-        (GVAR(info_thermalPowerBalance_text_US)#0),
-        (GVAR(info_timeUntilDang_text_US)#0),
-        (GVAR(info_externalAtmo_text_US)#0),
-        (GVAR(info_radPerHour_text_US)#0),
-        (GVAR(info_lifetimeRad_text_US)#0),
-        (GVAR(squad_member0_text_US)#0),
-        (GVAR(squad_member1_text_US)#0),
-        (GVAR(squad_member2_text_US)#0),
-        (GVAR(squad_member3_text_US)#0),
-        (GVAR(squad_member4_text_US)#0),
-        (GVAR(squad_member5_text_US)#0),
-        (GVAR(squad_member6_text_US)#0),
-        (GVAR(squad_member7_text_US)#0),
-        (GVAR(squad_member8_text_US)#0),
-        (GVAR(squad_member9_text_US)#0),
-        (GVAR(squad_member10_text_US)#0),
-        (GVAR(squad_member11_text_US)#0),
-        (GVAR(squad_member12_text_US)#0),
-        (GVAR(squad_member13_text_US)#0),
-        (GVAR(squad_member14_text_US)#0),
-        (GVAR(squad_member15_text_US)#0),
-        (GVAR(squad_member16_text_US)#0),
-        (GVAR(squad_member17_text_US)#0),
-        (GVAR(squad_member0_heart_US)#0),
-        (GVAR(squad_member1_heart_US)#0),
-        (GVAR(squad_member2_heart_US)#0),
-        (GVAR(squad_member3_heart_US)#0),
-        (GVAR(squad_member4_heart_US)#0),
-        (GVAR(squad_member5_heart_US)#0),
-        (GVAR(squad_member6_heart_US)#0),
-        (GVAR(squad_member7_heart_US)#0),
-        (GVAR(squad_member8_heart_US)#0),
-        (GVAR(squad_member9_heart_US)#0),
-        (GVAR(squad_member10_heart_US)#0),
-        (GVAR(squad_member11_heart_US)#0),
-        (GVAR(squad_member12_heart_US)#0),
-        (GVAR(squad_member13_heart_US)#0),
-        (GVAR(squad_member14_heart_US)#0),
-        (GVAR(squad_member15_heart_US)#0),
-        (GVAR(squad_member16_heart_US)#0),
-        (GVAR(squad_member17_heart_US)#0),
-        (GVAR(airBar_US)#0),
-        (GVAR(battBar_US)#0),
-        (GVAR(rangefinder_background_US)#0),
-        (GVAR(weapon_currentWeapon_US)#0),
-        (GVAR(weapon_secondWeapon_US)#0),
-        (GVAR(weapon_launcher_US)#0),
-        (GVAR(weapon_grenade_US)#0),
-        (GVAR(rangefinder_grid_US)#0),
-        (GVAR(rangefinder_bearing_US)#0),
-        (GVAR(rangefinder_range_US)#0),
-        (GVAR(weapon_weaponMagazines_text_US)#0),
-        (GVAR(weapon_fireMode_text_US)#0),
-        (GVAR(weapon_grenade_text_US)#0),
-        (GVAR(weapon_grenadeAmount_text_US)#0),
-        (GVAR(weapon_weaponZero_text_US)#0)
-        //(GVAR(bootup_logo_US)#0),
-        //(GVAR(bootup_bistGrid_US)#0),
-        //(GVAR(bootup_text_US)#0),
-        //(GVAR(bootup_headline_text_US)#0)
-    ];*/
     {_x ctrlSetFade 0; _x ctrlCommit 0.5} forEach _hudElementsBoot;
     (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
     (GVAR(helmetOutline_US)#0) ctrlCommit 0;
-
-    //player setVariable ["LRSS_MJOLNIR_HUD_ALLOWED", true];
-    //player setVariable ["LRSS_MJOLNIR_HUD_ACTIVE", true];
-    //player setVariable ["LRSS_MJOLNIR_outlineHidden",true];
-    //player setVariable ["LRSS_TARGETING_ALLOWED", true];
-    call FUNC(initFireControlHandler);
-    call FUNC(initIFFHandler);
-    [
-        GVAR(squad_memberAddressArray_US),
-        GVAR(squad_heartAddressArray_US),
-        GVAR(rangefinder_addressArray_US),
-        GVAR(weapon_addressArray_US),
-        GVAR(grenade_addressArray_US),
-        GVAR(weaponIcons_addressArray_US)
-    ] call FUNC(initHudHandler);
 };
-
-//LRSS_systemMessageAllowed = true;
-//[] spawn LRSS_fnc_SystemMessageLoop;

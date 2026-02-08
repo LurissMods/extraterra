@@ -22,9 +22,9 @@ private _font = "RobotoCondensed";
 private _colorFriendly = GVAR(fireControl_friendColor);
 
 {
-    if ((_x != player)  && {(side _x == side player) && {(isNull objectParent _x) && {(player distance _x < _maxDist)}}}) then {
+    if ((_x != ACE_player)  && {(side _x == side ACE_player) && {(isNull objectParent _x) && {(ACE_player distance _x < _maxDist)}}}) then {
 
-    private _dist = player distance _x;
+    private _dist = ACE_player distance _x;
     private _alpha = 1 - (_dist / _maxDist);
     _alpha = _alpha max 0 min 1;
     private _pos = unitAimPositionVisual _x;
@@ -32,7 +32,7 @@ private _colorFriendly = GVAR(fireControl_friendColor);
 
     private _colour = _colorFriendly;
 
-    if (group _x isEqualTo group player) then {
+    if (group _x isEqualTo group ACE_player) then {
         _colour = switch (assignedTeam (_x)) do {
         case "MAIN": {[1,1,1,_alpha]};
         case "RED": {[1,0,0,_alpha]};

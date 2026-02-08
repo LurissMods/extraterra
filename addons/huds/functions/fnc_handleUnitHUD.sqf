@@ -17,8 +17,14 @@
 
 params ["_unit"];
 
+systemChat "HUD handler running";
+
 // This should ONLY run on the player client for that specific player
 if (hasInterface && {_unit == ACE_player}) then {
+
+    [call FUNC(nearUnits)] call FUNC(IFF); // Note: This doesn't work, just used a PFH in the startup state
+    call FUNC(weaponCrosshair);
+    call FUNC(nametags);
 
 };
 

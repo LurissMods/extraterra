@@ -1,3 +1,6 @@
+PREP(bootHUD_US);
+PREP(handleUnitHUD);
+
 //PREP(mainLoop);
 PREP(hudInit_US);
 PREP(hudInertia);

@@ -19,7 +19,7 @@ params ["_unit","_deltaT","_syncValue"];
 
 private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),1000);
 private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),_oxygenSupplyWhenFull);
-private _suitData = _unit getVariable [QGVAR(unitSuitData),"Error!"];
+private _suitData = _unit getVariable [QGVAR(unitSuitData),ERROR("exterra_lifesupport_fnc_updateUnitBreathing no suit data in GETVAR!")];
 
 private _unitMass = HUMAN_MASS + (((loadAbs _unit)/10)/2.205); // Junk on the right is the gear weight converted into kg
 private _respiratoryRate = nil;
@@ -55,9 +55,5 @@ private _currentVO2 = BREATHING_VO2_FUNCTION(_respiratoryRate,(_suitData#1));
 private _currentO2Consumption = (((_currentVO2 * _unitMass)/60) min 56)*_deltaT;
 
 _newOxygenSupply = (0 max (_oxygenSupply-_currentO2Consumption));
-
-/*if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
-    [GETVAR(_unit,GVAR(unitSuitFaction),-1), _oxygenSupply, _oxygenSupplyWhenFull, _currentO2Consumption] call EFUNC(huds,airHud);
-};*/
 
 _unit setVariable [QGVAR(unitAirReserve),_newOxygenSupply,_syncValue];

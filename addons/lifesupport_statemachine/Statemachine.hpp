@@ -5,14 +5,15 @@ class exterra_lifesupport_statemachine {
         onState = QFUNC(handleStateDefault);
         class SuitActivation {
             targetState = "SuitActivated";
-            events[] = {QEGVAR(huds,suitActivated)};
+            events[] = {QEGVAR(lifesupport,suitActivated)};
         };
     };
     class SuitActivated {
+        onStateEntered = QFUNC(startSuitBootup);
         onState = QFUNC(handleStateSuitActivated);
         class SuitDeactivation {
             targetState = "Default";
-            events[] = {QEGVAR(huds,suitDeactivated)};
+            events[] = {QEGVAR(lifesupport,suitDeactivated)};
         };
     };
     class Dead {

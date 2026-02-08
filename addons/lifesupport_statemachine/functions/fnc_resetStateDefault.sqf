@@ -1,19 +1,19 @@
 #include "..\script_component.hpp"
 /*
- * Author: kymckay (modified by Luriss)
- * Resets the default state on a unit after respawning.
- *
- * Arguments:
- * 0: The Unit <OBJECT>
- *
- * Return Value:
- * None
- *
- * Example:
- * [player] call ace_medical_statemachine_fnc_resetStateDefault
- *
- * Public: No
- */
+* Author: kymckay (modified by Luriss)
+* Resets the default state on a unit after respawning.
+*
+* Arguments:
+* 0: The Unit <OBJECT>
+*
+* Return Value:
+* None
+*
+* Example:
+* [player] call ace_medical_statemachine_fnc_resetStateDefault
+*
+* Public: No
+*/
 
 params ["_unit"];
 

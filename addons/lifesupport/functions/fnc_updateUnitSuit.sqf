@@ -80,6 +80,7 @@ _packBool = backpack _unit in _x;
 } forEach EGVAR(huds,whitelistPacks);
 
 if (_helmetFaction == _suitFaction && {_helmetFaction == _packFaction}) then {
+    //systemChat format ["Faction: %1, Unit: %2", _helmetFaction,_unit];
     _unit setVariable [QGVAR(unitSuitFaction), _helmetFaction, _syncValue];
 } else {
     _unit setVariable [QGVAR(unitSuitFaction), NO_SUIT_FACTION, _syncValue];

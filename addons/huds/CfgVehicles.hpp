@@ -7,7 +7,7 @@ class CfgVehicles {
                 condition = "true";
                 exceptions[] = {};
                 //statement = "_player call";
-                statement = QUOTE(_player call FUNC(suitActivation));
+                statement = "['exterra_lifesupport_suitActivated', ACE_player] call CBA_fnc_localEvent";
                 //icon = "\z\dance.paa";
             };
         };
