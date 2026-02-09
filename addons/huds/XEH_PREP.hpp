@@ -1,5 +1,11 @@
 PREP(bootHUD_US);
 PREP(handleUnitHUD);
+PREP(initPFH_FireControl);
+PREP(initPFH_HudGeneral);
+PREP(updateUnitsNearPlayer);
+PREP(updateIFF);
+PREP(updateWeaponCrosshair);
+PREP(updateNametags);
 
 //PREP(mainLoop);
 PREP(hudInit_US);
@@ -11,7 +17,7 @@ PREP(IFF);
 PREP(weaponCrosshair);
 PREP(nametags);
 PREP(nearUnits);
-PREP(initFireControlHandler);
+//PREP(initFireControlHandler);
 //PREP(terminateFireControl);
 PREP(mainInit);
 PREP(suitActivation);

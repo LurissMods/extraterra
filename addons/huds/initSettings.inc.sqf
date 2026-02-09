@@ -187,6 +187,17 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(fireControl_IFF_cbaEnabled),
+    "CHECKBOX",
+    [LSTRING(fireControl_IFF_cbaEnabled_title), LSTRING(fireControl_IFF_cbaEnabled_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat0)],
+    true,
+    0,
+    {},
+    false // Needs mission restart
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(fireControl_Datalink),
     "LIST",
     [LSTRING(fireControl_Datalink_title), LSTRING(fireControl_Datalink_desc)],
