@@ -26,10 +26,11 @@ switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) d
     };
 };
 
-
 private _magCountInventory = nil;
 private _compatibleMagazines = nil;
 private _weaponState = if (PLAYER_VEHICLE == ACE_player) then {weaponState PLAYER_VEHICLE} else {weaponState [PLAYER_VEHICLE,((assignedVehicleRole ACE_player) select 1)]};
+
+//systemChat str _weaponState;
 
 if (PLAYER_VEHICLE != ACE_player) then {
     if ((_weaponState select 0) != "") then {

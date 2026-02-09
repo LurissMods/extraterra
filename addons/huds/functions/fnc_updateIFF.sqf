@@ -72,7 +72,7 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
                             _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
                             _color = GVAR(fireControl_friendColor_cbaSetting);
                         } else {
-                            systemChat "FUNC(updateIFF) check why I fired."
+                            systemChat "FUNC(updateIFF) check why I fired.";
                             _icon = "";
                             _color = [0,0,0,0];
                         };

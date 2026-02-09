@@ -40,8 +40,6 @@ private _unitSuitData = [];
         if (_helmetPassiveAirReserve == 0) then {
             _helmetPassiveAirReserve = DEFAULT_SUIT_OFF_AIR_RESERVE;
         };
-
-        _unitSuitData pushBack _helmetPassiveAirReserve;
     };
 } forEach EGVAR(huds,whitelistHelmets);
 
@@ -66,11 +64,6 @@ private _unitSuitData = [];
         if (_suitThickness == 0) then {
             _suitThickness = DEFAULT_SUIT_THICKNESS;
         };
-
-        _unitSuitData pushBack _suitMobility;
-        _unitSuitData pushBack _blackBodyEmissive;
-        _unitSuitData pushBack _solarAbsorptance;
-        _unitSuitData pushBack _suitThickness;
     };
 } forEach EGVAR(huds,whitelistSuits);
 
@@ -78,6 +71,31 @@ private _unitSuitData = [];
 _packBool = backpack _unit in _x;
     if (_packBool) exitWith {_packFaction = (_x#1)};
 } forEach EGVAR(huds,whitelistPacks);
+
+// -----------------------------------------------------------------------------------
+
+if !_helmetBool then {
+    _helmetPassiveAirReserve = 0;
+};
+if !_suitBool then {
+    _suitMobility = DEFAULT_CLOTHES_MOBILITY;
+    _blackBodyEmissive = DEFAULT_SUIT_BLACK_BODY;
+    _solarAbsorptance = DEFAULT_SUIT_SOLAR_ABSORB;
+    _suitThickness = DEFAULT_CLOTHES_THICKNESS;
+
+
+};
+if !_packBool then {
+    //_helmetPassiveAirReserve = 0;
+};
+
+_unitSuitData pushBack _helmetPassiveAirReserve;
+_unitSuitData pushBack _suitMobility;
+_unitSuitData pushBack _blackBodyEmissive;
+_unitSuitData pushBack _solarAbsorptance;
+_unitSuitData pushBack _suitThickness;
+
+// -----------------------------------------------------------------------------------
 
 if (_helmetFaction == _suitFaction && {_helmetFaction == _packFaction}) then {
     //systemChat format ["Faction: %1, Unit: %2", _helmetFaction,_unit];

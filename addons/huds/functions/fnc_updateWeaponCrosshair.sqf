@@ -65,8 +65,6 @@ if (cameraView != "GUNNER" && {(currentWeapon ACE_player != "") && {isNull objec
         };
     };
 
-    systemChat "Crosshair func running!";
-
     _colour set [3,_cursorFade];
     drawIcon3D [_icon,_colour,_vectorEnd,1,1,0,"",0,0,"RobotoCondensed","center",false];
 };

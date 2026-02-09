@@ -39,4 +39,4 @@ if (count currentThrowable ACE_player != 0) then {
 _grenadeNameAddress ctrlSetStructuredText parseText format ["<t size='0.75'> %1", _currentThrowableName];
 _grenadeAmountAddress ctrlSetStructuredText parseText format ["<t size='0.8' align='center'>%1", _currentThrowableAmount];
 
-if (count PLAYER_CURRENT_THROWABLE == 0) then {PLAYER_CURRENT_THROWABLE = ["NOWEAPON"]};
+//if (count PLAYER_CURRENT_THROWABLE == 0) then {PLAYER_CURRENT_THROWABLE = ["NOWEAPON"]};
