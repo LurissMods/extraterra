@@ -6,6 +6,9 @@ PREP(updateUnitsNearPlayer);
 PREP(updateIFF);
 PREP(updateWeaponCrosshair);
 PREP(updateNametags);
+PREP(updateTargetPosInfo);
+PREP(updateWeaponDisplay);
+PREP(updateGrenadeDisplay);
 
 //PREP(mainLoop);
 PREP(hudInit_US);

@@ -20,7 +20,8 @@ GVAR(initPFH_HudGeneral_Activated) = true;
 
 GVAR(hudPFH_HudGeneral) = [{
 
-    //[call FUNC(nearUnits)] call FUNC(IFF);
+    call FUNC(updateWeaponDisplay);
+    call FUNC(updateGrenadeDisplay);
 
     }, 0, []
 ] call CBA_fnc_addPerFrameHandler;

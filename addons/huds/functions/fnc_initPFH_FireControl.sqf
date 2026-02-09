@@ -25,6 +25,7 @@ GVAR(hudPFH_fireControl) = [{
     [call FUNC(updateUnitsNearPlayer)] call FUNC(updateIFF);
     call FUNC(updateWeaponCrosshair);
     call FUNC(updateNametags);
+    call FUNC(updateTargetPosInfo);
 
     }, 0, []
 ] call CBA_fnc_addPerFrameHandler;

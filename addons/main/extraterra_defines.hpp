@@ -8,6 +8,11 @@
 #define CELCIUS_TO_KELVIN(input) (input + 273.15)
 #define SYS_STR(input) (systemChat str input) // I like to use systemChat *a lot* for live debugging. Hopefully that's not terrible practice
 
+// HUD macros
+#define PLAYER_VEHICLE (vehicle ACE_player)
+#define PLAYER_CURRENT_THROWABLE (currentThrowable ACE_player)
+#define PLAYER_GROUP (group ACE_player)
+
 // Maths
 #define BREATHING_PAIN_FUNCTION(coeff,pain) (coeff*(0.00052652*(exp(7.26135*pain))))
 #define BREATHING_VO2_FUNCTION(respRate,suitMobility) ((respRate^3 * (linearConversion[0,1,suitMobility,110.756,138.975])) + (respRate^2 * -(linearConversion[0,1,suitMobility,127.42,222.781])) + (respRate * (linearConversion[0,1,suitMobility,61.1643,128.306])) + 3.5)
