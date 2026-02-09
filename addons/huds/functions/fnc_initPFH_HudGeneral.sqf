@@ -22,6 +22,8 @@ GVAR(hudPFH_HudGeneral) = [{
 
     call FUNC(updateWeaponDisplay);
     call FUNC(updateGrenadeDisplay);
+    call FUNC(updateGroupDisplay);
+    call FUNC(updateWeaponIcons);
 
     }, 0, []
 ] call CBA_fnc_addPerFrameHandler;

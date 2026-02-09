@@ -36,7 +36,7 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == A
     private _screenPosition = worldToScreen (_unit modelToWorldVisual _offset);
 	if (_screenPosition isEqualTo []) then { continue };
 
-    switch GVAR(fireControl_Datalink) do {
+    switch GVAR(fireControl_datalink_cbaSetting) do {
         case 0: {_datalink = _sidePlayer};
         case 1: {_datalink = side group ACE_player};
         case 2: {_datalink = ACE_player};
@@ -44,26 +44,26 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == A
 
     if (_unit isKindOf "MAN") then {
         _pos = _unit modelToWorldVisual (_unit selectionPosition "spine3");
-        _size = 1 max (GVAR(fireControl_humanSizeFriend) / tan(_fov /2) / _distance);
+        _size = 1 max (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance);
 
         if (lifeState _unit == "INCAPACITATED" OR lifeState _unit == "DEAD") then {
             _icon = "";
             _color = [0,0,0,0];
         } else {
             if ((_sideUnit == civilian) && {(_datalink knowsAbout _unit) > 0.1}) then {
-                _icon = GVAR(fireControl_humanIconFriend);
-                _color = GVAR(fireControl_neutralColor);
+                _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
+                _color = GVAR(fireControl_neutralColor_cbaSetting);
             } else {
                 if (_hostileCheck < 0.6 && {(_datalink knowsAbout _unit) > 0.1}) then {
-                    _size = 1 max (GVAR(fireControl_humanSizeEnemy) / tan(_fov /2) / _distance);
-                    _icon = GVAR(fireControl_humanIconEnemy);
-                    _color = GVAR(fireControl_enemyColor);
+                    _size = 1 max (GVAR(fireControl_humanSizeEnemy_cbaSetting) / tan(_fov /2) / _distance);
+                    _icon = GVAR(fireControl_humanIconEnemy_cbaSetting);
+                    _color = GVAR(fireControl_enemyColor_cbaSetting);
                 } else {
                     if (group ACE_player isEqualTo group _unit) then {
-                        private _transparency = GVAR(fireControl_groupColor) select 3;
-                        _icon = GVAR(fireControl_humanIconFriend);
+                        private _transparency = GVAR(fireControl_groupColor_cbaSetting) select 3;
+                        _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
                         _color = switch (assignedTeam _unit) do {
-                            case "MAIN": {GVAR(fireControl_groupColor)};
+                            case "MAIN": {GVAR(fireControl_groupColor_cbaSetting)};
                             case "RED": {[1,0,0,_transparency]};
                             case "GREEN": {[0,1,0,_transparency]};
                             case "BLUE": {[0,0,1,_transparency]};
@@ -71,8 +71,8 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == A
                         };
                     } else {
                         if (_sideUnit == _sidePlayer OR _hostileCheck > 0.6 && {(_datalink knowsAbout _unit) > 0.1}) then {
-                            _icon = GVAR(fireControl_humanIconFriend);
-                            _color = GVAR(fireControl_friendColor);
+                            _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
+                            _color = GVAR(fireControl_friendColor_cbaSetting);
                         } else {
                             _icon = "";
                             _color = [0,0,0,0];
@@ -86,16 +86,16 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == A
             _color = [0,0,0,0];
         } else {
             if ((_sideUnit == civilian) && {(_datalink knowsAbout _unit) > 0.1}) then {
-                _color = GVAR(fireControl_neutralColor);
+                _color = GVAR(fireControl_neutralColor_cbaSetting);
             } else {
                 if (_hostileCheck < 0.6 && {(_datalink knowsAbout _unit) > 0.1}) then {
-                    _color = GVAR(fireControl_enemyColor);
+                    _color = GVAR(fireControl_enemyColor_cbaSetting);
                 } else {
                     if (group ACE_player isEqualTo group _unit) then {
-                        _color = GVAR(fireControl_groupColor);
+                        _color = GVAR(fireControl_groupColor_cbaSetting);
                     } else {
                         if (_sideUnit == _sidePlayer OR {_hostileCheck > 0.6 && {(_datalink knowsAbout _unit) > 0.1}}) then {
-                            _color = GVAR(fireControl_friendColor);
+                            _color = GVAR(fireControl_friendColor_cbaSetting);
                         } else {
                             _color = [0,0,0,0];
                         };
@@ -106,12 +106,12 @@ if (LRSS_showIcons && {isNull(findDisplay 312) && {call CBA_fnc_currentUnit == A
 
         if (_unit isKindOf "StaticWeapon") then {
             _pos = _unit modelToWorldVisual (_unit selectionPosition ["osahlavne", "Memory"]);
-            _icon = GVAR(fireControl_staticIcon);
-            _size = (GVAR(fireControl_staticSize) / tan(_fov /2) / _distance) max 0.5;
+            _icon = GVAR(fireControl_staticIcon_cbaSetting);
+            _size = (GVAR(fireControl_staticSize_cbaSetting) / tan(_fov /2) / _distance) max 0.5;
         } else {
             _pos = _unit modelToWorldVisual (_unit selectionPosition ["zamerny", "Memory"]);
-            _icon = GVAR(fireControl_vehicleIcon);
-            _size = (GVAR(fireControl_vehicleSize) / tan(_fov /2) / _distance) max 0.5;
+            _icon = GVAR(fireControl_vehicleIcon_cbaSetting);
+            _size = (GVAR(fireControl_vehicleSize_cbaSetting) / tan(_fov /2) / _distance) max 0.5;
         };
     };
 

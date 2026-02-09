@@ -27,7 +27,7 @@ _playerGroup = (group player);
 
 _playerGroupUnitsNoLeader = (units _playerGroup) - [leader _playerGroup];
 _groupSize = (count units _playerGroup) min 18;
-_transparency = GVAR(fireControl_groupColor) select 3;
+_transparency = GVAR(fireControl_groupColor_cbaSetting) select 3;
 _groupHudText = [];
 
 if (_prevGroupSize != _groupSize) then {

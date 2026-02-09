@@ -36,296 +36,296 @@
             <English>Colors</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_toggleBootUp_title">
+        <Key ID="STR_exterra_huds_toggleBootUp_cbaSetting_title">
             <English>Enable/Disable HUD Boot Up Sequence</English>
         </Key>
-        <Key ID="STR_exterra_huds_toggleBootUp_desc">
+        <Key ID="STR_exterra_huds_toggleBootUp_cbaSetting_desc">
             <English>If disabled the HUD will turn on instantly.</English>
         </Key>
-        <Key ID="STR_exterra_huds_bootUpSpeed_title">
+        <Key ID="STR_exterra_huds_bootUpSpeed_cbaSetting_title">
             <English>HUD Boot Up Sequence Speed</English>
         </Key>
-        <Key ID="STR_exterra_huds_bootUpSpeed_desc">
+        <Key ID="STR_exterra_huds_bootUpSpeed_cbaSetting_desc">
             <English>Modify how fast the HUD boot up sequence is with via a multiplier.</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_tempMeasurementSystem_title">
+        <Key ID="STR_exterra_huds_tempMeasurementSystem_cbaSetting_title">
             <English>Temperature Measurement System</English>
         </Key>
-        <Key ID="STR_exterra_huds_tempMeasurementSystem_desc">
+        <Key ID="STR_exterra_huds_tempMeasurementSystem_cbaSetting_desc">
             <English>Select the temperature measurement system displayed by the HUD.</English>
         </Key>
-        <Key ID="STR_exterra_huds_tempMeasurementSystem_opt0">
+        <Key ID="STR_exterra_huds_tempMeasurementSystem_cbaSetting_opt0">
             <English>Celsius</English>
         </Key>
-        <Key ID="STR_exterra_huds_tempMeasurementSystem_opt1">
+        <Key ID="STR_exterra_huds_tempMeasurementSystem_cbaSetting_opt1">
             <English>Fahrenheit</English>
         </Key>
-        <Key ID="STR_exterra_huds_tempMeasurementSystem_opt2">
+        <Key ID="STR_exterra_huds_tempMeasurementSystem_cbaSetting_opt2">
             <English>Kelvin</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_whitelistHelmetsUS_setting_title">
+        <Key ID="STR_exterra_huds_whitelistHelmetsUS_cbaSetting_title">
             <English>Whitelisted Helmets (United States)</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistHelmetsUS_setting_desc">
+        <Key ID="STR_exterra_huds_whitelistHelmetsUS_cbaSetting_desc">
             <English>Input helmets that you want to have the US life support settings/hud.</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistSuitsUS_setting_title">
+        <Key ID="STR_exterra_huds_whitelistSuitsUS_cbaSetting_title">
             <English>Whitelisted Suits (United States)</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistSuitsUS_setting_desc">
+        <Key ID="STR_exterra_huds_whitelistSuitsUS_cbaSetting_desc">
             <English>Input suits that you want to have the US life support settings.</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistPacksUS_setting_title">
+        <Key ID="STR_exterra_huds_whitelistPacksUS_cbaSetting_title">
             <English>Whitelisted EVA Packs (United States)</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistPacksUS_setting_desc">
+        <Key ID="STR_exterra_huds_whitelistPacksUS_cbaSetting_desc">
             <English>Input backpacks that you want to be compatible with US life support systems.</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistHelmetsPRC_setting_title">
+        <Key ID="STR_exterra_huds_whitelistHelmetsPRC_cbaSetting_title">
             <English>Whitelisted Helmets (People's Republic of China)</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistHelmetsPRC_setting_desc">
+        <Key ID="STR_exterra_huds_whitelistHelmetsPRC_cbaSetting_desc">
             <English>Input helmets that you want to have the PRC life support settings/hud.</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistSuitsPRC_setting_title">
+        <Key ID="STR_exterra_huds_whitelistSuitsPRC_cbaSetting_title">
             <English>Whitelisted Suits (People's Republic of China)</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistSuitsPRC_setting_desc">
+        <Key ID="STR_exterra_huds_whitelistSuitsPRC_cbaSetting_desc">
             <English>Input suits that you want to have the PRC life support settings.</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistPacksPRC_setting_title">
+        <Key ID="STR_exterra_huds_whitelistPacksPRC_cbaSetting_title">
             <English>Whitelisted EVA Packs (People's Republic of China)</English>
         </Key>
-        <Key ID="STR_exterra_huds_whitelistPacksPRC_setting_desc">
+        <Key ID="STR_exterra_huds_whitelistPacksPRC_cbaSetting_desc">
             <English>Input backpacks that you want to be compatible with PRC life support systems.</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_toggleHUDppEffects_title">
+        <Key ID="STR_exterra_huds_toggleHUDppEffects_cbaSetting_title">
             <English>Enable/Disable HUD Post Process effects</English>
         </Key>
-        <Key ID="STR_exterra_huds_toggleHUDppEffects_desc">
+        <Key ID="STR_exterra_huds_toggleHUDppEffects_cbaSetting_desc">
             <English>All HUD post process effects will be disabled if toggled.</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudPixelation_power_title">
+        <Key ID="STR_exterra_huds_hudPixelation_power_cbaSetting_title">
             <English>HUD Pixelation Effect Strength</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudPixelation_power_desc">
+        <Key ID="STR_exterra_huds_hudPixelation_power_cbaSetting_desc">
             <English>Customize the power of the HUD pixelation effect. Lower = more pixelated.</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudChromAb_power_title">
+        <Key ID="STR_exterra_huds_hudChromAb_power_cbaSetting_title">
             <English>HUD Chromatic Aberration Effect Strength</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudChromAb_power_desc">
+        <Key ID="STR_exterra_huds_hudChromAb_power_cbaSetting_desc">
             <English>Customize the power of the HUD chromatic aberration effect.</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudRadialBlur_power_title">
+        <Key ID="STR_exterra_huds_hudRadialBlur_power_cbaSetting_title">
             <English>HUD Radial Blur Effect Strength</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudRadialBlur_power_desc">
+        <Key ID="STR_exterra_huds_hudRadialBlur_power_cbaSetting_desc">
             <English>Customize the power of the HUD radial blur effect.</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudRadialBlur_offset_title">
+        <Key ID="STR_exterra_huds_hudRadialBlur_offset_cbaSetting_title">
             <English>HUD Radial Blur Effect Offset</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudRadialBlur_offset_desc">
+        <Key ID="STR_exterra_huds_hudRadialBlur_offset_cbaSetting_desc">
             <English>Customize the the screen offset of the HUD radial blur effect. Bigger = blur is pushed closer to the edge of the screen.</English>
         </Key>
-        <Key ID="STR_exterra_huds_filmGrain_power_title">
+        <Key ID="STR_exterra_huds_filmGrain_power_cbaSetting_title">
             <English>HUD Film Grain Effect Strength</English>
         </Key>
-        <Key ID="STR_exterra_huds_filmGrain_power_desc">
+        <Key ID="STR_exterra_huds_filmGrain_power_cbaSetting_desc">
             <English>Customize the power of the HUD film grain effect.</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_fireControl_Datalink_title">
+        <Key ID="STR_exterra_huds_fireControl_datalink_cbaSetting_title">
             <English>Fire Control Datalink</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_Datalink_desc">
+        <Key ID="STR_exterra_huds_fireControl_datalink_cbaSetting_desc">
             <English>Set the datalink connectivity for the suit fire control system.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_Datalink_opt0">
+        <Key ID="STR_exterra_huds_fireControl_datalink_cbaSetting_opt0">
             <English>Whole Side</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_Datalink_opt1">
+        <Key ID="STR_exterra_huds_fireControl_datalink_cbaSetting_opt1">
             <English>Squad Only</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_Datalink_opt2">
+        <Key ID="STR_exterra_huds_fireControl_datalink_cbaSetting_opt2">
             <English>No Datalink</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_fireControl_groupColor_title">
+        <Key ID="STR_exterra_huds_fireControl_groupColor_cbaSetting_title">
             <English>Group IFF Tag Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_groupColor_desc">
+        <Key ID="STR_exterra_huds_fireControl_groupColor_cbaSetting_desc">
             <English>Set the IFF color for friendlies in your squad.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_friendColor_title">
+        <Key ID="STR_exterra_huds_fireControl_friendColor_cbaSetting_title">
             <English>Friendly IFF Tag Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_friendColor_desc">
+        <Key ID="STR_exterra_huds_fireControl_friendColor_cbaSetting_desc">
             <English>Set the IFF color for friendlies.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_neutralColor_title">
+        <Key ID="STR_exterra_huds_fireControl_neutralColor_cbaSetting_title">
             <English>Neutral IFF Tag Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_neutralColor_desc">
+        <Key ID="STR_exterra_huds_fireControl_neutralColor_cbaSetting_desc">
             <English>Set the IFF color for neutrals.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_enemyColor_title">
+        <Key ID="STR_exterra_huds_fireControl_enemyColor_cbaSetting_title">
             <English>Enemy IFF Tag Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_enemyColor_desc">
+        <Key ID="STR_exterra_huds_fireControl_enemyColor_cbaSetting_desc">
             <English>Set the IFF color for enemies.</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_fireControl_humanIconFriend_title">
+        <Key ID="STR_exterra_huds_fireControl_humanIconFriend_cbaSetting_title">
             <English>Friendly IFF Tag Icon (Human)</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanIconFriend_desc">
+        <Key ID="STR_exterra_huds_fireControl_humanIconFriend_cbaSetting_desc">
             <English>Set the IFF tag icon for friendlies. (Only applies to humans, not vehicles/emplacements).</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanSizeFriend_title">
+        <Key ID="STR_exterra_huds_fireControl_humanSizeFriend_cbaSetting_title">
             <English>Friendly IFF Tag Size (Human)</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanSizeFriend_desc">
+        <Key ID="STR_exterra_huds_fireControl_humanSizeFriend_cbaSetting_desc">
             <English>Set the IFF tag size for friendlies. (Only applies to humans, not vehicles/emplacements).</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanIconEnemy_title">
+        <Key ID="STR_exterra_huds_fireControl_humanIconEnemy_cbaSetting_title">
             <English>Enemy IFF Tag Icon (Human)</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanIconEnemy_desc">
+        <Key ID="STR_exterra_huds_fireControl_humanIconEnemy_cbaSetting_desc">
             <English>Set the IFF tag icon for enemies. (Only applies to humans, not vehicles/emplacements).</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanSizeEnemy_title">
+        <Key ID="STR_exterra_huds_fireControl_humanSizeEnemy_cbaSetting_title">
             <English>Enemy IFF Tag Size (Human)</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_humanSizeEnemy_desc">
+        <Key ID="STR_exterra_huds_fireControl_humanSizeEnemy_cbaSetting_desc">
             <English>Set the IFF tag size for enemies. (Only applies to humans, not vehicles/emplacements).</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_fireControl_staticIcon_title">
+        <Key ID="STR_exterra_huds_fireControl_staticIcon_cbaSetting_title">
             <English>Static Object IFF Tag Icon</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_staticIcon_desc">
+        <Key ID="STR_exterra_huds_fireControl_staticIcon_cbaSetting_desc">
             <English>Set the IFF tag icon for static objects (e.g. turrets).</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_staticSize_title">
+        <Key ID="STR_exterra_huds_fireControl_staticSize_cbaSetting_title">
             <English>Static Object IFF Tag Size</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_staticSize_desc">
+        <Key ID="STR_exterra_huds_fireControl_staticSize_cbaSetting_desc">
             <English>Set the IFF tag size for static objects (e.g. turrets).</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_fireControl_vehicleIcon_title">
+        <Key ID="STR_exterra_huds_fireControl_vehicleIcon_cbaSetting_title">
             <English>Vehicle IFF Tag Icon</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_vehicleIcon_desc">
+        <Key ID="STR_exterra_huds_fireControl_vehicleIcon_cbaSetting_desc">
             <English>Set the IFF tag icon for vehicles.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_vehicleSize_title">
+        <Key ID="STR_exterra_huds_fireControl_vehicleSize_cbaSetting_title">
             <English>Vehicle IFF Tag Size</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_vehicleSize_desc">
+        <Key ID="STR_exterra_huds_fireControl_vehicleSize_cbaSetting_desc">
             <English>Set the IFF tag size for vehicles.</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_fireControl_crosshairIcon_title">
+        <Key ID="STR_exterra_huds_fireControl_crosshairIcon_cbaSetting_title">
             <English>Crosshair Icon</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairIcon_desc">
+        <Key ID="STR_exterra_huds_fireControl_crosshairIcon_cbaSetting_desc">
             <English>Set the crosshair icon.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairColor_title">
+        <Key ID="STR_exterra_huds_fireControl_crosshairColor_cbaSetting_title">
             <English>Crosshair No Target Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairColor_desc">
+        <Key ID="STR_exterra_huds_fireControl_crosshairColor_cbaSetting_desc">
             <English>Set the crosshair color when not looking at an IFF target.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairMaxRange_title">
+        <Key ID="STR_exterra_huds_fireControl_crosshairMaxRange_cbaSetting_title">
             <English>Crosshair Maximum Range</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairMaxRange_desc">
+        <Key ID="STR_exterra_huds_fireControl_crosshairMaxRange_cbaSetting_desc">
             <English>Set the maximum range where the crosshair is visible.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairMinOpacity_title">
+        <Key ID="STR_exterra_huds_fireControl_crosshairMinOpacity_cbaSetting_title">
             <English>Crosshair Minimum Opacity</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairMinOpacity_desc">
+        <Key ID="STR_exterra_huds_fireControl_crosshairMinOpacity_cbaSetting_desc">
             <English>Set the minimum opacity level for the crosshair.</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairMaxOpacity_title">
+        <Key ID="STR_exterra_huds_fireControl_crosshairMaxOpacity_cbaSetting_title">
             <English>Crosshair Maximum Opacity</English>
         </Key>
-        <Key ID="STR_exterra_huds_fireControl_crosshairMaxOpacity_desc">
+        <Key ID="STR_exterra_huds_fireControl_crosshairMaxOpacity_cbaSetting_desc">
             <English>Set the maximum opacity level for the crosshair.</English>
         </Key>
 
-        <Key ID="STR_exterra_huds_hudOutlineColor_title">
+        <Key ID="STR_exterra_huds_hudOutlineColor_cbaSetting_title">
             <English>HUD Outline Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_hudOutlineColor_desc">
+        <Key ID="STR_exterra_huds_hudOutlineColor_cbaSetting_desc">
             <English>Change the colour of the HUD outline.</English>
         </Key>
-        <Key ID="STR_exterra_huds_infoBackgroundColor_title">
+        <Key ID="STR_exterra_huds_infoBackgroundColor_cbaSetting_title">
             <English>Life Support Background Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_infoBackgroundColor_desc">
+        <Key ID="STR_exterra_huds_infoBackgroundColor_cbaSetting_desc">
             <English>Change the colour of the Life Support Background.</English>
         </Key>
-        <Key ID="STR_exterra_huds_weaponBackgroundColor_title">
+        <Key ID="STR_exterra_huds_weaponBackgroundColor_cbaSetting_title">
             <English>Weapon Info Background Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_weaponBackgroundColor_desc">
+        <Key ID="STR_exterra_huds_weaponBackgroundColor_cbaSetting_desc">
             <English>Change the colour of the Weapon Info Background.</English>
         </Key>
-        <Key ID="STR_exterra_huds_airBarColor_title">
+        <Key ID="STR_exterra_huds_airBarColor_cbaSetting_title">
             <English>Air Bar Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_airBarColor_desc">
+        <Key ID="STR_exterra_huds_airBarColor_cbaSetting_desc">
             <English>Change the colour of the Air Bar.</English>
         </Key>
-        <Key ID="STR_exterra_huds_battBarColor_title">
+        <Key ID="STR_exterra_huds_battBarColor_cbaSetting_title">
             <English>Battery Bar Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_battBarColor_desc">
+        <Key ID="STR_exterra_huds_battBarColor_cbaSetting_desc">
             <English>Change the colour of the Battery Bar.</English>
         </Key>
-        <Key ID="STR_exterra_huds_barTextColor_title">
+        <Key ID="STR_exterra_huds_barTextColor_cbaSetting_title">
             <English>Bar Text Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_barTextColor_desc">
+        <Key ID="STR_exterra_huds_barTextColor_cbaSetting_desc">
             <English>Change the colour of the text that overlays the air/battery bars.</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_title">
+        <Key ID="STR_exterra_huds_textColor_cbaSetting_title">
             <English>Text Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_desc">
+        <Key ID="STR_exterra_huds_textColor_cbaSetting_desc">
             <English>Change the colour of the HUD text.</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_safe_title">
+        <Key ID="STR_exterra_huds_textColor_safe_cbaSetting_title">
             <English>Safe Text Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_safe_desc">
+        <Key ID="STR_exterra_huds_textColor_safe_cbaSetting_desc">
             <English>Change the 'safe' colour of the HUD text.</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_caution_title">
+        <Key ID="STR_exterra_huds_textColor_caution_cbaSetting_title">
             <English>Caution Text Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_caution_desc">
+        <Key ID="STR_exterra_huds_textColor_caution_cbaSetting_desc">
             <English>Change the 'caution' colour of the HUD text.</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_danger_title">
+        <Key ID="STR_exterra_huds_textColor_danger_cbaSetting_title">
             <English>Danger Text Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_textColor_danger_desc">
+        <Key ID="STR_exterra_huds_textColor_danger_cbaSetting_desc">
             <English>Change the 'danger' colour of the HUD text.</English>
         </Key>
-        <Key ID="STR_exterra_huds_bootTextColor_title">
+        <Key ID="STR_exterra_huds_bootTextColor_cbaSetting_title">
             <English>Boot Text Color</English>
         </Key>
-        <Key ID="STR_exterra_huds_bootTextColor_desc">
+        <Key ID="STR_exterra_huds_bootTextColor_cbaSetting_desc">
             <English>Change the colour of the text during the boot sequence.</English>
         </Key>
 

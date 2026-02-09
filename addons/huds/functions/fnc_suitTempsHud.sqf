@@ -38,7 +38,7 @@ switch _suitFaction do {
     };
 };
 
-switch GVAR(tempMeasurementSystem) do {
+switch GVAR(tempMeasurementSystem_cbaSetting) do {
     case 0: {
         (_intTempText) ctrlSetStructuredText parseText format ["<t align='center'>%1°C", round(_suitTemp - 273.15)];
         (_extTempText) ctrlSetStructuredText parseText format ["<t align='center'>%1°C", round(_tempAroundPlayer - 273.15)];
@@ -62,12 +62,12 @@ if (_currentActiveCool == _suitMaxActiveCool && {_netHeatPower > 0}) then {
 
     if (abs _timeUntilDangerousTemp > 3600) then {
         (_timeUntilDangerText) ctrlSetStructuredText parseText format ["<t align='center'>%1 h", round(abs _timeUntilDangerousTemp/3600)];
-        (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor);
-        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger);
+        (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_cbaSetting);
+        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
     } else {
         (_timeUntilDangerText) ctrlSetStructuredText parseText format ["<t align='center'>%1 m", floor(abs _timeUntilDangerousTemp/60) min 999];
-        (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_caution);
-        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger);
+        (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_caution_cbaSetting);
+        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
     };
 
 } else {
@@ -76,37 +76,37 @@ if (_currentActiveCool == _suitMaxActiveCool && {_netHeatPower > 0}) then {
 
         if (abs _timeUntilDangerousTemp > 3600) then {
             (_timeUntilDangerText) ctrlSetStructuredText parseText format ["<t align='center'>%1 h", round(abs _timeUntilDangerousTemp/3600)];
-            (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor);
-            (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger);
+            (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_cbaSetting);
+            (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
         } else {
             (_timeUntilDangerText) ctrlSetStructuredText parseText format ["<t align='center'>%1 m", floor(abs _timeUntilDangerousTemp/60) min 999];
-            (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_caution);
-            (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger);
+            (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_caution_cbaSetting);
+            (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
         };
 
     } else {
         (_timeUntilDangerText) ctrlSetStructuredText parseText "<t align='center'>STBLE";
-        (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor);
-        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor);
+        (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_cbaSetting);
+        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_cbaSetting);
     };
 };
 
 if (_suitTemp < HUMAN_DANGEROUS_TEMPS#0 || {_suitTemp > HUMAN_DANGEROUS_TEMPS#1}) then {
     (_timeUntilDangerText) ctrlSetStructuredText parseText "<t align='center'>DNGR";
-    (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_danger);
-    (_intTempText) ctrlSetTextColor GVAR(textColor_danger);
+    (_timeUntilDangerText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
+    (_intTempText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
 } else {
-    (_intTempText) ctrlSetTextColor GVAR(textColor);
+    (_intTempText) ctrlSetTextColor GVAR(textColor_cbaSetting);
 };
 
 if (_suitTemp < HUMAN_DANGEROUS_TEMPS#0 && {_netHeatPower > 0}) then {
-    (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor);
+    (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_cbaSetting);
 } else {
     if (_suitTemp > HUMAN_DANGEROUS_TEMPS#1 && {_netHeatPower < 0}) then {
-        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor);
+        (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_cbaSetting);
     } else {
         if (_suitTemp < HUMAN_DANGEROUS_TEMPS#0 || {_suitTemp > HUMAN_DANGEROUS_TEMPS#1}) then {
-            (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger);
+            (_thermalPwrBalanceText) ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
         };
     };
 };

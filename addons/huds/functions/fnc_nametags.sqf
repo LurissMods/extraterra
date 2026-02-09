@@ -19,7 +19,7 @@ private _maxDist = 15;
 private _heightOffset = 0.85;
 private _size = 0.04;
 private _font = "RobotoCondensed";
-private _colorFriendly = GVAR(fireControl_friendColor);
+private _colorFriendly = GVAR(fireControl_friendColor_cbaSetting);
 
 {
     if ((_x != ACE_player)  && {(side _x == side ACE_player) && {(isNull objectParent _x) && {(ACE_player distance _x < _maxDist)}}}) then {

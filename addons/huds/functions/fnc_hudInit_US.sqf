@@ -251,7 +251,7 @@ LRSS_MJOLNIR_bootBoxStart = [(_centerPositionBox select 0), (_centerPositionBox 
 (GVAR(bootup_headline_text_US)#0) ctrlSetText "P O W E R I N G   U P";
 (GVAR(bootup_headline_text_US)#0) ctrlSetPosition BOOTUP_HEADLINE_TEXT_US_POS;
 (GVAR(bootup_headline_text_US)#0) ctrlSetFade 1;
-(GVAR(bootup_headline_text_US)#0) ctrlSetTextColor GVAR(bootTextColor);
+(GVAR(bootup_headline_text_US)#0) ctrlSetTextColor GVAR(bootTextColor_cbaSetting);
 (GVAR(bootup_headline_text_US)#0) ctrlCommit 0;
 
 /*if (LRSS_MJOLNIR_SHOW_OUTLINE) then {
@@ -272,40 +272,40 @@ if (LRSS_SHOW_HUD_OVERLAY) then {
 (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
 (GVAR(helmetOutline_US)#0) ctrlCommit 0;
 
-(GVAR(hudOutline_US)#0) ctrlSetTextColor GVAR(hudOutlineColor);
+(GVAR(hudOutline_US)#0) ctrlSetTextColor GVAR(hudOutlineColor_cbaSetting);
 (GVAR(hudOutline_US)#0) ctrlSetFade 1;
 (GVAR(hudOutline_US)#0) ctrlCommit 0;
 
 (GVAR(info_background_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_US.paa";; // Indexing into array to pull out the control datatype
-(GVAR(info_background_US)#0) ctrlSetTextColor GVAR(infoBackgroundColor);
+(GVAR(info_background_US)#0) ctrlSetTextColor GVAR(infoBackgroundColor_cbaSetting);
 (GVAR(info_background_US)#0) ctrlSetPosition INFO_BACKGROUND_US_POS;
 (GVAR(info_background_US)#0) ctrlSetFade 1;
 (GVAR(info_background_US)#0) ctrlCommit 0;
 
 (GVAR(rangefinder_background_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudRangefinder_US.paa";
-(GVAR(rangefinder_background_US)#0) ctrlSetTextColor GVAR(infoBackgroundColor);
+(GVAR(rangefinder_background_US)#0) ctrlSetTextColor GVAR(infoBackgroundColor_cbaSetting);
 (GVAR(rangefinder_background_US)#0) ctrlSetPosition RANGEFINDER_BACKGROUND_US_POS;
 (GVAR(rangefinder_background_US)#0) ctrlSetFade 1;
 (GVAR(rangefinder_background_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_background_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudWeapon_US.paa";
-(GVAR(weapon_background_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor);
+(GVAR(weapon_background_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor_cbaSetting);
 (GVAR(weapon_background_US)#0) ctrlSetPosition WEAPON_BACKGROUND_US_POS;
 (GVAR(weapon_background_US)#0) ctrlSetFade 1;
 (GVAR(weapon_background_US)#0) ctrlCommit 0;
 
 (GVAR(airBar_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airBar_US.paa";
-(GVAR(airBar_US)#0) ctrlSetTextColor GVAR(airBarColor);
+(GVAR(airBar_US)#0) ctrlSetTextColor GVAR(airBarColor_cbaSetting);
 (GVAR(airBar_US)#0) ctrlSetFade 1;
 (GVAR(airBar_US)#0) ctrlCommit 0;
 
 (GVAR(battBar_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_battBar_US.paa";
-(GVAR(battBar_US)#0) ctrlSetTextColor GVAR(battBarColor);
+(GVAR(battBar_US)#0) ctrlSetTextColor GVAR(battBarColor_cbaSetting);
 (GVAR(battBar_US)#0) ctrlSetFade 1;
 (GVAR(battBar_US)#0) ctrlCommit 0;
 
 (GVAR(info_background_text_US)#0) ctrlSetText LLSTRING(info_background_text_US);
-(GVAR(info_background_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_background_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_background_text_US)#0) ctrlSetPosition INFO_BACKGROUND_US_POS;
 (GVAR(info_background_text_US)#0) ctrlSetFade 1;
 (GVAR(info_background_text_US)#0) ctrlCommit 0;
@@ -313,128 +313,128 @@ if (LRSS_SHOW_HUD_OVERLAY) then {
 //systemChat LLSTRING(info_background_text_US);
 
 (GVAR(info_airRemain_text_US)#0) ctrlSetText "---";
-(GVAR(info_airRemain_text_US)#0) ctrlSetTextColor GVAR(barTextColor);
+(GVAR(info_airRemain_text_US)#0) ctrlSetTextColor GVAR(barTextColor_cbaSetting);
 (GVAR(info_airRemain_text_US)#0) ctrlSetPosition INFO_AIRREMAIN_TEXT_US_POS;
 (GVAR(info_airRemain_text_US)#0) ctrlSetFade 1;
 (GVAR(info_airRemain_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_battRemain_text_US)#0) ctrlSetText "---";
-(GVAR(info_battRemain_text_US)#0) ctrlSetTextColor GVAR(barTextColor);
+(GVAR(info_battRemain_text_US)#0) ctrlSetTextColor GVAR(barTextColor_cbaSetting);
 (GVAR(info_battRemain_text_US)#0) ctrlSetPosition INFO_BATTREMAIN_TEXT_US_POS;
 (GVAR(info_battRemain_text_US)#0) ctrlSetFade 1;
 (GVAR(info_battRemain_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_internalTemp_text_US)#0) ctrlSetText "---";
-(GVAR(info_internalTemp_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_internalTemp_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_internalTemp_text_US)#0) ctrlSetPosition INFO_INTERNALTEMP_TEXT_US_POS;
 (GVAR(info_internalTemp_text_US)#0) ctrlSetFade 1;
 (GVAR(info_internalTemp_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_externalTemp_text_US)#0) ctrlSetText "---";
-(GVAR(info_externalTemp_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_externalTemp_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_externalTemp_text_US)#0) ctrlSetPosition INFO_EXTERNALTEMP_TEXT_US_POS;
 (GVAR(info_externalTemp_text_US)#0) ctrlSetFade 1;
 (GVAR(info_externalTemp_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_thermalPowerBalance_text_US)#0) ctrlSetText "---";
-(GVAR(info_thermalPowerBalance_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_thermalPowerBalance_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_thermalPowerBalance_text_US)#0) ctrlSetPosition INFO_THERMALPOWERBALANCE_TEXT_US_POS;
 (GVAR(info_thermalPowerBalance_text_US)#0) ctrlSetFade 1;
 (GVAR(info_thermalPowerBalance_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_timeUntilDang_text_US)#0) ctrlSetText "---";
-(GVAR(info_timeUntilDang_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_timeUntilDang_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_timeUntilDang_text_US)#0) ctrlSetPosition INFO_TIMEUNTILDANG_TEXT_US_POS;
 (GVAR(info_timeUntilDang_text_US)#0) ctrlSetFade 1;
 (GVAR(info_timeUntilDang_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_externalAtmo_text_US)#0) ctrlSetText "---";
-(GVAR(info_externalAtmo_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_externalAtmo_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_externalAtmo_text_US)#0) ctrlSetPosition INFO_EXTERNALATMO_TEXT_US_POS;
 (GVAR(info_externalAtmo_text_US)#0) ctrlSetFade 1;
 (GVAR(info_externalAtmo_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_radPerHour_text_US)#0) ctrlSetText "---";
-(GVAR(info_radPerHour_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_radPerHour_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_radPerHour_text_US)#0) ctrlSetPosition INFO_RADPERHOUR_TEXT_US_POS;
 (GVAR(info_radPerHour_text_US)#0) ctrlSetFade 1;
 (GVAR(info_radPerHour_text_US)#0) ctrlCommit 0;
 
 (GVAR(info_lifetimeRad_text_US)#0) ctrlSetText "---";
-(GVAR(info_lifetimeRad_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(info_lifetimeRad_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(info_lifetimeRad_text_US)#0) ctrlSetPosition INFO_LIFETIMERAD_TEXT_US_POS;
 (GVAR(info_lifetimeRad_text_US)#0) ctrlSetFade 1;
 (GVAR(info_lifetimeRad_text_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_currentWeapon_US)#0) ctrlSetText "";
-(GVAR(weapon_currentWeapon_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor);
+(GVAR(weapon_currentWeapon_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor_cbaSetting);
 (GVAR(weapon_currentWeapon_US)#0) ctrlSetPosition WEAPON_CURRENTWEAPON_US_POS;
 (GVAR(weapon_currentWeapon_US)#0) ctrlSetFade 1;
 (GVAR(weapon_currentWeapon_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_secondWeapon_US)#0) ctrlSetText "";
-(GVAR(weapon_secondWeapon_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor);
+(GVAR(weapon_secondWeapon_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor_cbaSetting);
 (GVAR(weapon_secondWeapon_US)#0) ctrlSetPosition WEAPON_SECONDWEAPON_US_POS;
 (GVAR(weapon_secondWeapon_US)#0) ctrlSetFade 1;
 (GVAR(weapon_secondWeapon_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_launcher_US)#0) ctrlSetText "";
 (GVAR(weapon_launcher_US)#0) ctrlSetPosition WEAPON_LAUNCHER_US_POS;
-(GVAR(weapon_launcher_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor);
+(GVAR(weapon_launcher_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor_cbaSetting);
 (GVAR(weapon_launcher_US)#0) ctrlSetFade 1;
 (GVAR(weapon_launcher_US)#0) ctrlCommit 0;
 (GVAR(weapon_launcher_US)#0) ctrlSetAngle [90,0.5,0.5];
 
 (GVAR(weapon_grenade_US)#0) ctrlSetText "";
 (GVAR(weapon_grenade_US)#0) ctrlSetPosition WEAPON_GRENADE_US_POS;
-(GVAR(weapon_grenade_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor);
+(GVAR(weapon_grenade_US)#0) ctrlSetTextColor GVAR(weaponBackgroundColor_cbaSetting);
 (GVAR(weapon_grenade_US)#0) ctrlSetFade 1;
 (GVAR(weapon_grenade_US)#0) ctrlCommit 0;
 
 (GVAR(rangefinder_grid_US)#0) ctrlSetText "---";
-(GVAR(rangefinder_grid_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(rangefinder_grid_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(rangefinder_grid_US)#0) ctrlSetPosition RANGEFINDER_GRID_US_POS;
 (GVAR(rangefinder_grid_US)#0) ctrlSetFade 1;
 (GVAR(rangefinder_grid_US)#0) ctrlCommit 0;
 
 (GVAR(rangefinder_bearing_US)#0) ctrlSetText "---";
-(GVAR(rangefinder_bearing_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(rangefinder_bearing_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(rangefinder_bearing_US)#0) ctrlSetPosition RANGEFINDER_BEARING_US_POS;
 (GVAR(rangefinder_bearing_US)#0) ctrlSetFade 1;
 (GVAR(rangefinder_bearing_US)#0) ctrlCommit 0;
 
 (GVAR(rangefinder_range_US)#0) ctrlSetText "---";
-(GVAR(rangefinder_range_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(rangefinder_range_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(rangefinder_range_US)#0) ctrlSetPosition RANGEFINDER_RANGE_US_POS;
 (GVAR(rangefinder_range_US)#0) ctrlSetFade 1;
 (GVAR(rangefinder_range_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_weaponMagazines_text_US)#0) ctrlSetText "---";
-(GVAR(weapon_weaponMagazines_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(weapon_weaponMagazines_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(weapon_weaponMagazines_text_US)#0) ctrlSetPosition WEAPON_WEAPONMAGAZINES_TEXT_US_POS;
 (GVAR(weapon_weaponMagazines_text_US)#0) ctrlSetFade 1;
 (GVAR(weapon_weaponMagazines_text_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_fireMode_text_US)#0) ctrlSetText "FullAuto";
-(GVAR(weapon_fireMode_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(weapon_fireMode_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(weapon_fireMode_text_US)#0) ctrlSetPosition WEAPON_FIREMODE_TEXT_US_POS;
 (GVAR(weapon_fireMode_text_US)#0) ctrlSetFade 1;
 (GVAR(weapon_fireMode_text_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_grenade_text_US)#0) ctrlSetText "M9 Frag Grenade";
-(GVAR(weapon_grenade_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(weapon_grenade_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(weapon_grenade_text_US)#0) ctrlSetPosition WEAPON_GRENADE_TEXT_US_POS;
 (GVAR(weapon_grenade_text_US)#0) ctrlSetFade 1;
 (GVAR(weapon_grenade_text_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_grenadeAmount_text_US)#0) ctrlSetText "3";
-(GVAR(weapon_grenadeAmount_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(weapon_grenadeAmount_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(weapon_grenadeAmount_text_US)#0) ctrlSetPosition WEAPON_GRENADEAMOUNT_TEXT_US_POS;
 (GVAR(weapon_grenadeAmount_text_US)#0) ctrlSetFade 1;
 (GVAR(weapon_grenadeAmount_text_US)#0) ctrlCommit 0;
 
 (GVAR(weapon_weaponZero_text_US)#0) ctrlSetText "300m";
-(GVAR(weapon_weaponZero_text_US)#0) ctrlSetTextColor GVAR(textColor);
+(GVAR(weapon_weaponZero_text_US)#0) ctrlSetTextColor GVAR(textColor_cbaSetting);
 (GVAR(weapon_weaponZero_text_US)#0) ctrlSetPosition WEAPON_WEAPONZERO_TEXT_US_POS;
 (GVAR(weapon_weaponZero_text_US)#0) ctrlSetFade 1;
 (GVAR(weapon_weaponZero_text_US)#0) ctrlCommit 0;

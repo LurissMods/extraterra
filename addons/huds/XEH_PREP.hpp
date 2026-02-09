@@ -9,6 +9,8 @@ PREP(updateNametags);
 PREP(updateTargetPosInfo);
 PREP(updateWeaponDisplay);
 PREP(updateGrenadeDisplay);
+PREP(updateGroupDisplay);
+PREP(updateWeaponIcons);
 
 //PREP(mainLoop);
 PREP(hudInit_US);

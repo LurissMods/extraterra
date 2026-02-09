@@ -89,27 +89,27 @@ _hudElementsBoot = [
 
 ACE_player setVariable [QEGVAR(lifesupport,suitActivated), true, true];
 
-if (GVAR(toggleHUDppEffects)) then {
+if (GVAR(toggleHUDppEffects_cbaSetting)) then {
     GVAR(hudPixelation_PP) ppEffectEnable true;
-    GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(hudPixelation_power)];
+    GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(hudPixelation_power_cbaSetting)];
     GVAR(hudPixelation_PP) ppEffectCommit 0;
 
     GVAR(hudChromAb_PP) ppEffectEnable true;
-    GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(hudChromAb_power), GVAR(hudChromAb_power), true];
+    GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(hudChromAb_power_cbaSetting), GVAR(hudChromAb_power_cbaSetting), true];
     GVAR(hudChromAb_PP) ppEffectCommit 0;
 
     GVAR(hudRadialBlur_PP) ppEffectEnable true;
-    GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_power), GVAR(hudRadialBlur_offset), GVAR(hudRadialBlur_offset)];
+    GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(hudRadialBlur_power_cbaSetting), GVAR(hudRadialBlur_power_cbaSetting), GVAR(hudRadialBlur_offset_cbaSetting), GVAR(hudRadialBlur_offset_cbaSetting)];
     GVAR(hudRadialBlur_PP) ppEffectCommit 0;
 
     GVAR(filmGrain_PP) ppEffectEnable true;
-    GVAR(filmGrain_PP) ppEffectAdjust [GVAR(filmGrain_power), 1.5, 2.01, 0.75, 1.0, 0];
+    GVAR(filmGrain_PP) ppEffectAdjust [GVAR(filmGrain_power_cbaSetting), 1.5, 2.01, 0.75, 1.0, 0];
     GVAR(filmGrain_PP) ppEffectCommit 0;
 };
 
 
 // Checks if quickbooting is disabled in CBA settings
-if (GVAR(toggleBootUp)) then {
+if (GVAR(toggleBootUp_cbaSetting)) then {
     private _input = "";
     private _bootupText = [];
 
@@ -353,7 +353,7 @@ if (GVAR(toggleBootUp)) then {
 
     private _bootUpLines = [];
     private _textField = (GVAR(bootup_text_US)#0);
-    _textField ctrlSetTextColor GVAR(bootTextColor);
+    _textField ctrlSetTextColor GVAR(bootTextColor_cbaSetting);
     _textField ctrlSetFade 0;
     _textField ctrlCommit 0;
 

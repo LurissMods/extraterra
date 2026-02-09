@@ -15,7 +15,7 @@
 * Public: No
 */
 
-if (GVAR(toggleHUDppEffects)) then {
+if (GVAR(toggleHUDppEffects_cbaSetting)) then {
     GVAR(hudPixelation_PP) ppEffectEnable false;
     GVAR(hudChromAb_PP) ppEffectEnable false;
     GVAR(hudRadialBlur_PP) ppEffectEnable false;

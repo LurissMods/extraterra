@@ -25,7 +25,7 @@ systemChat str _unitSuitFaction;
 
 switch _unitSuitFaction do {
     case NO_SUIT_FACTION: {
-        systemChat "called error!";
+        systemChat "Switch fired case error! FUNC(lifesupport_statemachine,startSuitBootup)";
         WARNING("exterra_lifesupport_statemachine_fnc_startSuitBootup unexpected suit faction in switch-case!");
     };
     case US_SUIT_FACTION: {
