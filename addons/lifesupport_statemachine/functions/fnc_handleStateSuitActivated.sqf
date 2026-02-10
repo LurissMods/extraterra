@@ -21,7 +21,7 @@ params ["_unit"];
 if (!alive _unit || {!local _unit}) exitWith {};
 
 [_unit] call EFUNC(lifesupport,handleUnitLifesupport);
-[_unit] call EFUNC(huds,handleUnitHUD);
+//[_unit] call EFUNC(huds,handleUnitHUD);
 
 /*if ([_unit] call EFUNC(lifesupport,handleUnitLifesupport)) then { // returns true when update ran
     /*private _painLevel = GET_PAIN_PERCEIVED(_unit);

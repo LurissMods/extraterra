@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-* Author: PabstMirror
+* Author: PabstMirror (modified by Luriss, from ace_medical_statemachine_fnc_localityChangedEH)
 * Handles locality switch. Will also be called at unit init.
 * Because state machine state is local only, when a unit transfers locality we need to manually transition to it's current state
 *
@@ -17,6 +17,8 @@
 * Public: No
 */
 
+// Luriss: My understanding is this: Every time a unit changes locality, it switches back to the default state. This way, it'll switch the state back the same frame the locality switch happens
+
 params ["_unit", "_isLocal"];
 TRACE_2("localityChangedEH",_unit,_isLocal);
 
@@ -27,6 +29,11 @@ if (_isLocal) then {
     TRACE_1("local",_currentState);
 
     switch (true) do {
+        case (GETVAR(_unit,EGVAR(lifesupport,suitActivated),nil)): {
+            if (_currentState == "SuitActivated") exitWith {};
+            TRACE_1("manually changing state to SuitActivated",_currentState);
+            [_unit, EGVAR(lifesupport,STATE_MACHINE), _currentState, "SuitActivated", {}, "LocalityChange"] call CBA_statemachine_fnc_manualTransition;
+        };
         /*case (IN_CRDC_ARRST(_unit)): {
             if (_currentState == "CardiacArrest") exitWith {};
             _unit setVariable [VAR_CRDC_ARRST, false]; // force reset vars so setCardiacArrestState can run (enteredStateCardiacArrest will also be called)
@@ -44,26 +51,12 @@ if (_isLocal) then {
             if (_currentState == "Injured") exitWith {};
             TRACE_1("manually changing state to Injured",_currentState);
             [_unit, EGVAR(medical,STATE_MACHINE), _currentState, "Injured", {}, "LocalityChange"] call CBA_statemachine_fnc_manualTransition;
-        };
+        };*/
         default {
             // If locality transfers back and forth, we could be in an old state and should transfer back to default
             if (_currentState == "Default") exitWith {};
-            TRACE_1("manually changing state to Default",_currentState);
-            [_unit, EGVAR(medical,STATE_MACHINE), _currentState, "Default", {}, "LocalityChange"] call CBA_statemachine_fnc_manualTransition;
-        };*/
+            //TRACE_1("manually changing state to Default",_currentState);
+            [_unit, EGVAR(lifesupport,STATE_MACHINE), _currentState, "Default", {}, "LocalityChange"] call CBA_statemachine_fnc_manualTransition;
+        };
     };
-} else {
-    /*
-    // Not sure if this is even needed, idea is that on locality transfer we broadcast more up to date info
-
-    private _lastTimeUpdated = _unit getVariable [QEGVAR(medical_vitals,lastTimeUpdated), 1e38];
-    private _deltaT = CBA_missionTime - _lastTimeUpdated;
-    TRACE_1("not local",_deltaT);
-    if (_deltaT < 5) then {
-        // If locality changed and we have recently updated vitals, broadcast globally now
-        _unit setVariable [VAR_HEART_RATE, GET_HEART_RATE(_unit), true];
-        _unit setVariable [VAR_BLOOD_PRESS, _unit getVariable [VAR_BLOOD_PRESS, [80, 120]], true];
-        _unit setVariable [VAR_BLOOD_VOL, GET_BLOOD_VOLUME(_unit), true];
-    };
-    */
 };

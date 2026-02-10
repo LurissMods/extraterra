@@ -7,7 +7,9 @@ PREP(updateUnitRadiation);
 PREP(updateUnitBreathing);
 PREP(updateSolarIrradiance);
 PREP(updateBattery);
-PREP(handlePlayerChanged);
 PREP(handleUnitLifesupport);
 PREP(updateUnitAtmo);
+
 PREP(prebreathing);
+
+PREP(handlePlayerChanged);
