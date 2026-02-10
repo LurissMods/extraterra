@@ -46,8 +46,16 @@ if (_syncValue) then {
 // Updates the radiation exposure for units
 [_unit, _syncValue] call FUNC(updateUnitRadiation);
 
-if (EGVAR(huds,suitEnabled)) then {
+if (GETVAR(_unit,GVAR(suitActivated),false)) then {
     [_unit, _deltaT, _syncValue] call FUNC(updateBattery);
+
+    if (_unit == ACE_player) then {
+        //systemChat str _deltaT;
+        call EFUNC(huds,updateRadDisplay);
+        call EFUNC(huds,updateExternalAtmoDisplay);
+        call EFUNC(huds,updateSuitTempDisplay);
+        call EFUNC(huds,updateConsumableDisplay);
+    };
 };
 
 //private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);

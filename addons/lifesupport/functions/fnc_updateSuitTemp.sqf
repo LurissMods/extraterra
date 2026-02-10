@@ -43,7 +43,7 @@ if (GVAR(solarIrradianceSim)) then {
 switch (GETVAR(_unit,GVAR(unitInAtmo),ATMO_STATE_ERROR)) do {
     case ATMO_STATE_VACUUM: {
         if (sunOrMoon > 0) then {
-            _tempAroundUnit = [_unit,_moonSurfaceTemp] call FUNC(updateLocalTemp);
+            _tempAroundUnit = [_unit,_moonSurfaceTemp,_syncValue] call FUNC(updateLocalTemp);
         } else {
             _tempAroundUnit = _moonSurfaceTemp#0; // If night time, just return the provided minimum temperature value.
         };
@@ -71,7 +71,7 @@ private _netHeatPower = _unitRadiatedCoreTemp + _solarHeatingPower - _radiationT
 
 // ------------------------------------------------------------------------------------------- Now checking if the unit is wearing an active suit and model the active heating/cooling
 
-if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
+if (GETVAR(_unit,GVAR(suitActivated),false)) then {
     private _suitMaxActiveCool = 0;
     private _suitMaxActiveHeat = 0;
 
@@ -135,7 +135,11 @@ if (GETVAR(_unit,EGVAR(huds,suitEnabled),false)) then {
     };
 };
 
-private _deltaTemp = ((_netHeatPower)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS)); // Specific heat capacity formula. Finds the change in temperature per second for the current thermal power balance.
-private _newTemp = _currentTemp + (_deltaTemp*_deltaT);
+_netHeatPower = (_netHeatPower*_deltaT); // Treating the wattage like Joules here
 
+private _deltaTemp = (_netHeatPower/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS)); // Specific heat capacity formula. Finds the change in temperature per second for the current thermal power balance.
+private _newTemp = _currentTemp + _deltaTemp;
+
+_unit setVariable [QGVAR(unitNetHeatPwr),_netHeatPower,_syncValue];
+_unit setVariable [QGVAR(unitDeltaTemp),_deltaTemp,_syncValue];
 _unit setVariable [QGVAR(unitSuitTemp),_newTemp,_syncValue];

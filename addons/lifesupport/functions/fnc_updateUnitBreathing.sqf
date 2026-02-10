@@ -17,13 +17,12 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),1000);
-private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),_oxygenSupplyWhenFull);
+private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),nil);
+private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),nil);
 private _suitData = _unit getVariable [QGVAR(unitSuitData),nil];
 
 private _unitMass = HUMAN_MASS + (((loadAbs _unit)/10)/2.205); // Junk on the right is the gear weight converted into kg
 private _respiratoryRate = nil;
-private _newOxygenSupply = nil;
 
 private _percievedPain = GET_PAIN_PERCEIVED(_unit);
 //private _painCoeff = (GVAR(breathingPain_coeff)*(0.00052652*(exp(7.26135*_percievedPain))));
@@ -54,6 +53,7 @@ The resultant _currentVO2 will equal the current VO2 of the player in ml/kg/minu
 private _currentVO2 = BREATHING_VO2_FUNCTION(_respiratoryRate,(_suitData#1));
 private _currentO2Consumption = (((_currentVO2 * _unitMass)/60) min 56)*_deltaT;
 
-_newOxygenSupply = (0 max (_oxygenSupply-_currentO2Consumption));
+private _newOxygenSupply = (0 max (_oxygenSupply-_currentO2Consumption));
 
+_unit setVariable [QGVAR(unitAirConsumption),_currentO2Consumption,_syncValue];
 _unit setVariable [QGVAR(unitAirReserve),_newOxygenSupply,_syncValue];

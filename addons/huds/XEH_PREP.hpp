@@ -11,6 +11,10 @@ PREP(updateWeaponDisplay);
 PREP(updateGrenadeDisplay);
 PREP(updateGroupDisplay);
 PREP(updateWeaponIcons);
+PREP(updateRadDisplay);
+PREP(updateExternalAtmoDisplay);
+PREP(updateSuitTempDisplay);
+PREP(updateConsumableDisplay);
 
 //PREP(mainLoop);
 PREP(hudInit_US);

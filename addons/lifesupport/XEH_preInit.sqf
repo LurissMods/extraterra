@@ -39,6 +39,7 @@ GVAR(unitAirMaxReserve) = 100; //temp value
 // private _category = [QUOTE(MOD_NAME), LLSTRING(displayName)];
 
 */
+(unitLifetimeRadLevel);
 
 #include "initSettings.inc.sqf"
 // #include "initKeybinds.inc.sqf"

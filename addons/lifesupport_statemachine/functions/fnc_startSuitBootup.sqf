@@ -21,7 +21,6 @@ params ["_unit"];
 if (!hasInterface || {_unit != ACE_player}) exitWith {};
 
 private _unitSuitFaction = GETVAR(_unit,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION);
-systemChat str _unitSuitFaction;
 
 switch _unitSuitFaction do {
     case NO_SUIT_FACTION: {
@@ -29,7 +28,6 @@ switch _unitSuitFaction do {
         WARNING("exterra_lifesupport_statemachine_fnc_startSuitBootup unexpected suit faction in switch-case!");
     };
     case US_SUIT_FACTION: {
-        systemChat "called!";
         call EFUNC(huds,bootHUD_US)
         // Note: per frame calcs should start immediately
     };

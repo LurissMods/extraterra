@@ -5,12 +5,12 @@
 
 // General use
 #define KELVIN_TO_CELCIUS(input) (input - 273.15)
+#define KELVIN_TO_FAHRENHEIT(input) (input - 273.15)*(9/5) + 32
 #define CELCIUS_TO_KELVIN(input) (input + 273.15)
 #define SYS_STR(input) (systemChat str input) // I like to use systemChat *a lot* for live debugging. Hopefully that's not terrible practice
 
 // HUD macros
-#define PLAYER_VEHICLE (vehicle ACE_player)
-#define PLAYER_CURRENT_THROWABLE (currentThrowable ACE_player)
+#define NOT_IN_VEHICLE(unit) (isNull objectParent unit)
 #define PLAYER_GROUP (group ACE_player)
 
 // Maths
