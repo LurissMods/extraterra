@@ -20,7 +20,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 
 [
 	{
-		_unitsInArea = [];
+		/*_unitsInArea = [];
 		_allUnits = (allUnits - entities "HeadlessClient_F");
         //_allUnits = call CBA_fnc_players;
 		{
@@ -39,7 +39,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 			if (GETVAR(_x,EGVAR(lifesupport,unitInRadShield),RAD_SHIELD_ERROR) != 0) then {
 				SETPVAR(_x,EGVAR(lifesupport,unitInRadShield),0);
 			};
-		} forEach (_allUnits - _unitsInArea);
+		} forEach (_allUnits - _unitsInArea);*/
 
 		/*{
 			if (GETMVAR(LRSS_AI_LIFESUPPORT,objNull) && {!isPlayer _x && {alive _x}}) then {
@@ -78,7 +78,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 			};
 		} forEach _allUnits;*/
 	},
-	(_checkTime),
+	(0),
 	[_logic, _checkTime],
 	{GVAR(mainLoopInitalized) = true},
 	{GVAR(mainLoopInitalized) = false},

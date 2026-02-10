@@ -142,4 +142,5 @@ private _newTemp = _currentTemp + _deltaTemp;
 
 _unit setVariable [QGVAR(unitNetHeatPwr),_netHeatPower,_syncValue];
 _unit setVariable [QGVAR(unitDeltaTemp),_deltaTemp,_syncValue];
+_unit setVariable [QGVAR(unitEnvTemp),_tempAroundUnit,_syncValue];
 _unit setVariable [QGVAR(unitSuitTemp),_newTemp,_syncValue];

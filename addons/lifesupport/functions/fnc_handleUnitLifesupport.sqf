@@ -31,6 +31,8 @@ if (_syncValue) then {
 
 //BEGIN_COUNTER(lifeSupport);
 
+[_unit,_syncValue] call FUNC(updateUnitAtmo);
+
 // Check what suit a unit is wearing and retrieve it's stats
 [_unit, _syncValue] call FUNC(updateUnitSuit);
 

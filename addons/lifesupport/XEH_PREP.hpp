@@ -9,4 +9,5 @@ PREP(updateSolarIrradiance);
 PREP(updateBattery);
 PREP(handlePlayerChanged);
 PREP(handleUnitLifesupport);
+PREP(updateUnitAtmo);
 PREP(prebreathing);
