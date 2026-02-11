@@ -18,6 +18,7 @@
 
 private _filteredUnits = [];
 private _nearUnits = nearestObjects [ACE_player, ["MAN","CAR","TANK","AIR","StaticWeapon"], GVAR(IFF_range), true];
+_nearUnits = _nearUnits - entities QUOTE(HeadlessClient_F);
 
 private _nearUnitsArray = _nearUnits select {
     private _unitBlocked = lineIntersects [eyePos ACE_player, eyePos _x, vehicle ACE_player, _x] OR terrainIntersectASL [eyePos ACE_player, eyePos _x];
