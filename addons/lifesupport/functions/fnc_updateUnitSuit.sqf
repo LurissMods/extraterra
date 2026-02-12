@@ -100,18 +100,18 @@ _unitSuitData pushBack _suitThickness;
 if (_helmetFaction == _suitFaction && {_helmetFaction == _packFaction}) then {
     //systemChat format ["Faction: %1, Unit: %2", _helmetFaction,_unit];
     _unit setVariable [QGVAR(unitSuitFaction), _helmetFaction, _syncValue];
-    systemChat format ["Unit: %1, Suit true",_unit];
+    //systemChat format ["Unit: %1, Suit true",_unit];
 } else {
     _unit setVariable [QGVAR(unitSuitFaction), NO_SUIT_FACTION, _syncValue];
-    systemChat format ["Unit: %1, Suit false",_unit];
+    //systemChat format ["Unit: %1, Suit false",_unit];
 };
 
 if (_helmetBool && {_suitBool && {_packBool}}) then {
     _unit setVariable [QGVAR(unitSuitBools),[true,true,true,true],_syncValue];
-    systemChat format ["Unit: %1, Suit bool true",_unit];
+    //systemChat format ["Unit: %1, Suit bool true",_unit];
 } else {
     _unit setVariable [QGVAR(unitSuitBools), [false,_helmetBool,_suitBool,_packBool], _syncValue];
-    systemChat format ["Unit: %1, Suit bool false: %2",_unit,[false,_helmetBool,_suitBool,_packBool]];
+    //systemChat format ["Unit: %1, Suit bool false: %2",_unit,[false,_helmetBool,_suitBool,_packBool]];
 };
 
 _unit setVariable [QGVAR(unitSuitData), _unitSuitData, _syncValue];

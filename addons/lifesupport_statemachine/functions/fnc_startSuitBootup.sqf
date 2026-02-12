@@ -20,6 +20,8 @@ params ["_unit"];
 // This should only run on the player unit on the player client
 if (!hasInterface || {_unit != ACE_player}) exitWith {};
 
+systemChat format ["HUD start up fired! Unit: %1", _unit];
+
 private _unitSuitFaction = GETVAR(_unit,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION);
 
 switch _unitSuitFaction do {

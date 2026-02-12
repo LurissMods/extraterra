@@ -17,7 +17,9 @@
 
 private _bootStartMissionTime = CBA_missionTime;
 
-_hudElementsBoot = [
+systemChat "boot hud called!";
+
+private _hudElementsBoot = [
     (GVAR(hudOutline_US)#0),
     (GVAR(info_background_US)#0),
     (GVAR(info_background_text_US)#0),
@@ -373,20 +375,14 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
     private _delay = 0;
     private _currentHudAnim = 0;
 } else {
+    systemChat "quick boot called!";
     playSound QGVAR(hudBootSound_US);
 
     call FUNC(initPFH_FireControl);
     call FUNC(initPFH_HudGeneral);
-    /*[
-        GVAR(squad_memberAddressArray_US),
-        GVAR(squad_heartAddressArray_US),
-        GVAR(rangefinder_addressArray_US),
-        GVAR(weapon_addressArray_US),
-        GVAR(grenade_addressArray_US),
-        GVAR(weaponIcons_addressArray_US)
-    ] call FUNC(initHudHandler);*/
 
     {_x ctrlSetFade 0; _x ctrlCommit 0.5} forEach _hudElementsBoot;
     (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
     (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+    systemChat "boot func finished!";
 };

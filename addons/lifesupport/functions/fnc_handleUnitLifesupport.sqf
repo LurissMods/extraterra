@@ -52,6 +52,7 @@ if (GETVAR(_unit,GVAR(suitActivated),false)) then {
     [_unit, _deltaT, _syncValue] call FUNC(updateBattery);
 
     if (_unit == ACE_player) then {
+        //systemChat format ["%1 is ACE_player", _unit];
         //systemChat str _deltaT;
         call EFUNC(huds,updateRadDisplay);
         call EFUNC(huds,updateExternalAtmoDisplay);
