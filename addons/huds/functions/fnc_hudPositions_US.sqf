@@ -26,6 +26,17 @@ private _hudOutline = (GVAR(hudOutline_US)#0);
 private _airBar = (GVAR(airBar_US)#0);
 private _battBar = (GVAR(battBar_US)#0);
 
+private _testHud = (GVAR(hudMasterControl_US)#0);
+private _testHudPos = [
+    safeZoneX + (safeZoneW * 0.5) - ((107 * pixelGridNoUIScale * pixelW) * 0.5) + _positionAdjustX,
+    safeZoneY + (safeZoneH * 0.5) - ((107 * pixelGridNoUIScale * pixelH) * 0.5) + _positionAdjustY,
+    107 * pixelGridNoUIScale * pixelW,
+    107 * pixelGridNoUIScale * pixelH
+];
+_testHud ctrlSetPosition _testHudPos;
+_testHud ctrlSetFade 0;
+_testHud ctrlCommit 0;
+
 private _infoControlPosition = [0.275 * safeZoneW + safeZoneX + _positionAdjustX,-0.0425 * safeZoneH + safeZoneY + _positionAdjustY,0.45 * safeZoneW,0.2 * safeZoneH];
 private _rangefinderControlPosition = [0.4296875 * safeZoneW + safeZoneX + _positionAdjustX,0.0535 * safeZoneH + safeZoneY + _positionAdjustY,0.140625 * safeZoneW,0.125 * safeZoneH];
 private _squadControlPosition = [0 * safeZoneW + safeZoneX + _positionAdjustX,0.75 * safeZoneH + safeZoneY + _positionAdjustY,0.28125 * safeZoneW,0.25 * safeZoneH];

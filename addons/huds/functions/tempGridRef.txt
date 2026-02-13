@@ -1,0 +1,100 @@
+/*
+	Preview of Arma Graphical User Interface (GUI) grids
+
+	Copy to config.cpp or description.ext.
+	'RscText' base class has to be defined.
+
+	* For more information see https://community.bistudio.com/wiki/GUI_Coordinates
+	* To see interactive preview, follow these steps:
+		1. Open Eden Editor
+		2. Open debug console (Tools > Debug Console)
+		3. Execute this code: 0 = (findDisplay 313) createDisplay "RscTestGrids";
+*/
+class RscTestGridsExported
+{
+	idd = -1;
+	class Controls
+	{
+		// Black background
+		class Background: RscText
+		{
+			x = safezoneX;
+			y = safezoneY;
+			w = safezoneW;
+			h = safezoneH;
+
+			colorBackground[] = {0.0, 0.0, 0.0, 1.0};
+		};
+
+		/*
+			=== GUI_GRID ===
+			Grid used in majority of game's menus, does not use pixel accurate coordinates.
+			Affected only by interface size, giving user ability to customize its scale on the screen.
+			Designed to use only 40x25 grids (i.e., size on 16:10 screen with Very Large interface size),
+			although some menus may be stretched to fill the whole screen. Never gets smaller than 40x25 grids.
+			Default grid in the GUI editor.
+		*/
+		class GUI_GRID: RscText
+		{
+			x = safezoneX + (safezoneW * 0.25) - ((10 * GUI_GRID_W) * 0.5);
+			y = safezoneY + (safezoneH * 0.25) - ((10 * GUI_GRID_H) * 0.5);
+			w = 10 * GUI_GRID_W;
+			h = 10 * GUI_GRID_H;
+
+			colorBackground[] = {1.0, 0.5, 0.5, 1.0};
+			colorText[] = {0.0, 0.0, 0.0, 1.0};
+			text = "GUI_GRID";
+			shadow = 0;
+			style = ST_CENTER;
+		};
+
+		/*
+			=== Pixel Size ===
+			Actual pixel size, remains constant. On displays with too fine resolution (e.g., 4K),
+			it can get too small for practical use.
+		*/
+		class Pixel: GUI_GRID
+		{
+			x = safezoneX + (safezoneW * 0.75) - ((100 * pixelW) * 0.5);
+			y = safezoneY + (safezoneH * 0.25) - ((100 * pixelH) * 0.5);
+			w = 100 * pixelW;
+			h = 100 * pixelH;
+
+			colorBackground[] = {0.5, 1.0, 0.5, 1.0};
+			text = "pixel";
+		};
+
+		/*
+			=== pixelGrid ===
+			Pixel accurate grid introduced to replace GUI_GRID. Respects both resolution and interface size,
+			but always returns whole number which can be divided by up to 4 and still be a whole number.
+			Due to this rounding, some interface sizes may use the same value.
+		*/
+		class PixelGrid: GUI_GRID
+		{
+			x = safezoneX + (safezoneW * 0.25) - ((20 * pixelGrid * pixelW) * 0.5);
+			y = safezoneY + (safezoneH * 0.75) - ((20 * pixelGrid * pixelH) * 0.5);
+			w = 20 * pixelGrid * pixelW;
+			h = 20 * pixelGrid * pixelH;
+
+			colorBackground[] = {0.5, 0.5, 1.0, 1.0};
+			text = "pixelGrid";
+		};
+
+		/*
+			=== pixelGridNoUIScale ===
+			Similar to pixelGrid, but affected only by resolution, not interface size.
+			Usually used to keep some important elements, e.g., spotlight buttons in the main menu.
+		*/
+		class PixelGridNoUIScale: GUI_GRID
+		{
+			x = safezoneX + (safezoneW * 0.75) - ((20 * pixelGridNoUIScale * pixelW) * 0.5);
+			y = safezoneY + (safezoneH * 0.75) - ((20 * pixelGridNoUIScale * pixelH) * 0.5);
+			w = 20 * pixelGridNoUIScale * pixelW;
+			h = 20 * pixelGridNoUIScale * pixelH;
+
+			colorBackground[] = {1.0, 1.0, 0.5, 1.0};
+			text = "pixelGridNoUIScale";
+		};
+	};
+};
