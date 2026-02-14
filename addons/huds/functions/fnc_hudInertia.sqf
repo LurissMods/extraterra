@@ -1,21 +1,19 @@
 #include "..\script_component.hpp"
 /*
- * Author: Akaviri13 (Inherited from his code)
- * Checks if player is in direct sunlight. Returns thermal heating in watts.
- *
- * Arguments:
- * None
- *
- * Return Value:
- * None
- *
- * Example:
- * [] call exterra_lifeSupport_fnc_mainLoop
- *
- * Public: No
- */
-
-params ["_suitFaction"];
+* Author: Akaviri13 (Inherited from his code)
+* Checks if player is in direct sunlight. Returns thermal heating in watts.
+*
+* Arguments:
+* None
+*
+* Return Value:
+* None
+*
+* Example:
+* [] call exterra_lifeSupport_fnc_mainLoop
+*
+* Public: No
+*/
 
 disableSerialization;
 if (GVAR(hudHandlerAdded)) exitWith {};
@@ -30,7 +28,7 @@ GVAR(hudInteriaHandle) = [{
     // Hud inertia calculations ----------------------------------------------------------------------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    private _cameraview = getCameraViewDirection player;
+    private _cameraview = getCameraViewDirection ACE_player;
 
     private _newViewAngleX = ([0,0,0] getDir _cameraview); // Gets bearing in degrees
 
@@ -96,9 +94,16 @@ GVAR(hudInteriaHandle) = [{
     private _positionAdjustX = abs(safeZoneX) * GVAR(hudAngleX) / 2500;
     private _positionAdjuxtY = abs(safeZoneX) * GVAR(hudAngleY) / 16000;
 
-    switch (_this#0) do {
-        case 0: {[_positionAdjustX, _positionAdjuxtY] call FUNC(hudPositions_US)};
-    };
+    [_positionAdjustX, _positionAdjuxtY] call FUNC(hudPositions_US)
 
-    }, 0, _suitFaction
+    /*switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
+        case NO_SUIT_FACTION: {
+            systemChat "Error! No suit faction in FUNC(huds,hudInertia)";
+        };
+        case US_SUIT_FACTION: {
+            [_positionAdjustX, _positionAdjuxtY] call FUNC(hudPositions_US)
+        };
+    };*/
+
+    }, 0, []
 ] call CBA_fnc_addPerFrameHandler;

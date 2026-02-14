@@ -22,23 +22,22 @@ switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) d
         systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
     };
     case US_SUIT_FACTION: {
-        _extAtmText = (GVAR(info_externalAtmo_text_US)#0);
+        _extAtmText = (GVAR(hudExtAtm_text_US)#0);
     };
 };
-
 
 _atmAroundPlayer = (GETVAR(ACE_player,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_ERROR));
 switch _atmAroundPlayer do {
     case 0: {
-        _extAtmText ctrlSetStructuredText parseText "<t align='center'> VACUUM";
+        _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>VACUUM</t>";
         _extAtmText ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
     };
     case 1: {
-        _extAtmText ctrlSetStructuredText parseText "<t align='center'> 1 ATM";
+        _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>1 ATM</t>";
         _extAtmText ctrlSetTextColor GVAR(textColor_safe_cbaSetting);
     };
     case 2: {
-        _extAtmText ctrlSetStructuredText parseText "<t align='center'> 0.3 ATM";
+        _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>0.3 ATM</t>";
         _extAtmText ctrlSetTextColor GVAR(textColor_caution_cbaSetting);
         /*if (_prebreatheRatio < PREBREATHE_SAFE_THRESHOLD) then {
             (_extAtmText) ctrlSetTextColor GVAR(textColor_safe_cbaSetting);

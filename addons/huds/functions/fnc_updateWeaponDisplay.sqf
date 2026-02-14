@@ -23,12 +23,12 @@ private _compatibleMagazines = nil;
 
 switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
+        systemChat "Error! No suit faction in FUNC(huds,updateWeaponDisplay)";
     };
     case US_SUIT_FACTION: {
-        _magazinesAddress = (GVAR(weapon_weaponMagazines_text_US)#0);
-        _fireModeAddress = (GVAR(weapon_fireMode_text_US)#0);
-        _zeroingAddress = (GVAR(weapon_weaponZero_text_US)#0);
+        _magazinesAddress = (GVAR(hudMagCount_text_US)#0);
+        _fireModeAddress = (GVAR(hudFireMode_text_US)#0);
+        _zeroingAddress = (GVAR(hudWeaponZero_text_US)#0);
     };
 };
 
@@ -45,8 +45,8 @@ if (!NOT_IN_VEHICLE(ACE_player)) then {
             _magCountInventory = { _x in _compatibleMagazines } count (magazines ACE_player);
             _currentWeaponMode = currentWeaponMode ACE_player;
 
-            _magazinesAddress ctrlSetStructuredText parseText format["<t align='center'>%1", _magCountInventory];
-            _fireModeAddress ctrlSetText _currentWeaponMode;
+            _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+            _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
         } else {
             _magCountInventory = { _x in _compatibleMagazines } count (vehicle ACE_player magazinesTurret [((assignedVehicleRole ACE_player) select 1),false]);
             if (_magCountInventory > 0) then {
@@ -54,19 +54,19 @@ if (!NOT_IN_VEHICLE(ACE_player)) then {
             };
             _currentWeaponMode = "---";
 
-            _magazinesAddress ctrlSetStructuredText parseText format["<t align='center'>%1", _magCountInventory];
-            _fireModeAddress ctrlSetText _currentWeaponMode;
+            _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+            _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
         };
         _magazineCapacity = getNumber(configFile >> "CfgMagazines" >> ((_weaponState select 3)) >> "count");
     } else {
         _magCountInventory = "--";
         _currentWeaponMode = "---";
 
-        _magazinesAddress ctrlSetStructuredText parseText format["<t align='center'>%1", _magCountInventory];
-        _fireModeAddress ctrlSetText _currentWeaponMode;
+        _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+        _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
     };
     _currentZeroing = "---";
-    _zeroingAddress ctrlSetText format ["%1m", _currentZeroing];
+    _zeroingAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1m", _currentZeroing];
 } else {
     if (((_weaponState) select 0) == ((_weaponState) select 1)) then {
         _compatibleMagazines = currentWeapon vehicle ACE_player call CBA_fnc_compatibleMagazines;
@@ -78,7 +78,7 @@ if (!NOT_IN_VEHICLE(ACE_player)) then {
     _currentWeaponMode = currentWeaponMode ACE_player;
     _magCountInventory = { _x in _compatibleMagazines } count (magazines vehicle ACE_player);
 
-    _magazinesAddress ctrlSetStructuredText parseText format["<t align='center'>%1", _magCountInventory];
-    _fireModeAddress ctrlSetText _currentWeaponMode;
-    _zeroingAddress ctrlSetText format ["%1m", _currentZeroing];
+    _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+    _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
+    _zeroingAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1m", _currentZeroing];
 };

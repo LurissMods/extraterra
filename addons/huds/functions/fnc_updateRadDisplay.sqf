@@ -28,25 +28,25 @@ switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) d
         systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
     };
     case US_SUIT_FACTION: {
-        _currentRadHrtext = (GVAR(info_radPerHour_text_US)#0);
-        _lifeExposureText = (GVAR(info_lifetimeRad_text_US)#0);
+        _currentRadHrtext = (GVAR(hudEnvironRad_text_US)#0);
+        _lifeExposureText = (GVAR(hudRadTotal_text_US)#0);
     };
 };
 
 if ((_shieldCoeff*_currentEnvironRadPerHour) < 1) then {
-    _currentRadHrtext ctrlSetStructuredText parseText format ["<t align='center'> %1 uSv/h", round((_shieldCoeff*_currentEnvironRadPerHour)*1000)];
+    _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 uSv/h", round((_shieldCoeff*_currentEnvironRadPerHour)*1000)];
     _currentRadHrtext ctrlSetTextColor GVAR(textColor_cbaSetting);
 } else {
     if ((_shieldCoeff*_currentEnvironRadPerHour) > 1000) then {
-        _currentRadHrtext ctrlSetStructuredText parseText format ["<t align='center'> %1 Sv/h", round((_shieldCoeff*_currentEnvironRadPerHour)/1000)];
+        _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 Sv/h", round((_shieldCoeff*_currentEnvironRadPerHour)/1000)];
         _currentRadHrtext ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
     } else {
-        _currentRadHrtext ctrlSetStructuredText parseText format ["<t align='center'> %1 mSv/h", round(_shieldCoeff*_currentEnvironRadPerHour)];
+        _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mSv/h", round(_shieldCoeff*_currentEnvironRadPerHour)];
         _currentRadHrtext ctrlSetTextColor GVAR(textColor_caution_cbaSetting);
     };
 };
 
-_lifeExposureText ctrlSetStructuredText parseText format ["<t align='center'> %1", round(_currentLifetimeExposure)];
+_lifeExposureText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mGy", round(_currentLifetimeExposure)];
 if (_currentLifetimeExposure > 1500) then {
     _lifeExposureText ctrlSetTextColor GVAR(textColor_danger_cbaSetting);
 } else {

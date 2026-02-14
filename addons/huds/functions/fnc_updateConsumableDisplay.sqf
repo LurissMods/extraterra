@@ -36,10 +36,10 @@ switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) d
         systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
     };
     case US_SUIT_FACTION: {
-        _airBarAddress = (GVAR(airBar_US)#0);
-        _airTextAddress = (GVAR(info_airRemain_text_US)#0);
-        _battBarAddress = (GVAR(battBar_US)#0);
-        _battTextAddress = (GVAR(info_battRemain_text_US)#0);
+        _airBarAddress = (GVAR(hudAirProgress_US)#0);
+        _airTextAddress = (GVAR(hudAirEstTime_text_US)#0);
+        _battBarAddress = (GVAR(hudBattProgress_US)#0);
+        _battTextAddress = (GVAR(hudBattEstTime_text_US)#0);
     };
 };
 

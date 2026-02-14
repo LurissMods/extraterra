@@ -9,39 +9,319 @@ class exterra_huds_HUD_US
     fadein=0;
     fadeout=0;
 	duration = 1e+6;
-	class Controls
+    class controlsBackground
     {
+        class hudOutline_US : RscPicture {
+            idc = HUD_OUTLINE_US_IDC;
+            show = 1;
+            text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudBackground_us_ca.paa);
+            colorBackground[] = {1,1,1,1};
+            color[] = {1,1,1,1};
+        };
+        class hudAirBar_US : RscProgress {
+            idc = HUD_AIR_PROGRESS_US_IDC;
+            texture = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudProgressBar_US_ca.paa);
+            color[] = {1,1,1,1};
+            colorFrame[]={0,0,0,0};
+            shadow = 0;
+        };
+        class hudBattBar_US : RscProgress {
+            idc = HUD_BATT_PROGRESS_US_IDC;
+            texture = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudProgressBar_US_ca.paa);
+            color[] = {1,1,1,1};
+            colorFrame[]={0,0,0,0};
+            shadow = 0;
+        };
         class hudMasterControl_US : RscControlsGroupNoScrollbars {
-            idc = 10028;
+            idc = MASTER_CONTROL_US_IDC;
             show = 1;
             colorBackground[] = {1,1,1,1};
             color[] = {1,1,1,1};
             class Controls
             {
-                class hudOutline_US : RscPicture {
-                    idc = 10029;
+                class hudLines_US : RscPicture {
+                    idc = HUD_OUTLINE_LINES_US_IDC;
                     show = 1;
-                    text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudBackground_us_ca.paa);
+                    text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudLines_us_ca.paa);
                     colorBackground[] = {1,1,1,1};
                     color[] = {1,1,1,1};
                 };
-                class hudExtAtm_US : RscStructuredText {
-                    idc = 10030;
+                class hudText_US : RscPicture {
+                    idc = HUD_OUTLINE_TEXT_US_IDC;
                     show = 1;
-                    text = "";
-                    //colorBackground[] = {1,1,1,1};
+                    text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa);
+                    colorBackground[] = {1,1,1,1};
                     color[] = {1,1,1,1};
-                    class Attributes {
-                        font = QUOTE(RobotoCondensed);
-                        align = QUOTE(center);
-                        shadow = 0;
-                        size = 1;
-                        color = QUOTE(#ffffff);
-                    };
+                };
+
+                class hudWeaponPrimary_US : RscPicture {
+                    idc = HUD_WEAPON_PRIMARY_US_IDC;
+                    show = 1;
+                    text = QUOTE(z\exterra\addons\huds\data\weaponIcons\US\english\exterra_m2CarbineEng_icon.paa);
+                    colorBackground[] = {1,1,1,1};
+                    color[] = {1,1,1,1};
+                };
+                class hudWeaponSecondary_US : RscPicture {
+                    idc = HUD_WEAPON_SECONDARY_US_IDC;
+                    show = 1;
+                    text = QUOTE(z\exterra\addons\huds\data\weaponIcons\Unknown\unknownWeapon_icon.paa);
+                    colorBackground[] = {1,1,1,1};
+                    color[] = {1,1,1,1};
+                };
+                class hudWeaponLauncher_US : RscPicture {
+                    idc = HUD_WEAPON_LAUNCHER_US_IDC;
+                    show = 1;
+                    text = QUOTE(z\exterra\addons\huds\data\weaponIcons\Unknown\unknownWeapon_icon.paa);
+                    colorBackground[] = {1,1,1,1};
+                    color[] = {1,1,1,1};
+                };
+                class hudWeaponGrenade_US : RscPicture {
+                    idc = HUD_WEAPON_GRENADE_US_IDC;
+                    show = 1;
+                    text = QUOTE(z\exterra\addons\huds\data\weaponIcons\Unknown\unknownGrenade_icon.paa);
+                    colorBackground[] = {1,1,1,1};
+                    color[] = {1,1,1,1};
+                };
+
+                class hudExtAtm_US : exterra_huds_structuredText {
+                    idc = HUD_EXT_ATM_US_IDC;
+                    text = "";
+                };
+                class hudEnvironRad_US : exterra_huds_structuredText {
+                    idc = HUD_ENVIRON_RAD_US_IDC;
+                    text = "";
+                };
+                class hudRadTotal_US : exterra_huds_structuredText {
+                    idc = HUD_RAD_TOTAL_US_IDC;
+                    text = "";
+                };
+                class hudTempInt_US : exterra_huds_structuredText {
+                    idc = HUD_TEMP_INT_US_IDC;
+                    text = "";
+                };
+                class hudTempExt_US : exterra_huds_structuredText {
+                    idc = HUD_TEMP_EXT_US_IDC;
+                    text = "";
+                };
+                class hudTmeDangTemp_US : exterra_huds_structuredText {
+                    idc = HUD_TME_DANG_TEMP_US_IDC;
+                    text = "";
+                };
+                class hudTempWatt_US : exterra_huds_structuredText {
+                    idc = HUD_TEMP_WATT_US_IDC;
+                    text = "";
+                };
+                class hudBearing_US : exterra_huds_structuredText {
+                    idc = HUD_BEARING_US_IDC;
+                    text = "";
+                };
+                class hudGrid_US : exterra_huds_structuredText {
+                    idc = HUD_GRID_US_IDC;
+                    text = "";
+                };
+                class hudRange_US : exterra_huds_structuredText {
+                    idc = HUD_RANGE_US_IDC;
+                    text = "";
+                };
+                class hudAirEstTime_US : exterra_huds_structuredText {
+                    idc = HUD_AIR_EST_TIME_US_IDC;
+                    text = "";
+                };
+                class hudBattEstTime_US : exterra_huds_structuredText {
+                    idc = HUD_BATT_EST_TIME_US_IDC;
+                    text = "";
+                };
+
+                class hudMagCount_US : exterra_huds_structuredText {
+                    idc = HUD_MAG_COUNT_US_IDC;
+                    text = "";
+                };
+                class hudFireMode_US : exterra_huds_structuredText {
+                    idc = HUD_FIRE_MODE_US_IDC;
+                    text = "";
+                };
+                class hudWeaponZero_US : exterra_huds_structuredText {
+                    idc = HUD_WEAPON_ZERO_US_IDC;
+                    text = "";
+                };
+                class hudGrenadeCount_US : exterra_huds_structuredText {
+                    idc = HUD_GRENADE_COUNT_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name0_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME0_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr0_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR0_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp0_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP0_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink0_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK0_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name1_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME1_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr1_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR1_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp1_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP1_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink1_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK1_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name2_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME2_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr2_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR2_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp2_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP2_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink2_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK2_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name3_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME3_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr3_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR3_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp3_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP3_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink3_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK3_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name4_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME4_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr4_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR4_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp4_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP4_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink4_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK4_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name5_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME5_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr5_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR5_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp5_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP5_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink5_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK5_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name6_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME6_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr6_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR6_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp6_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP6_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink6_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK6_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name7_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME7_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr7_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR7_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp7_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP7_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink7_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK7_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name8_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME8_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr8_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR8_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp8_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP8_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink8_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK8_US_IDC;
+                    text = "";
+                };
+
+                class hudSquad_name9_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_NAME9_US_IDC;
+                    text = "";
+                };
+                class hudSquad_hr9_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_HR9_US_IDC;
+                    text = "";
+                };
+                class hudSquad_bp9_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_BP9_US_IDC;
+                    text = "";
+                };
+                class hudSquad_datalink9_US : exterra_huds_structuredText {
+                    idc = HUD_SQUAD_DATALINK9_US_IDC;
+                    text = "";
                 };
             };
         };
     };
+
 	/*class GVAR(systemMessages_US_base)
 	{
 		idd=-1;

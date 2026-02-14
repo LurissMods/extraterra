@@ -24,7 +24,7 @@ switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) d
     };
     case US_SUIT_FACTION: {
         _grenadeNameAddress = (GVAR(weapon_grenade_text_US)#0);
-        _grenadeAmountAddress = (GVAR(weapon_grenadeAmount_text_US)#0);
+        _grenadeAmountAddress = (GVAR(hudGrenadeCount_text_US)#0);
     };
 };
 
@@ -39,7 +39,7 @@ if (count currentThrowable ACE_player != 0) then {
     _currentThrowableAmount = 0;
 };
 
-_grenadeNameAddress ctrlSetStructuredText parseText format ["<t size='0.75'> %1", _currentThrowableName];
+_grenadeNameAddress ctrlSetStructuredText parseText format ["<t size='0.75'> %1", _currentThrowableName]; // Note: redunant
 _grenadeAmountAddress ctrlSetStructuredText parseText format ["<t size='0.8' align='center'>%1", _currentThrowableAmount];
 
 //if (count currentThrowable ACE_player == 0) then {currentThrowable ACE_player = ["NOWEAPON"]};

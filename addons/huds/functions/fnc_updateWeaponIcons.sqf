@@ -29,13 +29,13 @@ private _grenadeIconAddress = nil;
 
 switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
+        systemChat "Error! No suit faction in FUNC(huds,updateWeaponIcons)";
     };
     case US_SUIT_FACTION: {
-        _primaryIconAddress = (GVAR(weapon_currentWeapon_US)#0);
-        _secondaryIconAddress = (GVAR(weapon_secondWeapon_US)#0);
-        _launcherIconAddress = (GVAR(weapon_launcher_US)#0);
-        _grenadeIconAddress = (GVAR(weapon_grenade_US)#0);
+        _primaryIconAddress = (GVAR(hudWeaponPrimary_US)#0);
+        _secondaryIconAddress = (GVAR(hudWeaponSecondary_US)#0);
+        _launcherIconAddress = (GVAR(hudWeaponLauncher_US)#0);
+        _grenadeIconAddress = (GVAR(hudWeaponGrenade_US)#0);
     };
 };
 

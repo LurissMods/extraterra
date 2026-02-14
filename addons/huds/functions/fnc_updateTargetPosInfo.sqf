@@ -26,9 +26,9 @@ switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) d
         systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
     };
     case US_SUIT_FACTION: {
-        _rangefinderAddressName = (GVAR(rangefinder_range_US)#0);
-        _bearingAddressName = (GVAR(rangefinder_bearing_US)#0);
-        _gridAddressName = (GVAR(rangefinder_grid_US)#0);
+        _rangefinderAddressName = (GVAR(hudRange_text_US)#0);
+        _bearingAddressName = (GVAR(hudBearing_text_US)#0);
+        _gridAddressName = (GVAR(hudGrid_text_US)#0);
     };
 };
 
@@ -36,14 +36,14 @@ _ins = lineIntersectsSurfaces [AGLToASL positionCameraToWorld [0,0,0],AGLToASL p
 _cursor_distance = if (count _ins > 0) then [{(_ins select 0 select 0) vectorDistance (eyePos ACE_player)},{5000}];
 
 if (count _ins > 0) then {
-    if ((round _cursor_distance) < 10) then {_rangefinderAddressName ctrlSetText format["000%1m", (round _cursor_distance)];} else {
-        if ((round _cursor_distance) < 100) then {_rangefinderAddressName ctrlSetText format["00%1m", (round _cursor_distance)];} else {
-            if ((round _cursor_distance) < 1000) then {_rangefinderAddressName ctrlSetText format["0%1m",(round _cursor_distance)];} else {
-                _rangefinderAddressName ctrlSetText format["%1m",(round _cursor_distance)];
+    if ((round _cursor_distance) < 10) then {_rangefinderAddressName ctrlSetStructuredText parseText format["<t size='0.8'>000%1m", (round _cursor_distance)];} else {
+        if ((round _cursor_distance) < 100) then {_rangefinderAddressName ctrlSetStructuredText parseText format["<t size='0.8'>00%1m", (round _cursor_distance)];} else {
+            if ((round _cursor_distance) < 1000) then {_rangefinderAddressName ctrlSetStructuredText parseText format["<t size='0.8'>0%1m",(round _cursor_distance)];} else {
+                _rangefinderAddressName ctrlSetStructuredText parseText format["<t size='0.8'>%1m",(round _cursor_distance)];
             };
         };
     };
-} else {_rangefinderAddressName ctrlSetText format["- - - - m"]};
+} else {_rangefinderAddressName ctrlSetStructuredText parseText format["<t size='0.8'>- - - - m"]};
 
 _aim_pos = (_ins select 0) select 0;
 _mapGrid = if (count _ins > 0) then [{mapGridPosition _aim_pos},{"- - - - - -"}];
@@ -54,10 +54,10 @@ _azimuth = round((_azimuth + 360) % 360);
 if (_azimuth == 360) then {_azimuth = 0};
 
 // Luriss: This formats the bearing into a 000 format. Otherwise it'll just be 9 instead of 009
-if (_azimuth < 10) then {_bearingAddressName ctrlSetText format["00%1°", _azimuth];} else {
-    if (_azimuth < 100) then {_bearingAddressName ctrlSetText format["0%1°", _azimuth];} else {
-        _bearingAddressName ctrlSetText format["%1°", _azimuth];
+if (_azimuth < 10) then {_bearingAddressName ctrlSetStructuredText parseText format["<t size='0.8'>00%1°", _azimuth];} else {
+    if (_azimuth < 100) then {_bearingAddressName ctrlSetStructuredText parseText format["<t size='0.8'>0%1°", _azimuth];} else {
+        _bearingAddressName ctrlSetStructuredText parseText format["<t size='0.8'>%1°", _azimuth];
     };
 };
 
-_gridAddressName ctrlSetText format["%1", _mapGrid];
+_gridAddressName ctrlSetStructuredText parseText format["<t size='0.8'>%1", _mapGrid];

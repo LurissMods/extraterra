@@ -13,6 +13,9 @@
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
 
+#include "usHUD_idc.hpp"
+#include "usHUD_positions.hpp"
+
 // Note: I've decided to keep the control group positions in the hudPositions function rather than putting them here.
 #define BOOTUP_LOGO_US_POS [0.2523 * safeZoneW + safeZoneX,0.148 * safeZoneH + safeZoneY,0.16875 * safeZoneW,0.15 * safeZoneH]
 #define BOOTUP_BISTGRID_US_POS [0.148438 * safeZoneW + safeZoneX,0 * safeZoneH + safeZoneY,0.703125 * safeZoneW,1.25 * safeZoneH]
