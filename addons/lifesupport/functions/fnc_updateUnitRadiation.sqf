@@ -44,4 +44,5 @@ switch _shielding do {
 };
 _currentLifetimeExposure = _currentLifetimeExposure + ((_shieldCoeff*_currentEnvironRadPerHour)/3600);
 
+_unit setVariable [QGVAR(unitRadShieldCoeff),_shieldCoeff,_syncValue];
 _unit setVariable [QGVAR(unitLifetimeRadLevel),_currentLifetimeExposure,_syncValue];

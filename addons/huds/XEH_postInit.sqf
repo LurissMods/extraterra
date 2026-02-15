@@ -7,16 +7,18 @@ if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
     //if (!GVAR(masterToggle)) exitWith {};
 
     //call FUNC(playerSuitCheckHandler); Redundant - moved check to statemachine
-    call FUNC(hudInit_US);
-    for "_i" from 0 to 0 do {
+    call FUNC(initHUD_US);
+    /*for "_i" from 0 to 0 do {
         [_i] call FUNC(hudInertia);
-    };
+    };*/
+    call FUNC(initPFH_HudInertia);
 
-    call FUNC(mainInit);
+    ["CBA_SettingChanged", {
+        params ["_name", "_value"];
 
-    //[0] call FUNC(suitActivation);
+        if (_name select [0, 13] != "exterra_huds_") exitWith {}; // This is here because the CBA event outputs debug info
 
+        // keeping for now just in case I need it later
 
-    // - Add main loop at 1 second interval -------------------------------------------------------------
-    //[FUNC(mainLoop), [], 1] call CBA_fnc_waitAndExecute;
+    }] call CBA_fnc_addEventHandler;
 }] call CBA_fnc_addEventHandler;

@@ -4,10 +4,8 @@
         <Key ID="STR_exterra_suit_menu_displayName">
             <English>suit_menu</English>
         </Key>
-
         <Key ID="STR_exterra_suit_menu_suitMenuKeybind_title">
             <English>Suit Menu</English>
         </Key>
-
     </Package>
 </Project>

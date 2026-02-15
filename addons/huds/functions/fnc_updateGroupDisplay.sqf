@@ -128,10 +128,10 @@ if (_groupLeaderMeanBP < BLOOD_PRESSURE_NORMAL) then {
 
 if (GETVAR(leader PLAYER_GROUP,EGVAR(lifesupport,unitDatalink),false)) then {
     _groupLeaderDatalink = "TRMIT";
-    _datalinkAddressArray#0 ctrlSetTextColor GVAR(textColor_safe_cbaSetting);
+    _datalinkAddressArray#0 ctrlSetTextColor GVAR(textColor_US_safe_cbaSetting);
 } else {
     _groupLeaderDatalink = "EMCON";
-    _datalinkAddressArray#0 ctrlSetTextColor GVAR(textColor_caution_cbaSetting);
+    _datalinkAddressArray#0 ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
 };
 
 _colour = switch (assignedTeam (leader PLAYER_GROUP)) do {
@@ -170,10 +170,10 @@ for "_i" from 1 to (_groupSize - 1) do {
 
     if (GETVAR(_unit,EGVAR(lifesupport,unitDatalink),false)) then {
         _currentUnitDatalink = "TRMIT";
-        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(textColor_safe_cbaSetting);
+        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(textColor_US_safe_cbaSetting);
     } else {
         _currentUnitDatalink = "EMCON";
-        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(textColor_caution_cbaSetting);
+        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
     };
 
     if (_currentUnitHeartRate < DEFAULT_HEART_RATE) then {

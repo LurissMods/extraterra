@@ -403,28 +403,28 @@
 
 
 [
-    QGVAR(hudOutlineColor_cbaSetting),
+    QGVAR(hudOutlineColor_US_cbaSetting),
     "COLOR",
     [LSTRING(hudOutlineColor_cbaSetting_title), LSTRING(hudOutlineColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
+    [0.5, 0.84062, 1, 0.6],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(infoBackgroundColor_cbaSetting),
+    QGVAR(hudLinesColor_US_cbaSetting),
     "COLOR",
-    [LSTRING(infoBackgroundColor_cbaSetting_title), LSTRING(infoBackgroundColor_cbaSetting_desc)],
+    [LSTRING(hudLinesColor_cbaSetting_title), LSTRING(hudLinesColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
+    [1, 1, 1, 0.8],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
-[
+/*[
     QGVAR(weaponBackgroundColor_cbaSetting),
     "COLOR",
     [LSTRING(weaponBackgroundColor_cbaSetting_title), LSTRING(weaponBackgroundColor_cbaSetting_desc)],
@@ -433,31 +433,31 @@
     0,
     {},
     false
-] call CBA_fnc_addSetting;
+] call CBA_fnc_addSetting;*/
 
 [
-    QGVAR(airBarColor_cbaSetting),
+    QGVAR(airBarColor_US_cbaSetting),
     "COLOR",
     [LSTRING(airBarColor_cbaSetting_title), LSTRING(airBarColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
+    [0, 0.405354, 1, 0.6],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(battBarColor_cbaSetting),
+    QGVAR(battBarColor_US_cbaSetting),
     "COLOR",
     [LSTRING(battBarColor_cbaSetting_title), LSTRING(battBarColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
+    [0.700905, 0.636422, 0, 0.6],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
-[
+/*[
     QGVAR(barTextColor_cbaSetting),
     "COLOR",
     [LSTRING(barTextColor_cbaSetting_title), LSTRING(barTextColor_cbaSetting_desc)],
@@ -466,54 +466,54 @@
     0,
     {},
     false
-] call CBA_fnc_addSetting;
+] call CBA_fnc_addSetting;*/
 
 [
-    QGVAR(textColor_cbaSetting),
+    QGVAR(textColor_US_cbaSetting),
     "COLOR",
     [LSTRING(textColor_cbaSetting_title), LSTRING(textColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
+    [1, 1, 1, 0.8],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(textColor_safe_cbaSetting),
+    QGVAR(textColor_US_safe_cbaSetting),
     "COLOR",
     [LSTRING(textColor_safe_cbaSetting_title), LSTRING(textColor_safe_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.0, 1.0, 0.0, 0.8],
+    [0.0, 0.85, 0.0, 0.8],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(textColor_caution_cbaSetting),
+    QGVAR(textColor_US_caution_cbaSetting),
     "COLOR",
     [LSTRING(textColor_caution_cbaSetting_title), LSTRING(textColor_caution_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [1.0, 1.0, 0.0, 0.8],
+    [0.8, 0.7, 0.0, 0.8],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(textColor_danger_cbaSetting),
+    QGVAR(textColor_US_danger_cbaSetting),
     "COLOR",
     [LSTRING(textColor_danger_cbaSetting_title), LSTRING(textColor_danger_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [1.0, 0.0, 0.0, 0.8],
+    [0.85, 0.0, 0.0, 0.8],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(bootTextColor_cbaSetting),
+    QGVAR(bootTextColor_US_cbaSetting),
     "COLOR",
     [LSTRING(bootTextColor_cbaSetting_title), LSTRING(bootTextColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],

@@ -38,7 +38,8 @@ if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
     _unit setVariable [QGVAR(unitDeltaTemp),0,true];
 
     // Radiation
-    _unit setVariable [QGVAR(unitInRadShield),RAD_COEFF0_DEFAULT,true];
+    _unit setVariable [QGVAR(unitInRadShield),0,true];
+    _unit setVariable [QGVAR(unitRadShieldCoeff),RAD_COEFF0_DEFAULT,true];
     _unit setVariable [QGVAR(unitLifetimeRadLevel),0,true];
 
     // Electrical
@@ -77,7 +78,8 @@ if (_isRespawn) then {
     _unit setVariable [QGVAR(unitDeltaTemp),0,true];
 
     // Radiation
-    _unit setVariable [QGVAR(unitInRadShield),RAD_COEFF0_DEFAULT,true];
+    _unit setVariable [QGVAR(unitInRadShield),0,true];
+    _unit setVariable [QGVAR(unitRadShieldCoeff),RAD_COEFF0_DEFAULT,true];
     _unit setVariable [QGVAR(unitLifetimeRadLevel),0,true];
 
     // Electrical

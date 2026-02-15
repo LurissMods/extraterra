@@ -43,7 +43,7 @@ if (!_unitInArea && {_unitPreviousArea != ATMO_STATE_VACUUM}) then {
     _syncValue = true;
 
     _unit setVariable [QGVAR(unitInAtmo), ATMO_STATE_VACUUM, _syncValue];
-    _unit setVariable [QGVAR(unitInRadShield), RAD_COEFF0_DEFAULT, _syncValue];
+    _unit setVariable [QGVAR(unitInRadShield), 0, _syncValue];
 
     _unit addPrimaryWeaponItem  QUOTE(exterra_vacuumMuzzle);
     _unit addSecondaryWeaponItem  QUOTE(exterra_vacuumMuzzle);
