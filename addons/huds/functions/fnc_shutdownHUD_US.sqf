@@ -20,7 +20,7 @@ if (_unit != ACE_player) exitWith {};
 
 GVAR(hudPFH_fireControl) call CBA_fnc_removePerFrameHandler;
 GVAR(hudPFH_HudGeneral) call CBA_fnc_removePerFrameHandler;
-GVAR(hudPFH_hudInertia) call CBA_fnc_removePerFrameHandler;
+//GVAR(hudPFH_hudInertia) call CBA_fnc_removePerFrameHandler;
 
 GVAR(initPFH_FireControl_Activated) = false;
 GVAR(initPFH_HudGeneral_Activated) = false;

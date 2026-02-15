@@ -1,5 +1,5 @@
-#define COMPONENT weaponSounds
-#define COMPONENT_BEAUTIFIED Weapon Sounds
+#define COMPONENT sounds
+#define COMPONENT_BEAUTIFIED Sounds
 #include "\z\exterra\addons\main\script_mod.hpp"
 
  #define DEBUG_MODE_FULL

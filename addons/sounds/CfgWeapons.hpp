@@ -2,13 +2,13 @@ class CfgWeapons {
 	class ItemCore;
 	class InventoryMuzzleItem_Base_F;
 
-	class exterra_vacuumMuzzle: ItemCore
+	class exterra_sounds_vacuumMuzzle: ItemCore
 	{
 		scope = 2; // Normally is 1, 2 for debugging
 		displayName= "DO NOT REMOVE. WILL BREAK GUN SOUNDS.";
 		//picture="\A3\weapons_F\Data\UI\gear_acca_snds_h_CA.paa";
-        picture="\z\exterra\addons\weapons\sounds\textures\exterra_vacMuzzle_ca.paa";
-		model = "";
+        picture="\z\exterra\addons\sounds\data\data\textures\exterra_sounds_vacuumMuzzle_ca.paa";
+		model = "\z\exterra\addons\sounds\data\data\exterra_sounds_vacuumMuzzle.p3d";
 
         htMin = 1;
 		htMax = 600;
@@ -45,7 +45,7 @@ class CfgWeapons {
             //muzzleEnd = "zaslehPoint"; // memory point in muzzle supressor's model
 			//alternativeFire = "Zasleh2"; // class in cfgWeapons with model of muzzle flash
 
-            muzzleEnd = ""; // memory point in muzzle supressor's model
+            muzzleEnd = "zaslehPoint"; // memory point in muzzle supressor's model
 			alternativeFire = ""; // class in cfgWeapons with model of muzzle flash
 
 			soundTypeIndex		= 1; /// defines the position in sound[] array in the rifle

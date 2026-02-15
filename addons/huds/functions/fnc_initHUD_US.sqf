@@ -18,6 +18,9 @@
 params ["_entity", "_isLocal"];
 
 if (!_isLocal && {!isPlayer _entity}) exitWith {systemChat format ["Unit: %1, Local? %2",_entity,_isLocal]};
+if (GETVAR(_entity,GVAR(initHUD_US_Activated),false)) exitWith {systemChat format ["initHUD_US called twice! Unit: %1",_entity]};
+
+_entity setVariable [QGVAR(initHUD_Activated), true, true];
 
 QGVAR(HUD_US) cutText ["","PLAIN",-1,false];
 

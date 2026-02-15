@@ -9,14 +9,14 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             QUOTE(exterra_main),
-            QUOTE(exterra_weapons),
         };
         units[] = {};
-        weapons[] = {"exterra_vacuumMuzzle"};
+        weapons[] = {QUOTE(exterra_sounds_vacuumMuzzle)};
         VERSION_CONFIG;
     };
 };
 
+#include "CfgEventHandlers.hpp"
 #include "CfgWeapons.hpp"
 
 class cfgSoundShaders {

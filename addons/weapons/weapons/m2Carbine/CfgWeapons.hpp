@@ -100,7 +100,7 @@ class CfgWeapons
 			class MuzzleSlot : MuzzleSlot
 			{
 				linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[] = {"exterra_vacuumMuzzle"};
+				compatibleItems[] = {"exterra_sounds_vacuumMuzzle"};
 				iconPosition[] = { 0.06,0.4 };
 				iconScale = 0.15;
 			};
@@ -142,9 +142,9 @@ class CfgWeapons
 		bullet11[] = { "A3\sounds_f\weapons\shells\5_56\grass_556_03",0.25118864,1,15 };
 		bullet12[] = { "A3\sounds_f\weapons\shells\5_56\grass_556_04",0.25118864,1,15 };
 		soundBullet[] = { "bullet1",0.083,"bullet2",0.083,"bullet3",0.083,"bullet4",0.083,"bullet5",0.083,"bullet6",0.083,"bullet7",0.083,"bullet8",0.083,"bullet9",0.083,"bullet10",0.083,"bullet11",0.083,"bullet12",0.083 };
-		drySound[] = { "z\exterra\addons\weapons\sounds\m2Carbine\exterra_weaponSounds_m2carbine_dryFire.wss",0.4466836,1,10 };
-		reloadMagazineSound[] = { "z\exterra\addons\weapons\sounds\m2Carbine\exterra_weaponSounds_m2carbine_reload.wss",1.0,1,10 };
-		changeFiremodeSound[] = { "z\exterra\addons\weapons\sounds\m2Carbine\exterra_weaponSounds_m2carbine_fireSelect.wss",0.31622776,1,5 };
+		drySound[] = { "z\exterra\addons\sounds\data\weaponSounds\m2Carbine\exterra_weaponSounds_m2carbine_dryFire.wss",0.4466836,1,10 };
+		reloadMagazineSound[] = { "z\exterra\addons\sounds\data\weaponSounds\m2Carbine\exterra_weaponSounds_m2carbine_reload.wss",1.0,1,10 };
+		changeFiremodeSound[] = { "z\exterra\addons\sounds\data\weaponSounds\m2Carbine\exterra_weaponSounds_m2carbine_fireSelect.wss",0.31622776,1,5 };
 		modes[] = { "Semi","Auto","close","short","medium","far_optic1","far_optic2" };
 
 		class Semi : Mode_SemiAuto

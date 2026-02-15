@@ -18,12 +18,11 @@
 params ["_entity", "_isLocal"];
 
 if (!_isLocal && {!isPlayer _entity}) exitWith {};
-if (GVAR(initPFH_hudInertia_Activated)) exitWith {};
+if (GETVAR(_entity,GVAR(initPFH_hudInertia_Activated),false)) exitWith {systemChat format ["initHudInertia called twice! Unit: %1",_entity]};
 
 disableSerialization;
 
-GVAR(initPFH_hudInertia_Activated) = true;
-GVAR(noMovementTimer) = 0;
+_entity setVariable [QGVAR(initPFH_hudInertia_Activated), true, true];
 
 GVAR(hudPFH_hudInertia) = [{
 

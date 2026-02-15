@@ -30,8 +30,8 @@ private _unitInArea = false;
             SETPVAR(_unit,GVAR(unitInRadShield),((_x select 1) select 1));
 
             if (_unitPreviousArea == ATMO_STATE_VACUUM) then {
-                _unit removePrimaryWeaponItem QUOTE(exterra_vacuumMuzzle);
-                _unit removeSecondaryWeaponItem QUOTE(exterra_vacuumMuzzle);
+                _unit removePrimaryWeaponItem QUOTE(exterra_sounds_vacuumMuzzle);
+                _unit removeSecondaryWeaponItem QUOTE(exterra_sounds_vacuumMuzzle);
             };
 
             _syncValue;
@@ -47,8 +47,8 @@ if (!_unitInArea && {_unitPreviousArea != ATMO_STATE_VACUUM}) then {
     _unit setVariable [QGVAR(unitInAtmo), ATMO_STATE_VACUUM, _syncValue];
     _unit setVariable [QGVAR(unitInRadShield), 0, _syncValue];
 
-    _unit addPrimaryWeaponItem  QUOTE(exterra_vacuumMuzzle);
-    _unit addSecondaryWeaponItem  QUOTE(exterra_vacuumMuzzle);
+    _unit addPrimaryWeaponItem QUOTE(exterra_sounds_vacuumMuzzle);
+    _unit addSecondaryWeaponItem QUOTE(exterra_sounds_vacuumMuzzle);
 };
 
 _syncValue;

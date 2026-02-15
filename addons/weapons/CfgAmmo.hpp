@@ -151,6 +151,9 @@ class CfgAmmo
 		dangerRadiusHit = 12; // What it says on tin, for AI
 		suppressionRadiusBulletClose = 6; // What it says on tin, for AI
 		suppressionRadiusHit = 8; // What it says on tin, for AI
+
+        ACE_bulletMass = 0; // In grams
+
         /*
         // Bullet diameter in mm (diameter is a little different from caliber)
         ACE_caliber = 5.69;
@@ -257,8 +260,6 @@ class CfgAmmo
 	// 5.56x55mm
 	class exterra_weapons_5p56x55mmTeflon : exterra_weapons_bulletBase
 	{
-
-
 		hit = 9;
 		indirectHit = 0;
 		indirectHitRange = 0;
@@ -283,6 +284,8 @@ class CfgAmmo
 		dangerRadiusHit = 12;
 		suppressionRadiusBulletClose = 6;
 		suppressionRadiusHit = 8;
+
+        ACE_bulletMass = 4.0176;
 
         class CamShakeExplode
 		{

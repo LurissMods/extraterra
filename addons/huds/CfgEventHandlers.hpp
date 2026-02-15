@@ -27,7 +27,6 @@ class Extended_Killed_EventHandlers {
     };
 };
 
-
 class Extended_Local_EventHandlers {
     class CAManBase {
         class ADDON {
