@@ -15,6 +15,10 @@
 * Public: No
 */
 
+params ["_entity", "_isLocal"];
+
+if (!_isLocal && {!isPlayer _entity}) exitWith {systemChat format ["Unit: %1, Local? %2",_entity,_isLocal]};
+
 QGVAR(HUD_US) cutText ["","PLAIN",-1,false];
 
 QGVAR(HUD_US) cutRsc [QGVAR(HUD_US), "PLAIN", -1, false, false];
@@ -571,5 +575,83 @@ GVAR(hudSquad_datalink9_text_US) = [uiNamespace getVariable QGVAR(hudSquad_datal
 (GVAR(hudSquad_datalink9_text_US)#0) ctrlSetFade 1;
 (GVAR(hudSquad_datalink9_text_US)#0) ctrlCommit 0;
 
+GVAR(hudElementsArray_US) = [
+    (GVAR(hudOutline_US)#0),
+    (GVAR(hudLines_US)#0),
+    (GVAR(hudText_US)#0),
+    (GVAR(hudAirProgress_US)#0),
+    (GVAR(hudBattProgress_US)#0),
+    (GVAR(hudExtAtm_text_US)#0),
+    (GVAR(hudEnvironRad_text_US)#0),
+    (GVAR(hudRadTotal_text_US)#0),
+    (GVAR(hudTempInt_text_US)#0),
+    (GVAR(hudTempExt_text_US)#0),
+    (GVAR(hudTmeDangTemp_text_US)#0),
+    (GVAR(hudTempWatt_text_US)#0),
+    (GVAR(hudBearing_text_US)#0),
+    (GVAR(hudGrid_text_US)#0),
+    (GVAR(hudRange_text_US)#0),
+    (GVAR(hudAirEstTime_text_US)#0),
+    (GVAR(hudBattEstTime_text_US)#0),
+    (GVAR(hudMagCount_text_US)#0),
+    (GVAR(hudFireMode_text_US)#0),
+    (GVAR(hudWeaponZero_text_US)#0),
+    (GVAR(hudGrenadeCount_text_US)#0),
+    (GVAR(hudWeaponPrimary_US)#0),
+    (GVAR(hudWeaponSecondary_US)#0),
+    (GVAR(hudWeaponLauncher_US)#0),
+    (GVAR(hudWeaponGrenade_US)#0),
+
+    (GVAR(hudSquad_name0_text_US)#0),
+    (GVAR(hudSquad_hr0_text_US)#0),
+    (GVAR(hudSquad_bp0_text_US)#0),
+    (GVAR(hudSquad_datalink0_text_US)#0),
+
+    (GVAR(hudSquad_name1_text_US)#0),
+    (GVAR(hudSquad_hr1_text_US)#0),
+    (GVAR(hudSquad_bp1_text_US)#0),
+    (GVAR(hudSquad_datalink1_text_US)#0),
+
+    (GVAR(hudSquad_name2_text_US)#0),
+    (GVAR(hudSquad_hr2_text_US)#0),
+    (GVAR(hudSquad_bp2_text_US)#0),
+    (GVAR(hudSquad_datalink2_text_US)#0),
+
+    (GVAR(hudSquad_name3_text_US)#0),
+    (GVAR(hudSquad_hr3_text_US)#0),
+    (GVAR(hudSquad_bp3_text_US)#0),
+    (GVAR(hudSquad_datalink3_text_US)#0),
+
+    (GVAR(hudSquad_name4_text_US)#0),
+    (GVAR(hudSquad_hr4_text_US)#0),
+    (GVAR(hudSquad_bp4_text_US)#0),
+    (GVAR(hudSquad_datalink4_text_US)#0),
+
+    (GVAR(hudSquad_name5_text_US)#0),
+    (GVAR(hudSquad_hr5_text_US)#0),
+    (GVAR(hudSquad_bp5_text_US)#0),
+    (GVAR(hudSquad_datalink5_text_US)#0),
+
+    (GVAR(hudSquad_name6_text_US)#0),
+    (GVAR(hudSquad_hr6_text_US)#0),
+    (GVAR(hudSquad_bp6_text_US)#0),
+    (GVAR(hudSquad_datalink6_text_US)#0),
+
+    (GVAR(hudSquad_name7_text_US)#0),
+    (GVAR(hudSquad_hr7_text_US)#0),
+    (GVAR(hudSquad_bp7_text_US)#0),
+    (GVAR(hudSquad_datalink7_text_US)#0),
+
+    (GVAR(hudSquad_name8_text_US)#0),
+    (GVAR(hudSquad_hr8_text_US)#0),
+    (GVAR(hudSquad_bp8_text_US)#0),
+    (GVAR(hudSquad_datalink8_text_US)#0),
+
+    (GVAR(hudSquad_name9_text_US)#0),
+    (GVAR(hudSquad_hr9_text_US)#0),
+    (GVAR(hudSquad_bp9_text_US)#0),
+    (GVAR(hudSquad_datalink9_text_US)#0)
+
+];
 
 //["test", true, "staminaBar", false] call ace_ui_fnc_setElementVisibility;

@@ -9,6 +9,16 @@ class CfgWeapons {
 		//picture="\A3\weapons_F\Data\UI\gear_acca_snds_h_CA.paa";
         picture="\z\exterra\addons\weapons\sounds\textures\exterra_vacMuzzle_ca.paa";
 		model = "";
+
+        htMin = 1;
+		htMax = 600;
+		afMax = 0;
+		mfMax = 0;
+		mFact = 1;
+		tBody = 100;
+
+        inertia = 1;
+
 		class ItemInfo: InventoryMuzzleItem_Base_F
         {
             mass = 0;
@@ -32,8 +42,11 @@ class CfgWeapons {
 				cost			= 1;
 			};
 
-			muzzleEnd 			= ""; // memory point in muzzle supressor's model
-			alternativeFire 	= "";  // class in cfgWeapons with model of muzzle flash
+            //muzzleEnd = "zaslehPoint"; // memory point in muzzle supressor's model
+			//alternativeFire = "Zasleh2"; // class in cfgWeapons with model of muzzle flash
+
+            muzzleEnd = ""; // memory point in muzzle supressor's model
+			alternativeFire = ""; // class in cfgWeapons with model of muzzle flash
 
 			soundTypeIndex		= 1; /// defines the position in sound[] array in the rifle
 

@@ -18,6 +18,8 @@
 params ["_unit", ["_isRespawn", true]];
 TRACE_2("initUnit",_unit,_isRespawn);
 
+if (!local _unit) exitWith {};
+
 if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
 
     // First time set up on mission init for each unit
@@ -56,8 +58,6 @@ if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
     _unit addEventHandler ["Respawn", {[(_this select 0), true] call FUNC(initUnit)}];
 };
 
-if (!local _unit) exitWith {};
-
 if (_isRespawn) then {
     TRACE_1("reseting all vars on respawn",_isRespawn); // note: state is handled by ace_medical_statemachine_fnc_resetStateDefault
 
@@ -91,7 +91,6 @@ if (_isRespawn) then {
     _unit setVariable [QGVAR(unitSuitBools),[false,false,false,false],true];
     _unit setVariable [QGVAR(unitSuitFaction),NO_SUIT_FACTION,true];
     _unit setVariable [QGVAR(unitSuitData),[DEFAULT_SUIT_OFF_AIR_RESERVE,DEFAULT_SUIT_MOBILITY,DEFAULT_SUIT_BLACK_BODY,DEFAULT_SUIT_SOLAR_ABSORB,DEFAULT_SUIT_THICKNESS],true];
-
 };
 
 [{

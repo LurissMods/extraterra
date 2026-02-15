@@ -18,6 +18,7 @@ PREP(updateConsumableDisplay);
 PREP(initHUD_US);
 PREP(positionsHUD_US);
 PREP(bootHUD_US);
+PREP(shutdownHUD_US);
 
 
 PREP(terminateHudInteria);

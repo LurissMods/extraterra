@@ -15,14 +15,17 @@
 * Public: No
 */
 
-disableSerialization;
-if (GVAR(hudHandlerAdded)) exitWith {};
+params ["_entity", "_isLocal"];
 
-//LRSS_MJOLNIR_hudEventHandlerAdded = true;
-GVAR(hudHandlerAdded) = true;
+if (!_isLocal && {!isPlayer _entity}) exitWith {};
+if (GVAR(initPFH_hudInertia_Activated)) exitWith {};
+
+disableSerialization;
+
+GVAR(initPFH_hudInertia_Activated) = true;
 GVAR(noMovementTimer) = 0;
 
-GVAR(hudInteriaHandle) = [{
+GVAR(hudPFH_hudInertia) = [{
 
     // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Hud inertia calculations ----------------------------------------------------------------------------------------------------------------------------------------------------

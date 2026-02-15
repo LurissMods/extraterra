@@ -1,17 +1,18 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {};
 if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
 
 ["CBA_settingsInitialized", {
     //if (!GVAR(masterToggle)) exitWith {};
 
     //call FUNC(playerSuitCheckHandler); Redundant - moved check to statemachine
-    call FUNC(initHUD_US);
+    //call FUNC(initHUD_US);
     /*for "_i" from 0 to 0 do {
         [_i] call FUNC(hudInertia);
+    };
+    if (hasInterface) then {
+        call FUNC(initPFH_HudInertia);
     };*/
-    call FUNC(initPFH_HudInertia);
 
     ["CBA_SettingChanged", {
         params ["_name", "_value"];

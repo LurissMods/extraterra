@@ -10,6 +10,7 @@ class exterra_lifesupport_statemachine {
     };
     class SuitActivated {
         onStateEntered = QFUNC(startSuitBootup);
+        onStateLeaving = QFUNC(startSuitShutdown);
         onState = QFUNC(handleStateDefault);
         class SuitDeactivation {
             targetState = "Default";
