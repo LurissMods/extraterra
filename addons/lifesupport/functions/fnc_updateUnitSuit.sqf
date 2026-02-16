@@ -1,18 +1,20 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Simulates the local temperature of the environment surrounding the player. Returns a ratio between 0 and 1 (0 means min temp, 1 means max temp).
+* Checks whether or not a unit is wearing a space suit, and the faction that suit belongs to
 *
 * Arguments:
-* _moonSurfaceTemp (Array -  [minTemp, maxTemp]). In Kelvin.
+* [_unit, _syncValue] [<UNIT>, <BOOL>]
+* _unit - Current unit.
+* _syncValue - Whether or not to sync the current update with the server
 *
 * Return Value:
-* _tempAroundPlayer
+* None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_localTemperature;
+* [] call exterra_lifeSupport_fnc_updateUnitSuit;
 *
-* Public: Yes
+* Public: No
 */
 
 params ["_unit", "_syncValue"];

@@ -1,18 +1,20 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Updates the current radiation shielding and lifetime radiation exposure of a unit.
 *
 * Arguments:
-* None
+* [_unit, _syncValue] [<UNIT>, <BOOL>]
+* _unit - Current unit.
+* _syncValue - Whether or not to sync the current update with the server
 *
 * Return Value:
-* _currentLifetimeExposure <NUMBER>
+* None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_thermalSimulation;
+* [] call exterra_lifeSupport_fnc_updateUnitRadiation;
 *
-* Public: Yes
+* Public: No
 */
 
 params ["_unit","_syncValue"];

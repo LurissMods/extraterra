@@ -4,17 +4,19 @@
 * Checks if unit is in direct sunlight. Returns thermal heating in watts.
 *
 * Arguments:
+* [_isUnitInSun, _suitSolarAbsorptance, _unit] [<NUMBER>, <NUMBER>, <UNIT>]
 * _isUnitInSun - Value between 0 and 1, generally behaves like a boolean.
 * _suitSolarAbsorptance - How well a suit absorbs solar energy, ratio from 0 to 1
-* _unit - Can be a player or AI unit
+* _unit - Current unit.
 *
 * Return Value:
+* [_solarHeatingPower] [<NUMBER>]
 * _solarHeatingPower - Thermal heating of unit from sunlight. In Watts
 *
 * Example:
 * [] call exterra_lifeSupport_fnc_updateSolarIrradiance;
 *
-* Public: Yes
+* Public: No
 */
 
 params ["_isUnitInSun","_suitSolarAbsorptance","_unit"];

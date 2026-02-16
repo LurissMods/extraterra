@@ -1,16 +1,17 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Main loop for life support calculations and HUD updates. Run on every local unit.
 *
 * Arguments:
-* None
+* [_unit] [<UNIT>]
+* _unit - nth Unit from an array of all units local to a client. Called by the statemachine (check lifesupport_statemachine)
 *
 * Return Value:
-* None
+* [true] [<BOOL>] - Currently not used. Used to check if function has run or not
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [_unit] call exterra_lifeSupport_fnc_handleUnitLifesupport;
 *
 * Public: No
 */

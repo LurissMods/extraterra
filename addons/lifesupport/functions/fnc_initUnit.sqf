@@ -1,16 +1,18 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Initalizes life support variables for all units.
 *
 * Arguments:
-* None
+* [_unit, _isRespawn] [<UNIT>, <BOOL>]
+* _unit - Current unit
+* _isRespawn - Whether or not this is the first time a unit has spawned
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_initUnit;
 *
 * Public: No
 */

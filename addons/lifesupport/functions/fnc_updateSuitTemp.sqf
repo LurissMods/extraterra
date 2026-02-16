@@ -1,18 +1,21 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Simulates the body's core tempeature. Note that this function uses the ace_advanced_fatigue_fnc_getMetabolicCosts function from ACE.
+* Simulates internal suit temperature for each unit.
 *
 * Arguments:
-* None
+* [_unit, _deltaT, _syncValue] [<UNIT>, <NUMBER>, <BOOL>]
+* _unit - Current unit.
+* _deltaT - Main loop is called at a variable rate e.g. 1.01 sec, 1.03 sec, this corrects for that
+* _syncValue - Whether or not to sync the current update with the server
 *
 * Return Value:
-* [_coreTemp, _totalRadiatedHeatAproxWattage] [<NUMBER>,<NUMBER>] - First is body core temperature in Kelvin, second is radiated body heat in watts.
+* None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_thermalSimulation;
+* [] call exterra_lifeSupport_fnc_updateSuitTemp;
 *
-* Public: Yes
+* Public: No
 */
 
 params ["_unit","_deltaT","_syncValue"];

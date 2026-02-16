@@ -1,19 +1,23 @@
 #include "..\script_component.hpp"
 /*
- * Author: Luriss
- * Simulates the local temperature of the environment surrounding the player. Returns a ratio between 0 and 1 (0 means min temp, 1 means max temp).
- *
- * Arguments:
- * _moonSurfaceTemp (Array -  [minTemp, maxTemp]). In Kelvin.
- *
- * Return Value:
- * _tempAroundPlayer
- *
- * Example:
- * [] call exterra_lifeSupport_fnc_localTemperature;
- *
- * Public: Yes
- */
+* Author: Luriss
+* Simulates the local temperature of the environment surrounding the player. Returns a ratio between 0 and 1 (0 means min temp, 1 means max temp).
+*
+* Arguments:
+* [_unit, _moonSurfaceTemp, _syncValue] [<UNIT>,<ARRAY>,<BOOL>]
+* _unit - Current unit.
+* _moonSurfaceTemp - Moon surface temp in Kelvin [Lowest possible value, Highest possible value]
+* _syncValue - Whether or not to sync the current update with the server
+*
+* Return Value:
+* [_tempAroundUnit] [<NUMBER>]
+* _tempAroundUnit - Current environmental temperature around the unit in Kelvin
+*
+* Example:
+* [] call exterra_lifeSupport_fnc_updateLocalTemp;
+*
+* Public: No
+*/
 
 params ["_unit", "_moonSurfaceTemp","_syncValue"];
 

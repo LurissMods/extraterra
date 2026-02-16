@@ -1,16 +1,19 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Updates the current power draw and remaining battery capacity for a unit.
 *
 * Arguments:
-* None
+* [_unit, _deltaT, _syncValue] [<UNIT>, <NUMBER>, <BOOL>]
+* _unit - Current unit.
+* _deltaT - Main loop is called at a variable rate e.g. 1.01 sec, 1.03 sec, this corrects for that
+* _syncValue - Whether or not to sync the current update with the server
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_updateBattery;
 *
 * Public: No
 */
