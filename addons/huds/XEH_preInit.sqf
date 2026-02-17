@@ -5,7 +5,7 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 
-GVAR(toggleBootUp_cbaSetting);
+/*GVAR(toggleBootUp_cbaSetting);
 GVAR(bootUpSpeed_cbaSetting);
 GVAR(tempMeasurementSystem_cbaSetting);
 GVAR(whitelistHelmetsUS_cbaSetting);
@@ -48,7 +48,7 @@ GVAR(bootTextColor_cbaSetting);
 GVAR(textColor_cbaSetting);
 GVAR(textColor_safe_cbaSetting);
 GVAR(textColor_caution_cbaSetting);
-GVAR(textColor_danger_cbaSetting);
+GVAR(textColor_danger_cbaSetting);*/
 
 // Config Global Vars //
 // Config Sounds

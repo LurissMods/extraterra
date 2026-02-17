@@ -1,26 +1,29 @@
 #include "..\script_component.hpp"
 /*
- * Author: Luriss
- * Checks if player is in direct sunlight. Returns thermal heating in watts.
- *
- * Arguments:
- * None
- *
- * Return Value:
- * None
- *
- * Example:
- * [] call exterra_lifeSupport_fnc_mainLoop
- *
- * Public: No
- */
+* Author: Luriss
+* Checks if player is in direct sunlight. Returns thermal heating in watts.
+*
+* Arguments:
+* None
+*
+* Return Value:
+* None
+*
+* Example:
+* [] call exterra_lifeSupport_fnc_mainLoop
+*
+* Public: No
+*/
 
 if (cameraView != "GUNNER" && {(currentWeapon ACE_player != "") && {isNull objectParent ACE_player}}) then { //isNull objectParent player = checks if player is in vehicle
+
     private _icon = GVAR(fireControl_crosshairIcon_cbaSetting); // Make this factional
-    private _colour = GVAR(fireControl_crosshairColor_cbaSetting);
+    private _color = +GVAR(fireControl_crosshairColor_cbaSetting);
     private _vectorMaxCheck = GVAR(fireControl_crosshairMaxRange_cbaSetting);
+
     private _datalink = nil;
     private _distanceToTarget = nil;
+    private _unitRelationToPlayer = nil;
     private _sidePlayer = side ACE_player;
     private _hostileCheck = _sidePlayer getFriend (side cursorObject);
 
@@ -40,31 +43,58 @@ if (cameraView != "GUNNER" && {(currentWeapon ACE_player != "") && {isNull objec
     private _cursorFade = linearConversion [0,GVAR(fireControl_crosshairMaxRange_cbaSetting),_distanceToTarget,GVAR(fireControl_crosshairMaxOpacity_cbaSetting),GVAR(fireControl_crosshairMinOpacity_cbaSetting)];
 
     switch GVAR(fireControl_datalink_cbaSetting) do {
-    case 0: {_datalink = _sidePlayer};
-    case 1: {_datalink = side group ACE_player};
-    case 2: {_datalink = ACE_player};
+        case 0: {_datalink = _sidePlayer};
+        case 1: {_datalink = side group ACE_player};
+        case 2: {_datalink = ACE_player};
+    };
+
+    if (_hostileCheck < 0.6) then {
+        _unitRelationToPlayer = "ENEMY";
+    } else {
+        if (side cursorObject == civilian) then {
+            _unitRelationToPlayer = "NEUTRAL";
+        } else {
+            _unitRelationToPlayer = "FRIENDLY";
+        };
     };
 
     if (!isNull cursorObject) then {
         if (lifeState cursorObject == "INCAPACITATED" OR lifeState cursorObject == "DEAD") then {
-            _colour = GVAR(fireControl_crosshairColor_cbaSetting);
+            _color = +GVAR(fireControl_crosshairColor_cbaSetting);
         } else {
-            if (side cursorObject == civilian && {(_datalink knowsAbout cursorObject) > 0.1}) then {
-                _colour = GVAR(fireControl_neutralColor_cbaSetting);
-            } else {
-                if (_hostileCheck < 0.6 && {(_datalink knowsAbout cursorObject) > 0.1}) then {
-                    _colour = GVAR(fireControl_enemyColor_cbaSetting);
-                } else {
-                    if (side cursorObject == _sidePlayer OR _hostileCheck > 0.6 && {(_datalink knowsAbout cursorObject) > 0.1}) then {
-                        _colour = GVAR(fireControl_friendColor_cbaSetting);
-                    } else {
-                        _colour = GVAR(fireControl_crosshairColor_cbaSetting);
+            if ((_datalink knowsAbout cursorObject) > KNOWS_ABOUT_IFF_THRESHOLD) then {
+                switch _unitRelationToPlayer do {
+                    case "ENEMY" : {
+                        _color = +GVAR(fireControl_enemyColor_cbaSetting);
+                    };
+                    case "NEUTRAL" : {
+                        _color = +GVAR(fireControl_neutralColor_cbaSetting);
+                    };
+                    case "FRIENDLY" : {
+                        _color = +GVAR(fireControl_friendColor_cbaSetting);
                     };
                 };
+            } else {
+                _color = +GVAR(fireControl_crosshairColor_cbaSetting);
             };
+
+
+            /*if (side cursorObject == civilian && {(_datalink knowsAbout cursorObject) > 0.1}) then {
+                _color = GVAR(fireControl_neutralColor_cbaSetting);
+            } else {
+                if (_hostileCheck < 0.6 && {(_datalink knowsAbout cursorObject) > 0.1}) then {
+                    _color = +GVAR(fireControl_enemyColor_cbaSetting);
+                } else {
+                    if (side cursorObject == _sidePlayer OR _hostileCheck > 0.6 && {(_datalink knowsAbout cursorObject) > 0.1}) then {
+                        _color = GVAR(fireControl_friendColor_cbaSetting);
+                    } else {
+                        _color = GVAR(fireControl_crosshairColor_cbaSetting);
+                    };
+                };
+            };*/
         };
     };
 
-    _colour set [3,_cursorFade];
-    drawIcon3D [_icon,_colour,_vectorEnd,1,1,0,"",0,0,"RobotoCondensed","center",false];
+    _color set [3,_cursorFade];
+    drawIcon3D [_icon,_color,_vectorEnd,1,1,0,"",0,0,"RobotoCondensed","center",false];
 };
