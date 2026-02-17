@@ -1,5 +1,5 @@
-#define COMPONENT bullets
-#define COMPONENT_BEAUTIFIED Bullets
+#define COMPONENT particle_effects
+#define COMPONENT_BEAUTIFIED Particle Effects
 #include "\z\exterra\addons\main\script_mod.hpp"
 
  #define DEBUG_MODE_FULL

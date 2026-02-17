@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="particle_effects">
+        <Key ID="particle_effects">
+            <English>particle_effects</English>
+        </Key>
+    </Package>
+</Project>

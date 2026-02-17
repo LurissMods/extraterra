@@ -223,7 +223,7 @@ class CfgAmmo
 		hit = 5;
 		indirectHit = 0;
 		indirectHitRange = 0;
-		cartridge = "exterra_bullets_FxCartridge_10x19mm";
+		cartridge = "exterra_particle_effects_FxCartridge_10x19mm";
 		cost = 100;
 		typicalSpeed = 380;
 		airFriction = 0;
@@ -263,7 +263,7 @@ class CfgAmmo
 		hit = 9;
 		indirectHit = 0;
 		indirectHitRange = 0;
-		cartridge = "exterra_bullets_FxCartridge_5p56x55mm";
+		cartridge = "exterra_particle_effects_FxCartridge_5p56x55mm";
 		cost = 1;
 		typicalSpeed = 1348;
 		airFriction = -0.0012;
@@ -303,7 +303,7 @@ class CfgAmmo
 		};
         class HitEffects
         {
-            hitGroundSoft = "exterra_bullets_impactRegolith1";
+            hitGroundSoft = "exterra_particle_effects_impactRegolith1";
 			//hitGroundRed = "ImpactEffectsRed";
 			//hitGroundHard = "ImpactEffectsHardGround";
         };
@@ -320,7 +320,7 @@ class CfgAmmo
 		hit = 12;
 		indirectHit = 0;
 		indirectHitRange = 0;
-		cartridge = "exterra_bullets_FxCartridge_6p8x51mm";
+		cartridge = "exterra_particle_effects_FxCartridge_6p8x51mm";
 		cost = 100;
 		typicalSpeed = 980;
 		airFriction = 0;

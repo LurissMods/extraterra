@@ -1,7 +1,7 @@
 class CfgCloudlets {
     class Default;
 
-    class exterra_bullets_muzzleRefract : Default
+    class exterra_particle_effects_muzzleRefract : Default
     {
         interval = 0.012;
         circleRadius = 0;
@@ -44,7 +44,7 @@ class CfgCloudlets {
         randomDirectionPeriodVar = 0;
         randomDirectionIntensityVar = 0;
     };
-    class exterra_bullets_muzzleDust : Default
+    class exterra_particle_effects_muzzleDust : Default
     {
         interval = 0.01;
         circleRadius = 0;
@@ -88,7 +88,7 @@ class CfgCloudlets {
         ignoreWind = "true";
     };
 
-    class exterra_bullets_regolithImpactRocks : Default
+    class exterra_particle_effects_regolithImpactRocks : Default
     {
         interval = "0.01";
 		circleRadius = 0;
@@ -123,7 +123,7 @@ class CfgCloudlets {
 		randomDirectionIntensityVar = 0;
     };
 
-    class exterra_bullets_regolithImpactDust : Default
+    class exterra_particle_effects_regolithImpactDust : Default
     {
         interval = "0.008";
 		circleRadius = 0;

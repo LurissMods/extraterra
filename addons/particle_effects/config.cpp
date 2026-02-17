@@ -9,15 +9,16 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             QUOTE(exterra_main),
-            QUOTE(exterra_weapons),
         };
         units[] = {};
         weapons[] = {};
+        vehicles[] = {QUOTE(exterra_particle_effects_FxCartridge_5p56x55mm)};
         VERSION_CONFIG;
     };
 };
 
-#include "CfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"
 
 #include "CfgCloudlets.hpp"
+#include "CfgVehicles.hpp"
 #include "complexEffects.hpp"

@@ -87,7 +87,7 @@ class CfgWeapons
 		{
 			class FirstEffect
 			{
-				effectName = "exterra_bullets_vaccumGunEffects";
+				effectName = "exterra_particle_effects_vaccumGunEffects";
 				positionName = "Usti hlavne";
 				directionName = "Konec hlavne";
 			};
