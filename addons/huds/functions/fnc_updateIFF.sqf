@@ -52,7 +52,6 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
             continue;
         };
 
-        systemChat str (_datalink knowsAbout _nearbyUnit);
         if ((_datalink knowsAbout _nearbyUnit) < KNOWS_ABOUT_IFF_THRESHOLD) then {
             continue;
         };
