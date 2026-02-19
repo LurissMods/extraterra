@@ -362,7 +362,7 @@
     "COLOR",
     [LSTRING(fireControl_crosshairColor_cbaSetting_title), LSTRING(fireControl_crosshairColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    [0.7, 1, 1, 1],
+    [0.5, 0.84062, 1, 0.6],
     0,
     {},
     false

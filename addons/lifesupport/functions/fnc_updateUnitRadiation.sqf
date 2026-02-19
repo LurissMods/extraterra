@@ -25,7 +25,7 @@ private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour
 private _currentLifetimeExposure = GET_LIFETIME_RAD(_unit);
 private _shieldCoeff = nil;
 
-switch GET_RAD_SHIELD_CASE(_unit) do {
+switch (GET_RAD_SHIELD_CASE(_unit)) do {
     case 0: {
         _shieldCoeff = GVAR(radShield_coeff0);
     };

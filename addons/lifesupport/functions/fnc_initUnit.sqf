@@ -47,8 +47,8 @@ if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
     _unit setVariable [QGVAR(unitLifetimeRadLevel),0,true];
 
     // Electrical
-    _unit setVariable [QGVAR(unitCurrentBatteryCapacity),100000,true]; // 100000 temp value until battery system implemented
-    _unit setVariable [QGVAR(unitMaxBatteryCapacity),100000,true]; // 100000 temp value until battery system implemented
+    _unit setVariable [QGVAR(unitBatteryReserve),100000,true]; // 100000 temp value until battery system implemented
+    _unit setVariable [QGVAR(unitBatteryMaxReserve),100000,true]; // 100000 temp value until battery system implemented
     _unit setVariable [QGVAR(unitPowerDraw),0,true];
 
     // Suit

@@ -27,9 +27,9 @@ private _secondaryIconAddress = nil;
 private _launcherIconAddress = nil;
 private _grenadeIconAddress = nil;
 
-switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
+switch (GET_SUIT_FACTION(ACE_player)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateWeaponIcons)";
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
     };
     case US_SUIT_FACTION: {
         _primaryIconAddress = (GVAR(hudWeaponPrimary_US)#0);

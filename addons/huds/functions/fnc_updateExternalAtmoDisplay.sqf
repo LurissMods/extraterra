@@ -17,7 +17,7 @@
 
 private _extAtmText = nil;
 
-switch GET_SUIT_FACTION(ACE_player) do {
+switch (GET_SUIT_FACTION(ACE_player)) do {
     case NO_SUIT_FACTION: {
         ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
     };
@@ -27,7 +27,7 @@ switch GET_SUIT_FACTION(ACE_player) do {
 };
 
 //_atmAroundPlayer = (GETVAR(ACE_player,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_ERROR));
-switch GET_ATMO(ACE_player) do {
+switch (GET_ATMO(ACE_player)) do {
     case 0: {
         _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>VACUUM</t>";
         _extAtmText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);

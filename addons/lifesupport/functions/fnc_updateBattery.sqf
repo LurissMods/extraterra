@@ -24,7 +24,7 @@ params ["_unit","_deltaT","_syncValue"];
 //private _currentBatteryCapacity = GETVAR(_unit,GVAR(unitMaxBatteryCapacity),nil);
 //private _currentBatteryCapacity = GETVAR(_unit,GVAR(unitCurrentBatteryCapacity),nil);
 //private _unitSuitFaction = GET_SUIT_FACTION(_unit);
-private _currentBatteryCapacity = GET_BATTERY_RESERVE_MAX(_unit);
+//private _currentBatteryCapacity = GET_BATTERY_RESERVE_MAX(_unit);
 private _currentBatteryCapacity = GET_BATTERY_RESERVE(_unit);
 
 private _suitTheveninVoltage = 0;
@@ -38,7 +38,7 @@ private _currentPumpPowerDraw = 0;
 
 if (GET_SUIT_FACTION(_unit) == NO_SUIT_FACTION) exitWith {};
 
-switch GET_SUIT_FACTION(_unit) do {
+switch (GET_SUIT_FACTION(_unit)) do {
     case NO_SUIT_FACTION: {
         ERROR_1("Suit faction undefined! Unit: %1",_unit);
     };

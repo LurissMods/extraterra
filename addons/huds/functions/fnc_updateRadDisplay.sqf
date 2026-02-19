@@ -25,7 +25,7 @@ private _shieldCoeff = GET_RAD_SHIELD_COEFF(ACE_player);
 private _currentLifetimeExposure = GET_LIFETIME_RAD(ACE_player);
 private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour);
 
-switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
+switch (GET_SUIT_FACTION(ACE_player)) do {
     case NO_SUIT_FACTION: {
         ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
     };
