@@ -24,8 +24,10 @@ private _sigma = HUMAN_SURFACE_AREA*HUMAN_SKIN_BLACKBODY_EMISSIVE*STEFAN_BOLTZMA
 private _currentMetabolicHeatWattage = 0;
 private _deltaTemp = 0;
 
-private _coreTemp = GETVAR(_unit,GVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP);
-private _suitTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
+//private _coreTemp = GETVAR(_unit,GVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP);
+//private _suitTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
+private _coreTemp = GET_CORE_TEMP(_unit);
+private _suitTemp = GET_SUIT_TEMP(_unit);
 private _bodyHomeostatisCapacity = GVAR(homeostasisPower); // Defined in CBA settings
 
 // Note: I'm repurposing the first part of the ace_advanced_fatigue_fnc_mainloop function so I can get the params for the ace_advanced_fatigue_fnc_getMetabolicCosts function. The marked lines are from here: https://github.com/acemod/ACE3/blob/master/addons/advanced_fatigue/functions/fnc_mainLoop.sqf
@@ -114,5 +116,7 @@ if (_netHeatPower == 0 && {(_coreTemp > HUMAN_NATURAL_CORETEMP) && {(abs( _coreT
     };
 };
 
-_unit setVariable [QGVAR(unitCoreTemp),_coreTemp,_syncValue];
-_unit setVariable [QGVAR(unitRadiatedCoreTemp),_totalRadiatedCoreHeat,_syncValue];
+//_unit setVariable [QGVAR(unitCoreTemp),_coreTemp,_syncValue];
+//_unit setVariable [QGVAR(unitRadiatedCoreTemp),_totalRadiatedCoreHeat,_syncValue];
+SET_CORE_TEMP(_unit,_coreTemp,_syncValue);
+SET_RADIATED_CORE_HEAT(_unit,_totalRadiatedCoreHeat,_syncValue);

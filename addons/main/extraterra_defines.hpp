@@ -7,7 +7,6 @@
 #define KELVIN_TO_CELCIUS(input) (input - 273.15)
 #define KELVIN_TO_FAHRENHEIT(input) (input - 273.15)*(9/5) + 32
 #define CELCIUS_TO_KELVIN(input) (input + 273.15)
-#define SYS_STR(input) (systemChat str input) // I like to use systemChat *a lot* for live debugging. Hopefully that's not terrible practice
 
 // HUD macros
 #define NOT_IN_VEHICLE(unit) (isNull objectParent unit)
@@ -17,6 +16,73 @@
 #define BREATHING_PAIN_FUNCTION(coeff,pain) (coeff*(0.00052652*(exp(7.26135*pain))))
 #define BREATHING_VO2_FUNCTION(respRate,suitMobility) ((respRate^3 * (linearConversion[0,1,suitMobility,110.756,138.975])) + (respRate^2 * -(linearConversion[0,1,suitMobility,127.42,222.781])) + (respRate * (linearConversion[0,1,suitMobility,61.1643,128.306])) + 3.5)
 #define THERMAL_GENERALIZED_CONVECTION_COEFF_FUNCTION(pressure) (0 max ((1.13285*((pressure/PRESSURE_PA_1ATM)^3)) - (0.798924*((pressure/PRESSURE_PA_1ATM)^2)) + (4.67225*(pressure/PRESSURE_PA_1ATM)) - 0.0064124)) // Not used, just in case I add variable pressure
+
+// Lifesupport Macros
+//  ------------------------------------ Get var ------------------------------------
+//  --- Air ---
+#define GET_ATMO(unit) unit getVariable [QEGVAR(lifesupport,unitInAtmo),nil]
+#define GET_AIR_RESERVE(unit) unit getVariable [QEGVAR(lifesupport,unitAirReserve),nil]
+#define GET_AIR_RESERVE_MAX(unit) unit getVariable [QEGVAR(lifesupport,unitAirMaxReserve),nil]
+#define GET_AIR_CONSUMPTION(unit) unit getVariable [QEGVAR(lifesupport,unitAirConsumption),nil]
+
+//  --- Radiation ---
+#define GET_RAD_SHIELD_CASE(unit) unit getVariable [QEGVAR(lifesupport,unitRadShieldCase),nil]
+#define GET_RAD_SHIELD_COEFF(unit) unit getVariable [QEGVAR(lifesupport,unitRadShieldCoeff),nil]
+#define GET_LIFETIME_RAD(unit) unit getVariable [QEGVAR(lifesupport,unitLifetimeRadLevel),nil]
+
+//  --- Suit ---
+#define GET_SUIT_ACTIVATED(unit) unit getVariable [QEGVAR(lifesupport,suitActivated),nil]
+#define GET_SUIT_FACTION(unit) unit getVariable [QEGVAR(lifesupport,unitSuitFaction),nil]
+#define GET_SUIT_BOOLS(unit) unit getVariable [QEGVAR(lifesupport,unitSuitBools),nil]
+#define GET_SUIT_DATA(unit) unit getVariable [QEGVAR(lifesupport,unitSuitData),nil]
+
+//  --- Electrical ---
+#define GET_POWER_DRAW(unit) unit getVariable [QEGVAR(lifesupport,unitPowerDraw),nil]
+#define GET_BATTERY_RESERVE(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryReserve),nil]
+#define GET_BATTERY_RESERVE_MAX(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryMaxReserve),nil]
+
+//  --- Thermal ---
+#define GET_CORE_TEMP(unit) unit getVariable [QEGVAR(lifesupport,unitCoreTemp),nil]
+#define GET_SUIT_TEMP(unit) unit getVariable [QEGVAR(lifesupport,unitSuitTemp),nil]
+#define GET_ENVIRONMENT_TEMP(unit) unit getVariable [QEGVAR(lifesupport,unitEnvTemp),nil]
+#define GET_RADIATED_CORE_HEAT(unit) unit getVariable [QEGVAR(lifesupport,unitRadiatedCoreTemp),nil]
+#define GET_NET_HEAT(unit) unit getVariable [QEGVAR(lifesupport,unitNetHeatPwr),nil]
+#define GET_DELTA_TEMP(unit) unit getVariable [QEGVAR(lifesupport,unitDeltaTemp),nil]
+#define GET_ACTIVE_COOL(unit) unit getVariable [QEGVAR(lifesupport,unitActiveThermalCool),nil]
+#define GET_ACTIVE_HEAT(unit) unit getVariable [QEGVAR(lifesupport,unitActiveThermalHeat),nil]
+
+//  ------------------------------------ Set var ------------------------------------
+//  --- Air ---
+#define SET_ATMO(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitInAtmo),value,sync]
+#define SET_AIR_RESERVE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirReserve),value,sync]
+#define SET_AIR_RESERVE_MAX(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirMaxReserve),value,sync]
+#define SET_AIR_CONSUMPTION(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirConsumption),value,sync]
+
+//  --- Radiation ---
+#define SET_RAD_SHIELD_CASE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitRadShieldCase),value,sync]
+#define SET_RAD_SHIELD_COEFF(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitRadShieldCoeff),value,sync]
+#define SET_LIFETIME_RAD(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitLifetimeRadLevel),value,sync]
+
+//  --- Suit ---
+#define SET_SUIT_ACTIVATED(unit,value,sync) unit setVariable [QEGVAR(lifesupport,suitActivated),value,sync]
+#define SET_SUIT_FACTION(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitSuitFaction),value,sync]
+#define SET_SUIT_BOOLS(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitSuitBools),value,sync]
+#define SET_SUIT_DATA(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitSuitData),value,sync]
+
+//  --- Electrical ---
+#define SET_POWER_DRAW(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitPowerDraw),value,sync]
+#define SET_BATTERY_RESERVE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryReserve),value,sync]
+#define SET_BATTERY_RESERVE_MAX(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryMaxReserve),value,sync]
+
+//  --- Thermal ---
+#define SET_CORE_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitCoreTemp),value,sync]
+#define SET_SUIT_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitSuitTemp),value,sync]
+#define SET_ENVIRONMENT_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitEnvTemp),value,sync]
+#define SET_RADIATED_CORE_HEAT(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitRadiatedCoreTemp),value,sync]
+#define SET_NET_HEAT(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitNetHeatPwr),value,sync]
+#define SET_DELTA_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitDeltaTemp),value,sync]
+#define SET_ACTIVE_COOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitActiveThermalCool),value,sync]
+#define SET_ACTIVE_HEAT(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitActiveThermalHeat),value,sync]
 
 /*
 ---------------------------------- Defines ----------------------------------

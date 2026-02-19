@@ -23,17 +23,25 @@ private _airTextAddress = nil;
 private _battBarAddress = nil;
 private _battTextAddress = nil;
 
-private _currentOxygenConsumption = GETVAR(ACE_player,EGVAR(lifesupport,unitAirConsumption),nil);
-private _currentOxygenSupply = GETVAR(ACE_player,EGVAR(lifesupport,unitAirReserve),1000);
-private _maxOxygenSupply = GETVAR(ACE_player,EGVAR(lifesupport,unitAirMaxReserve),1000); // Temp, need to implement air tank system
+//private _currentOxygenConsumption = GETVAR(ACE_player,EGVAR(lifesupport,unitAirConsumption),nil);
+//private _currentOxygenSupply = GETVAR(ACE_player,EGVAR(lifesupport,unitAirReserve),1000);
+//private _maxOxygenSupply = GETVAR(ACE_player,EGVAR(lifesupport,unitAirMaxReserve),1000); // Temp, need to implement air tank system
 
-private _currentPowerDraw = GETVAR(ACE_player,EGVAR(lifesupport,unitPowerDraw),nil);
-private _currentBatterySupply = GETVAR(ACE_player,EGVAR(lifesupport,unitCurrentBatteryCapacity),nil);
-private _maxBatterySupply = GETVAR(ACE_player,EGVAR(lifesupport,unitMaxBatteryCapacity),100000); // Temp, need to implement batt system
+private _currentOxygenConsumption = GET_AIR_CONSUMPTION(ACE_player);
+private _currentOxygenSupply = GET_AIR_RESERVE(ACE_player);
+private _maxOxygenSupply = GET_AIR_RESERVE_MAX(ACE_player);
 
-switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
+private _currentPowerDraw = GET_POWER_DRAW(ACE_player);
+private _currentBatterySupply = GET_BATTERY_RESERVE(ACE_player);
+private _maxBatterySupply = GET_BATTERY_RESERVE_MAX(ACE_player);
+
+//private _currentPowerDraw = GETVAR(ACE_player,EGVAR(lifesupport,unitPowerDraw),nil);
+//private _currentBatterySupply = GETVAR(ACE_player,EGVAR(lifesupport,unitCurrentBatteryCapacity),nil);
+//private _maxBatterySupply = GETVAR(ACE_player,EGVAR(lifesupport,unitMaxBatteryCapacity),100000); // Temp, need to implement batt system
+
+switch (GET_SUIT_FACTION(ACE_player)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
     };
     case US_SUIT_FACTION: {
         _airBarAddress = (GVAR(hudAirProgress_US)#0);

@@ -20,9 +20,13 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),nil);
-private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),nil);
-private _suitData = _unit getVariable [QGVAR(unitSuitData),nil];
+//private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),nil);
+//private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),nil);
+//private _suitData = _unit getVariable [QGVAR(unitSuitData),nil];
+
+private _oxygenSupplyWhenFull = GET_AIR_RESERVE_MAX(_unit);
+private _oxygenSupply = GET_AIR_RESERVE(_unit);
+private _suitData = GET_SUIT_DATA(_unit) params ["_helmetPassiveAirReserve","_suitMobility","_suitBlackBodyCoeff","_suitSolarAbsorptance","_suitThickness"];
 
 private _unitMass = HUMAN_MASS + (((loadAbs _unit)/10)/2.205); // Junk on the right is the gear weight converted into kg
 private _respiratoryRate = nil;
@@ -53,10 +57,12 @@ The resultant _currentVO2 will equal the current VO2 of the player in ml/kg/minu
 
 // _suitData#1 is suit mobility
 //private _currentVO2 = ((_respiratoryRate^3 * (linearConversion[0,1,(_suitData#1),110.756,138.975])) + (_respiratoryRate^2 * -(linearConversion[0,1,(_suitData#1),127.42,222.781])) + (_respiratoryRate * (linearConversion[0,1,(_suitData#1),61.1643,128.306])) + 3.5);
-private _currentVO2 = BREATHING_VO2_FUNCTION(_respiratoryRate,(_suitData#1));
+private _currentVO2 = BREATHING_VO2_FUNCTION(_respiratoryRate,_suitMobility);
 private _currentO2Consumption = (((_currentVO2 * _unitMass)/60) min 56)*_deltaT;
 
 private _newOxygenSupply = (0 max (_oxygenSupply-_currentO2Consumption));
 
-_unit setVariable [QGVAR(unitAirConsumption),_currentO2Consumption,_syncValue];
-_unit setVariable [QGVAR(unitAirReserve),_newOxygenSupply,_syncValue];
+//_unit setVariable [QGVAR(unitAirConsumption),_currentO2Consumption,_syncValue];
+//_unit setVariable [QGVAR(unitAirReserve),_newOxygenSupply,_syncValue];
+SET_AIR_CONSUMPTION(_unit,_currentO2Consumption,_syncValue);
+SET_AIR_RESERVE(_unit,_newOxygenSupply,_syncValue);

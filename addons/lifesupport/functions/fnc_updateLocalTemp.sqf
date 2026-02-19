@@ -129,5 +129,5 @@ if (GVAR(localTemperatureSim)) then { // Checks if temp simulation is enabled in
     _tempAroundUnit = linearConversion[0,1,sunOrMoon,(_moonSurfaceTemp#0),(_moonSurfaceTemp#1)]; // If local temp simulation is disabled, the temp is controlled by time of day.
 };
 
-_unit setVariable [QGVAR(unitEnvTemp),_tempAroundUnit,_syncValue];
+//_unit setVariable [QGVAR(unitEnvTemp),_tempAroundUnit,_syncValue];
 _tempAroundUnit;

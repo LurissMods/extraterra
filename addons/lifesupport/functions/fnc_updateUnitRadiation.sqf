@@ -19,12 +19,13 @@
 
 params ["_unit","_syncValue"];
 
-private _currentLifetimeExposure = GETVAR(_unit,GVAR(unitLifetimeRadLevel),nil); // in mSv
+//private _currentLifetimeExposure = GETVAR(_unit,GVAR(unitLifetimeRadLevel),nil); // in mSv
 private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour); // Defined by module, global
-private _shielding = GETVAR(_unit,GVAR(unitInRadShield),RAD_SHIELD_ERROR); // Set by the modules
-private _shieldCoeff = 0;
+//private _shielding = GETVAR(_unit,GVAR(unitRadShieldCase),RAD_SHIELD_ERROR); // Set by the modules
+private _currentLifetimeExposure = GET_LIFETIME_RAD(_unit);
+private _shieldCoeff = nil;
 
-switch _shielding do {
+switch GET_RAD_SHIELD_CASE(_unit) do {
     case 0: {
         _shieldCoeff = GVAR(radShield_coeff0);
     };
@@ -46,5 +47,7 @@ switch _shielding do {
 };
 _currentLifetimeExposure = _currentLifetimeExposure + ((_shieldCoeff*_currentEnvironRadPerHour)/3600);
 
-_unit setVariable [QGVAR(unitRadShieldCoeff),_shieldCoeff,_syncValue];
-_unit setVariable [QGVAR(unitLifetimeRadLevel),_currentLifetimeExposure,_syncValue];
+SET_RAD_SHIELD_COEFF(_unit,_shieldCoeff,_syncValue);
+SET_LIFETIME_RAD(_unit,_currentLifetimeExposure,_syncValue);
+//_unit setVariable [QGVAR(unitRadShieldCoeff),_shieldCoeff,_syncValue];
+//_unit setVariable [QGVAR(unitLifetimeRadLevel),_currentLifetimeExposure,_syncValue];

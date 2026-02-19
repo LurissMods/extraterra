@@ -17,17 +17,17 @@
 
 private _extAtmText = nil;
 
-switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
+switch GET_SUIT_FACTION(ACE_player) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
     };
     case US_SUIT_FACTION: {
         _extAtmText = (GVAR(hudExtAtm_text_US)#0);
     };
 };
 
-_atmAroundPlayer = (GETVAR(ACE_player,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_ERROR));
-switch _atmAroundPlayer do {
+//_atmAroundPlayer = (GETVAR(ACE_player,EGVAR(lifesupport,unitInAtmo),ATMO_STATE_ERROR));
+switch GET_ATMO(ACE_player) do {
     case 0: {
         _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>VACUUM</t>";
         _extAtmText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);

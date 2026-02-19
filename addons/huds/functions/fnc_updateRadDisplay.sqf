@@ -19,13 +19,15 @@
 
 private _currentRadHrtext = nil;
 private _lifeExposureText = nil;
-private _shieldCoeff = GETVAR(ACE_player,EGVAR(lifesupport,unitRadShieldCoeff),nil);
-private _currentLifetimeExposure = GETVAR(ACE_player,EGVAR(lifesupport,unitLifetimeRadLevel),nil);
+//private _shieldCoeff = GETVAR(ACE_player,EGVAR(lifesupport,unitRadShieldCoeff),nil);
+//private _currentLifetimeExposure = GETVAR(ACE_player,EGVAR(lifesupport,unitLifetimeRadLevel),nil);
+private _shieldCoeff = GET_RAD_SHIELD_COEFF(ACE_player);
+private _currentLifetimeExposure = GET_LIFETIME_RAD(ACE_player);
 private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour);
 
 switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
     };
     case US_SUIT_FACTION: {
         _currentRadHrtext = (GVAR(hudEnvironRad_text_US)#0);
