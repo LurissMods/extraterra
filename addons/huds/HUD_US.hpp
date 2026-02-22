@@ -11,6 +11,13 @@ class exterra_huds_HUD_US
 	duration = 1e+6;
     class controlsBackground
     {
+        class helmetOutline_US : RscPicture {
+            idc = HELMET_OUTLINE_US_IDC;
+            show = 1;
+            text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_helmetBackground_us_ca.paa);
+            colorBackground[] = {1,1,1,1};
+            color[] = {1,1,1,1};
+        };
         class hudOutline_US : RscPicture {
             idc = HUD_OUTLINE_US_IDC;
             show = 1;
@@ -311,13 +318,24 @@ class exterra_huds_HUD_US
             idc = HUD_SQUAD_DATALINK9_US_IDC;
             text = "";
         };
-        class hudMasterControl_US : RscControlsGroupNoScrollbars {
-            idc = MASTER_CONTROL_US_IDC;
+
+        class hudBootLogo_US : RscPicture {
+            idc = HUD_BOOT_LOGO_US_IDC;
             show = 1;
+            text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_bootLogo_US.paa);
             colorBackground[] = {1,1,1,1};
             color[] = {1,1,1,1};
-            class Controls
-            {};
+        };
+        class hudBootBist_US : RscPicture {
+            idc = HUD_BOOT_BIST_US_IDC;
+            show = 1;
+            text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_bistGrid_US.paa);
+            colorBackground[] = {1,1,1,1};
+            color[] = {1,1,1,1};
+        };
+        class hudBootText_US : exterra_huds_structuredText {
+            idc = HUD_BOOT_TEXT_US_IDC;
+            text = "";
         };
     };
 

@@ -32,8 +32,12 @@ QGVAR(HUD_US) cutRsc [QGVAR(HUD_US), "PLAIN", -1, false, false];
 with uiNamespace do {
     private _displayHUD_US = uiNamespace getVariable QGVAR(HUD_US);
 
-    GVAR(hudMasterControl_US) = _displayHUD_US displayCtrl MASTER_CONTROL_US_IDC;
+    GVAR(helmetOutline_US) = _displayHUD_US displayCtrl HELMET_OUTLINE_US_IDC;
     GVAR(hudOutline_US) = _displayHUD_US displayCtrl HUD_OUTLINE_US_IDC;
+
+    GVAR(hudBootLogo_US) = _displayHUD_US displayCtrl HUD_BOOT_LOGO_US_IDC;
+    GVAR(hudBootBist_US) = _displayHUD_US displayCtrl HUD_BOOT_BIST_US_IDC;
+    GVAR(hudBootText_US) = _displayHUD_US displayCtrl HUD_BOOT_TEXT_US_IDC;
 
     GVAR(hudAirProgress_US) = _displayHUD_US displayCtrl HUD_AIR_PROGRESS_US_IDC;
     GVAR(hudBattProgress_US) = _displayHUD_US displayCtrl HUD_BATT_PROGRESS_US_IDC;
@@ -115,8 +119,12 @@ with uiNamespace do {
 
 };
 
-GVAR(hudMasterControl_US) = [uiNamespace getVariable QGVAR(hudMasterControl_US)];
+GVAR(helmetOutline_US) = [uiNamespace getVariable QGVAR(helmetOutline_US)];
 GVAR(hudOutline_US) = [uiNamespace getVariable QGVAR(hudOutline_US)];
+
+GVAR(hudBootLogo_US) = [uiNamespace getVariable QGVAR(hudBootLogo_US)];
+GVAR(hudBootBist_US) = [uiNamespace getVariable QGVAR(hudBootBist_US)];
+GVAR(hudBootText_US) = [uiNamespace getVariable QGVAR(hudBootText_US)];
 
 GVAR(hudAirProgress_US) = [uiNamespace getVariable QGVAR(hudAirProgress_US)];
 GVAR(hudBattProgress_US) = [uiNamespace getVariable QGVAR(hudBattProgress_US)];
@@ -199,20 +207,31 @@ GVAR(hudSquad_datalink9_text_US) = [uiNamespace getVariable QGVAR(hudSquad_datal
 //(GVAR(hudMasterControl_US)#0) ctrlSetFade 1;
 //(GVAR(hudMasterControl_US)#0) ctrlCommit 0;
 
-(GVAR(hudOutline_US)#0) ctrlSetPosition HUD_OUTLINE_US_POS;
+(GVAR(helmetOutline_US)#0) ctrlSetTextColor [1,1,1,1];
+(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+
 (GVAR(hudOutline_US)#0) ctrlSetTextColor GVAR(hudOutlineColor_US_cbaSetting);
 (GVAR(hudOutline_US)#0) ctrlSetFade 1;
 (GVAR(hudOutline_US)#0) ctrlCommit 0;
 
-(GVAR(hudLines_US)#0) ctrlSetPosition HUD_OUTLINE_LINES_US_POS;
 (GVAR(hudLines_US)#0) ctrlSetTextColor GVAR(hudLinesColor_US_cbaSetting);
 (GVAR(hudLines_US)#0) ctrlSetFade 1;
 (GVAR(hudLines_US)#0) ctrlCommit 0;
 
-(GVAR(hudText_US)#0) ctrlSetPosition HUD_OUTLINE_TEXT_US_POS;
 (GVAR(hudText_US)#0) ctrlSetTextColor GVAR(textColor_US_cbaSetting);
 (GVAR(hudText_US)#0) ctrlSetFade 1;
 (GVAR(hudText_US)#0) ctrlCommit 0;
+
+(GVAR(hudBootLogo_US)#0) ctrlSetTextColor [1,1,1,1];
+(GVAR(hudBootLogo_US)#0) ctrlSetFade 1; // Temp
+(GVAR(hudBootLogo_US)#0) ctrlCommit 0;
+(GVAR(hudBootBist_US)#0) ctrlSetTextColor [1,1,1,1];
+(GVAR(hudBootBist_US)#0) ctrlSetFade 1; // Temp
+(GVAR(hudBootBist_US)#0) ctrlCommit 0;
+(GVAR(hudBootText_US)#0) ctrlSetTextColor [1,1,1,1];
+(GVAR(hudBootText_US)#0) ctrlSetFade 1; // Temp
+(GVAR(hudBootText_US)#0) ctrlCommit 0;
 
 (GVAR(hudAirProgress_US)#0) progressSetPosition 1;
 (GVAR(hudAirProgress_US)#0) ctrlSetTextColor GVAR(airBarColor_US_cbaSetting);
@@ -607,6 +626,10 @@ GVAR(hudElementsArray_US) = [
     (GVAR(hudWeaponSecondary_US)#0),
     (GVAR(hudWeaponLauncher_US)#0),
     (GVAR(hudWeaponGrenade_US)#0),
+
+    (GVAR(hudBootLogo_US)#0),
+    (GVAR(hudBootBist_US)#0),
+    (GVAR(hudBootText_US)#0),
 
     (GVAR(hudSquad_name0_text_US)#0),
     (GVAR(hudSquad_hr0_text_US)#0),

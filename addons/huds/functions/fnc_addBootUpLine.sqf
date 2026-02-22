@@ -15,11 +15,11 @@
 * Public: No
 */
 
-params ["_text", "_bootUpLines", "_suitFaction"];
-if (count _bootUpLines > 45) then { // This controls the size of the list, provided it's smaller than the control group size. Default 14
-    _bootUpLines deleteAt 0; // This creates the scrolling effect - deletes "top" of list
+params ["_currentLine"];
+if (count GVAR(displayedBootText) > 23) then { // This controls the size of the list, provided it's smaller than the control group size. Default 14
+    GVAR(displayedBootText) deleteAt 0; // This creates the scrolling effect - deletes "top" of list
 };
 
-_bootUpLines pushBack [_text];
+GVAR(displayedBootText) pushBack [_currentLine];
 
-[_suitFaction,_bootUpLines] call FUNC(parseBootUpText);
+[GVAR(displayedBootText)] call FUNC(parseBootUpText);

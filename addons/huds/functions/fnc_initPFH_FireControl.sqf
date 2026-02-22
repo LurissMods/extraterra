@@ -27,17 +27,3 @@ GVAR(hudPFH_fireControl) = [{
 
     }, 0, []
 ] call CBA_fnc_addPerFrameHandler;
-
-/*GVAR(hudPFH_Crosshair) = [{
-
-
-
-    }, 0, []
-] call CBA_fnc_addPerFrameHandler;
-
-GVAR(hudPFH_Nametags) = [{
-
-
-
-    }, 0, []
-] call CBA_fnc_addPerFrameHandler;*/

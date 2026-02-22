@@ -1,7 +1,12 @@
 #define HUD_MASTER_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((107 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((107 * pixelGridBase * pixelH) * 0.5) + y,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
-#define HUD_OUTLINE_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
-#define HUD_OUTLINE_LINES_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
-#define HUD_OUTLINE_TEXT_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
+#define HUD_HELMET_BACKGROUND_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((120 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((120 * pixelGridBase * pixelH) * 0.5) + y,120 * pixelGridBase * pixelW,120 * pixelGridBase * pixelH]
+//#define HUD_OUTLINE_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
+//#define HUD_OUTLINE_LINES_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
+//#define HUD_OUTLINE_TEXT_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
+
+#define HUD_BOOT_LOGO_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((20 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.3) - ((10 * pixelGridBase * pixelH) * 0.5) + y,20 * pixelGridBase * pixelW,10 * pixelGridBase * pixelH]
+#define HUD_BOOT_BIST_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((100 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((100 * pixelGridBase * pixelH) * 0.5) + y,100 * pixelGridBase * pixelW,100 * pixelGridBase * pixelH]
+#define HUD_BOOT_TEXT_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((30 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.6) - ((30 * pixelGridBase * pixelH) * 0.5) + y,30 * pixelGridBase * pixelW,30 * pixelGridBase * pixelH]
 
 #define HUD_AIR_PROGRESS_US_POS(x,y) [safeZoneX + (safeZoneW * 0.37295) - ((8.47 * pixelGridBase * pixelW) * 0.37295) + x,safeZoneY + (safeZoneH * -0.045) - ((8.47 * pixelGridBase * pixelH) * -0.045) + y,8.47 * pixelGridBase * pixelW,8.47 * pixelGridBase * pixelH]
 #define HUD_BATT_PROGRESS_US_POS(x,y) [safeZoneX + (safeZoneW * 0.37295) - ((8.47 * pixelGridBase * pixelW) * 0.37295) + x,safeZoneY + (safeZoneH * -0.0206) - ((8.47 * pixelGridBase * pixelH) * -0.0206) + y,8.47 * pixelGridBase * pixelW,8.47 * pixelGridBase * pixelH]

@@ -17,6 +17,9 @@
 
 params ["_positionAdjustX", "_positionAdjustY"];
 
+(GVAR(helmetOutline_US)#0) ctrlSetPosition HUD_HELMET_BACKGROUND_US_POS(_positionAdjustX,_positionAdjustY);
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+
 (GVAR(hudOutline_US)#0) ctrlSetPosition HUD_MASTER_US_POS(_positionAdjustX,_positionAdjustY);
 (GVAR(hudOutline_US)#0) ctrlCommit 0;
 
@@ -25,6 +28,13 @@ params ["_positionAdjustX", "_positionAdjustY"];
 
 (GVAR(hudText_US)#0) ctrlSetPosition HUD_MASTER_US_POS(_positionAdjustX,_positionAdjustY);
 (GVAR(hudText_US)#0) ctrlCommit 0;
+
+(GVAR(hudBootLogo_US)#0) ctrlSetPosition HUD_BOOT_LOGO_US_POS(_positionAdjustX,_positionAdjustY);
+(GVAR(hudBootBist_US)#0) ctrlSetPosition HUD_BOOT_BIST_US_POS(_positionAdjustX,_positionAdjustY);
+(GVAR(hudBootText_US)#0) ctrlSetPosition HUD_BOOT_TEXT_US_POS(_positionAdjustX,_positionAdjustY);
+(GVAR(hudBootLogo_US)#0) ctrlCommit 0;
+(GVAR(hudBootBist_US)#0) ctrlCommit 0;
+(GVAR(hudBootText_US)#0) ctrlCommit 0;
 
 (GVAR(hudExtAtm_text_US)#0) ctrlSetPosition HUD_EXT_ATM_US_POS(_positionAdjustX,_positionAdjustY);
 (GVAR(hudExtAtm_text_US)#0) ctrlCommit 0;

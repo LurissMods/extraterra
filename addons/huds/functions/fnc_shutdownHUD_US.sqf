@@ -40,6 +40,16 @@ GVAR(filmGrain_PP) ppEffectCommit 0;
 
 {_x ctrlSetFade 1; _x ctrlCommit 0} forEach GVAR(hudElementsArray_US);
 
+(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+
+(GVAR(hudBootText_US)#0) ctrlSetText "";
+(GVAR(hudBootText_US)#0) ctrlCommit 0;
+
+GVAR(bootIteration) = 0;
+GVAR(bootAnimIteration) = 0;
+GVAR(displayedBootText) = [];
+
 ACE_player setVariable [QEGVAR(lifesupport,suitActivated), false, true];
 
-systemChat "Remove PFH fired!";
+systemChat "Remove PFHs fired!";

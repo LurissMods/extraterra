@@ -3,16 +3,17 @@
 //if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
 
 ["CBA_settingsInitialized", {
-    //if (!GVAR(masterToggle)) exitWith {};
 
-    /*if (!isDedicated) then {
-        systemChat "Hud inertia called postInit";
-        [ACE_player, true] call FUNC(initHUD_US);
-        [ACE_player, true] call FUNC(initPFH_HudInertia);
-    };*/
+    /*["exterra_huds_playBootAnim", {
+        params ["_bootupText","_bootUpAnims"];
+
+        [_bootupText,_bootUpAnims] call FUNC(bootAnim);
+
+    }] call CBA_fnc_addEventHandler;*/
 
     [ACE_player, true] call FUNC(initHUD_US);
     [ACE_player, true] call FUNC(initPFH_HudInertia);
+    call FUNC(initPFH_QuickSuitCheck);
 
     ["CBA_SettingChanged", {
         params ["_name", "_value"];

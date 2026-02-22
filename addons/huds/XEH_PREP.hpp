@@ -1,4 +1,3 @@
-//PREP(handleUnitHUD);
 PREP(initPFH_FireControl);
 PREP(initPFH_HudGeneral);
 PREP(initPFH_HudInertia);
@@ -19,12 +18,8 @@ PREP(initHUD_US);
 PREP(positionsHUD_US);
 PREP(bootHUD_US);
 PREP(shutdownHUD_US);
-
-
-PREP(terminateHudInteria);
-PREP(bootUp_US);
-PREP(suitActivation);
+PREP(initPFH_HudBoot);
+PREP(initPFH_QuickSuitCheck);
 PREP(secondsToBase60Time);
 PREP(parseBootUpText);
 PREP(addBootUpLine);
-PREP(suitDeactivation);

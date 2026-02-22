@@ -15,11 +15,9 @@
 * Public: No
 */
 
-private _bootStartMissionTime = CBA_missionTime;
-
-{_x ctrlSetFade 1; _x ctrlCommit 0} forEach GVAR(hudElementsArray_US);
+/*{_x ctrlSetFade 1; _x ctrlCommit 0} forEach GVAR(hudElementsArray_US);
 (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
-(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
 
 ACE_player setVariable [QEGVAR(lifesupport,suitActivated), true, true];
 
@@ -43,8 +41,8 @@ if (GVAR(toggleHUDppEffects_cbaSetting)) then {
 
 // Checks if quickbooting is disabled in CBA settings
 if (GVAR(toggleBootUp_cbaSetting)) then {
-    private _input = "";
-    private _bootupText = [];
+
+    ACE_player setVariable [QEGVAR(lifesupport,unitBootActive),true];
 
     /*
     To input an empty line, put "&#160;" in the string.
@@ -52,11 +50,11 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
     > = &gt;
     https://stackoverflow.com/questions/5068951/what-do-lt-and-gt-stand-for
     */
-    _bootupText = [
+    private _bootupText = [
         ["&#160;",0], //0
         ["0 0 0 1        SArCD.os   / /",3], //1
         ["                   T E X A S    I N S T R U M E N T S   ( c ) ,   2 0 8 9 - 2 0 9 8",0.07], //2
-        ["                   V E R.    4 . 5 1 . c",0.05], //3
+        ["                   V E R S I O N    4 . 5 1 . c",0.05], //3
         ["&#160;",0.05], //4
         ["S Y S B O O T \ &gt; :      I N I T",0.05], //5
         ["0 0 0 2        R O M    C H E C K . . . ",2], //6
@@ -106,30 +104,30 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         ["|  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :   |",0.02], //50
         ["- - - - -    B O O T    C O M P L E T E !    - - - - -",0.05], //51
         ["&#160;",0.05], //52
-        ["&#160;",3] //52
+        ["&#160;",3] //53
 
     ];
 
-    _bootUpAnims = [
+    private _bootUpAnims = [
         [
             "
             private _hudElements = [
                 (exterra_huds_hudOutline_US#0),
-                (exterra_huds_info_background_text_US#0),
-                (exterra_huds_info_background_US#0),
-                (exterra_huds_weapon_background_US#0),
-                (exterra_huds_rangefinder_background_US#0),
-                (exterra_huds_battBar_US#0),
-                (exterra_huds_info_battRemain_text_US#0)
+                (exterra_huds_hudLines_US#0),
+                (exterra_huds_hudText_US#0),
+                (exterra_huds_hudBattProgress_US#0),
+                (exterra_huds_hudBattEstTime_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
+
+            call exterra_huds_fnc_initPFH_HudGeneral;
             ", 14
         ],
         [
             "
             private _hudElements = [
-                (exterra_huds_airBar_US#0),
-                (exterra_huds_info_airRemain_text_US#0)
+                (exterra_huds_hudAirProgress_US#0),
+                (exterra_huds_hudAirEstTime_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 22
@@ -137,7 +135,7 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_info_externalAtmo_text_US#0)
+                (exterra_huds_hudExtAtm_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 24
@@ -145,7 +143,7 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_info_internalTemp_text_US#0)
+                (exterra_huds_hudTempInt_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 26
@@ -153,9 +151,9 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_info_externalTemp_text_US#0),
-                (exterra_huds_info_thermalPowerBalance_text_US#0),
-                (exterra_huds_info_timeUntilDang_text_US#0)
+                (exterra_huds_hudTempExt_text_US#0),
+                (exterra_huds_hudTempWatt_text_US#0),
+                (exterra_huds_hudTmeDangTemp_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 28
@@ -163,8 +161,8 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_info_radPerHour_text_US#0),
-                (exterra_huds_info_lifetimeRad_text_US#0)
+                (exterra_huds_hudEnvironRad_text_US#0),
+                (exterra_huds_hudRadTotal_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 30
@@ -174,14 +172,13 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         ],
         [
             "
-            player setVariable ['LRSS_MJOLNIR_outlineHidden',true];
             private _hudElements = [
                 (exterra_huds_helmetOutline_US#0)
             ];
             {_x ctrlSetFade 1; _x ctrlCommit 0;} forEach _hudElements;
 
             private _hudElements = [
-                (exterra_huds_bootup_bistGrid_US#0)
+                (exterra_huds_hudBootBist_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 37
@@ -189,7 +186,7 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_bootup_bistGrid_US#0)
+                (exterra_huds_hudBootBist_US#0)
             ];
             {_x ctrlSetFade 1; _x ctrlCommit 0;} forEach _hudElements;
             ", 38
@@ -197,59 +194,61 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_squad_member0_text_US#0),
-                (exterra_huds_squad_member1_text_US#0),
-                (exterra_huds_squad_member2_text_US#0),
-                (exterra_huds_squad_member3_text_US#0),
-                (exterra_huds_squad_member4_text_US#0),
-                (exterra_huds_squad_member5_text_US#0),
-                (exterra_huds_squad_member6_text_US#0),
-                (exterra_huds_squad_member7_text_US#0),
-                (exterra_huds_squad_member8_text_US#0),
-                (exterra_huds_squad_member9_text_US#0),
-                (exterra_huds_squad_member10_text_US#0),
-                (exterra_huds_squad_member11_text_US#0),
-                (exterra_huds_squad_member12_text_US#0),
-                (exterra_huds_squad_member13_text_US#0),
-                (exterra_huds_squad_member14_text_US#0),
-                (exterra_huds_squad_member15_text_US#0),
-                (exterra_huds_squad_member16_text_US#0),
-                (exterra_huds_squad_member17_text_US#0),
-                (exterra_huds_squad_member0_heart_US#0),
-                (exterra_huds_squad_member1_heart_US#0),
-                (exterra_huds_squad_member2_heart_US#0),
-                (exterra_huds_squad_member3_heart_US#0),
-                (exterra_huds_squad_member4_heart_US#0),
-                (exterra_huds_squad_member5_heart_US#0),
-                (exterra_huds_squad_member6_heart_US#0),
-                (exterra_huds_squad_member7_heart_US#0),
-                (exterra_huds_squad_member8_heart_US#0),
-                (exterra_huds_squad_member9_heart_US#0),
-                (exterra_huds_squad_member10_heart_US#0),
-                (exterra_huds_squad_member11_heart_US#0),
-                (exterra_huds_squad_member12_heart_US#0),
-                (exterra_huds_squad_member13_heart_US#0),
-                (exterra_huds_squad_member14_heart_US#0),
-                (exterra_huds_squad_member15_heart_US#0),
-                (exterra_huds_squad_member16_heart_US#0),
-                (exterra_huds_squad_member17_heart_US#0)
+                (exterra_huds_hudSquad_name0_text_US#0),
+                (exterra_huds_hudSquad_hr0_text_US#0),
+                (exterra_huds_hudSquad_bp0_text_US#0),
+                (exterra_huds_hudSquad_datalink0_text_US#0),
+                (exterra_huds_hudSquad_name1_text_US#0),
+                (exterra_huds_hudSquad_hr1_text_US#0),
+                (exterra_huds_hudSquad_bp1_text_US#0),
+                (exterra_huds_hudSquad_datalink1_text_US#0),
+                (exterra_huds_hudSquad_name2_text_US#0),
+                (exterra_huds_hudSquad_hr2_text_US#0),
+                (exterra_huds_hudSquad_bp2_text_US#0),
+                (exterra_huds_hudSquad_datalink2_text_US#0),
+                (exterra_huds_hudSquad_name3_text_US#0),
+                (exterra_huds_hudSquad_hr3_text_US#0),
+                (exterra_huds_hudSquad_bp3_text_US#0),
+                (exterra_huds_hudSquad_datalink3_text_US#0),
+                (exterra_huds_hudSquad_name4_text_US#0),
+                (exterra_huds_hudSquad_hr4_text_US#0),
+                (exterra_huds_hudSquad_bp4_text_US#0),
+                (exterra_huds_hudSquad_datalink4_text_US#0),
+                (exterra_huds_hudSquad_name5_text_US#0),
+                (exterra_huds_hudSquad_hr5_text_US#0),
+                (exterra_huds_hudSquad_bp5_text_US#0),
+                (exterra_huds_hudSquad_datalink5_text_US#0),
+                (exterra_huds_hudSquad_name6_text_US#0),
+                (exterra_huds_hudSquad_hr6_text_US#0),
+                (exterra_huds_hudSquad_bp6_text_US#0),
+                (exterra_huds_hudSquad_datalink6_text_US#0),
+                (exterra_huds_hudSquad_name7_text_US#0),
+                (exterra_huds_hudSquad_hr7_text_US#0),
+                (exterra_huds_hudSquad_bp7_text_US#0),
+                (exterra_huds_hudSquad_datalink7_text_US#0),
+                (exterra_huds_hudSquad_name8_text_US#0),
+                (exterra_huds_hudSquad_hr8_text_US#0),
+                (exterra_huds_hudSquad_bp8_text_US#0),
+                (exterra_huds_hudSquad_datalink8_text_US#0),
+                (exterra_huds_hudSquad_name9_text_US#0),
+                (exterra_huds_hudSquad_hr9_text_US#0),
+                (exterra_huds_hudSquad_bp9_text_US#0),
+                (exterra_huds_hudSquad_datalink9_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 42
         ],
         [
             "
-            player setvariable ['exterra_huds_fireControlEnabled', true];
-            call exterra_huds_fnc_initIFFHandler;
-            call exterra_huds_fnc_initFireControlHandler;
+            call exterra_huds_fnc_initPFH_FireControl;
             ", 44
         ],
         [
             "
             private _hudElements = [
-                (exterra_huds_rangefinder_grid_US#0),
-                (exterra_huds_rangefinder_bearing_US#0),
-                (exterra_huds_rangefinder_range_US#0)
+                (exterra_huds_hudGrid_text_US#0),
+                (exterra_huds_hudBearing_text_US#0),
+                (exterra_huds_hudRange_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 46
@@ -257,15 +256,14 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-               (exterra_huds_weapon_currentWeapon_US#0),
-                (exterra_huds_weapon_secondWeapon_US#0),
-                (exterra_huds_weapon_launcher_US#0),
-                (exterra_huds_weapon_grenade_US#0),
-                (exterra_huds_weapon_weaponMagazines_text_US#0),
-                (exterra_huds_weapon_fireMode_text_US#0),
-                (exterra_huds_weapon_grenade_text_US#0),
-                (exterra_huds_weapon_grenadeAmount_text_US#0),
-                (exterra_huds_weapon_weaponZero_text_US#0)
+                (exterra_huds_hudWeaponPrimary_US#0),
+                (exterra_huds_hudWeaponSecondary_US#0),
+                (exterra_huds_hudWeaponLauncher_US#0),
+                (exterra_huds_hudWeaponGrenade_US#0),
+                (exterra_huds_hudMagCount_text_US#0),
+                (exterra_huds_hudFireMode_text_US#0),
+                (exterra_huds_hudWeaponZero_text_US#0),
+                (exterra_huds_hudGrenadeCount_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
             ", 49
@@ -273,38 +271,26 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         [
             "
             private _hudElements = [
-                (exterra_huds_bootup_logo_US#0),
-                (exterra_huds_bootup_text_US#0)
+                (exterra_huds_hudBootLogo_US#0),
+                (exterra_huds_hudBootText_US#0)
             ];
             {_x ctrlSetFade 1; _x ctrlCommit 0;} forEach _hudElements;
 
-            //player setvariable ['LRSS_MJOLNIR_HUD_ALLOWED', true];
-            ['exterra_huds_suitActivated', ACE_player] call CBA_fnc_localEvent;
             ", 53
         ]
     ];
 
-    private _bootUpLines = [];
-    private _textField = (GVAR(bootup_text_US)#0);
-    _textField ctrlSetTextColor GVAR(bootTextColor_cbaSetting);
-    _textField ctrlSetFade 0;
-    _textField ctrlCommit 0;
+    (GVAR(hudBootText_US)#0) ctrlSetTextColor GVAR(bootTextColor_cbaSetting);
+    (GVAR(hudBootText_US)#0) ctrlSetFade 0;
+    (GVAR(hudBootText_US)#0) ctrlCommit 0;
 
-    private _textHeadline = (GVAR(bootup_headline_text_US)#0);
-    private _bootLogo = (GVAR(bootup_logo_US)#0);
-    private _bootBistGrid = (GVAR(bootup_bistGrid_US)#0);
-    private _textToShow = "";
-    //LRSS_BOOT_OFFSET = 0.022;
-    private _textScale = safeZoneH / 3.5;
-    private _structuredTextProperties = "<t align='left'" + format [" size='%1'>",_textScale] + "%1</t>";
+    (GVAR(hudBootLogo_US)#0) ctrlSetFade 0;
+    (GVAR(hudBootLogo_US)#0) ctrlCommit 0;
 
     playSound QGVAR(hudBootSound_US);
-    _bootLogo ctrlSetPosition BOOTUP_LOGO_US_POS;
-    _bootLogo ctrlSetFade 0;
-    _bootLogo ctrlCommit 0;
 
-    private _delay = 0;
-    private _currentHudAnim = 0;
+    [_bootupText,_bootUpAnims] call FUNC(initPFH_HudBoot);
+
 } else {
     playSound QGVAR(hudBootSound_US);
 

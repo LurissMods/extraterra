@@ -84,8 +84,6 @@ if !_suitBool then {
     _blackBodyEmissive = DEFAULT_SUIT_BLACK_BODY;
     _solarAbsorptance = DEFAULT_SUIT_SOLAR_ABSORB;
     _suitThickness = DEFAULT_CLOTHES_THICKNESS;
-
-
 };
 if !_packBool then {
     //_helmetPassiveAirReserve = 0;
