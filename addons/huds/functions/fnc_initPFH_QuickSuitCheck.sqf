@@ -21,7 +21,7 @@ if (!hasInterface) exitWith {};
 
 GVAR(currentPlayerHelmetOutline) = -1;
 GVAR(currentPlayerMasterBool) = false;
-GVAR(currentPlayerMasterFaction) = false;
+GVAR(currentPlayerMasterFaction) = -1;
 
 GVAR(hudPFH_helmetOutline) = [{
 

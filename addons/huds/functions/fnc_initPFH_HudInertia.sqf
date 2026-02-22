@@ -99,7 +99,8 @@ GVAR(hudPFH_hudInertia) = [{
     private _positionAdjustX = abs(safeZoneX) * GVAR(hudAngleX) / 2500;
     private _positionAdjuxtY = abs(safeZoneX) * GVAR(hudAngleY) / 16000;
 
-    [_positionAdjustX, _positionAdjuxtY] call FUNC(positionsHUD_US)
+    [_positionAdjustX, _positionAdjuxtY] call FUNC(positionsHUD_US);
+    [_positionAdjustX, _positionAdjuxtY] call EFUNC(injuries,positionsInjuries);
 
     /*switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
         case NO_SUIT_FACTION: {

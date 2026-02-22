@@ -19,7 +19,7 @@ params ["_unit","_deltaT","_syncValues"];
 
 if (!isPlayer _unit) exitWith {}; // temp fix
 
-private _currentRad = GETVAR(_unit,EGVAR(lifesupport,lifetimeRadLevel),0); // in mSv
+private _currentRad = GET_LIFETIME_RAD(_unit); // in mSv
 
 //private _randomRadLim0 = GVAR(playerSeed) random [375,562.5,750];
 //private _randomRadLim1 = _randomRadLim0;
@@ -39,6 +39,17 @@ private _currentRad = GETVAR(_unit,EGVAR(lifesupport,lifetimeRadLevel),0); // in
 
 if (CBA_missionTime - (GVAR(radLim0Time)) >= 5 && {GVAR(vomitMild)}) then {
     systemChat "you threw up! (mild)";
+    playSound QGVAR(vomitMild_snd);
+    (GVAR(vomitMild_UI)#0) ctrlSetFade 0;
+    (GVAR(vomitMild_UI)#0) ctrlCommit 0;
+
+    GVAR(vomitMild) = false;
+};
+if (CBA_missionTime - (GVAR(radLim1Time)) >= 5 && {GVAR(vomitMild)}) then {
+    systemChat "you threw up! (mild)";
+    (GVAR(vomitMild_UI)#0) ctrlSetFade 0;
+    (GVAR(vomitMild_UI)#0) ctrlCommit 0;
+
     GVAR(vomitMild) = false;
 };
 
@@ -54,14 +65,18 @@ switch (true) do {
         systemChat "case 1";
         GVAR(radLim1Time) = CBA_missionTime;
         if (random 1 < 0.125) then {
-            systemChat "you threw up! (mild)";
+            GVAR(vomitMild) = true;
         };
     };
     case (GVAR(radLim2Time) == 0 && {_currentRad > GVAR(randomRadLim2)}): {
         systemChat "case 2";
         GVAR(radLim2Time) = CBA_missionTime;
         if (random 1 < 0.35) then {
-            systemChat "you threw up! (mild/moderate)";
+            if (random 1 < 0.5) then {
+                GVAR(vomitMild) = true;
+            } else {
+                GVAR(vomitModerate) = true;
+            };
         };
         if (random 1 < 0.45) then {
             systemChat "you feel tired and weak! (mild/moderate)";

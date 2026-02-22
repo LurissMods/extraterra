@@ -627,9 +627,9 @@ GVAR(hudElementsArray_US) = [
     (GVAR(hudWeaponLauncher_US)#0),
     (GVAR(hudWeaponGrenade_US)#0),
 
-    (GVAR(hudBootLogo_US)#0),
-    (GVAR(hudBootBist_US)#0),
-    (GVAR(hudBootText_US)#0),
+    //(GVAR(hudBootLogo_US)#0),
+    //(GVAR(hudBootBist_US)#0),
+    //(GVAR(hudBootText_US)#0),
 
     (GVAR(hudSquad_name0_text_US)#0),
     (GVAR(hudSquad_hr0_text_US)#0),

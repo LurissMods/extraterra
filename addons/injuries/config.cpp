@@ -19,4 +19,5 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+#include "CfgSounds.hpp"
 #include "gui.hpp"
