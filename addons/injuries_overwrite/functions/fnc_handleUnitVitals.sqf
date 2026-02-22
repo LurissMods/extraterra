@@ -43,13 +43,19 @@ if (_syncValues) then {
 // Consume medications
 _syncValues = [_unit, _deltaT, _syncValues] call ACEFUNC(medical_vitals,consumeMedications);
 
-if (EGVAR(modules,mainLoopInitalized)) then {
+[_unit,_deltaT,_syncValues] call EFUNC(injuries,hyperthermia);
+[_unit,_deltaT,_syncValues] call EFUNC(injuries,hypothermia);
+[_unit,_deltaT,_syncValues] call EFUNC(injuries,ars);
+
+[_unit] call EFUNC(injuries,cardiacArrest);
+
+/*if (EGVAR(modules,mainLoopInitalized)) then {
     [_unit,_deltaT,_syncValues] call EFUNC(injuries,hyperthermia);
     [_unit,_deltaT,_syncValues] call EFUNC(injuries,hypothermia);
     [_unit,_deltaT,_syncValues] call EFUNC(injuries,ars);
 
     [_unit] call EFUNC(injuries,cardiacArrest);
-};
+};*/
 
 // Update blood presure
 [_unit, _syncValues] call ACEFUNC(medical_vitals,updateBloodPressure);

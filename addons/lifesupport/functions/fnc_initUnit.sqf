@@ -24,38 +24,41 @@ if (!local _unit) exitWith {};
 
 if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
 
+    private _suitBoolsInit = [false,false,false,false];
+    private _suitDataInit = [DEFAULT_SUIT_OFF_AIR_RESERVE,DEFAULT_SUIT_MOBILITY,DEFAULT_SUIT_BLACK_BODY,DEFAULT_SUIT_SOLAR_ABSORB,DEFAULT_SUIT_THICKNESS];
+
     // First time set up on mission init for each unit
     // Air and Pressure
-    _unit setVariable [QGVAR(unitInAtmo),ATMO_STATE_ERROR,true];
-    _unit setVariable [QGVAR(unitAirMaxReserve),10000,true]; // 10000 temp value until air tank system implemented
-    _unit setVariable [QGVAR(unitAirReserve),10000,true]; // 10000 temp value until air tank system implemented
-    _unit setVariable [QGVAR(unitAirConsumption),0,true];
+    SET_ATMO(_unit,ATMO_STATE_ERROR,true);
+    SET_AIR_RESERVE_MAX(_unit,10000,true); // 10000 temp value until air tank system implemented
+    SET_AIR_RESERVE(_unit,10000,true); // 10000 temp value until air tank system implemented
+    SET_AIR_CONSUMPTION(_unit,0,true);
 
     // Temperature
-    _unit setVariable [QGVAR(unitEnvTemp),ROOM_TEMP,true];
-    _unit setVariable [QGVAR(unitSuitTemp),ROOM_TEMP,true];
-    _unit setVariable [QGVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP,true];
-    _unit setVariable [QGVAR(unitRadiatedCoreTemp),0,true];
-    _unit setVariable [QGVAR(unitActiveThermalCool),0,true];
-    _unit setVariable [QGVAR(unitActiveThermalHeat),0,true];
-    _unit setVariable [QGVAR(unitNetHeatPwr),0,true];
-    _unit setVariable [QGVAR(unitDeltaTemp),0,true];
+    SET_ENVIRONMENT_TEMP(_unit,ROOM_TEMP,true);
+    SET_SUIT_TEMP(_unit,ROOM_TEMP,true);
+    SET_CORE_TEMP(_unit,HUMAN_NATURAL_CORETEMP,true);
+    SET_RADIATED_CORE_HEAT(_unit,0,true);
+    SET_ACTIVE_COOL(_unit,0,true);
+    SET_ACTIVE_HEAT(_unit,0,true);
+    SET_NET_HEAT(_unit,0,true);
+    SET_DELTA_TEMP(_unit,0,true);
 
     // Radiation
-    _unit setVariable [QGVAR(unitInRadShield),0,true];
-    _unit setVariable [QGVAR(unitRadShieldCoeff),RAD_COEFF0_DEFAULT,true];
-    _unit setVariable [QGVAR(unitLifetimeRadLevel),0,true];
+    SET_RAD_SHIELD_CASE(_unit,0,true);
+    SET_RAD_SHIELD_COEFF(_unit,RAD_COEFF0_DEFAULT,true);
+    SET_LIFETIME_RAD(_unit,0,true);
 
     // Electrical
-    _unit setVariable [QGVAR(unitBatteryReserve),100000,true]; // 100000 temp value until battery system implemented
-    _unit setVariable [QGVAR(unitBatteryMaxReserve),100000,true]; // 100000 temp value until battery system implemented
-    _unit setVariable [QGVAR(unitPowerDraw),0,true];
+    SET_BATTERY_RESERVE(_unit,100000,true);
+    SET_BATTERY_RESERVE_MAX(_unit,100000,true);
+    SET_POWER_DRAW(_unit,0,true);
 
     // Suit
-    _unit setVariable [QGVAR(suitActivated), false, true];
-    _unit setVariable [QGVAR(unitSuitBools),[false,false,false,false],true];
-    _unit setVariable [QGVAR(unitSuitFaction),NO_SUIT_FACTION,true];
-    _unit setVariable [QGVAR(unitSuitData),[DEFAULT_SUIT_OFF_AIR_RESERVE,DEFAULT_SUIT_MOBILITY,DEFAULT_SUIT_BLACK_BODY,DEFAULT_SUIT_SOLAR_ABSORB,DEFAULT_SUIT_THICKNESS],true];
+    SET_SUIT_ACTIVATED(_unit,false,true);
+    SET_SUIT_BOOLS(_unit,_suitBoolsInit,true);
+    SET_SUIT_FACTION(_unit,NO_SUIT_FACTION,true);
+    SET_SUIT_DATA(_unit,_suitDataInit,true);
 
     _unit addEventHandler ["Respawn", {[(_this select 0), true] call FUNC(initUnit)}];
 };
@@ -63,36 +66,40 @@ if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
 if (_isRespawn) then {
     TRACE_1("reseting all vars on respawn",_isRespawn); // note: state is handled by ace_medical_statemachine_fnc_resetStateDefault
 
+    private _suitBoolsInit = [false,false,false,false];
+    private _suitDataInit = [DEFAULT_SUIT_OFF_AIR_RESERVE,DEFAULT_SUIT_MOBILITY,DEFAULT_SUIT_BLACK_BODY,DEFAULT_SUIT_SOLAR_ABSORB,DEFAULT_SUIT_THICKNESS];
+
     // Air and Pressure
-    _unit setVariable [QGVAR(unitInAtmo),ATMO_STATE_ERROR,true];
-    _unit setVariable [QGVAR(unitAirMaxReserve),10000,true]; // 10000 temp value until air tank system implemented
-    _unit setVariable [QGVAR(unitAirReserve),10000,true]; // 10000 temp value until air tank system implemented
-    _unit setVariable [QGVAR(unitAirConsumption),0,true];
+    SET_ATMO(_unit,ATMO_STATE_ERROR,true);
+    SET_AIR_RESERVE_MAX(_unit,10000,true); // 10000 temp value until air tank system implemented
+    SET_AIR_RESERVE(_unit,10000,true); // 10000 temp value until air tank system implemented
+    SET_AIR_CONSUMPTION(_unit,0,true);
 
     // Temperature
-    _unit setVariable [QGVAR(unitEnvTemp),ROOM_TEMP,true];
-    _unit setVariable [QGVAR(unitSuitTemp),ROOM_TEMP,true];
-    _unit setVariable [QGVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP,true];
-    _unit setVariable [QGVAR(unitRadiatedCoreTemp),0,true];
-    _unit setVariable [QGVAR(unitActiveThermalCool),0,true];
-    _unit setVariable [QGVAR(unitActiveThermalHeat),0,true];
-    _unit setVariable [QGVAR(unitNetHeatPwr),0,true];
-    _unit setVariable [QGVAR(unitDeltaTemp),0,true];
+    SET_ENVIRONMENT_TEMP(_unit,ROOM_TEMP,true);
+    SET_SUIT_TEMP(_unit,ROOM_TEMP,true);
+    SET_CORE_TEMP(_unit,HUMAN_NATURAL_CORETEMP,true);
+    SET_RADIATED_CORE_HEAT(_unit,0,true);
+    SET_ACTIVE_COOL(_unit,0,true);
+    SET_ACTIVE_HEAT(_unit,0,true);
+    SET_NET_HEAT(_unit,0,true);
+    SET_DELTA_TEMP(_unit,0,true);
 
     // Radiation
-    _unit setVariable [QGVAR(unitInRadShield),0,true];
-    _unit setVariable [QGVAR(unitRadShieldCoeff),RAD_COEFF0_DEFAULT,true];
-    _unit setVariable [QGVAR(unitLifetimeRadLevel),0,true];
+    SET_RAD_SHIELD_CASE(_unit,0,true);
+    SET_RAD_SHIELD_COEFF(_unit,RAD_COEFF0_DEFAULT,true);
+    SET_LIFETIME_RAD(_unit,0,true);
 
     // Electrical
-    _unit setVariable [QGVAR(unitCurrentBatteryCapacity),100000,true]; // 100000 temp value until battery system implemented
-    _unit setVariable [QGVAR(unitMaxBatteryCapacity),100000,true]; // 100000 temp value until battery system implemented
+    SET_BATTERY_RESERVE(_unit,100000,true);
+    SET_BATTERY_RESERVE_MAX(_unit,100000,true);
+    SET_POWER_DRAW(_unit,0,true);
 
     // Suit
-    _unit setVariable [QGVAR(suitActivated), false, true];
-    _unit setVariable [QGVAR(unitSuitBools),[false,false,false,false],true];
-    _unit setVariable [QGVAR(unitSuitFaction),NO_SUIT_FACTION,true];
-    _unit setVariable [QGVAR(unitSuitData),[DEFAULT_SUIT_OFF_AIR_RESERVE,DEFAULT_SUIT_MOBILITY,DEFAULT_SUIT_BLACK_BODY,DEFAULT_SUIT_SOLAR_ABSORB,DEFAULT_SUIT_THICKNESS],true];
+    SET_SUIT_ACTIVATED(_unit,false,true);
+    SET_SUIT_BOOLS(_unit,_suitBoolsInit,true);
+    SET_SUIT_FACTION(_unit,NO_SUIT_FACTION,true);
+    SET_SUIT_DATA(_unit,_suitDataInit,true);
 };
 
 [{

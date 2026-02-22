@@ -17,7 +17,7 @@
 
 //if (isClass(configFile >> "CfgPatches" >> "LRSS_Suit_Scripts_DEV")) exitWith {};
 
-params ["_suitFaction"];
+/*params ["_suitFaction"];
 
 //call LRSS_fnc_removeHudEventhandler;
 
@@ -231,7 +231,7 @@ private _controlSizeBox = [_controlPositionBox select 2, _controlPositionBox sel
 private _centerPositionBox = [(_controlPositionBox select 0) + ((_controlSizeBox select 0) / 2), (_controlPositionBox select 1) + ((_controlSizeBox select 1) / 2)];
 LRSS_MJOLNIR_bootBoxStart = [(_centerPositionBox select 0), (_centerPositionBox select 1),0,0];*/
 
-(GVAR(bootup_logo_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_bootLogo_US.paa";
+/*(GVAR(bootup_logo_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_bootLogo_US.paa";
 (GVAR(bootup_logo_US)#0) ctrlSetFade 1;
 (GVAR(bootup_logo_US)#0) ctrlSetTextColor [1,1,1,1];
 (GVAR(bootup_logo_US)#0) ctrlCommit 0;
@@ -267,7 +267,7 @@ if (LRSS_SHOW_HUD_OVERLAY) then {
 } else {
     (GVAR(hudOutline_US)#0) ctrlSetText "";
 };*/
-(GVAR(helmetOutline_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_helmetBackground_US.paa";
+/*(GVAR(helmetOutline_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_helmetBackground_US.paa";
 (GVAR(hudOutline_US)#0) ctrlSetText "z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudBackground_US.paa";
 (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
 (GVAR(helmetOutline_US)#0) ctrlCommit 0;

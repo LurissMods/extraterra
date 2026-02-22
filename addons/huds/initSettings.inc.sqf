@@ -264,7 +264,7 @@
     "EDITBOX",
     [LSTRING(fireControl_humanIconFriend_cbaSetting_title), LSTRING(fireControl_humanIconFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_friendlyIFF_US.paa",
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_infFriend_US_ca.paa",
     0,
     {},
     false
@@ -275,7 +275,18 @@
     "SLIDER",
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    [0.01, 10.00, 0.30, 3],
+    [0.01, 10.00, 0.30, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_humanSizeFriendMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1, 2],
     0,
     {},
     false
@@ -286,7 +297,7 @@
     "EDITBOX",
     [LSTRING(fireControl_humanIconEnemy_cbaSetting_title), LSTRING(fireControl_humanIconEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_enemyIFF_US.paa",
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_infEnemy_US_ca.paa",
     0,
     {},
     false
@@ -297,50 +308,342 @@
     "SLIDER",
     [LSTRING(fireControl_humanSizeEnemy_cbaSetting_title), LSTRING(fireControl_humanSizeEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    [0.01, 10.00, 0.30, 3],
+    [0.01, 10.00, 0.30, 2],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(fireControl_staticIcon_cbaSetting),
+    QGVAR(fireControl_humanSizeEnemyMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_humanIconNeutral_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_humanIconEnemy_cbaSetting_title), LSTRING(fireControl_humanIconEnemy_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_infNeutral_US_ca.paa",
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_humanSizeNeutral_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeEnemy_cbaSetting_title), LSTRING(fireControl_humanSizeEnemy_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.30, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_humanSizeEnemyMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticIconFriend_cbaSetting),
     "EDITBOX",
     [LSTRING(fireControl_staticIcon_cbaSetting_title), LSTRING(fireControl_staticIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    "z\exterra\addons\huds\data\hudUI_US\OPTRE_MJOLNIR_hudTargetEmplacement.paa",
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_staFriend_US_ca.paa",
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(fireControl_staticSize_cbaSetting),
+    QGVAR(fireControl_staticSizeFriend_cbaSetting),
     "SLIDER",
     [LSTRING(fireControl_staticSize_cbaSetting_title), LSTRING(fireControl_staticSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    [0.01, 10.00, 0.40, 3],
+    [0.01, 10.00, 0.40, 2],
     0,
     {},
     false
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(fireControl_vehicleIcon_cbaSetting),
+    QGVAR(fireControl_staticSizeFriendMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticIconEnemy_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_staticIcon_cbaSetting_title), LSTRING(fireControl_staticIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_staEnemy_US_ca.paa",
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticSizeEnemy_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_staticSize_cbaSetting_title), LSTRING(fireControl_staticSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.40, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticSizeEnemyMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticIconNeutral_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_staticIcon_cbaSetting_title), LSTRING(fireControl_staticIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_staNeutral_US_ca.paa",
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticSizeNeutral_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_staticSize_cbaSetting_title), LSTRING(fireControl_staticSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.40, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_staticSizeNeutralMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleIconFriend_cbaSetting),
     "EDITBOX",
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    "z\exterra\addons\huds\data\hudUI_US\OPTRE_MJOLNIR_hudTargetVehicle.paa",
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_vicFriend_US_ca.paa",
     nil,
     {}
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(fireControl_vehicleSize_cbaSetting),
+    QGVAR(fireControl_vehicleSizeFriend_cbaSetting),
     "SLIDER",
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    [0.01, 10.00, 0.6, 3],
+    [0.01, 10.00, 0.6, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleSizeFriendMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1.25, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleIconEnemy_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_vicEnemy_US_ca.paa",
+    nil,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleSizeEnemy_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.6, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleSizeEnemyMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1.25, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleIconNeutral_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_vicNeutral_US_ca.paa",
+    nil,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleSizeNeutral_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.6, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_vehicleSizeNeutralMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1.25, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftIconFriend_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airFriend_US_ca.paa",
+    nil,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftSizeFriend_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.6, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftSizeFriendMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1.5, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftIconEnemy_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airEnemy_US_ca.paa",
+    nil,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftSizeEnemy_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.6, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftSizeEnemyMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1.5, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftIconNeutral_cbaSetting),
+    "EDITBOX",
+    [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airNeutral_US_ca.paa",
+    nil,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftSizeNeutral_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 0.6, 2],
+    0,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(fireControl_aircraftSizeNeutralMin_cbaSetting),
+    "SLIDER",
+    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0.01, 10.00, 1.5, 2],
     0,
     {},
     false

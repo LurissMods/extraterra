@@ -1,9 +1,15 @@
 #include "script_component.hpp"
 
-if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
+//if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
 
 ["CBA_settingsInitialized", {
     //if (!GVAR(masterToggle)) exitWith {};
+
+    /*if (!isDedicated) then {
+        systemChat "Hud inertia called postInit";
+        [ACE_player, true] call FUNC(initHUD_US);
+        [ACE_player, true] call FUNC(initPFH_HudInertia);
+    };*/
 
     [ACE_player, true] call FUNC(initHUD_US);
     [ACE_player, true] call FUNC(initPFH_HudInertia);

@@ -36,7 +36,7 @@ private _suitMaxActiveHeat = 0;
 private _suitBatteryCapacityAmpHoursInSeconds = 0;
 private _currentPumpPowerDraw = 0;
 
-if (GET_SUIT_FACTION(_unit) == NO_SUIT_FACTION) exitWith {};
+//if (GET_SUIT_FACTION(_unit) == NO_SUIT_FACTION) exitWith {};
 
 switch (GET_SUIT_FACTION(_unit)) do {
     case NO_SUIT_FACTION: {

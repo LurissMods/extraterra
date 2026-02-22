@@ -48,8 +48,6 @@ private _unitInArea = false;
 if (!_unitInArea && {_unitPreviousArea != ATMO_STATE_VACUUM}) then {
     _syncValue = true;
 
-    systemChat "update enter vac fired";
-
     //_unit setVariable [QGVAR(unitInAtmo), ATMO_STATE_VACUUM, _syncValue];
     //_unit setVariable [QGVAR(unitRadShieldCase), 0, _syncValue];
     SET_ATMO(_unit,ATMO_STATE_VACUUM,_syncValue);

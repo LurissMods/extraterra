@@ -90,23 +90,23 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
 
                 switch _unitRelationToPlayer do {
                     case "ENEMY" : {
-                        _size = 1 max (GVAR(fireControl_humanSizeEnemy_cbaSetting) / tan(_fov /2) / _distance);
+                        _size = (GVAR(fireControl_humanSizeEnemy_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_humanSizeEnemyMin_cbaSetting);
                         _icon = GVAR(fireControl_humanIconEnemy_cbaSetting);
                         _color = +GVAR(fireControl_enemyColor_cbaSetting);
                         //systemChat format ["Pos: %1, Size: %2, Icon: %3, Color: %4",_pos,_size,_icon,_color];
                     };
                     case "NEUTRAL" : {
-                        _size = 1 max (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance);
-                        _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
+                        _size = (GVAR(fireControl_humanSizeNeutral_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_humanSizeNeutralMin_cbaSetting);
+                        _icon = GVAR(fireControl_humanIconNeutral_cbaSetting);
                         _color = +GVAR(fireControl_neutralColor_cbaSetting);
                     };
                     case "FRIENDLY" : {
-                        _size = 1 max (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance);
+                        _size = (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_humanSizeFriendMin_cbaSetting);
                         _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
                         _color = +GVAR(fireControl_friendColor_cbaSetting);
                     };
                     case "SQUAD" : {
-                        _size = 1 max (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance);
+                        _size = (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_humanSizeFriendMin_cbaSetting);
                         _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
                         _color = switch (assignedTeam _nearbyUnit) do {
                             case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
@@ -120,22 +120,25 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
             };
             case ("VEHICLE"): {
                 _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["zamerny", "Memory"]);
-                _size = (GVAR(fireControl_vehicleSize_cbaSetting) / tan(_fov /2) / _distance) max 0.5;
                 switch _unitRelationToPlayer do {
                     case "ENEMY" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_vehicleSizeEnemy_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_vehicleSizeEnemyMin_cbaSetting);
+                        _icon = GVAR(fireControl_vehicleIconEnemy_cbaSetting);
                         _color = +GVAR(fireControl_enemyColor_cbaSetting);
                     };
                     case "NEUTRAL" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_vehicleSizeNeutral_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_vehicleSizeNeutralMin_cbaSetting);
+                        _icon = GVAR(fireControl_vehicleIconNeutral_cbaSetting);
                         _color = +GVAR(fireControl_neutralColor_cbaSetting);
                     };
                     case "FRIENDLY" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_vehicleSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_vehicleSizeFriendMin_cbaSetting);
+                        _icon = GVAR(fireControl_vehicleIconFriend_cbaSetting);
                         _color = +GVAR(fireControl_friendColor_cbaSetting);
                     };
                     case "SQUAD" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_vehicleSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_vehicleSizeFriendMin_cbaSetting);
+                        _icon = GVAR(fireControl_vehicleIconFriend_cbaSetting);
                         _color = switch (assignedTeam _nearbyUnit) do {
                             case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
                             case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
@@ -148,22 +151,25 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
             };
             case ("AIR"): {
                 _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["zamerny", "Memory"]);
-                _size = (GVAR(fireControl_vehicleSize_cbaSetting) / tan(_fov /2) / _distance) max 0.5;
                 switch _unitRelationToPlayer do {
                     case "ENEMY" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_aircraftSizeEnemy_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_aircraftSizeEnemyMin_cbaSetting);
+                        _icon = GVAR(fireControl_aircraftIconEnemy_cbaSetting);
                         _color = +GVAR(fireControl_enemyColor_cbaSetting);
                     };
                     case "NEUTRAL" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_aircraftSizeNeutral_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_aircraftSizeNeutralMin_cbaSetting);
+                        _icon = GVAR(fireControl_aircraftIconNeutral_cbaSetting);
                         _color = +GVAR(fireControl_neutralColor_cbaSetting);
                     };
                     case "FRIENDLY" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_aircraftSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_aircraftSizeFriendMin_cbaSetting);
+                        _icon = GVAR(fireControl_aircraftIconFriend_cbaSetting);
                         _color = +GVAR(fireControl_friendColor_cbaSetting);
                     };
                     case "SQUAD" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_aircraftSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_aircraftSizeFriendMin_cbaSetting);
+                        _icon = GVAR(fireControl_aircraftIconFriend_cbaSetting);
                         _color = switch (assignedTeam _nearbyUnit) do {
                             case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
                             case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
@@ -176,22 +182,25 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
             };
             case ("StaticWeapon"): {
                 _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["osahlavne", "Memory"]);
-                _size = (GVAR(fireControl_staticSize_cbaSetting) / tan(_fov /2) / _distance) max 0.5;
                 switch _unitRelationToPlayer do {
                     case "ENEMY" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_staticSizeEnemy_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_staticSizeEnemyMin_cbaSetting);
+                        _icon = GVAR(fireControl_staticIconEnemy_cbaSetting);
                         _color = +GVAR(fireControl_enemyColor_cbaSetting);
                     };
                     case "NEUTRAL" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_staticSizeNeutral_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_staticSizeNeutralMin_cbaSetting);
+                        _icon = GVAR(fireControl_staticIconNeutral_cbaSetting);
                         _color = +GVAR(fireControl_neutralColor_cbaSetting);
                     };
                     case "FRIENDLY" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_staticSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_staticSizeFriendMin_cbaSetting);
+                        _icon = GVAR(fireControl_staticIconFriend_cbaSetting);
                         _color = +GVAR(fireControl_friendColor_cbaSetting);
                     };
                     case "SQUAD" : {
-                        _icon = GVAR(fireControl_staticIcon_cbaSetting);
+                        _size = (GVAR(fireControl_staticSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_staticSizeFriendMin_cbaSetting);
+                        _icon = GVAR(fireControl_staticIconFriend_cbaSetting);
                         _color = switch (assignedTeam _nearbyUnit) do {
                             case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
                             case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};

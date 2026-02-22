@@ -49,7 +49,7 @@ if (_syncValue) then {
 // Updates the radiation exposure for units
 [_unit, _syncValue] call FUNC(updateUnitRadiation);
 
-if (GETVAR(_unit,GVAR(suitActivated),false)) then {
+if (GET_SUIT_ACTIVATED(_unit)) then {
     [_unit, _deltaT, _syncValue] call FUNC(updateBattery);
 
     if (hasInterface && {_unit == ACE_player}) then {

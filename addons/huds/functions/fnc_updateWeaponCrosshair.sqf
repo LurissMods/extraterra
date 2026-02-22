@@ -96,5 +96,5 @@ if (cameraView != "GUNNER" && {(currentWeapon ACE_player != "") && {isNull objec
     };
 
     _color set [3,_cursorFade];
-    drawIcon3D [_icon,_color,_vectorEnd,1,1,0,"",0,0,"RobotoCondensed","center",false];
+    drawIcon3D [_icon,_color,_vectorEnd,0.75,0.75,0,"",0,0,"RobotoCondensed","center",false];
 };

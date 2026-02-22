@@ -27,7 +27,7 @@ class Extended_Killed_EventHandlers {
     };
 };
 
-class Extended_Local_EventHandlers {
+/*class Extended_Local_EventHandlers {
     class CAManBase {
         class ADDON {
             local = QUOTE(
@@ -37,4 +37,4 @@ class Extended_Local_EventHandlers {
             exclude[] = {IGNORE_BASE_UAVPILOTS};
         };
     };
-};
+};*/

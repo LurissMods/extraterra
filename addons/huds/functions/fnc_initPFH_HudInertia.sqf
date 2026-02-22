@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
-* Author: Akaviri13 (Inherited from his code)
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Adds inertia to HUDs
 *
 * Arguments:
 * None
@@ -10,19 +10,22 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_huds_fnc_initPFH_HudInertia
 *
 * Public: No
 */
 
 params ["_entity", "_isLocal"];
 
-if (!_isLocal && {!isPlayer _entity}) exitWith {};
+//if (!_isLocal) exitWith {systemChat format ["(hudInertia) Unit not local: %1",_entity]};
+if (!isPlayer _entity) exitWith {systemChat format ["(hudInertia) Unit not a player: %1",_entity]};
+if (!hasInterface) exitWith {systemChat format ["(hudInertia) Unit client has no interface: %1",_entity]};
 if (GETVAR(_entity,GVAR(initPFH_hudInertia_Activated),false)) exitWith {systemChat format ["initHudInertia called twice! Unit: %1",_entity]};
 
-disableSerialization;
-
+systemChat format ["hudInertia ran for unit! %1",_entity];
 _entity setVariable [QGVAR(initPFH_hudInertia_Activated), true, true];
+
+disableSerialization;
 
 GVAR(hudPFH_hudInertia) = [{
 
