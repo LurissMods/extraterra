@@ -16,7 +16,7 @@
     "SLIDER",
     [LSTRING(bootUpSpeed_cbaSetting_title), LSTRING(bootUpSpeed_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
-    [0.1, 4, 1, 1],
+    [0.01, 4, 1, 2],
     0,
     {},
     false

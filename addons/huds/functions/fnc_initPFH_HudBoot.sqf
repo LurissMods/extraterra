@@ -25,10 +25,10 @@ GVAR(hudPFH_bootAnim) = [{
     private _bootupText = _inputArgs select 0;
     private _bootUpAnims = _inputArgs select 1;
 
-    //systemChat str ((_bootupText select GVAR(bootIteration))#1);
+    private _currentAnimTimer = ((_bootupText select GVAR(bootIteration))#1);
 
     private _timePassed = CBA_missionTime - GVAR(timeSinceLastLine);
-    if (_timePassed < ((_bootupText select GVAR(bootIteration))#1)) exitWith {};
+    if (_timePassed < (_currentAnimTimer*GVAR(bootUpSpeed_cbaSetting))) exitWith {};
 
     [((_bootupText select GVAR(bootIteration))#0)] call FUNC(addBootUpLine);
 

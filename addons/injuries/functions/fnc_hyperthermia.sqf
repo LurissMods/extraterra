@@ -17,11 +17,11 @@
 
 params ["_unit","_deltaT","_syncValues"];
 
-/*if (!isPlayer _unit) exitWith {}; // temp fix
+//if (!isPlayer _unit) exitWith {}; // temp fix
 
-private _coreTemp = ([_unit] call EFUNC(lifeSupport,coreTemp) select 0);
+private _coreTemp = GET_CORE_TEMP(_unit);
 
-if (_coreTemp <= HUMAN_NATURAL_CORETEMP) exitWith {};
+//if (_coreTemp <= HUMAN_NATURAL_CORETEMP) exitWith {};
 
 private _currentPain = GETVAR(_unit,ACEGVAR(medical,pain),0);
 private _currentHyperthermiaFlag = GETVAR(_unit,GVAR(unitCurrentCoreTempFlag),0);
@@ -36,20 +36,22 @@ private _bloodPressureAdjust = _hyperthermiaGradient*HYPERTHERMIA_MIN_RESISTANCE
 [_unit, _heartRateAdjust, _deltaT, _syncValues] call ACEFUNC(medical_vitals,updateHeartRate);//ace_medical_vitals_fnc_updateHeartRate;
 [_unit, _bloodPressureAdjust, _deltaT, _syncValues] call ACEFUNC(medical_vitals,updatePeripheralResistance);//ace_medical_vitals_fnc_updatePeripheralResistance; // This affects blood pressure
 
+// Note: This probably won't work in multiplayer at all?
 ACEGVAR(advanced_fatigue,performanceFactor) = GVAR(originalPerformanceFactor) * (1 - _hyperthermiaGradient);
 ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor) * (1 - _hyperthermiaGradient);
 
-private _heartRate = GET_HEART_RATE(_unit);
-private _bloodPressure = ([_unit] call ACEFUNC(medical_status,getBloodPressure));*/
+//private _heartRate = GET_HEART_RATE(_unit);
+//GET_BLOOD_PRESSURE(_unit) params ["_bloodPressureL", "_bloodPressureH"];
+//private _bloodPressure = ([_unit] call ACEFUNC(medical_status,getBloodPressure));
 
-/*systemChat format ["Hyp. Gradient: %1",_hyperthermiaGradient];
-systemChat format ["BP. Gradient: %1",_bloodPressureGradient];*/
+//systemChat format ["Hyp. Gradient: %1, Unit: %2",_hyperthermiaGradient, _unit];
+//systemChat format ["BP. Gradient: %1",_bloodPressureGradient];*/
 //systemChat format ["Core Temp: %1",_coreTemp];
 //systemChat format ["HR: %1",_heartRate];
-/*systemChat format ["Sys/Dias: %2/%1",(_bloodPressure select 0),(_bloodPressure select 1)];
+//systemChat format ["Sys/Dias: %2/%1",(_bloodPressure select 0),(_bloodPressure select 1)];
 //systemChat format ["Core Temp: %1",_coreTemp];
 
-switch (true) do {
+/*switch (true) do {
     case (_coreTemp < HYPERTHERMIA_STAGE_MILD): {
         //systemChat "No Hyperthermia";
     };
@@ -77,7 +79,7 @@ switch (true) do {
             ["Your skin feels cold.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
         };
     };
-};*/
+};
 
 
 /*if (_coreTemp >= HYPERTHERMIA_STAGE_MILD && {_coreTemp < HYPERTHERMIA_STAGE_MODERATE}) then {
