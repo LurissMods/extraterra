@@ -199,22 +199,22 @@
         <Key ID="STR_exterra_huds_hudRadialBlur_power_cbaSetting_title">
             <English>HUD Radial Blur Effect Strength</English>
         </Key>
-        <Key ID="STR_exterra_huds_info_background_text_US">
-            <English>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</English>
-            <Czech>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Czech>
-            <French>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa à dos</French>
-            <Spanish>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Spanish>
-            <Italian>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Italian>
-            <Polish>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Polish>
-            <Portuguese>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Portuguese>
-            <Russian>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Russian>
-            <German>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</German>
-            <Korean>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Korean>
-            <Japanese>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Japanese>
-            <Chinese>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Chinese>
-            <Chinesesimp>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_chinSimp_US.paa</Chinesesimp>
-            <Turkish>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Turkish>
-            <Ukrainian>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudInfo_text_english_US.paa</Ukrainian>
+        <Key ID="STR_exterra_huds_hudText_US">
+            <English>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</English>
+            <Czech>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Czech>
+            <French>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</French>
+            <Spanish>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Spanish>
+            <Italian>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Italian>
+            <Polish>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Polish>
+            <Portuguese>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Portuguese>
+            <Russian>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_russian_ca.paa</Russian>
+            <German>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</German>
+            <Korean>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Korean>
+            <Japanese>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Japanese>
+            <Chinese>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Chinese>
+            <Chinesesimp>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Chinesesimp>
+            <Turkish>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_english_ca.paa</Turkish>
+            <Ukrainian>z\exterra\addons\huds\data\hudUI_US\exterra_huds_hudText_us_ukranian_ca.paa</Ukrainian>
         </Key>
         <Key ID="STR_exterra_huds_tempMeasurementSystem_cbaSetting_desc">
             <English>Select the temperature measurement system displayed by the HUD.</English>
