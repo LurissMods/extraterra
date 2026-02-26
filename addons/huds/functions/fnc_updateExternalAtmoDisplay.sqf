@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Updates the HUD's current external atmosphere control.
+* Called by the statemachine (lifesupport, handleUnitLifesupport).
 *
 * Arguments:
 * None
@@ -10,7 +11,7 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_updateExternalAtmoDisplay
 *
 * Public: No
 */

@@ -1,16 +1,19 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Converts seconds into base 60 time for display on the HUD.
 *
 * Arguments:
-* None
+* ["_supply", "_currentConsumption", "_hudText"]    [<NUMBER>, <NUMBER>, <CONTROL>]
+* _supply = Current supply of a given consumable.
+* _currentConsumption = Current consumption rate of a given consumable.
+* _hudText = Control ID of the given timer on the HUD.
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_secondsToBase60Time
 *
 * Public: No
 */

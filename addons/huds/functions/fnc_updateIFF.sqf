@@ -1,16 +1,18 @@
 #include "..\script_component.hpp"
 /*
-* Author: Akaviri13 (Inherited from his code)
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Updates the IFF icons. Run every frame.
+* Called by the Fire Control PFH.
 *
 * Arguments:
-* None
+* ["_unitsNearPlayer"]  [<ARRAY>]
+* _unitsNearPlayer = Array of units surrounding the player.
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_updateIFF
 *
 * Public: No
 */

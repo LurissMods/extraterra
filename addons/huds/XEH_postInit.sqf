@@ -11,8 +11,8 @@
 
     }] call CBA_fnc_addEventHandler;*/
 
-    [ACE_player, true] call FUNC(initHUD_US);
-    [ACE_player, true] call FUNC(initPFH_HudInertia);
+    call FUNC(initHUD_US);
+    [ACE_player] call FUNC(initPFH_HudInertia);
     call FUNC(initPFH_QuickSuitCheck);
 
     ["CBA_SettingChanged", {

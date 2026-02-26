@@ -1,10 +1,12 @@
 #include "..\script_component.hpp"
 /*
 * Author: Akaviri13, Luriss
-* Adds inertia to HUDs
+* Initalizes the HUD inertia PFH for each player client. Called in the postInit because I want it to run even when suits are off.
+* One of the last functions still mostly untouched from Akaviri13's original code!
 *
 * Arguments:
-* None
+* [_unit] [<UNIT>]
+* ACE_player is fed to this argument via the postInit. Done to ensure the PFH is only fired once per player.
 *
 * Return Value:
 * None
@@ -15,15 +17,14 @@
 * Public: No
 */
 
-params ["_entity", "_isLocal"];
+params ["_unit"];
 
-//if (!_isLocal) exitWith {systemChat format ["(hudInertia) Unit not local: %1",_entity]};
-if (!isPlayer _entity) exitWith {systemChat format ["(hudInertia) Unit not a player: %1",_entity]};
-if (!hasInterface) exitWith {systemChat format ["(hudInertia) Unit client has no interface: %1",_entity]};
-if (GETVAR(_entity,GVAR(initPFH_hudInertia_Activated),false)) exitWith {systemChat format ["initHudInertia called twice! Unit: %1",_entity]};
+if (!isPlayer _unit) exitWith {systemChat format ["(hudInertia) Unit not a player: %1",_unit]};
+if (!hasInterface) exitWith {systemChat format ["(hudInertia) Unit client has no interface: %1",_unit]};
+if (GETVAR(_unit,GVAR(initPFH_hudInertia_Activated),false)) exitWith {systemChat format ["initHudInertia called twice! Unit: %1",_unit]};
 
-systemChat format ["hudInertia ran for unit! %1",_entity];
-_entity setVariable [QGVAR(initPFH_hudInertia_Activated), true, true];
+systemChat format ["hudInertia ran for unit! %1",_unit];
+_unit setVariable [QGVAR(initPFH_hudInertia_Activated), true, true];
 
 disableSerialization;
 

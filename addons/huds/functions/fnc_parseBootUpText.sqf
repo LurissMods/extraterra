@@ -1,16 +1,16 @@
 #include "..\script_component.hpp"
 /*
-* Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Recieves text from the addBootUpLine function and updates the boot up text control.
 *
 * Arguments:
-* None
+* ["_bootUpLines"]  [<STRING>]
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_parseBootUpText
 *
 * Public: No
 */

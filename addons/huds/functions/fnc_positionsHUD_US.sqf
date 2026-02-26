@@ -1,16 +1,18 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Defines HUD control positions for the US HUD. Called by the HudInertia PFH.
+* I originally wanted to package everything into a control group but the relative coordinate system didn't play nice with different screen resolutions/aspect ratios.
 *
 * Arguments:
-* None
+* ["_positionAdjustX", "_positionAdjustY"]  [<NUMBER>, <NUMBER>]
+* Interia offset in the X and Y axis.
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_positions_HUD_US
 *
 * Public: No
 */

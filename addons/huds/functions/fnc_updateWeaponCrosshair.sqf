@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Updates the weapon crosshair. Run every frame.
+* Called by the Fire Control PFH.
 *
 * Arguments:
 * None
@@ -10,14 +11,14 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_updateWeaponCrossshair
 *
 * Public: No
 */
 
 if (cameraView != "GUNNER" && {(currentWeapon ACE_player != "") && {isNull objectParent ACE_player}}) then { //isNull objectParent player = checks if player is in vehicle
 
-    private _icon = GVAR(fireControl_crosshairIcon_cbaSetting); // Make this factional
+    private _icon = GVAR(fireControl_crosshairIcon_cbaSetting); // Make this faction agnostic
     private _color = +GVAR(fireControl_crosshairColor_cbaSetting);
     private _vectorMaxCheck = GVAR(fireControl_crosshairMaxRange_cbaSetting);
 

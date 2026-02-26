@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Initalizes the suit fire control PFH. Called by either bootHUD_XX or the HudBoot PFH depending on quick boot CBA setting.
 *
 * Arguments:
 * None
@@ -10,10 +10,12 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_initPFH_FireControl
 *
 * Public: No
 */
+
+// Note: This isn't faction agonostic yet!
 
 if (GVAR(initPFH_FireControl_Activated)) exitWith {};
 GVAR(initPFH_FireControl_Activated) = true;

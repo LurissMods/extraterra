@@ -1,16 +1,19 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Initalizes a PFH to manage the animated boot sequence. Will automatically remove itself once the sequence is cancelled/complete.
+* Note: I'm not really happy that this is wasting PFH ids but I can't really think of a better solution. In practice it *should* be fine (maybe ~200 wasted IDs in a mission at most?), if a bit wasteful.
 *
 * Arguments:
-* None
+* ["_bootupText","_bootUpAnims"]    [<MATRIX>, <MATRIX>]
+* _bootupText = Matrix fed from bootHUD_XX. Contains each text line in the boot up sequence and the wait time for that line in seconds.
+* _bootUpAnims = Matrix fed from bootHUD_XX. Contains the HUD controls and a line number that corresponds to _bootupText. Reveals the controls on the corresponding line.
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_initPFH_HudBoot
 *
 * Public: No
 */

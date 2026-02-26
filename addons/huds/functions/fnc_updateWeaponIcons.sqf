@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
-* Author: Akaviri13
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Updates the HUD's weapon icons.
+* Called by the General HUD PFH.
 *
 * Arguments:
 * None
@@ -10,7 +11,7 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_updateWeaponIcons
 *
 * Public: No
 */

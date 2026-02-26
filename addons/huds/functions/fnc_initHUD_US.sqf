@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Initalizes the US HUD controls in mission namespace for each player client.
 *
 * Arguments:
 * None
@@ -10,20 +10,22 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_initHUD_US
 *
 * Public: No
 */
 
-params ["_entity", "_isLocal"];
+//params ["_unit"];
 
 //if (!_isLocal) exitWith {systemChat format ["(initHUD) Unit not local: %1",_entity]};
-if (!isPlayer _entity) exitWith {systemChat format ["(initHUD) Unit not a player: %1",_entity]};
-if (!hasInterface) exitWith {systemChat format ["(initHUD) Unit client has no interface: %1",_entity]};
-if (GETVAR(_entity,GVAR(initHUD_US_Activated),false)) exitWith {systemChat format ["initHUD_US called twice! Unit: %1",_entity]};
+//if (!isPlayer _unit) exitWith {systemChat format ["(initHUD) Unit not a player: %1",_unit]};
+//if (!hasInterface) exitWith {systemChat format ["(initHUD) Unit client has no interface: %1",_unit]};
+//if (GETVAR(_unit,GVAR(initHUD_US_Activated),false)) exitWith {systemChat format ["initHUD_US called twice! Unit: %1",_unit]};
 
-systemChat format ["initHUD ran for unit! %1",_entity];
-_entity setVariable [QGVAR(initHUD_Activated), true, true];
+//systemChat format ["initHUD ran for unit! %1",_unit];
+//_unit setVariable [QGVAR(initHUD_Activated), true, true];
+
+if (!hasInterface) exitWith {};
 
 QGVAR(HUD_US) cutText ["","PLAIN",-1,false];
 
@@ -219,6 +221,7 @@ GVAR(hudSquad_datalink9_text_US) = [uiNamespace getVariable QGVAR(hudSquad_datal
 (GVAR(hudLines_US)#0) ctrlSetFade 1;
 (GVAR(hudLines_US)#0) ctrlCommit 0;
 
+(GVAR(hudText_US)#0) ctrlSetText LLSTRING(hudText_US);
 (GVAR(hudText_US)#0) ctrlSetTextColor GVAR(textColor_US_cbaSetting);
 (GVAR(hudText_US)#0) ctrlSetFade 1;
 (GVAR(hudText_US)#0) ctrlCommit 0;

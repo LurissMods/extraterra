@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 /*
-* Author: Akaviri13 and Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Updates the HUD's rangefinder/grid/compass. Run every frame.
+* Called by the Fire Control PFH.
 *
 * Arguments:
 * None
@@ -10,7 +11,7 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_updateTargetPosInfo
 *
 * Public: No
 */

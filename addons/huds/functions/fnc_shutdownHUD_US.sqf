@@ -1,19 +1,21 @@
 #include "..\script_component.hpp"
 /*
-* Author: Akaviri13 (Inherited from his code)
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Luriss
+* Shutdown the US HUD. Called by the suitDeactivated CBA local event (see (huds, CfgVehicles) and (lifesupport_statemachine, startSuitShutdown)).
 *
 * Arguments:
-* None
+* ["_unit"]     [<UNIT>]
+* _unit = ACE_player
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_shutdownHUD_US
 *
 * Public: No
 */
+
 params ["_unit"];
 
 if (_unit != ACE_player) exitWith {};

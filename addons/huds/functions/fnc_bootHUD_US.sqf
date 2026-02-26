@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Boot up sequence for the US HUD. Called by the suitActivated CBA local event (see (huds, CfgVehicles) and (lifesupport_statemachine, startSuitBootUp)).
 *
 * Arguments:
 * None
@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_bootHUD_US
 *
 * Public: No
 */
