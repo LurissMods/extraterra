@@ -5,6 +5,7 @@ if (!hasInterface) exitWith {};
 ["CBA_settingsInitialized", {
 
     [ACE_player] call FUNC(initInjuryUI);
+    call FUNC(addEventHandlers);
 
     GVAR(originalPerformanceFactor) = ACEGVAR(advanced_fatigue,performanceFactor);
     GVAR(originalRecoveryFactor) = ACEGVAR(advanced_fatigue,recoveryFactor);

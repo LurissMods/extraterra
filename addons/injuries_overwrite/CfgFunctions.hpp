@@ -24,7 +24,15 @@ class CfgFunctions {
             };*/
         };
     };
-   /* class overwrite_ace_medical_statemachine {
+    /*class overwrite_medical_gui {
+        tag = "ace_medical_gui";
+        class ace_medical_gui {
+            class updateInjuryList {
+                file = QPATHTOF(functions\fnc_updateInjuryList.sqf);
+            };
+        };
+    };
+    class overwrite_ace_medical_statemachine {
         tag = "ace_medical_statemachine";
         class ace_medical_statemachine {
             class handleStateDefault {

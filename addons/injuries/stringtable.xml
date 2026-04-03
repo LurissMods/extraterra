@@ -10,5 +10,14 @@
         <Key ID="STR_exterra_injuries_displayName">
             <English>injuries</English>
         </Key>
+        <Key ID="STR_ace_medical_damage_Ebullism_Minor">
+            <English>Minor Ebullism</English>
+        </Key>
+        <Key ID="STR_ace_medical_damage_Ebullism_Medium">
+            <English>Medium Ebullism</English>
+        </Key>
+        <Key ID="STR_ace_medical_damage_Ebullism_Large">
+            <English>Large Ebullism</English>
+        </Key>
     </Package>
 </Project>

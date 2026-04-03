@@ -43,6 +43,13 @@ if (CBA_missionTime - (GVAR(radLim0Time)) >= 5 && {GVAR(vomitMild)}) then {
     (GVAR(vomitMild_UI)#0) ctrlSetFade 0;
     (GVAR(vomitMild_UI)#0) ctrlCommit 0;
 
+    private _ctrl = 1410; // idc for ace injuries
+    private _target = ACE_player;
+    private _selectionN = -1;
+    private _entries = "rad 0 called";
+
+    //[QACEGVAR(medical_gui,updateInjuryListGeneral), [_ctrl, _target, _selectionN, _entries]] call CBA_fnc_localEvent;
+
     GVAR(vomitMild) = false;
 };
 if (CBA_missionTime - (GVAR(radLim1Time)) >= 5 && {GVAR(vomitMild)}) then {

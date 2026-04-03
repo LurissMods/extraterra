@@ -3,7 +3,7 @@ class RscControlsGroupNoScrollbars;
 
 class RscTitles
 {
-    class exterra_injuries_vomit_UI {
+    class GVAR(vomit_UI) {
         idd = -1;
         onLoad = "uiNamespace setVariable ['exterra_injuries_vomit_UI', _this select 0];";
         onUnload = "uiNamespace setVariable ['exterra_injuries_vomit_UI', nil];";
@@ -17,6 +17,33 @@ class RscTitles
                 idc = IDC_VOMIT_MILD;
                 text = QPATHTOF(data\ui\exterra_injuries_vomitMild_ca.paa);
                 color[] = {1,1,1,1};
+            };
+        };
+    };
+};
+
+
+class ace_medical_gui_BodyImage: RscControlsGroupNoScrollbars {
+    class controls {
+        class LegRight;
+        class heatRash: LegRight {
+            idc = 25247;
+            show = 0;
+            text = QPATHTOF(data\body_image\heatRash.paa);
+        };
+    };
+};
+
+/*class ACE_Medical_Menu {
+    class controls {
+        class BodyImage: ace_medical_gui_BodyImage {
+            class controls {
+                class LegRight;
+                class testDots: LegRight {
+                    idc = 25247;
+                    show = 0;
+                    text = QPATHTOF(data\body_image\testDots.paa);
+                };
             };
         };
     };

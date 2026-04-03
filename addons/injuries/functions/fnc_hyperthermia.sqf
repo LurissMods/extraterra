@@ -51,7 +51,7 @@ ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor) * (1 - _
 //systemChat format ["Sys/Dias: %2/%1",(_bloodPressure select 0),(_bloodPressure select 1)];
 //systemChat format ["Core Temp: %1",_coreTemp];
 
-/*switch (true) do {
+switch (true) do {
     case (_coreTemp < HYPERTHERMIA_STAGE_MILD): {
         //systemChat "No Hyperthermia";
     };
@@ -60,7 +60,7 @@ ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor) * (1 - _
         if (_currentHyperthermiaFlag != HYPERTHERMIA_STAGE_MILD) then {
             SETVAR(_unit,GVAR(unitCurrentCoreTempFlag),HYPERTHERMIA_STAGE_MILD);
             //systemChat "State change fired!";
-            ["You feel itchy and sweaty.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
+            //["You feel itchy and sweaty.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
         };
     };
     case (_coreTemp >= HYPERTHERMIA_STAGE_MODERATE && {_coreTemp < HYPERTHERMIA_STAGE_SEVERE}): {
@@ -68,7 +68,7 @@ ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor) * (1 - _
         if (_currentHyperthermiaFlag != HYPERTHERMIA_STAGE_MODERATE) then {
             SETVAR(_unit,GVAR(unitCurrentCoreTempFlag),HYPERTHERMIA_STAGE_MODERATE);
             //systemChat "State change fired!";
-            ["You're sweating a lot.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
+            //["You're sweating a lot.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
         };
     };
     case (_coreTemp >= HYPERTHERMIA_STAGE_SEVERE): {
@@ -76,7 +76,7 @@ ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor) * (1 - _
         if (_currentHyperthermiaFlag != HYPERTHERMIA_STAGE_SEVERE) then {
             SETVAR(_unit,GVAR(unitCurrentCoreTempFlag),HYPERTHERMIA_STAGE_SEVERE);
             //systemChat "State change fired!";
-            ["Your skin feels cold.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
+            //["Your skin feels cold.", 1.5, _unit, 10] call ACEFUNC(common,displayTextStructured);
         };
     };
 };

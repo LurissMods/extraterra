@@ -13,3 +13,4 @@ PREP(updateDamageEffects);
 PREP(updateHeartRate);
 PREP(useItem);
 PREP(handleEffects);
+PREP(updateInjuryList)

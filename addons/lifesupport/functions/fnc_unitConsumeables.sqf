@@ -15,12 +15,15 @@
 * Public: No
 */
 
-//private _currentSuitStatus = call EFUNC(huds,isInHelmAndSuit);
+params ["_unit"];
+
 private _faction = _currentSuitStatus select 1;
 private _currentCompatibleTanks = "noSuit";
 
 private _airTanksInInv = [];
-private _magsInPlayerInv = magazinesAmmo player;
+private _batteriesInInv = [];
+
+private _magsInPlayerInv = magazinesAmmo _unit;
 
 if (_faction == -1) exitWith {systemChat "not wearing space suit"};
 
@@ -35,5 +38,3 @@ switch (_faction) do {
         _airTanksInInv pushBack _x;
     };
 } forEach _magsInPlayerInv;
-
-_airTanksInInv;

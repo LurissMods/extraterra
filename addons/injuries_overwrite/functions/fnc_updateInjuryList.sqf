@@ -1,21 +1,21 @@
 #include "..\script_component.hpp"
 /*
- * Author: mharis001
- * Updates injury list for given body part for the target.
- *
- * Arguments:
- * 0: Injury list <CONTROL>
- * 1: Target <OBJECT>
- * 2: Body part <NUMBER>
- *
- * Return Value:
- * None
- *
- * Example:
- * [_ctrlInjuries, _target, 0] call ace_medical_gui_fnc_updateInjuryList
- *
- * Public: No
- */
+* Author: mharis001
+* Updates injury list for given body part for the target.
+*
+* Arguments:
+* 0: Injury list <CONTROL>
+* 1: Target <OBJECT>
+* 2: Body part, -1 to only show overall health info <NUMBER>
+*
+* Return Value:
+* None
+*
+* Example:
+* [_ctrlInjuries, _target, 0] call ace_medical_gui_fnc_updateInjuryList
+*
+* Public: No
+*/
 
 params ["_ctrl", "_target", "_selectionN"];
 
@@ -59,7 +59,7 @@ if (ACEGVAR(medical_gui,showBloodlossEntry)) then {
     // Give a qualitative description of the blood volume lost
     switch (GET_HEMORRHAGE(_target)) do {
         case 0: {
-            if (ACEGVAR(medical_gui,showInactiveStatuses)) then {_entries pushBack [localize ACELSTRING(medical_gui,Lost_Blood0), _nonissueColor];};
+            _entries pushBack [localize ACELSTRING(medical_gui,Lost_Blood0), _nonissueColor];
         };
         case 1: {
             _entries pushBack [localize ACELSTRING(medical_gui,Lost_Blood1), [1, 1, 0, 1]];
@@ -75,38 +75,20 @@ if (ACEGVAR(medical_gui,showBloodlossEntry)) then {
         };
     };
 };
-
 // Show receiving IV volume remaining
-private _totalIvVolume = 0;
-private _saline = 0;
-private _blood = 0;
-private _plasma = 0;
+private _fluidVolumes = createHashMap;
+private _ivCfg = configFile >> "ace_medical_treatment" >> "IV";
 {
     _x params ["_volumeRemaining", "_type"];
-    switch (_type) do {
-        case "Saline": {
-            _saline = _saline + _volumeRemaining;
-        };
-        case "Blood": {
-            _blood = _blood + _volumeRemaining;
-        };
-        case "Plasma": {
-            _plasma = _plasma + _volumeRemaining;
-        };
-    };
-    _totalIvVolume = _totalIvVolume + _volumeRemaining;
+    private _guiMessage = GET_STRING(_ivCfg >> (_type + "IV") >> "gui_message",getText (_ivCfg >> "gui_message"));
+    private _currentVolume = _fluidVolumes getOrDefault [_guiMessage, 0];
+    _fluidVolumes set [_guiMessage, _currentVolume + _volumeRemaining];
 } forEach (_target getVariable [QACEGVAR(medical,ivBags), []]);
 
-if (_totalIvVolume > 0) then {
-    if (_saline > 0) then {
-        _entries pushBack [format [localize ACELSTRING(medical_treatment,receivingSalineIvVolume), floor _saline], [1, 1, 1, 1]];
-    };
-    if (_blood > 0) then {
-        _entries pushBack [format [localize ACELSTRING(medical_treatment,receivingBloodIvVolume), floor _blood], [1, 1, 1, 1]];
-    };
-    if (_plasma > 0) then {
-        _entries pushBack [format [localize ACELSTRING(medical_treatment,receivingPlasmaIvVolume), floor _plasma], [1, 1, 1, 1]];
-    };
+if (_fluidVolumes isNotEqualTo createHashMap) then {
+    {
+        _entries pushBack [format [_x, floor _y], [1, 1, 1, 1]];
+    } forEach _fluidVolumes;
 } else {
     _entries pushBack [localize ACELSTRING(medical_treatment,Status_NoIv), _nonissueColor];
 };
@@ -128,7 +110,7 @@ if (_target call ACEFUNC(common,isAwake)) then {
         };
         _entries pushBack [localize _painText, [1, 1, 1, 1]];
     } else {
-        if (ACEGVAR(medical_gui,showInactiveStatuses)) then {_entries pushBack [localize ACELSTRING(medical_treatment,Status_NoPain), _nonissueColor];};
+        _entries pushBack [localize ACELSTRING(medical_treatment,Status_NoPain), _nonissueColor];
     };
 };
 
@@ -148,6 +130,8 @@ if (_selectionN == -1) exitWith {
 
 [QACEGVAR(medical_gui,updateInjuryListGeneral), [_ctrl, _target, _selectionN, _entries]] call CBA_fnc_localEvent;
 
+_entries pushBack ["", [1, 1, 1, 1]];
+
 // Add selected body part name
 private _bodyPartName = [
     ACELSTRING(medical_gui,Head),
@@ -162,7 +146,7 @@ _entries pushBack [localize _bodyPartName, [1, 1, 1, 1]];
 
 // Damage taken tooltip
 if (ACEGVAR(medical_gui,showDamageEntry)) then {
-    private _bodyPartDamage = (_target getVariable [QACEGVAR(medical,bodyPartDamage), [0, 0, 0, 0, 0, 0]]) select _selectionN;
+    private _bodyPartDamage = GET_BODYPART_DAMAGE(_target) select _selectionN;
     if (_bodyPartDamage > 0) then {
         private _damageThreshold = GET_DAMAGE_THRESHOLD(_target);
         switch (true) do {
@@ -187,7 +171,8 @@ if (ACEGVAR(medical_gui,showDamageEntry)) then {
                 _damageThreshold = _damageThreshold * 1.5;
             };
         };
-        _bodyPartDamage = (_bodyPartDamage / _damageThreshold) min 1;
+        // _bodyPartDamage here should indicate how close unit is to guaranteed death via sum of trauma, so use the same multipliers used in medical_damage/functions/fnc_determineIfFatal.sqf
+        _bodyPartDamage = (_bodyPartDamage / (_damageThreshold max 0.01)) min 1;
         switch (true) do {
             case (_bodyPartDamage isEqualTo 1): {
                 _entries pushBack [localize ACELSTRING(medical_gui,traumaSustained4), [_bodyPartDamage] call ACEFUNC(medical_gui,damageToRGBA)];
@@ -206,14 +191,8 @@ if (ACEGVAR(medical_gui,showDamageEntry)) then {
 };
 
 // Indicate if a tourniquet is applied
-/*if (HAS_TOURNIQUET_ACTUAL(_target,_selectionN)) then {
-    _entries pushBack [format ["%1 [%2]", localize ACELSTRING(medical_gui,Status_Tourniquet_Applied), _target getVariable [QEGVAR(circulation,tourniquetTime), [0,0,0,0,0,0]] select _selectionN], [0.77, 0.51, 0.08, 1]];
-};*/
-
-private _warmerPlaced = _target getVariable [QEGVAR(hypothermia,fluidWarmer), [0,0,0,0,0,0]];
-
-if (_warmerPlaced select _selectionN == 1) then {
-    _entries pushBack [LELSTRING(hypothermia,LineWarmer), [1, 0.75, 0.18, 1]];
+if (HAS_TOURNIQUET_APPLIED_ON(_target,_selectionN)) then {
+    _entries pushBack [localize ACELSTRING(medical_gui,Status_Tourniquet_Applied), [0.77, 0.51, 0.08, 1]];
 };
 
 // Indicate current body part fracture status
@@ -267,8 +246,6 @@ private _fnc_processWounds = {
 // Handle no wound entries
 if (_woundEntries isEqualTo []) then {
     _entries pushBack [localize ACELSTRING(medical_treatment,NoInjuriesBodypart), _nonissueColor];
-    //_nonissueColor
-    //[1,0,0,1]
 } else {
     _entries append _woundEntries;
 };
