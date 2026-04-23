@@ -127,9 +127,9 @@ class CfgGesturesMale
 
 	class States
 	{
-		class exterra_m2Carbine_reloadStand : Default
+		class exterra_weapons_m2Carbine_reloadStand : Default
 		{
-			file = "z\exterra\addons\weapons\weapons\m2Carbine\anims\exterra_m2Carbine_reloadStand.rtm";
+			file = "z\exterra\addons\weapons\weapons\m2Carbine\anims\exterra_weapons_m2Carbine_reloadStand.rtm";
 			looped = 0;
 			speed = 0.25;
 			//mask = "ReloadMask";
@@ -149,9 +149,9 @@ class CfgGesturesMale
             //InterpolationRestart = 0;
             //ConnectTo[] = {"AmovPercMstpSrasWrflDnon",0.1};
 		};
-		class exterra_m2Carbine_reloadProne : Default
+		class exterra_weapons_m2Carbine_reloadProne : Default
 		{
-			file = "z\exterra\addons\weapons\weapons\m2Carbine\anims\exterra_m2Carbine_reloadProne.rtm";
+			file = "z\exterra\addons\weapons\weapons\m2Carbine\anims\exterra_weapons_m2Carbine_reloadProne.rtm";
 			looped = 0;
 			speed = 0.25;
 			mask = "handsWeapon";

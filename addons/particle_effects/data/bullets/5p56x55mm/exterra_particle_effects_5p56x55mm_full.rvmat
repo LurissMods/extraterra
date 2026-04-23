@@ -9,12 +9,12 @@ diffuse[] = {1,1,1,1};
 forcedDiffuse[] = {0,0,0,0};
 emmisive[] = {0,0,0,0};
 specular[] = {1,1,1,1};
-specularPower = 30;
+specularPower = 50;
 PixelShaderID = "Super";
 VertexShaderID = "Super";
 class Stage1
 {
-	texture = "z\exterra\addons\weapons\magazines\5p56Mag0\exterra_weapons_5p56Mag0_main_nohq.paa";
+	texture = "z\exterra\addons\particle_effects\data\bullets\5p56x55mm\exterra_particle_effects_5p56x55mm_full_nohq.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -50,7 +50,7 @@ class Stage3
 };
 class Stage4
 {
-	texture = "z\exterra\addons\weapons\magazines\5p56Mag0\exterra_weapons_5p56Mag0_main_as.paa";
+	texture = "z\exterra\addons\particle_effects\data\bullets\5p56x55mm\exterra_particle_effects_5p56x55mm_full_as.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -62,7 +62,7 @@ class Stage4
 };
 class Stage5
 {
-	texture = "z\exterra\addons\weapons\magazines\5p56Mag0\exterra_weapons_5p56Mag0_main_smdi.paa";
+	texture = "z\exterra\addons\particle_effects\data\bullets\5p56x55mm\exterra_particle_effects_5p56x55mm_full_smdi.paa";
 	uvSource = "tex";
 	class uvTransform
 	{

@@ -258,7 +258,7 @@ class CfgAmmo
 	};
 
 	// 5.56x55mm
-	class exterra_weapons_5p56x55mmTeflon : exterra_weapons_bulletBase
+	class exterra_weapons_5p56x55mm : exterra_weapons_bulletBase
 	{
 		hit = 9;
 		indirectHit = 0;
@@ -328,7 +328,7 @@ class CfgAmmo
 			//hitGroundHard = "ImpactEffectsHardGround";
         };
 	};
-	class exterra_weapons_5p56x55mmTeflonTracer : exterra_weapons_5p56x55mmTeflon
+	class exterra_weapons_5p56x55mmTracer : exterra_weapons_5p56x55mm
 	{
 		model = "\A3\Weapons_f\Data\bullettracer\tracer_red";
 		nvgOnly = 0;

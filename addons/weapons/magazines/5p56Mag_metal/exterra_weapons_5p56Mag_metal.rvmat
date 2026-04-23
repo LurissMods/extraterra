@@ -14,7 +14,7 @@ PixelShaderID = "Super";
 VertexShaderID = "Super";
 class Stage1
 {
-	texture = "z\exterra\addons\particle_effects\data\bullets\5p56x55mm\exterra_particle_effects_5p56x55mm_bullet_nohq.paa";
+	texture = "z\exterra\addons\weapons\magazines\5p56Mag_metal\exterra_weapons_5p56Mag_metal_nohq.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -50,7 +50,7 @@ class Stage3
 };
 class Stage4
 {
-	texture = "z\exterra\addons\particle_effects\data\bullets\5p56x55mm\exterra_particle_effects_5p56x55mm_bullet_as.paa";
+	texture = "z\exterra\addons\weapons\magazines\5p56Mag_metal\exterra_weapons_5p56Mag_metal_as.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -62,7 +62,7 @@ class Stage4
 };
 class Stage5
 {
-	texture = "z\exterra\addons\particle_effects\data\bullets\5p56x55mm\exterra_particle_effects_5p56x55mm_bullet_smdi.paa";
+	texture = "z\exterra\addons\weapons\magazines\5p56Mag_metal\exterra_weapons_5p56Mag_metal_smdi.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
