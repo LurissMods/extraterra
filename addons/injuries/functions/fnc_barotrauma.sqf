@@ -15,12 +15,122 @@
 * Public: No
 */
 
-params ["_isSuitCheckCall", "_prebreatheRatio", "_inSuit", "_currentAtmo"];
+params ["_unit","_deltaT","_syncValues"];
+GET_SUIT_BOOLS(_unit) params ["_masterBool","_helmetBool","_suitBool","_packBool"];
 
-//systemChat str EGVAR(lifesupport,atmoEnteredSuit);
+// two types - Sudden depressure (air to vac) and ebullism
+// account for open wounds here?
 
-//systemChat str _prebreatheRatio;
-private _prebreatheSeverityCoeff = linearConversion[0,1,_prebreatheRatio,PREBREATHE_SAFE_THRESHOLD,1];
+private _unitVacuumBool = _unit getVariable [QGVAR(unitVacuumExposed),nil];
+
+
+private _unitOpenWounds = GET_OPEN_WOUNDS(_unit);
+private _unitWoundKeys = keys _unitOpenWounds;
+private _unitExposedWounds = 0;
+
+// Bruises = Wound class 2
+// Velocity = Wound class 7
+{
+    if (_x == "head") then {
+        {
+            private _woundClass = ((_x select 0)/10);
+            if !(_woundClass >= 2 && {_woundClass < 3}) then {
+                if ((_x select 1) == 1) then {
+                    _helmetBool = false;
+                };
+            };
+        } forEach (_unitOpenWounds get _x);
+    } else {
+        {
+            private _woundClass = ((_x select 0)/10);
+            if !(_woundClass >= 2 && {_woundClass < 3}) then {
+                if ((_x select 1) == 1) then {
+                    _unitExposedWounds = _unitExposedWounds + 1;
+                };
+            };
+        } forEach (_unitOpenWounds get _x);
+    };
+
+} forEach _unitWoundKeys;
+
+//systemChat format ["Open wounds: %1, Unit: %2",_unitExposedWounds,_unit];
+
+if (_unitExposedWounds > 6) then {
+    _suitBool = false;
+};
+
+
+switch (GET_ATMO(_unit)) do {
+    case 0: {
+        switch true do {
+            case !_helmetBool: {
+                if (_unitVacuumBool) then {
+                    //[QACEGVAR(medical,activateMedical), _unit] call CBA_fnc_localEvent; ACE optimizes by not calculating AI w/o medical
+                    [_unit,_syncValues] call FUNC(updateVacuumExposure);
+                } else {
+                    [_unit,_syncValues] call FUNC(initVacuumExposure);
+                };
+            };
+            case !_suitBool: {
+                if (_unitVacuumBool) then {
+                    [_unit,_syncValues] call FUNC(updateVacuumExposure);
+                } else {
+                    [_unit,_syncValues] call FUNC(initVacuumExposure);
+                };
+            };
+            case _helmetBool: {
+                if (_unitVacuumBool) then {
+                    [_unit,_syncValues] call FUNC(removeVacuumExposure);
+                } else {
+                    //private _unitTimer = CBA_missionTime - (_unit getVariable [QGVAR(unitVacuumExposedTime),nil]);
+                    //private _unitTimerCoeff = linearConversion[0,5,_unitTimer,1,0,true];
+                };
+            };
+            case _suitBool: {
+                if (_unitVacuumBool) then {
+                    [_unit,_syncValues] call FUNC(removeVacuumExposure);
+                } else {
+                    //private _unitTimer = CBA_missionTime - (_unit getVariable [QGVAR(unitVacuumExposedTime),nil]);
+                    //private _unitTimerCoeff = linearConversion[0,5,_unitTimer,1,0,true];
+                };
+            };
+        };
+    };
+    default {
+        _unit setVariable [QGVAR(unitVacuumExposed),false,_syncValues];
+
+        if (_unit == ACE_player) then {
+            [QGVAR(exposedVacuum), 0, false] call ACEFUNC(common,setHearingCapability);
+            GVAR(burredVision) ppEffectAdjust [0];
+            GVAR(burredVision) ppEffectCommit 5;
+        };
+    };
+};
+
+/*if (!_helmetBool && {GET_ATMO(_unit) == 0}) then {
+
+    _unit setVariable [QGVAR(unitVacuumExposed),true,true];
+
+    _unit setVariable [VAR_PAIN,1,false];
+
+    if (_unit == ACE_player) then {
+        [QGVAR(exposedVacuum), 0, true] call ACEFUNC(common,setHearingCapability);
+        10 call ACEFUNC(hearing,earringing);
+        GVAR(burredVision) ppEffectAdjust [2];
+        GVAR(burredVision) ppEffectCommit 0.05;
+    } else {};
+
+
+   /* GVAR(lowBloodFlowTunnelVision) ppEffectAdjust [1,1,0,[0,0,0,1],[0,0,0,0],[1,1,1,1],[2 * (1 - _bpGradient),2 * (1 - _bpGradient),0,0,0,0.1,0.5]];
+    GVAR(lowBloodFlowGreyscale) ppEffectAdjust [1,(0.3 max (1 - _bpGradient)),0,[0,0,0,0],[1,1,1,(1 - _bpGradient)],[1,1,1,0]];
+    GVAR(lowBloodFlowSpots) ppEffectAdjust [_bpGradient, 0.01, 4, 0.02, 0.02, 0];
+    if hasInterface then {
+        ["exposedVacuum", 0, true] call ace_common_fnc_setHearingCapability;
+    };
+};*/
+
+
+/*private _prebreatheSeverityCoeff = linearConversion[0,1,_prebreatheRatio,PREBREATHE_SAFE_THRESHOLD,1];
 
 if (_isSuitCheckCall) then {
 
@@ -36,7 +146,7 @@ if (_isSuitCheckCall) then {
         if (_prebreatheRatio > PREBREATHE_SAFE_THRESHOLD) then {
             /*GVAR(barotraumaDizziness_PP) ppEffectEnable true;
             GVAR(barotraumaDizziness_PP) ppEffectAdjust [100, 0.5, 0.1, 0.5];
-            GVAR(barotraumaDizziness_PP) ppEffectCommit 0;*/
+            GVAR(barotraumaDizziness_PP) ppEffectCommit 0;
         };
 
         ["mildEarBarotrauma", 0.1 max (1 - _prebreatheRatio), true] call ace_common_fnc_setHearingCapability;
@@ -48,7 +158,7 @@ if (_isSuitCheckCall) then {
         };
         GVAR(barotraumaTimer) = 0 max GVAR(barotraumaTimer) - 1;
     };
-};
+};*/
 
 // cough sound
 // Shortness of breath (Severe)

@@ -67,7 +67,7 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
         class MuzzleSlot : MuzzleSlot
         {
             linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
-            compatibleItems[] = {"exterra_sounds_vacuumMuzzle"};
+            compatibleItems[] = {"exterra_sounds_vacuumMuzzle","muzzle_snds_338_black"};
             iconPosition[] = { 0.06,0.4 };
             iconScale = 0.15;
         };

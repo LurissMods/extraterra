@@ -1,4 +1,4 @@
-hemtt dev -b -F
+hemtt launch -b -F
 
 binarize the files, no file patching, otherwise the anims are fucked
-Move the binned anims from dev into the addons folder and it should be good for the normal 'hemtt launch'
+To bin the anims properly, hemtt build, then copy the anims from the build back into the source files and it should be good for the normal 'hemtt launch'

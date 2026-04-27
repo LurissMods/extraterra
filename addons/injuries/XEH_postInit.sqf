@@ -12,4 +12,14 @@ if (!hasInterface) exitWith {};
 
     [] call FUNC(init);
 
+    /*[QACEGVAR(medical,handleUnitVitals),{
+
+        params ["_unit", "_deltaT"];
+
+        private _syncValues = false;
+
+        [_unit,_deltaT,_syncValues] call FUNC(barotrauma);
+
+    }] call CBA_fnc_addEventHandler;*/
+
 }] call CBA_fnc_addEventHandler;

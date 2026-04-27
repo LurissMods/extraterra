@@ -5,7 +5,8 @@
 
     // Statement
     //[ACE_player, -1] call FUNC(displayPatientInformation);
-    call FUNC(menuToggle);
+
+    //call FUNC(menuToggle); THIS CALLS THE UI, DISABLED FOR TESTING!
     false
 }, {
     /*if (CBA_missionTime - GVAR(peekLastOpenedOn) > GVAR(peekMedicalInfoReleaseDelay)) then {

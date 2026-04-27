@@ -22,6 +22,8 @@ GVAR(initPFH_FireControl_Activated) = true;
 
 GVAR(hudPFH_fireControl) = [{
 
+    if (!isNull findDisplay 312) exitWith {};
+
     [call FUNC(updateUnitsNearPlayer)] call FUNC(updateIFF);
     call FUNC(updateWeaponCrosshair);
     call FUNC(updateNametags);

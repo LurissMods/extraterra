@@ -19,14 +19,17 @@
 */
 
 params ["_unit","_deltaT","_syncValue"];
+GET_SUIT_DATA(_unit) params ["_helmetPassiveAirReserve","_suitMobility","_suitBlackBodyCoeff","_suitSolarAbsorptance","_suitThickness"];
 
 //private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),nil);
 //private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),nil);
 //private _suitData = _unit getVariable [QGVAR(unitSuitData),nil];
 
+if (GET_ATMO(_unit) != 0) exitWith {}; // If in atmo, use surrounding air instead of air tank
+
 private _oxygenSupplyWhenFull = GET_AIR_RESERVE_MAX(_unit);
 private _oxygenSupply = GET_AIR_RESERVE(_unit);
-private _suitData = GET_SUIT_DATA(_unit) params ["_helmetPassiveAirReserve","_suitMobility","_suitBlackBodyCoeff","_suitSolarAbsorptance","_suitThickness"];
+//private _suitBools = GET_SUIT_BOOLS(_unit) params ["_masterBool","_helmetBool","_suitBool","_packBool"];
 
 private _unitMass = HUMAN_MASS + (((loadAbs _unit)/10)/2.205); // Junk on the right is the gear weight converted into kg
 private _respiratoryRate = nil;

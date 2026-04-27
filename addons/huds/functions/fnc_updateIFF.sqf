@@ -108,7 +108,7 @@ if (GVAR(fireControl_IFF_cbaSetting)) then {
                         _color = +GVAR(fireControl_friendColor_cbaSetting);
                     };
                     case "SQUAD" : {
-                        _size = (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /2) / _distance) max GVAR(fireControl_humanSizeFriendMin_cbaSetting);
+                        _size = (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov /0.5) / _distance) max GVAR(fireControl_humanSizeFriendMin_cbaSetting);
                         _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
                         _color = switch (assignedTeam _nearbyUnit) do {
                             case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};

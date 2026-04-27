@@ -1,4 +1,4 @@
-PREP(addMedicationAdjustment);
+/*PREP(addMedicationAdjustment);
 PREP(conditionExecutionDeath);
 PREP(conditionSecondChance);
 PREP(getBloodPressure);
@@ -13,4 +13,4 @@ PREP(updateDamageEffects);
 PREP(updateHeartRate);
 PREP(useItem);
 PREP(handleEffects);
-PREP(updateInjuryList)
+PREP(updateInjuryList)*/

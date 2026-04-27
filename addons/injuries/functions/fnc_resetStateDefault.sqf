@@ -1,6 +1,7 @@
 #include "..\script_component.hpp"
 /*
-* Author: kymckay (modified by Luriss)
+* Author: kymckay
+* Modified by: Luriss
 * Resets the default state on a unit after respawning.
 *
 * Arguments:
@@ -15,7 +16,7 @@
 * Public: No
 */
 
-params ["_unit"];
+/*params ["_unit"];
 
-//[_unit, true] call EFUNC(lifesupport,initUnit);
-[_unit, EGVAR(lifesupport,STATE_MACHINE), "Dead", "Default"] call CBA_statemachine_fnc_manualTransition;
+[_unit, true] call FUNC(initUnit);
+[_unit, ACEGVAR(medical,STATE_MACHINE), "Dead", "Default"] call CBA_statemachine_fnc_manualTransition;*/

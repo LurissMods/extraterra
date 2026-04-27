@@ -32,10 +32,10 @@ if (_syncValue) then {
 
 //BEGIN_COUNTER(lifeSupport);
 
-[_unit,_syncValue] call FUNC(updateUnitAtmo);
+_syncValue = [_unit,_syncValue] call FUNC(updateUnitAtmo);
 
 // Check what suit a unit is wearing and retrieve it's stats
-[_unit, _syncValue] call FUNC(updateUnitSuit);
+_syncValue = [_unit, _syncValue] call FUNC(updateUnitSuit);
 
 // Updates current air intake for units
 [_unit, _deltaT, _syncValue] call FUNC(updateUnitBreathing);
@@ -61,6 +61,9 @@ if (GET_SUIT_ACTIVATED(_unit)) then {
         call EFUNC(huds,updateConsumableDisplay);
     };
 };
+
+// Injuries
+[_unit, _deltaT, _syncValue] call EFUNC(injuries,barotrauma);
 
 //private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
 

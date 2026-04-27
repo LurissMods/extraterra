@@ -38,6 +38,7 @@ if (_heartRate >= HEART_RATE_FATAL_HIGH || {_heartRate <= HEART_RATE_FATAL_LOW |
     };
 
     private _unitCardiacArrestTimer = GETVAR(_unit,GVAR(cardiacArrestTimer),CBA_missionTime);
+    systemChat "cardiac being called?";
 
     private _timer = (CBA_missionTime - _unitCardiacArrestTimer);
     systemChat str _timer;

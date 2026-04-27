@@ -18,6 +18,7 @@
 */
 
 params ["_unit", "_syncValue"];
+GET_SUIT_BOOLS(_unit) params ["_prevMasterBool","_prevHelmetBool","_prevSuitBool","_prevPackBool"];
 
 private _helmetFaction = nil;
 private _suitFaction = nil;
@@ -96,6 +97,36 @@ _unitSuitData pushBack _solarAbsorptance;
 _unitSuitData pushBack _suitThickness;
 
 // -----------------------------------------------------------------------------------
+// Semi-temp solution. Flesh out later when air tanks added
+
+if (CBA_missionTime < 3) then {
+    SET_AIR_RESERVE_MAX(_unit,_helmetPassiveAirReserve,_syncValue);
+    SET_AIR_RESERVE(_unit,_helmetPassiveAirReserve,_syncValue);
+    //systemChat "air reserve init";
+} else {
+    if (_prevHelmetBool != _helmetBool || {_prevSuitBool != _suitBool}) then {
+        _syncValue = true;
+
+        if (_helmetBool || {_suitBool}) then {
+            if (GET_ATMO(_unit) == 0) then {
+                SET_AIR_RESERVE_MAX(_unit,_helmetPassiveAirReserve,_syncValue);
+                SET_AIR_RESERVE(_unit,0,_syncValue);
+                //systemChat "Helmet on in vacuum";
+            } else {
+                SET_AIR_RESERVE_MAX(_unit,_helmetPassiveAirReserve,_syncValue);
+                SET_AIR_RESERVE(_unit,_helmetPassiveAirReserve,_syncValue);
+                //systemChat "Helmet on";
+            };
+        } else {
+            //systemChat "Helmet off";
+            SET_AIR_RESERVE_MAX(_unit,0,_syncValue);
+            SET_AIR_RESERVE(_unit,0,_syncValue);
+        };
+    };
+};
+
+
+// -----------------------------------------------------------------------------------
 
 if (_helmetFaction == _suitFaction && {_helmetFaction == _packFaction}) then {
     //systemChat format ["Faction: %1, Unit: %2", _helmetFaction,_unit];
@@ -122,3 +153,5 @@ if (_helmetBool && {_suitBool && {_packBool}}) then {
 
 //_unit setVariable [QGVAR(unitSuitData), _unitSuitData, _syncValue];
 SET_SUIT_DATA(_unit,_unitSuitData,_syncValue);
+
+_syncValue;

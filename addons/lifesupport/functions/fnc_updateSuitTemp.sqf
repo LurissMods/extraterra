@@ -19,9 +19,9 @@
 */
 
 params ["_unit","_deltaT","_syncValue"];
+GET_SUIT_DATA(_unit) params ["_helmetPassiveAirReserve","_suitMobility","_suitBlackBodyCoeff","_suitSolarAbsorptance","_suitThickness"];
 
 //private _suitData = _unit getVariable [QGVAR(unitSuitData),nil];
-private _suitData = GET_SUIT_DATA(_unit) params ["_helmetPassiveAirReserve","_suitMobility","_suitBlackBodyCoeff","_suitSolarAbsorptance","_suitThickness"];
 private _unitRadiatedCoreTemp = GET_RADIATED_CORE_HEAT(_unit);
 private _sigma = STEFAN_BOLTZMANN_CONSTANT*(_suitBlackBodyCoeff)*HUMAN_SURFACE_AREA_SUIT;
 //private _unitRadiatedCoreTemp = _unit getVariable [QGVAR(unitRadiatedCoreTemp),nil];

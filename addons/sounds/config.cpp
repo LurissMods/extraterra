@@ -11,7 +11,7 @@ class CfgPatches {
             QUOTE(exterra_main),
         };
         units[] = {};
-        weapons[] = {QUOTE(exterra_sounds_vacuumMuzzle)};
+        weapons[] = {QGVAR(vacuumMuzzle)};
         VERSION_CONFIG;
     };
 };

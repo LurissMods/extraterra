@@ -317,7 +317,7 @@
 [
     QGVAR(fireControl_humanSizeEnemyMin_cbaSetting),
     "SLIDER",
-    [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
+    [LSTRING(fireControl_humanSizeEnemy_cbaSetting_title), LSTRING(fireControl_humanSizeEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
     0,
