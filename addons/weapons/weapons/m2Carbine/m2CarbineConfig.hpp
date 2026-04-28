@@ -128,10 +128,18 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
         {
             soundSetShot[] = {"exterra_weaponSounds_m2Carbine_silencerShot_SoundSet","exterra_weaponSounds_m2Carbine_silencerTail_SoundSet","exterra_weaponSounds_m2Carbine_silencerInteriorTail_SoundSet"};
         };
+
         reloadTime = 0.075;
         dispersion = 0.000812; // Multiply MOA by 0.00029
         recoil = "recoil_single_m2carbine";
         recoilProne = "recoil_single_prone_m2carbine";
+
+        minRange = 2;
+        minRangeProbab = 0.5;
+        midRange = 250;
+        midRangeProbab = 0.7;
+        maxRange = 500;
+        maxRangeProbab = 0.3;
     };
     class Auto : Mode_FullAuto
     {
@@ -147,84 +155,62 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
         {
             soundSetShot[] = {"exterra_weaponSounds_m2Carbine_silencerShot_SoundSet","exterra_weaponSounds_m2Carbine_silencerTail_SoundSet","exterra_weaponSounds_m2Carbine_silencerInteriorTail_SoundSet"};
         };
+
         reloadTime = 0.075;
         dispersion = 0.000812;
         recoil = "recoil_auto_m2carbine";
         recoilProne = "recoil_auto_prone_m2carbine";
-    };
 
-    class close : Auto
-    {
-        burst = 10;
-        aiRateOfFire = 0.5;
-        aiRateOfFireDistance = 25;
         minRange = 0;
-        minRangeProbab = 0.05;
-        midRange = 25;
+        minRangeProbab = 0.9;
+        midRange = 15;
         midRangeProbab = 0.7;
-        maxRange = 50;
-        maxRangeProbab = 0.04;
-        showToPlayer = 0;
-    };
-    class short : close
-    {
-        burst = 4;
-        aiRateOfFire = 1;
-        aiRateOfFireDistance = 300;
-        minRange = 50;
-        minRangeProbab = 0.05;
-        midRange = 300;
-        midRangeProbab = 0.7;
-        maxRange = 600;
-        maxRangeProbab = 0.04;
-    };
-    class medium : Semi
-    {
-        burst = 2;
-        aiRateOfFire = 2;
-        aiRateOfFireDistance = 800;
-        aiRateOfFireDispersion = 1;
-        minRange = 600;
-        minRangeProbab = 0.05;
-        midRange = 800;
-        midRangeProbab = 0.6;
-        maxRange = 1000;
+        maxRange = 30;
         maxRangeProbab = 0.1;
-        showToPlayer = 0;
+        aiRateOfFire = 1e-06;
     };
-    class far_optic1 : medium
+    class fullauto_medium: Auto
+    {
+        showToPlayer = 0;
+        burst = 3;
+        aiBurstTerminable = 1;
+        minRange = 2;
+        minRangeProbab = 0.5;
+        midRange = 75;
+        midRangeProbab = 0.7;
+        maxRange = 150;
+        maxRangeProbab = 0.05;
+        aiRateOfFire = 2.0;
+        aiRateOfFireDistance = 200;
+    };
+    class semi_medium_optics1: Semi
     {
         requiredOpticType = 1;
-        burst = 1;
-        aiRateOfFire = 3;
+        showToPlayer = 0;
+        minRange = 2;
+        minRangeProbab = 0.2;
+        midRange = 750;
+        midRangeProbab = 0.7;
+        maxRange = 1500;
+        maxRangeProbab = 0.2;
+        aiRateOfFire = 6;
         aiRateOfFireDistance = 1500;
-        aiRateOfFireDispersion = 1;
-        minRange = 1000;
-        minRangeProbab = 0.04;
-        midRange = 1500;
-        midRangeProbab = 0.5;
-        maxRange = 2000;
-        maxRangeProbab = 0.01;
     };
-    class far_optic2 : far_optic1
+    class semi_far_optics2: semi_medium_optics1
     {
         requiredOpticType = 2;
-        autoFire = 0;
-        burst = 1;
-        aiRateOfFire = 4;
+        showToPlayer = 0;
+        minRange = 100;
+        minRangeProbab = 0.1;
+        midRange = 1500;
+        midRangeProbab = 0.6;
+        maxRange = 2500;
+        maxRangeProbab = 0.1;
+        aiRateOfFire = 8;
         aiRateOfFireDistance = 2500;
-        aiRateOfFireDispersion = 2;
-        minRange = 2000;
-        minRangeProbab = 0.05;
-        midRange = 2500;
-        midRangeProbab = 0.5;
-        maxRange = 3000;
-        maxRangeProbab = 0.01;
     };
-    //aiDispersionCoefY = 25;
-    //aiDispersionCoefX = 20;
-    aiDispersionCoefY = 0;
-    aiDispersionCoefX = 0;
+    aiDispersionCoefY = 3.0;
+    aiDispersionCoefX = 2.0;
 };
 
 class exterra_weapons_m2Carbine : exterra_weapons_m2Carbine_base
