@@ -18,7 +18,10 @@
 private _logic = _this param [0,objnull,[objnull]];
 private _checkTime = _logic getVariable ["checkTime", 0.5];
 
-[
+EGVAR(common,exterraEnabled) = true;
+publicVariable QEGVAR(common,exterraEnabled);
+
+/*[
 	{
 		/*_unitsInArea = [];
 		_allUnits = (allUnits - entities "HeadlessClient_F");
@@ -76,7 +79,7 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 						};
 				};
 			};
-		} forEach _allUnits;*/
+		} forEach _allUnits;
 	},
 	(0),
 	[_logic, _checkTime],
@@ -85,4 +88,4 @@ private _checkTime = _logic getVariable ["checkTime", 0.5];
 	{true},
 	{isNull (_this getVariable "params" select 0)}
 
-] call CBA_fnc_createPerFrameHandlerObject;
+] call CBA_fnc_createPerFrameHandlerObject;*/

@@ -10,17 +10,11 @@
         <Key ID="STR_exterra_modules_heavySolarStorm_main_displayName">
             <English>Heavy Solar Storm</English>
         </Key>
-        <Key ID="STR_exterra_modules_lifeSupportMainLoop_checkTime_displayName">
-            <English>Player present check interval</English>
+        <Key ID="STR_exterra_modules_enableExterra_main_desc">
+            <English>This module enables the mod.</English>
         </Key>
-        <Key ID="STR_exterra_modules_lifeSupportMainLoop_checkTime_tooltip">
-            <English>How often the module checks if a player is present in seconds. Done in case of performance issues.</English>
-        </Key>
-        <Key ID="STR_exterra_modules_lifeSupportMainLoop_main_desc">
-            <English>This module initalizes the pressure system. It checks if any player is not within the pressuirzed area modules.</English>
-        </Key>
-        <Key ID="STR_exterra_modules_lifeSupportMainLoop_main_displayName">
-            <English>Life Support Main Loop</English>
+        <Key ID="STR_exterra_modules_enableExterra_main_displayName">
+            <English>Enable Extraterra</English>
         </Key>
         <Key ID="STR_exterra_modules_lightSolarStorm_main_desc">
             <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>

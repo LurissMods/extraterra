@@ -62,8 +62,11 @@ if (GET_SUIT_ACTIVATED(_unit)) then {
     };
 };
 
+//systemChat str (ACE_player getVariable [QACEGVAR(advanced_fatigue,respiratoryRate),-10]);
+
 // Injuries
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,barotrauma);
+[_unit, _deltaT, _syncValue] call EFUNC(injuries,ars);
 
 //private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
 

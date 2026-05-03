@@ -50,6 +50,13 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
     ACE_twistDirection = 1; // Right handed is 1, Left is -1, none is 0
     ACE_railHeightAboveBore = 2.28; // Pretty sure this is in centimetres
 
+    htMin = 1;		// Minimum half-cooling time (in seconds)
+    htMax = 600;	// Maximum half-cooling time (in seconds)
+    afMax = 0;		// Maximum temperature in case the model is alive (in celsius)
+    mfMax = 0;		// Maximum temperature when the model is moving (in celsius)
+    mFact = 1;		// Metabolism factor - number from interval <0, 1> (0 - metabolism has no influence, 1 - metabolism has full influence (no other temperature source will be considered)).
+    tBody = 100;	 // Metabolism temperature of the model (in celsius)
+
     class GunParticles : GunParticles
     {
         class FirstEffect

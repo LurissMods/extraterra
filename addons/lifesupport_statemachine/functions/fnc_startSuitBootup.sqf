@@ -17,6 +17,8 @@
 
 params ["_unit"];
 
+if (!EGVAR(common,exterraEnabled)) exitWith {};
+
 // This should only run on the player unit on the player client
 if (!hasInterface || {_unit != ACE_player}) exitWith {};
 

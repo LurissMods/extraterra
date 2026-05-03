@@ -1,6 +1,5 @@
-PREP(lifeSupportMainLoop);
+PREP(enableExterra);
 PREP(pressureAndRadShield);
-PREP(noSolarStorm);
-PREP(lightSolarStorm);
-PREP(moderateSolarStorm);
-PREP(heavySolarStorm);
+PREP(solarStorm);
+PREP(updateSolarStorm);
+PREP(backgroundRadiation);

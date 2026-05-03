@@ -20,7 +20,7 @@
 params ["_unit","_syncValue"];
 
 //private _currentLifetimeExposure = GETVAR(_unit,GVAR(unitLifetimeRadLevel),nil); // in mSv
-private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour); // Defined by module, global
+private _currentEnvironRadPerHour = EGVAR(common,currentEnvironRadiationPerHour); // Defined by module, global
 //private _shielding = GETVAR(_unit,GVAR(unitRadShieldCase),RAD_SHIELD_ERROR); // Set by the modules
 private _currentLifetimeExposure = GET_LIFETIME_RAD(_unit);
 private _shieldCoeff = nil;

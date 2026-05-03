@@ -43,11 +43,43 @@ _painCoeff is defined by the following exponential function for 0 <= _percievedP
 This is meant to simulate pains effect on breathing, with minor pain having little effect and severe pain causing heavy breathing/hyperventilation.
 */
 
-if (isPlayer _unit) then {
-    _respiratoryRate = (ACEGVAR(advanced_fatigue,respiratoryRate) + _painCoeff) min 1;
+// Determine which respiratory rate to use depending on mission stamina settings
+// Order of precedence: ACE fatigue > Vanilla fatigue > No fatigue
+switch true do {
+    case (ACEGVAR(advanced_fatigue,enabled)): {
+        // ACE advanced fatigue only applies to the player
+        if (isPlayer _unit) then {
+            _respiratoryRate = (ACEGVAR(advanced_fatigue,respiratoryRate) + _painCoeff) min 1;
+        } else {
+            _respiratoryRate = (0.33 + _painCoeff) min 1;
+        };
+    };
+    case (isStaminaEnabled _unit): {
+        _respiratoryRate = 0.073 max (getFatigue _unit + _painCoeff) min 1;
+    };
+    default {
+        _respiratoryRate = (0.33 + _painCoeff) min 1;
+    };
+};
+
+/*
+
+if (isStaminaEnabled _unit) then {
+
+    if (ACEGVAR(advanced_fatigue,enabled)) then {
+        if (isPlayer _unit) then {
+            // ACE advanced fatigue only applies to the player
+            _respiratoryRate = (ACEGVAR(advanced_fatigue,respiratoryRate) + _painCoeff) min 1;
+            systemChat str _respiratoryRate;
+        } else {
+            _respiratoryRate = (0.33 + _painCoeff) min 1;
+        };
+    } else {
+        _respiratoryRate = (getFatigue _unit + _painCoeff) min 1;
+    };
 } else {
     _respiratoryRate = (0.33 + _painCoeff) min 1;
-};
+};*/
 
 /*
 The BREATHING_VO2_FUNCTION function uses two cubic functions, for 0 <= x <= 1:

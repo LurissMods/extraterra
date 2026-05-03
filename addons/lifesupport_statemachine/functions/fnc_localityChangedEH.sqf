@@ -22,6 +22,8 @@
 params ["_unit", "_isLocal"];
 TRACE_2("localityChangedEH",_unit,_isLocal);
 
+if (!EGVAR(common,exterraEnabled)) exitWith {};
+
 if (!alive _unit) exitWith {};
 
 if (_isLocal) then {

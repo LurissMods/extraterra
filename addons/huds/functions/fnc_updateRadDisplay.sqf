@@ -24,7 +24,7 @@ private _lifeExposureText = nil;
 //private _currentLifetimeExposure = GETVAR(ACE_player,EGVAR(lifesupport,unitLifetimeRadLevel),nil);
 private _shieldCoeff = GET_RAD_SHIELD_COEFF(ACE_player);
 private _currentLifetimeExposure = GET_LIFETIME_RAD(ACE_player);
-private _currentEnvironRadPerHour = EGVAR(modules,currentEnvironRadiationPerHour);
+private _currentEnvironRadPerHour = EGVAR(common,currentEnvironRadiationPerHour);
 
 switch (GET_SUIT_FACTION(ACE_player)) do {
     case NO_SUIT_FACTION: {
@@ -49,7 +49,7 @@ if ((_shieldCoeff*_currentEnvironRadPerHour) < 1) then {
     };
 };
 
-_lifeExposureText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mGy", round(_currentLifetimeExposure)];
+_lifeExposureText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mSv", round(_currentLifetimeExposure)];
 if (_currentLifetimeExposure > 1500) then {
     _lifeExposureText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
 } else {

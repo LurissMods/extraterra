@@ -25,8 +25,38 @@
         private _mildissueColor = [1, 1, 0, 1];
         private _moderateissueColor = [1, 0.5, 0, 1];
         private _severeissueColor = [1, 0, 0, 1];
+        private _leathalissueColor = [0.66, 0, 0, 1];
 
-        private _currentPlayerCoreTempState = GETVAR(_target,GVAR(unitCurrentCoreTempFlag),nil);
+        private _unitArsStatus = _target getVariable [QGVAR(unitRadLimIndex),nil];
+
+        switch _unitArsStatus do {
+            case 1: {
+                _entries pushBack ["Mild ARS", _mildissueColor];
+            };
+            case 2: {
+                _entries pushBack ["Mild ARS", _mildissueColor];
+            };
+            case 3: {
+                _entries pushBack ["Moderate ARS", _moderateissueColor];
+            };
+            case 4: {
+                _entries pushBack ["Moderate ARS", _moderateissueColor];
+            };
+            case 5: {
+                _entries pushBack ["Severe ARS", _severeissueColor];
+            };
+            case 6: {
+                _entries pushBack ["Lethal ARS", _leathalissueColor];
+            };
+            case 7: {
+                _entries pushBack ["Lethal ARS", _leathalissueColor];
+            };
+            case 8: {
+                _entries pushBack ["Lethal ARS", _leathalissueColor];
+            };
+        };
+
+        /*private _currentPlayerCoreTempState = GETVAR(_target,GVAR(unitCurrentCoreTempFlag),nil);
 
         switch _currentPlayerCoreTempState do {
             case HYPERTHERMIA_STAGE_MILD: {
@@ -38,9 +68,25 @@
             case HYPERTHERMIA_STAGE_SEVERE: {
                 _entries pushBack ["hypertherm severe", _severeissueColor];
             };
-        };
+        };*/
     }
 ] call CBA_fnc_addEventHandler;
+
+/*[
+    "ace_medical_gui_logListAppended",
+    {
+        params ["_ctrl", "_row", "_message", "_unlocalizedMessage", "_timeStamp", "_arguments"];
+
+        private _unitArsStatus = _target getVariable [QGVAR(unitRadLimIndex),nil];
+        _message = str _arguments;
+
+        if (_unitArsStatus > 5) then {
+            _message = format ["test message %1", _arguments];
+        };
+
+        private _row = _ctrl lbAdd format ["%1 %2", _timeStamp, _message];
+    }
+] call CBA_fnc_addEventHandler;*/
 
 [
     "ace_medical_gui_updateInjuryListPart",

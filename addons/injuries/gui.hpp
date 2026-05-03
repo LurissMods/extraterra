@@ -13,9 +13,19 @@ class RscTitles
         duration = 1e+6;
         class controlsBackground
         {
-            class exterra_injuries_vomitMild: RscPicture {
-                idc = IDC_VOMIT_MILD;
-                text = QPATHTOF(data\ui\exterra_injuries_vomitMild_ca.paa);
+            class exterra_injuries_vomitMild_screen: RscPicture {
+                idc = IDC_VOMIT_MILD_SCREEN;
+                text = QPATHTOF(data\ui\exterra_injuries_vomitMild_screen_ca.paa);
+                color[] = {1,1,1,1};
+            };
+            class exterra_injuries_vomitModerate_screen: RscPicture {
+                idc = IDC_VOMIT_MODERATE_SCREEN;
+                text = QPATHTOF(data\ui\exterra_injuries_vomitModerate_screen_ca.paa);
+                color[] = {1,1,1,1};
+            };
+            class exterra_injuries_vomitSevere_screen: RscPicture {
+                idc = IDC_VOMIT_SEVERE_SCREEN;
+                text = QPATHTOF(data\ui\exterra_injuries_vomitSevere_screen_ca.paa);
                 color[] = {1,1,1,1};
             };
         };

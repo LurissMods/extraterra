@@ -17,5 +17,7 @@
 
 params ["_unit"];
 
+if (!EGVAR(common,exterraEnabled)) exitWith {};
+
 //[_unit, true] call EFUNC(lifesupport,initUnit);
 [_unit, EGVAR(lifesupport,STATE_MACHINE), "Dead", "Default"] call CBA_statemachine_fnc_manualTransition;
