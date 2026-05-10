@@ -21,6 +21,8 @@
 params ["_unit","_deltaT","_syncValue"];
 GET_SUIT_DATA(_unit) params ["_helmetPassiveAirReserve","_suitMobility","_suitBlackBodyCoeff","_suitSolarAbsorptance","_suitThickness"];
 
+private _staminaSetting = [_unit] call EFUNC(common,getStaminaSetting);
+
 //private _oxygenSupplyWhenFull = GETVAR(_unit,GVAR(unitAirMaxReserve),nil);
 //private _oxygenSupply = GETVAR(_unit,GVAR(unitAirReserve),nil);
 //private _suitData = _unit getVariable [QGVAR(unitSuitData),nil];
@@ -45,8 +47,8 @@ This is meant to simulate pains effect on breathing, with minor pain having litt
 
 // Determine which respiratory rate to use depending on mission stamina settings
 // Order of precedence: ACE fatigue > Vanilla fatigue > No fatigue
-switch true do {
-    case (ACEGVAR(advanced_fatigue,enabled)): {
+switch _staminaSetting do {
+    case 0: {
         // ACE advanced fatigue only applies to the player
         if (isPlayer _unit) then {
             _respiratoryRate = (ACEGVAR(advanced_fatigue,respiratoryRate) + _painCoeff) min 1;
@@ -54,11 +56,14 @@ switch true do {
             _respiratoryRate = (0.33 + _painCoeff) min 1;
         };
     };
-    case (isStaminaEnabled _unit): {
+    case 1: {
         _respiratoryRate = 0.073 max (getFatigue _unit + _painCoeff) min 1;
     };
-    default {
+    case 2: {
         _respiratoryRate = (0.33 + _painCoeff) min 1;
+    };
+    default {
+        ERROR_1("Invalid _staminaSetting in switch-case! _staminaSetting: %1",_staminaSetting);
     };
 };
 

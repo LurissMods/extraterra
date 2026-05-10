@@ -20,6 +20,7 @@
     {
         //if (GVAR(KAMLoaded)) exitWith {};
         params ["_ctrl", "_target", "_selectionN", "_entries"];
+        GET_SUIT_BOOLS(_target) params ["_inFullSuit","_helmetBool","_suitBool","_packBool"];
 
         private _nonissueColor = [1, 1, 1, 0.33];
         private _mildissueColor = [1, 1, 0, 1];
@@ -27,9 +28,9 @@
         private _severeissueColor = [1, 0, 0, 1];
         private _leathalissueColor = [0.66, 0, 0, 1];
 
-        private _unitArsStatus = _target getVariable [QGVAR(unitRadLimIndex),nil];
 
-        switch _unitArsStatus do {
+        // ARS
+        switch (GET_ARS_RAD_INDEX(_target)) do {
             case 1: {
                 _entries pushBack ["Mild ARS", _mildissueColor];
             };
@@ -55,6 +56,8 @@
                 _entries pushBack ["Lethal ARS", _leathalissueColor];
             };
         };
+
+
 
         /*private _currentPlayerCoreTempState = GETVAR(_target,GVAR(unitCurrentCoreTempFlag),nil);
 
@@ -93,12 +96,25 @@
     {
         //if (GVAR(KAMLoaded)) exitWith {};
         params ["_ctrl", "_target", "_selectionN", "_entries", "_bodyPartName"];
+        GET_SUIT_BOOLS(_target) params ["_inFullSuit","_helmetBool","_suitBool","_packBool"];
 
         private _nonissueColor = [1, 1, 1, 0.33];
+        private _mildissueColor = [1, 1, 0, 1];
+        private _moderateissueColor = [1, 0.5, 0, 1];
+        private _severeissueColor = [1, 0, 0, 1];
+        private _leathalissueColor = [0.66, 0, 0, 1];
 
         if (_selectionN == 0) then {
-            _entries pushBack ["test head issue", [1,0,0,1]];
+
+            // Helmet occlusion
+            if (!_helmetBool) then {
+                if (GET_CYANOSIS_BOOL(_target)) then {
+                    _entries pushBack ["Cyanosis", _moderateissueColor];
+                };
+            };
         };
+
+
 
     }
 ] call CBA_fnc_addEventHandler;
@@ -108,22 +124,20 @@
     {
         //if (GVAR(KAMLoaded)) exitWith {};
         params ["_ctrlGroup", "_target", "_selectionN"];
-
-        private _currentPlayerCoreTempState = GETVAR(_target,GVAR(unitCurrentCoreTempFlag),nil);
         GET_SUIT_BOOLS(_target) params ["_inFullSuit","_helmetBool","_suitBool","_packBool"];
 
+        //private _currentPlayerCoreTempState = GETVAR(_target,GVAR(unitCurrentCoreTempFlag),nil);
+
         if (!_suitBool) then {
-            switch _currentPlayerCoreTempState do {
-                case HYPERTHERMIA_STAGE_MILD: {
-                    private _ctrlHeatRash = _ctrlGroup controlsGroupCtrl 25247;
-                    _ctrlHeatRash ctrlShow true;
-                };
-                case HYPERTHERMIA_STAGE_MODERATE: {
-
-                };
-                case HYPERTHERMIA_STAGE_SEVERE: {
-
-                };
+            if (_target getVariable [QGVAR(heatRash),false]) then {
+                private _ctrlHeatRash = _ctrlGroup controlsGroupCtrl 25247;
+                _ctrlHeatRash ctrlShow true;
+            };
+        };
+        if (!_helmetBool) then {
+            if (GET_CYANOSIS_BOOL(_target)) then {
+                private _ctrlCyanosis = _ctrlGroup controlsGroupCtrl 25248;
+                _ctrlCyanosis ctrlShow true;
             };
         };
     }

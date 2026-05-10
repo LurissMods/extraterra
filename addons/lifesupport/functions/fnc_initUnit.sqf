@@ -82,6 +82,7 @@ if (_isRespawn) then {
     SET_ENVIRONMENT_TEMP(_unit,ROOM_TEMP,true);
     SET_SUIT_TEMP(_unit,ROOM_TEMP,true);
     SET_CORE_TEMP(_unit,HUMAN_NATURAL_CORETEMP,true);
+    SET_CORE_TEMP_TARGET(_unit,HUMAN_NATURAL_CORETEMP,true);
     SET_RADIATED_CORE_HEAT(_unit,0,true);
     SET_ACTIVE_COOL(_unit,0,true);
     SET_ACTIVE_HEAT(_unit,0,true);

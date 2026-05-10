@@ -16,6 +16,8 @@
 * Public: No
 */
 
+params ["_deltaT"];
+
 //params ["_suitFaction", "_oxygenSupply", "_oxygenReserveWhenFull", "_currentOxygenConsumptionRate"];
 //params ["_suitFaction", "_currentBatteryCapacity", "_maxBatteryCapacity", "_currentCurrentDraw"];
 
@@ -53,7 +55,7 @@ switch (GET_SUIT_FACTION(ACE_player)) do {
 };
 
 _airBarAddress progressSetPosition (_currentOxygenSupply/_maxOxygenSupply);
-[_currentOxygenSupply,_currentOxygenConsumption,_airTextAddress] call FUNC(secondsToBase60Time);
+[_currentOxygenSupply,_currentOxygenConsumption,_airTextAddress,_deltaT] call FUNC(secondsToBase60Time);
 
 _battBarAddress progressSetPosition (_currentBatterySupply/_maxBatterySupply);
-[_currentBatterySupply,_currentPowerDraw,_battTextAddress] call FUNC(secondsToBase60Time);
+[_currentBatterySupply,_currentPowerDraw,_battTextAddress,_deltaT] call FUNC(secondsToBase60Time);

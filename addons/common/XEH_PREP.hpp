@@ -1,1 +1,1 @@
-//PREP(getLocalUnits);
+PREP(getStaminaSetting);

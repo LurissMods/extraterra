@@ -28,13 +28,15 @@ private _unitOpenWounds = GET_OPEN_WOUNDS(_unit);
 private _unitWoundKeys = keys _unitOpenWounds;
 private _unitExposedWounds = 0;
 
-// Bruises = Wound class 2
-// Velocity = Wound class 7
+// Retrive and find ACE medical injuries for a unit
+// Wound class = floor(id/10)      Wound Severity = id%10      E.g. Bruise = 21, class 2, severity 1
 {
+    // Bruises = Wound class 2
+    // Velocity = Wound class 7
     if (_x == "head") then {
         {
-            private _woundClass = ((_x select 0)/10);
-            if !(_woundClass >= 2 && {_woundClass < 3}) then {
+            private _woundClass = floor((_x select 0)/10);
+            if (_woundClass != 2) then {
                 if ((_x select 1) == 1) then {
                     _helmetBool = false;
                 };
@@ -42,8 +44,8 @@ private _unitExposedWounds = 0;
         } forEach (_unitOpenWounds get _x);
     } else {
         {
-            private _woundClass = ((_x select 0)/10);
-            if !(_woundClass >= 2 && {_woundClass < 3}) then {
+            private _woundClass = floor((_x select 0)/10);
+            if (_woundClass != 2) then {
                 if ((_x select 1) == 1) then {
                     _unitExposedWounds = _unitExposedWounds + 1;
                 };

@@ -55,20 +55,42 @@ if (!local _unit) exitWith {};
 
 if (_isRespawn) then {
 
-    // Barotrauma
-    _unit setVariable [QGVAR(unitVacuumExposed),false,true];
+    // General
+    SET_SYMPTOM_HASHMAP(_unit,createHashMap,true);
+
+    // Symptoms
+    SET_BP_ADJUST(_unit,0,true);
+    SET_HR_ADJUST(_unit,0,true);
+    SET_FEVER_ADJUST(_unit,0,true);
+    SET_HEAT_RASH_BOOL(_unit,false,true);
+    SET_CYANOSIS_BOOL(_unit,false,true);
+
+    // Ebullism
+    SET_VAC_EXPOSE_TIME(_unit,0,true);
+    SET_VAC_EXPOSE_ARRAY(_unit,VAC_EXPOSE_ARRAY,true);
+    SET_VAC_EXPOSE_BOOL(_unit,false,true);
+    /*_unit setVariable [QGVAR(unitVacuumExposed),false,true];
     _unit setVariable [QGVAR(unitVacuumExposedTime),0,true];
     _unit setVariable [QGVAR(unitBaroUncon),(random [3, 5, 10]),true];
     _unit setVariable [QGVAR(unitBaroCardiacArrest),(random [20, 30, 40]),true];
     _unit setVariable [QGVAR(unitBaroDeath),(random [80, 90, 120]),true];
     _unit setVariable [QGVAR(unitBaroUnconBool),false,true];
-    _unit setVariable [QGVAR(unitBaroCardiacArrestBool),false,true];
+    _unit setVariable [QGVAR(unitBaroCardiacArrestBool),false,true];*/
 
     // ARS_
-    _unit setVariable [QGVAR(unitArsHashMap), createHashMap, true];
-    _unit setVariable [QGVAR(unitArsTimer),0,true];
+    SET_ARS_RAD_ARRAY(_unit,RAD_LIMIT_ARRAY,true);
+    SET_ARS_RAD_INDEX(_unit,0,true);
+    SET_ARS_TIMER(_unit,(NO_ARS_TIMER + CBA_missionTime),true);
+    SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,false,true);
+    SET_ARS_HYPOTENSION_BOOL(_unit,false,true);
+    SET_ARS_FEVER_BOOL(_unit,false,true);
+    //_unit setVariable [QGVAR(unitArsTimer),(NO_ARS_TIMER + CBA_missionTime),true]; // Setting the value to #FFFF + current mission time
+    //_unit setVariable [QGVAR(unitArsFatigueWeakness),false,true];
+    //_unit setVariable [QGVAR(unitArsHypotension),false,true];
+    //_unit setVariable [QGVAR(unitArsFever),false,true];
     //_unit setVariable [QGVAR(unitArsTimer),15,true];
-    private _unitRadLimArray = [
+
+    /*private _unitRadLimArray = [
         random [375,562.5,750],
         random [751,1125.5,1500],
         random [1501,2250.5,3000],
@@ -80,7 +102,7 @@ if (_isRespawn) then {
         random [30001,37500.5,45000]
     ];
     _unit setVariable [QGVAR(unitRadLimArray),_unitRadLimArray,true];
-    _unit setVariable [QGVAR(unitRadLimIndex),0,true];
+    _unit setVariable [QGVAR(unitRadLimIndex),0,true];*/
 };
 
 /*[{

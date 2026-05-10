@@ -18,9 +18,9 @@
 * Public: No
 */
 
-params ["_supply", "_currentConsumption", "_hudText"];
+params ["_supply", "_currentConsumption", "_hudText", "_deltaT"];
 
-private _estTimeRemainingSec = _supply/_currentConsumption;
+private _estTimeRemainingSec = (_supply/_currentConsumption)*_deltaT;
 private _estTimeRemainingSecConv = floor _estTimeRemainingSec % 60;
 private _estTimeRemainingMin = (_estTimeRemainingSec/60) % 60;
 private _estTimeRemainingHour = (_estTimeRemainingSec/60^2) min 99;

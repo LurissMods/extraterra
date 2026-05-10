@@ -57,38 +57,26 @@ if (GET_SUIT_ACTIVATED(_unit)) then {
         //systemChat str _deltaT;
         call EFUNC(huds,updateRadDisplay);
         call EFUNC(huds,updateExternalAtmoDisplay);
-        call EFUNC(huds,updateSuitTempDisplay);
-        call EFUNC(huds,updateConsumableDisplay);
+        [_deltaT] call EFUNC(huds,updateSuitTempDisplay);
+        [_deltaT] call EFUNC(huds,updateConsumableDisplay);
     };
 };
 
-//systemChat str (ACE_player getVariable [QACEGVAR(advanced_fatigue,respiratoryRate),-10]);
-
 // Injuries
-[_unit, _deltaT, _syncValue] call EFUNC(injuries,barotrauma);
-[_unit, _deltaT, _syncValue] call EFUNC(injuries,ars);
+//[_unit, _deltaT, _syncValue] call EFUNC(injuries,barotrauma);
+//[_unit, _deltaT, _syncValue] call EFUNC(injuries,ars);
 
-//private _prebreatheReturn = [(_inSuit#2),(_inSuit#4),_currentAtmo] call FUNC(prebreathing);
+_syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryEbullism);
+_syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryArs);
+[_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryAsphyxiation);
+[_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryHyperthermia);
+[_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryHypothermia);
+[_unit, _deltaT, _syncValue] call EFUNC(injuries,updateSymptoms);
 
-//[(_inSuit#1),(_prebreatheReturn#0)] call EFUNC(huds,externalAtmoHud);
-//[(_inSuit#1),(_radiationSimulationResults#0),(_radiationSimulationResults#1),(_radiationSimulationResults#2)] call EFUNC(huds,radHud);
-
-/*if (GETVAR(player,EGVAR(huds,suitEnabled),false)) then {
-    [
-        (_inSuit#1),
-        (_thermalSimulationResults#0),
-        (_thermalSimulationResults#1),
-        (_thermalSimulationResults#2),
-        (_thermalSimulationResults#3),
-        (_thermalSimulationResults#4),
-        (_thermalSimulationResults#5)
-    ] call EFUNC(huds,suitTempsHud);
+if (_unit == ACE_player) then {
+    systemChat str GET_SPO2(_unit);
+    systemChat str ACEGVAR(medical_vitals,spo2DutyList);
 };
-
-if ((_inSuit#0)) then {
-    [(_inSuit#1)] call FUNC(breathingSimulation);
-    [(_inSuit#1),(_thermalSimulationResults#1),(_thermalSimulationResults#2)] call FUNC(batterySimulation);
-};*/
 
 //END_COUNTER(lifeSupport);
 

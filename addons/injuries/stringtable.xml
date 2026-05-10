@@ -10,14 +10,27 @@
         <Key ID="STR_exterra_injuries_displayName">
             <English>injuries</English>
         </Key>
-        <Key ID="STR_ace_medical_damage_Ebullism_Minor">
-            <English>Minor Ebullism</English>
+
+        <Key ID="STR_exterra_injuries_deathUnknown">
+            <English>Unknown</English>
         </Key>
-        <Key ID="STR_ace_medical_damage_Ebullism_Medium">
-            <English>Medium Ebullism</English>
+        <Key ID="STR_exterra_injuries_deathVacuumExposure">
+            <English>Vacuum Exposure</English>
         </Key>
-        <Key ID="STR_ace_medical_damage_Ebullism_Large">
-            <English>Large Ebullism</English>
+        <Key ID="STR_exterra_injuries_deathARS">
+            <English>Acute Radiation Syndrome</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathAsphyxiation">
+            <English>Asphyxiation</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathEbullism">
+            <English>Decompression Sickness</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathHyperthermia">
+            <English>Hyperthermia</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathHypothermia">
+            <English>Hypothermia</English>
         </Key>
     </Package>
 </Project>

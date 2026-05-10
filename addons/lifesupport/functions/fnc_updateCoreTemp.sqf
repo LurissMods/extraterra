@@ -24,11 +24,11 @@ private _sigma = HUMAN_SURFACE_AREA*HUMAN_SKIN_BLACKBODY_EMISSIVE*STEFAN_BOLTZMA
 private _currentMetabolicHeatWattage = 0;
 private _deltaTemp = 0;
 
-//private _coreTemp = GETVAR(_unit,GVAR(unitCoreTemp),HUMAN_NATURAL_CORETEMP);
-//private _suitTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
 private _coreTemp = GET_CORE_TEMP(_unit);
 private _suitTemp = GET_SUIT_TEMP(_unit);
 private _bodyHomeostatisCapacity = GVAR(homeostasisPower); // Defined in CBA settings
+
+private _targetCoreTemp = 0; // This is what injury functions will modify.
 
 // Note: I'm repurposing the first part of the ace_advanced_fatigue_fnc_mainloop function so I can get the params for the ace_advanced_fatigue_fnc_getMetabolicCosts function. The marked lines are from here: https://github.com/acemod/ACE3/blob/master/addons/advanced_fatigue/functions/fnc_mainLoop.sqf
 private _velocity = velocity _unit; // Mark start
@@ -86,12 +86,13 @@ private _netHeatPower = _currentMetabolicHeatWattage - _totalRadiatedCoreHeat;
 private _currentBodyHomeostatisCapacityRemaining = 0 max (_bodyHomeostatisCapacity - abs _netHeatPower);
 private _currentBodyHomeostatisUsed = _bodyHomeostatisCapacity - _currentBodyHomeostatisCapacityRemaining;
 
-if (GVAR(homeostasisDebug)) then {
+if (GVAR(homeostasisDebug) && {isPlayer _unit}) then {
     systemChat format ['Homeostatis Used: %1', _currentBodyHomeostatisUsed];
     systemChat format ['Homeostatis Remaining: %1', (_bodyHomeostatisCapacity - abs _netHeatPower)];
     systemChat format ['Core Temp: %1 C', _coreTemp - 273.15];
 };
 
+// Handle core temp increase/decrease if not in homeostasis
 if (_netHeatPower > 0) then {
     _netHeatPower = 0 max (_netHeatPower - _bodyHomeostatisCapacity);
     _deltaTemp = ((abs _netHeatPower)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
@@ -104,19 +105,18 @@ if (_netHeatPower > 0) then {
     };
 };
 
-if (_netHeatPower == 0 && {(_coreTemp > HUMAN_NATURAL_CORETEMP) && {(abs( _coreTemp - HUMAN_NATURAL_CORETEMP) > 0.001)}}) then {
+// Trend towards a target core temperature if in homeostasis
+if (_netHeatPower == 0 && {(_coreTemp > (GET_CORE_TEMP_TARGET(_unit))) && {(abs( _coreTemp - (GET_CORE_TEMP_TARGET(_unit))) > CORE_TEMP_ERROR)}}) then { // modify HUMAN_NATURAL_CORETEMP with target. Change to switch case?
 
     _deltaTemp = ((_currentBodyHomeostatisCapacityRemaining)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
     _coreTemp = _coreTemp - (_deltaTemp*_deltaT);
 } else {
-    if (_netHeatPower == 0 && {(_coreTemp < HUMAN_NATURAL_CORETEMP) && {(abs( _coreTemp - HUMAN_NATURAL_CORETEMP) > 0.001)}}) then {
+    if (_netHeatPower == 0 && {(_coreTemp < (GET_CORE_TEMP_TARGET(_unit))) && {(abs( _coreTemp - (GET_CORE_TEMP_TARGET(_unit))) > CORE_TEMP_ERROR)}}) then {
 
         _deltaTemp = ((_currentBodyHomeostatisCapacityRemaining)/(HUMAN_SPECIFC_HEAT_CAPACITY*HUMAN_MASS));
         _coreTemp = _coreTemp + (_deltaTemp*_deltaT);
     };
 };
 
-//_unit setVariable [QGVAR(unitCoreTemp),_coreTemp,_syncValue];
-//_unit setVariable [QGVAR(unitRadiatedCoreTemp),_totalRadiatedCoreHeat,_syncValue];
 SET_CORE_TEMP(_unit,_coreTemp,_syncValue);
 SET_RADIATED_CORE_HEAT(_unit,_totalRadiatedCoreHeat,_syncValue);

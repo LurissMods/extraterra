@@ -22,19 +22,7 @@ private _unitArsHashmap = _unit getVariable [QGVAR(unitArsHashMap),nil];
 private _unitSymptoms = keys _unitArsHashmap;
 private _currentRadLimIndex = (_unit getVariable [QGVAR(unitRadLimIndex),nil]);
 
-private _staminaSetting = -1;
-
-switch true do {
-    case (ACEGVAR(advanced_fatigue,enabled)): {
-        _staminaSetting = 0;
-    };
-    case (isStaminaEnabled _unit): {
-        _staminaSetting = 1;
-    };
-    default {
-        _staminaSetting = 2;
-    };
-};
+systemChat format ["Update ARS fired! Unit: %1, Symptoms: %2, Current rad case: %3",_unit,_unitSymptoms,_currentRadLimIndex];
 
 //systemChat str _unitSymptoms;
 
@@ -70,7 +58,7 @@ switch true do {
                 };
             };
         };
-        case "fatigue": {
+        /*case "fatigue": {
             if (_staminaSetting != 2) then {
                 if (isPlayer _unit) then {
                     switch (_unitArsHashmap get _x) do {
@@ -80,7 +68,7 @@ switch true do {
                                 ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor)*0.75;
                             } else {
                                 _unit setUnitTrait ["loadCoef", 1.2];
-                                //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: broken? Check later on arma discord
+                                //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: Not yet in arma stable branch. Fix this when 2.22 is released
                             };
                         };
                         case 1: {
@@ -89,7 +77,7 @@ switch true do {
                                 ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor)*0.5;
                             } else {
                                 _unit setUnitTrait ["loadCoef", 1.5];
-                                //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: broken? Check later on arma discord
+                                //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: Not yet in arma stable branch. Fix this when 2.22 is released
                             };
                         };
                         case 2: {
@@ -98,7 +86,7 @@ switch true do {
                                 ACEGVAR(advanced_fatigue,recoveryFactor) = GVAR(originalRecoveryFactor)*0.25;
                             } else {
                                 _unit setUnitTrait ["loadCoef", 1.8];
-                                //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: broken? Check later on arma discord
+                                //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: Not yet in arma stable branch. Fix this when 2.22 is released
                             };
                         };
                     };
@@ -106,33 +94,45 @@ switch true do {
                     switch (_unitArsHashmap get _x) do {
                         case 0: {
                             _unit setUnitTrait ["loadCoef", 1.2];
-                            //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: broken? Check later on arma discord
+                            //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: Not yet in arma stable branch. Fix this when 2.22 is released
                         };
                         case 1: {
                             _unit setUnitTrait ["loadCoef", 1.5];
-                            //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: broken? Check later on arma discord
+                            //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: Not yet in arma stable branch. Fix this when 2.22 is released
                         };
                         case 2: {
                             _unit setUnitTrait ["loadCoef", 1.8];
-                            //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: broken? Check later on arma discord
+                            //_unit setUnitTrait ["staminaDrainCoef", 2]; Note: Not yet in arma stable branch. Fix this when 2.22 is released
                         };
                     };
                 };
             };
-        };
+        };*/
         case "headache": {
             switch (_unitArsHashmap get _x) do {
                 case 0: {
-                    [_unit, 0.1] call ACEFUNC(medical_status,adjustPainLevel);
+                    [_unit, 0.05] call ACEFUNC(medical_status,adjustPainLevel);
                 };
                 case 1: {
-                    [_unit, 0.2] call ACEFUNC(medical_status,adjustPainLevel);
+                    [_unit, 0.1] call ACEFUNC(medical_status,adjustPainLevel);
                 };
                 case 2: {
-                    [_unit, 0.3] call ACEFUNC(medical_status,adjustPainLevel);
+                    [_unit, 0.2] call ACEFUNC(medical_status,adjustPainLevel);
                 };
             };
         };
+        case "movementAbility": {
+            switch (_unitArsHashmap get _x) do {
+                case 1: {
+                    _unit allowSprint false;
+                };
+                case 2: {
+                    _unit allowSprint false;
+                    _unit forceWalk true;
+                };
+                default {};
+            };
+        }
         /*case "hypotension": {
             switch (_unitArsHashmap get _x) do {
                 case 0: {
@@ -150,42 +150,19 @@ switch true do {
     _unitArsHashmap deleteAt _x;
 } forEach _unitSymptoms;
 
-switch _currentRadLimIndex do {
-    case 8: {
-        // ??
-    };
-    case 7: {
-        private _unitNewArsTimer = (1800*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 6: {
-        private _unitNewArsTimer = (1800*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 5: {
-        private _unitNewArsTimer = (900*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 4: {
-        private _unitNewArsTimer = (1800*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 3: {
-        private _unitNewArsTimer = (3600*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 2: {
-        private _unitNewArsTimer = (7200*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 1: {
-        private _unitNewArsTimer = (10800*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-    case 0: {
-        private _unitNewArsTimer = (14400*(random [0.8,1,1.2]));
-        _unit setVariable [QGVAR(unitArsTimer),(_unitNewArsTimer + CBA_missionTime),true];
-    };
-};
+private _newUnitTimer = [
+    (NO_ARS_TIMER*(random [0.8,1,1.2])), // Case 0
+    (ARS_STAGE_1_TIMER*(random [0.8,1,1.2])), // Case 1
+    (ARS_STAGE_2_TIMER*(random [0.8,1,1.2])), // Case 2
+    (ARS_STAGE_3_TIMER*(random [0.8,1,1.2])), // Case 3
+    (ARS_STAGE_4_TIMER*(random [0.8,1,1.2])), // Case 4
+    (ARS_STAGE_5_TIMER*(random [0.8,1,1.2])), // Case 5
+    (ARS_STAGE_6_TIMER*(random [0.8,1,1.2])), // Case 6
+    (ARS_STAGE_7_TIMER*(random [0.8,1,1.2])), // Case 7
+    (ARS_STAGE_8_TIMER*(random [0.8,1,1.2])), // Case 8
+    (ARS_STAGE_9_TIMER*(random [0.8,1,1.2]))  // Case 9
+];
+_unit setVariable [QGVAR(unitArsTimer),((_newUnitTimer select _currentRadLimIndex) + CBA_missionTime),true];
+//systemChat format ["New timer: %1, +CBA: %2",(_newUnitTimer select _currentRadLimIndex),((_newUnitTimer select _currentRadLimIndex) + CBA_missionTime)];
 
 _unit setVariable [QGVAR(unitArsHashMap),_unitArsHashmap,true];

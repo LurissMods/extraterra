@@ -32,16 +32,14 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-if (!isPlayer _unit) exitWith {}; // temp fix
+//if (!isPlayer _unit) exitWith {}; // temp fix
 
-private _unitCurrentArsTimer = (_unit getVariable [QGVAR(unitArsTimer),nil]) - CBA_missionTime;
-private _unitHashmap = _unit getVariable [QGVAR(unitArsHashMap),nil];
-private _unitArsFatigue = _unit getVariable [QGVAR(unitArsFatigue),nil];
-private _unitArsFever = _unit getVariable [QGVAR(unitArsFever),nil];
+private _unitCurrentArsTimer = (GET_ARS_TIMER(_unit)) - CBA_missionTime;
+private _unitHashmap = GET_SYMPTOM_HASHMAP(_unit);
 
 private _currentRad = GET_LIFETIME_RAD(_unit); // in mSv
-private _currentRadLimIndex = (_unit getVariable [QGVAR(unitRadLimIndex),nil]);
-private _currentRadLim = ((_unit getVariable [QGVAR(unitRadLimArray),nil]) select _currentRadLimIndex);
+private _currentRadLimIndex = GET_ARS_RAD_INDEX(_unit);
+private _currentRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select _currentRadLimIndex);
 
 //systemChat str _currentRadLim;
 //systemChat str _currentRadLimIndex;
@@ -65,7 +63,9 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             (ARS_STAGE_9_TIMER*(random [0.8,1,1.2]))  // Case 9
         ];
         if ((_newUnitTimer select _currentRadLimIndex) < _unitCurrentArsTimer) then {
-            _unit setVariable [QGVAR(unitArsTimer),((_newUnitTimer select _currentRadLimIndex) + CBA_missionTime),true];
+            _syncValue = true;
+            //_unit setVariable [QGVAR(unitArsTimer),((_newUnitTimer select _currentRadLimIndex) + CBA_missionTime),true];
+            SET_ARS_TIMER(_unit,((_newUnitTimer select _currentRadLimIndex) + CBA_missionTime),_syncValue);
         };
 
     };
@@ -87,37 +87,38 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Fever
             // Death
 
-            // 100% severe hypotension chance
-            // 70% moderate fever chance (core temp system will be good for this)
-
             // Vomit - 16.5% chance per 10 minute window (~66% chance 1 hour)
             if (random 1 < 0.165) then {
-                _unitArsHashmap set ["vomit",2];
+                // 0 = screen, 1 = visor. Not yet implemented.
+                _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_SEVERE,0,nil]];
             };
 
-            // Fatigue - 100% chance
-            //unitArsHashmap set ["fatigue",2];
-            _unit setVariable [QGVAR(unitArsFatigue),true,true];
+            // Fatigue + Weakness - 100% chance
+            SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
 
             // Movement ability - 16.5% chance per 10 minute window (~66% chance 1 hour)
             if (random 1 < 0.165) then {
                 if (random 1 < 0.33) then {
-                    _unitHashmap set ["movementAbility",2];
+                    _unitHashmap set [((sID_NO_JOG*ID_RADIX) + iID_ARS),[nil,nil,nil]];
                 } else {
-                    _unitHashmap set ["movementAbility",1];
+                    _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[nil,nil,nil]];
                 };
             };
 
             // Headache - 100% chance
-            _unitHashmap set ["headache",2];
+            _unitHashmap set [((sID_PAIN*ID_RADIX) + iID_ARS),[HEADACHE_SEVERE,nil,nil]];
 
             // Fever - 19.5% chance per 10 minute window (~66% chance 1 hour)
             if (random 1 < 0.195) then {
-                _unit setVariable [QGVAR(unitArsFever),true,true];
+                SET_ARS_FEVER_BOOL(_unit,true,_syncValue);
             };
+
+            // Hypotension - 100% chance
+            SET_ARS_HYPOTENSION_BOOL(_unit,true,_syncValue);
 
             // Death - 11% chance per 10 minute window (~50% chance 1 hour)
             if (random 1 < 0.11) then {
+                //_unitHashmap set [((sID_DEATH*ID_RADIX) + iID_ARS),[nil,nil,nil]];
                 systemChat "you're dead from ARS!";
             };
         };
@@ -131,33 +132,30 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Hypotension
             // Fever
 
-            // 100% severe hypotension chance
-            // 47.5% severe fever chance (core temp system will be good for this)
-
             // Vomit - 19.5% chance per 12 minute window (~66% chance 1 hour)
             if (random 1 < 0.195) then {
-                _unitHashmap set ["vomit",2];
+                // 0 = screen, 1 = visor. Not yet implemented.
+                _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_SEVERE,0,nil]];
             };
 
-            // Fatigue - 100% chance
-            //unitArsHashmap set ["fatigue",2];
-            _unit setVariable [QGVAR(unitArsFatigue),true,true];
+            // Fatigue + Weakness - 100% chance
+            SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
 
             // Movement ability - 19.5% chance per 12 minute window (~66% chance 1 hour)
             if (random 1 < 0.195) then {
-                _unitHashmap set ["movementAbility",1];
+                _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[nil,nil,nil]];
             };
 
             // Headache - 100% chance
-            _unitHashmap set ["headache",2];
+            _unitHashmap set [((sID_PAIN*ID_RADIX) + iID_ARS),[HEADACHE_SEVERE,nil,nil]];
 
             // Fever - 12% chance per 12 minute window (~47% chance 1 hour)
             if (random 1 < 0.12) then {
-                _unit setVariable [QGVAR(unitArsFever),true,true];
+                SET_ARS_FEVER_BOOL(_unit,true,_syncValue);
             };
 
-            // Hypotension
-            //_unitHashmap set ["hypotension",2];
+            // Hypotension - 100% chance
+            SET_ARS_HYPOTENSION_BOOL(_unit,true,_syncValue);
         };
         case 7: {
             // Vomit
@@ -169,34 +167,31 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Hypotension
             // Fever
 
-            // 80% mild hypotension chance
-            // 37.5% moderate fever chance (core temp system will be good for this)
-
             // Vomit - 23.7% chance per 15 minute window (~66% chance 1 hour)
             if (random 1 < 0.237) then {
-                _unitHashmap set ["vomit",2];
+                // 0 = screen, 1 = visor. Not yet implemented.
+                _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_SEVERE,0,nil]];
             };
 
-            // Fatigue - 100% chance
-            //unitArsHashmap set ["fatigue",2];
-            _unit setVariable [QGVAR(unitArsFatigue),true,true];
+            // Fatigue + Weakness - 100% chance
+            SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
 
             // Movement ability - 9.6% chance per 15 minute window (~33% chance 1 hour)
             if (random 1 < 0.096) then {
-                _unitHashmap set ["movementAbility",1];
+                _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[nil,nil,nil]];
             };
 
             // Headache - 100% chance
-            _unitHashmap set ["headache",2];
+            _unitHashmap set [((sID_PAIN*ID_RADIX) + iID_ARS),[HEADACHE_SEVERE,nil,nil]];
 
             // Fever - 11.1% chance per 15 minute window (~37.5% chance 1 hour)
             if (random 1 < 0.111) then {
-                _unit setVariable [QGVAR(unitArsFever),true,true];
+                SET_ARS_FEVER_BOOL(_unit,true,_syncValue);
             };
 
-            // Hypotension
-            if (random 1 < 0.8) then {
-                //_unitHashmap set ["hypotension",0];
+            // Hypotension - 23.7% chance per 15 minute window (~66% chance 1 hour)
+            if (random 1 < 0.237) then {
+                SET_ARS_HYPOTENSION_BOOL(_unit,true,_syncValue);
             };
         };
         case 6: {
@@ -210,21 +205,22 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Vomit - 30% chance per 20 minute window (~66% chance 1 hour)
             if (random 1 < 0.3) then {
                 if (random 1 < 0.5) then {
-                    _unitHashmap set ["vomit",2];
+                    // 0 = screen, 1 = visor. Not yet implemented.
+                    _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_SEVERE,0,nil]];
                 } else {
-                    _unitHashmap set ["vomit",1];
+                    // 0 = screen, 1 = visor. Not yet implemented.
+                    _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MODERATE,0,nil]];
                 };
             };
 
-            // Fatigue - 55% chance per 20 minute window (~91% chance 1 hour)
+            // Fatigue + Weakness - 55% chance per 20 minute window (~91% chance 1 hour)
             if (random 1 < 0.55) then {
-                _unit setVariable [QGVAR(unitArsFatigue),true,true];
-                //_unitArsHashmap set ["fatigue",2];
+                SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
             };
 
             // Headache - 42% chance per 20 minute window (~80% chance 1 hour)
             if (random 1 < 0.42) then {
-                _unitArsHashmap set ["headache",1];
+                _unitHashmap set [((sID_PAIN*ID_RADIX) + iID_ARS),[HEADACHE_MODERATE,nil,nil]];
             };
         };
         case 5: {
@@ -237,28 +233,25 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Vomit - 42% chance per 30 minute window (~66% chance 1 hour)
             if (random 1 < 0.42) then {
                 if (random 1 < 0.5) then {
-                    _unitArsHashmap set ["vomit",2];
+                    // 0 = screen, 1 = visor. Not yet implemented.
+                    _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_SEVERE,0,nil]];
                 } else {
-                    _unitArsHashmap set ["vomit",1];
+                    // 0 = screen, 1 = visor. Not yet implemented.
+                    _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MODERATE,0,nil]];
                 };
             };
 
-            // Fatigue - 69% chance per 30 minute window (~90% chance 1 hour)
+            // Fatigue + Weakness - 69% chance per 30 minute window (~90% chance 1 hour)
             if (random 1 < 0.69) then {
-                _unit setVariable [QGVAR(unitArsFatigue),true,true];
-                /*if (random 1 < 0.5) then {
-                    _unitArsHashmap set ["fatigue",2];
-                } else {
-                    _unitArsHashmap set ["fatigue",1];
-                };*/
+                SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
             };
 
             // Headache - 29% chance per 30 minute window (~50% chance 1 hour)
             if (random 1 < 0.29) then {
                 if (random 1 < 0.5) then {
-                    _unitArsHashmap set ["headache",1];
+                    _unitHashmap set [((sID_PAIN*ID_RADIX) + iID_ARS),[HEADACHE_MODERATE,nil,nil]];
                 } else {
-                    _unitArsHashmap set ["headache",0];
+                    _unitHashmap set [((sID_PAIN*ID_RADIX) + iID_ARS),[HEADACHE_MILD,nil,nil]];
                 };
             };
         };
@@ -270,13 +263,12 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
 
             // Vomit - 55% chance per 1 hour window (~80% chance two hours)
             if (random 1 < 0.55) then {
-                _unitArsHashmap set ["vomit",1];
+                _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MODERATE,0,nil]];
             };
 
-            // Fatigue - 75% chance per 1 hour window (~94% chance two hours)
+            // Fatigue + Weakness - 75% chance per 1 hour window (~94% chance two hours)
             if (random 1 < 0.75) then {
-                //_unitArsHashmap set ["fatigue",1];
-                _unit setVariable [QGVAR(unitArsFatigue),true,true];
+                SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
             };
 
         };
@@ -288,51 +280,57 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Vomit - 35% chance per 2 hour window
             if (random 1 < 0.35) then {
                 if (random 1 < 0.5) then {
-                    _unitArsHashmap set ["vomit",1];
+                    // 0 = screen, 1 = visor. Not yet implemented.
+                    _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MODERATE,0,nil]];
                 } else {
-                    _unitArsHashmap set ["vomit",0];
+                    // 0 = screen, 1 = visor. Not yet implemented.
+                    _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MILD,0,nil]];
                 };
             };
 
-            // Fatigue - 45% chance per 2 hour window
+            // Fatigue + Weakness - 45% chance per 2 hour window
             if (random 1 < 0.45) then {
-                _unit setVariable [QGVAR(unitArsFatigue),true,true];
-                /*if (random 1 < 0.5) then {
-                    _unitArsHashmap set ["fatigue",1];
-                } else {
-                    _unitArsHashmap set ["fatigue",0];
-                };*/
+                SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,true,_syncValue);
             };
         };
         case 2: {
-            // Vomit
-            // Nausea
-
             // Vomit - 15% chance per 3 hour window
             if (random 1 < 0.15) then {
-                _unitArsHashmap set ["vomit",0];
+                // 0 = screen, 1 = visor. Not yet implemented.
+                _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MILD,0,nil]];
             };
         };
         case 1: {
             // Vomit - 5% chance per 4 hour window
             if (random 1 < 0.05) then {
-                _unitArsHashmap set ["vomit",0];
+                // 0 = screen, 1 = visor. Not yet implemented.
+                _unitHashmap set [((sID_NAUSEA*ID_RADIX) + iID_ARS),[NAUSEA_MILD,0,nil]];
             };
         };
         default {};
     };
 };
 
-// Note: currently not implemented in the core temp function
-if (_unitArsFever) then {
-    [_unit,_currentRad,_syncValue] call FUNC(updateArsFever);
+if (GET_ARS_FEVER_BOOL(_unit)) then {
+    private _minRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select 6);
+    private _maxRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select 8);
+    private _current = linearConversion [_minRadLim,_maxRadLim,_currentRad,0,1,true];
+    _unitHashmap set [((sID_FEVER*ID_RADIX) + iID_ARS),[_current,nil,nil]];
 };
 
-// Done to make fatigue more gradual
-if (_unitArsFatigue) then {
-    [_unit,_currentRad] call FUNC(updateArsFatigue);
+if (GET_ARS_HYPOTENSION_BOOL(_unit)) then {
+    private _minRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select 6);
+    private _maxRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select 8);
+    private _current = linearConversion [_minRadLim,_maxRadLim,_currentRad,0,-1,true];
+    _unitHashmap set [((sID_BP*ID_RADIX) + iID_ARS),[_current,nil,nil]];
 };
 
-if (_currentRadLimIndex > 0 && {CBA_missionTime > (_unitCurrentArsTimer + CBA_missionTime)}) then {
-    [_unit] call FUNC(updateArsSymptoms);
+if (GET_ARS_FATIGUE_WEAKNESS_BOOL(_unit)) then {
+    private _minRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select 2);
+    private _maxRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select 8);
+    private _current = linearConversion [_minRadLim,_maxRadLim,_currentRad,0,1,true];
+    _unitHashmap set [((sID_FATIGUE*ID_RADIX) + iID_ARS),[_current,nil,nil]];
+    _unitHashmap set [((sID_WEAKNESS*ID_RADIX) + iID_ARS),[_current,nil,nil]];
 };
+
+_syncValue;

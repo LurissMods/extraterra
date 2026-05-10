@@ -35,11 +35,17 @@ class RscTitles
 
 class ace_medical_gui_BodyImage: RscControlsGroupNoScrollbars {
     class controls {
-        class LegRight;
-        class heatRash: LegRight {
+        class Background;
+        //class LegRight;
+        class heatRash: Background {
             idc = 25247;
             show = 0;
             text = QPATHTOF(data\body_image\heatRash.paa);
+        };
+        class cyanosis: Background {
+            idc = 25248;
+            show = 0;
+            text = QPATHTOF(data\body_image\exterra_injuries_cyanosis_ca.paa);
         };
     };
 };

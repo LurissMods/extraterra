@@ -18,6 +18,8 @@
 
 //params ["_suitFaction", "_suitTemp", "_currentActiveCool", "_currentActiveHeat", "_tempAroundPlayer", "_netHeatPower", "_deltaTemp"];
 
+params ["_deltaT"];
+
 private _intTempText = "";
 private _extTempText = "";
 private _thermalPwrBalanceText = "";
@@ -75,7 +77,7 @@ _thermalPwrBalanceText ctrlSetStructuredText parseText format ["<t size='0.8'>%1
 
 
 if (_currentActiveCool == _suitMaxActiveCool && {_netHeatPower > 0}) then {
-    _timeUntilDangerousTemp = (HUMAN_DANGEROUS_TEMPS#1 - _suitTemp)/_deltaTemp;
+    _timeUntilDangerousTemp = ((HUMAN_DANGEROUS_TEMPS#1 - _suitTemp)/_deltaTemp)*_deltaT;
 
     if (abs _timeUntilDangerousTemp > 3600) then {
         _timeUntilDangerText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 h", round(abs _timeUntilDangerousTemp/3600)];
