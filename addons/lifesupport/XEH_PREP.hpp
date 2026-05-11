@@ -9,6 +9,15 @@ PREP(updateSolarIrradiance);
 PREP(updateBattery);
 PREP(handleUnitLifesupport);
 PREP(updateUnitAtmo);
+PREP(updateConsumeables);
+
+PREP(getAirTanks);
+PREP(setAirTank);
+PREP(removeAirTank);
+
+PREP(getBatteries);
+PREP(setBattery);
+PREP(removeBattery);
 
 PREP(prebreathing);
 

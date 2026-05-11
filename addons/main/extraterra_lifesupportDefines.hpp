@@ -7,6 +7,8 @@
 #define GET_AIR_RESERVE(unit) unit getVariable [QEGVAR(lifesupport,unitAirReserve),nil]
 #define GET_AIR_RESERVE_MAX(unit) unit getVariable [QEGVAR(lifesupport,unitAirMaxReserve),nil]
 #define GET_AIR_CONSUMPTION(unit) unit getVariable [QEGVAR(lifesupport,unitAirConsumption),nil]
+#define GET_AIR_TANK(unit) unit getVariable [QEGVAR(lifesupport,unitAirTank),nil]
+#define GET_AIR_TANK_BOOL(unit) unit getVariable [QEGVAR(lifesupport,unitAirTankBool),nil]
 
 //  --- Radiation ---
 #define GET_RAD_SHIELD_CASE(unit) unit getVariable [QEGVAR(lifesupport,unitRadShieldCase),nil]
@@ -23,6 +25,8 @@
 #define GET_POWER_DRAW(unit) unit getVariable [QEGVAR(lifesupport,unitPowerDraw),nil]
 #define GET_BATTERY_RESERVE(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryReserve),nil]
 #define GET_BATTERY_RESERVE_MAX(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryMaxReserve),nil]
+#define GET_BATTERY(unit) unit getVariable [QEGVAR(lifesupport,unitBattery),nil]
+#define GET_BATTERY_BOOL(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryBool),nil]
 
 //  --- Thermal ---
 #define GET_CORE_TEMP(unit) unit getVariable [QEGVAR(lifesupport,unitCoreTemp),nil]
@@ -41,6 +45,8 @@
 #define SET_AIR_RESERVE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirReserve),value,sync]
 #define SET_AIR_RESERVE_MAX(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirMaxReserve),value,sync]
 #define SET_AIR_CONSUMPTION(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirConsumption),value,sync]
+#define SET_AIR_TANK(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirTank),value,sync]
+#define SET_AIR_TANK_BOOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirTankBool),value,sync]
 
 //  --- Radiation ---
 #define SET_RAD_SHIELD_CASE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitRadShieldCase),value,sync]
@@ -57,6 +63,8 @@
 #define SET_POWER_DRAW(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitPowerDraw),value,sync]
 #define SET_BATTERY_RESERVE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryReserve),value,sync]
 #define SET_BATTERY_RESERVE_MAX(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryMaxReserve),value,sync]
+#define SET_BATTERY(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBattery),value,sync]
+#define SET_BATTERY_BOOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryBool),value,sync]
 
 //  --- Thermal ---
 #define SET_CORE_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitCoreTemp),value,sync]
@@ -72,8 +80,8 @@
 /*---------------------------------- Life support defines ----------------------------------*/
 
 // Air
-#define DEFAULT_SUIT_OFF_AIR_RESERVE 1000 // mL
-//#define SUIT_AIR_LIFESUPPORT_OFF 100 // Liters
+#define DEFAULT_SUIT_OFF_AIR_RESERVE 500 // mL
+//#define SUIT_AIR_LIFESUPPORT_OFF 500 // Liters
 
 // Thermal
 #define THERMAL_CONDUCT_CONSTANT 7.6e-5
@@ -124,6 +132,3 @@
 #define DEFAULT_SUIT_THICKNESS 0.002 // Metres, 2mm
 #define DEFAULT_CLOTHES_MOBILITY 0.95
 #define DEFAULT_CLOTHES_THICKNESS 0.0006 // Metres, 0.6mm
-#define NO_SUIT_FACTION -1
-#define US_SUIT_FACTION 0
-#define PRC_SUIT_FACTION 1

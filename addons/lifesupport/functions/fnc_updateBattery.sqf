@@ -64,7 +64,7 @@ if (GET_ACTIVE_COOL(_unit) > 0) then {
 };
 
 private _currentPowerDraw = ((_basePowerDraw +_currentPumpPowerDraw)/_suitTheveninVoltage)*_deltaT;
-_currentBatteryCapacity = _currentBatteryCapacity - _currentPowerDraw;
+_currentBatteryCapacity = 0 max (_currentBatteryCapacity - _currentPowerDraw);
 
 SET_POWER_DRAW(_unit,_currentPowerDraw,_syncValue);
 SET_BATTERY_RESERVE(_unit,_currentBatteryCapacity,_syncValue);

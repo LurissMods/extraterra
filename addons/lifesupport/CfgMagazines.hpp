@@ -28,12 +28,16 @@ class CfgMagazines
 		scope = 2;
 		displayname = "placeholder air tank";
 		ammo = "";
-		count = 500000;
+		count = 800000; // in mL. 240 cu in, 900 psi, 22 C.  REMEMBER! It's stored at 900 psi but breathed at 0.3 atm. Enter the 0.3 atm value here, not the 900 psi one.
+        // https://www.lpi.usra.edu/lunar/artemis/NASA-EMU-Data-Book-JSC-E-DAA-TN55224.pdf      Page 166
 		initSpeed = 0;
 		tracersEvery = 0;
 		lastRoundsTracer = 0;
 		descriptionShort = "";
-        ACE_asItem = 1;
+        //ACE_asItem = 1;
+        ACE_isUnique = 1;
+
+        exterra_airTank = US_SUIT_FACTION + FACTION_OFFSET;
 	};
     class exterra_lifesupport_batteryUS : CA_Magazine
 	{
@@ -48,6 +52,9 @@ class CfgMagazines
 		tracersEvery = 0;
 		lastRoundsTracer = 0;
 		descriptionShort = "";
-        ACE_asItem = 1;
+        //ACE_asItem = 1;
+        ACE_isUnique = 1;
+
+        exterra_battery = US_SUIT_FACTION + FACTION_OFFSET;
 	};
 };

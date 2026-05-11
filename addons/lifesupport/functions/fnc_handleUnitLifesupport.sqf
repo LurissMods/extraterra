@@ -37,6 +37,8 @@ _syncValue = [_unit,_syncValue] call FUNC(updateUnitAtmo);
 // Check what suit a unit is wearing and retrieve it's stats
 _syncValue = [_unit, _syncValue] call FUNC(updateUnitSuit);
 
+_syncValue = [_unit, _deltaT, _syncValue] call FUNC(updateConsumeables);
+
 // Updates current air intake for units
 [_unit, _deltaT, _syncValue] call FUNC(updateUnitBreathing);
 
@@ -72,16 +74,6 @@ _syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryArs);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryHyperthermia);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryHypothermia);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateSymptoms);
-
-if (_unit == ACE_player) then {
-    if (ACEGVAR(medical_vitals,simulateSpO2)) then {
-        systemChat str GET_SPO2(_unit);
-    } else {
-        systemChat str (GET_SIMPLE_SPO2(_unit));
-    };
-
-    //systemChat str ACEGVAR(medical_vitals,spo2DutyList);
-};
 
 //END_COUNTER(lifeSupport);
 

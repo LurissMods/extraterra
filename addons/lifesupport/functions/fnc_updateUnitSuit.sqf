@@ -99,7 +99,7 @@ _unitSuitData pushBack _suitThickness;
 // -----------------------------------------------------------------------------------
 // Semi-temp solution. Flesh out later when air tanks added
 
-if (CBA_missionTime < 3) then {
+/*if (CBA_missionTime < 3) then {
     SET_AIR_RESERVE_MAX(_unit,_helmetPassiveAirReserve,_syncValue);
     SET_AIR_RESERVE(_unit,_helmetPassiveAirReserve,_syncValue);
     //systemChat "air reserve init";
@@ -123,9 +123,9 @@ if (CBA_missionTime < 3) then {
             SET_AIR_RESERVE(_unit,0,_syncValue);
         };
     };
-};
+};*/
 
-
+// Semi-temp solution. Flesh out later when air tanks added
 // -----------------------------------------------------------------------------------
 
 if (_helmetFaction == _suitFaction && {_helmetFaction == _packFaction}) then {

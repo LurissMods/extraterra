@@ -10,7 +10,7 @@ class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
 class RscCheckbox;
 
-class exterra_suit_menu: RscControlsGroupNoScrollbars
+/*class exterra_suit_menu: RscControlsGroupNoScrollbars
 {
 	idd = 2300;
     movingEnable = 1;
@@ -116,4 +116,4 @@ class exterra_suit_menu: RscControlsGroupNoScrollbars
 			h = QUOTE(POS_H(11));
 		};
 	};
-};
+};*/

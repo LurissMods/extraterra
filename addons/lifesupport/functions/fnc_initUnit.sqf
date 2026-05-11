@@ -74,9 +74,11 @@ if (_isRespawn) then {
 
     // Air and Pressure
     SET_ATMO(_unit,ATMO_STATE_ERROR,true);
-    SET_AIR_RESERVE_MAX(_unit,0,true);
+    SET_AIR_RESERVE_MAX(_unit,1,true);
     SET_AIR_RESERVE(_unit,0,true);
     SET_AIR_CONSUMPTION(_unit,0,true);
+    SET_AIR_TANK(_unit,[],true);
+    SET_AIR_TANK_BOOL(_unit,false,true);
 
     // Temperature
     SET_ENVIRONMENT_TEMP(_unit,ROOM_TEMP,true);
@@ -95,9 +97,11 @@ if (_isRespawn) then {
     SET_LIFETIME_RAD(_unit,0,true);
 
     // Electrical
-    SET_BATTERY_RESERVE(_unit,100000,true);
-    SET_BATTERY_RESERVE_MAX(_unit,100000,true);
+    SET_BATTERY_RESERVE(_unit,0,true);
+    SET_BATTERY_RESERVE_MAX(_unit,1,true);
     SET_POWER_DRAW(_unit,0,true);
+    SET_BATTERY(_unit,[],true);
+    SET_BATTERY_BOOL(_unit,false,true);
 
     // Suit
     SET_SUIT_ACTIVATED(_unit,false,true);

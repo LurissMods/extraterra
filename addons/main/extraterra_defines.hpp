@@ -17,6 +17,12 @@
 
 /*---------------------------------- General defines ----------------------------------*/
 
+// Factions
+#define FACTION_OFFSET 100 // Quirk with the config reading non-entries as 0 causing a false positive with the air tank/battery check. If you're reading this you should really fix it properly
+#define NO_SUIT_FACTION -1
+#define US_SUIT_FACTION 0
+#define PRC_SUIT_FACTION 1
+
 // Environment
 #define NORMAL_BACKGROUND_RADIATION 0.057 // Millisieverts
 #define SOLAR_RADIATION_WATTAGE_1AU 1361 // Watt per m^2

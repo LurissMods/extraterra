@@ -80,7 +80,7 @@ class CfgWeapons
         ace_hearing_protection = 1;
         ace_hearing_lowerVolume = 0.05;
         ace_hearing_hasEHP = 1;
-        exterra_uniforms_passiveAirReserve = 800;
+        exterra_uniforms_passiveAirReserve = 400;
 
 		class ItemInfo : HeadgearItem
 		{
