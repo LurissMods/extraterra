@@ -99,9 +99,9 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Movement ability - 16.5% chance per 10 minute window (~66% chance 1 hour)
             if (random 1 < 0.165) then {
                 if (random 1 < 0.33) then {
-                    _unitHashmap set [((sID_NO_JOG*ID_RADIX) + iID_ARS),[nil,nil,nil]];
+                    _unitHashmap set [((sID_NO_JOG*ID_RADIX) + iID_ARS),[true,nil,nil]];
                 } else {
-                    _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[nil,nil,nil]];
+                    _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[true,nil,nil]];
                 };
             };
 
@@ -143,7 +143,7 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
 
             // Movement ability - 19.5% chance per 12 minute window (~66% chance 1 hour)
             if (random 1 < 0.195) then {
-                _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[nil,nil,nil]];
+                _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[true,nil,nil]];
             };
 
             // Headache - 100% chance
@@ -178,7 +178,7 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
 
             // Movement ability - 9.6% chance per 15 minute window (~33% chance 1 hour)
             if (random 1 < 0.096) then {
-                _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[nil,nil,nil]];
+                _unitHashmap set [((sID_NO_RUN*ID_RADIX) + iID_ARS),[true,nil,nil]];
             };
 
             // Headache - 100% chance

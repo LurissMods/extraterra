@@ -17,6 +17,23 @@
 
 /*---------------------------------- General defines ----------------------------------*/
 
+// Environment
+#define NORMAL_BACKGROUND_RADIATION 0.057 // Millisieverts
+#define SOLAR_RADIATION_WATTAGE_1AU 1361 // Watt per m^2
+#define STEFAN_BOLTZMANN_CONSTANT 5.670367e-8
+
+// Pressure
+#define PRESSURE_PA_1ATM 101325
+#define PRESSURE_PA_0P3ATM 33775
+#define ATMO_STATE_ERROR -1
+#define ATMO_STATE_VACUUM 0
+#define ATMO_STATE_1ATM 1
+#define ATMO_STATE_0P3ATM 2
+
+// Local temp simulation constants
+#define IS_IN_SUN_CHECK_VECTOR_LENGTH 200
+#define LOCAL_TEMP_VECTOR_HEIGHT_AGL 0.5
+
 #define PREBREATHE_SAFE_THRESHOLD 0.5
 #define TIME_TO_FULL_PREBREATHE 600
 

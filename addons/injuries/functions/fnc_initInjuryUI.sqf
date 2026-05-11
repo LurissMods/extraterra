@@ -17,7 +17,7 @@
 
 params ["_unit"];
 
-if (!isPlayer _unit) exitWith {systemChat format ["(initHUD) Unit not a player: %1",_unit]};
+if (_unit != ACE_player) exitWith {systemChat format ["(initHUD) Unit not a player: %1",_unit]};
 if (!hasInterface) exitWith {systemChat format ["(initHUD) Unit client has no interface: %1",_unit]};
 if (GETVAR(_unit,GVAR(initInjuryUI_Activated),false)) exitWith {systemChat format ["initHUD_US called twice! Unit: %1",_unit]};
 

@@ -71,19 +71,6 @@
 
 /*---------------------------------- Life support defines ----------------------------------*/
 
-// Environment
-#define NORMAL_BACKGROUND_RADIATION 0.057 // Millisieverts
-#define SOLAR_RADIATION_WATTAGE_1AU 1361 // Watt per m^2
-#define STEFAN_BOLTZMANN_CONSTANT 5.670367e-8
-
-// Pressure
-#define PRESSURE_PA_1ATM 101325
-#define PRESSURE_PA_0P3ATM 33775
-#define ATMO_STATE_ERROR -1
-#define ATMO_STATE_VACUUM 0
-#define ATMO_STATE_1ATM 1
-#define ATMO_STATE_0P3ATM 2
-
 // Air
 #define DEFAULT_SUIT_OFF_AIR_RESERVE 1000 // mL
 //#define SUIT_AIR_LIFESUPPORT_OFF 100 // Liters
@@ -92,9 +79,6 @@
 #define THERMAL_CONDUCT_CONSTANT 7.6e-5
 #define THERMAL_CONVECTION_COEFF_1ATM 5
 #define THERMAL_CONVECTION_COEFF_0P3ATM 1.504
-
-#define IS_IN_SUN_CHECK_VECTOR_LENGTH 200
-#define LOCAL_TEMP_VECTOR_HEIGHT_AGL 0.5
 
 #define HUMAN_SURFACE_AREA 1.9
 #define HUMAN_SURFACE_AREA_SUIT 2

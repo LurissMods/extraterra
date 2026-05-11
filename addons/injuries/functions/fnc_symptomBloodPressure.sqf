@@ -28,5 +28,4 @@ _avg = _avg/count _bpArray;
 private _adjustValue = linearConversion [-1,1,_avg,-BP_ADJUST_LIMITS,BP_ADJUST_LIMITS];
 
 // Handled by API injected in fnc_consumeMedications
-//_unit setVariable[QGVAR(bpAdjust),_adjustValue,_syncValue];
 SET_BP_ADJUST(_unit,_adjustValue,_syncValue);

@@ -15,8 +15,8 @@
 * Public: No
 */
 
-if ((CBA_missionTime - GVAR(lastUpdateTime)) < INTERVAL) exitWith {};
-GVAR(lastUpdateTime) = CBA_missionTime;
+//if ((CBA_missionTime - GVAR(lastUpdateTime)) < INTERVAL) exitWith {};
+//GVAR(lastUpdateTime) = CBA_missionTime;
 
 //if (true) exitWith {};
 
@@ -29,17 +29,39 @@ GVAR(lowBloodFlowTunnelVision) ppEffectEnable true;
 GVAR(lowBloodFlowGreyscale) ppEffectEnable true;
 GVAR(lowBloodFlowSpots) ppEffectEnable true;
 
+
+// ------------------------------------------------------------------------------------------------------------------
 GET_BLOOD_PRESSURE(ACE_player) params ["_bloodPressureL", "_bloodPressureH"];
 private _meanBP = (2/3) * _bloodPressureH + (1/3) * _bloodPressureL;
 private _heartRate = GET_HEART_RATE(ACE_player);
-//private _bpLow = _bloodPressure select 0;
+private _spo2 = nil;
+
+if (ACEGVAR(medical_vitals,simulateSpO2)) then {
+    _spo2 = GET_SPO2(ACE_player);
+} else {
+    _spo2 = GET_SIMPLE_SPO2(ACE_player);
+};
+// ------------------------------------------------------------------------------------------------------------------
 
 private _bpGradient = linearConversion [BLOOD_PRESSURE_LOW_UPPER,BLOOD_PRESSURE_LOW_LOWER,_meanBP,0,1,true];
 private _hrGradient = linearConversion [HEART_RATE_LOW_UPPER,HEART_RATE_LOW_LOWER,_heartRate,0,1,true];
+private _spo2Gradient = linearConversion [SPO2_LOW_UPPER,SPO2_LOW_LOWER,_spo2,0,1,true];
 
 if (ACE_player call ACEFUNC(common,isAwake)) then {
 
-    if (_bpGradient > _hrGradient) then {
+    private _selctedGradient = selectMax [_bpGradient,_hrGradient,_spo2Gradient];
+
+    if (_selctedGradient > 0) then {
+        GVAR(lowBloodFlowTunnelVision) ppEffectAdjust [1,1,0,[0,0,0,1],[0,0,0,0],[1,1,1,1],[2 * (1 - _selctedGradient),2 * (1 - _selctedGradient),0,0,0,0.1,0.5]];
+        GVAR(lowBloodFlowGreyscale) ppEffectAdjust [1,(0.3 max (1 - _bpGradient)),0,[0,0,0,0],[1,1,1,(1 - _selctedGradient)],[1,1,1,0]];
+        GVAR(lowBloodFlowSpots) ppEffectAdjust [_bpGradient, 0.01, 4, 0.02, 0.02, 0];
+    } else {
+        GVAR(lowBloodFlowTunnelVision) ppEffectAdjust [1,1,0,[0,0,0,1],[0,0,0,0],[1,1,1,1],[10,10,0,0,0,0.1,0.5]];
+        GVAR(lowBloodFlowGreyscale) ppEffectAdjust [1,1,0,[0,0,0,0],[1,1,1,1],[1,1,1,0]];
+        GVAR(lowBloodFlowSpots) ppEffectAdjust [0, 0.01, 3, 0.1, 0.1, 0];
+    };
+
+    /*if (_bpGradient > _hrGradient) then {
         if (_meanBP < BLOOD_PRESSURE_LOW_UPPER) then {
             //private _bpGradient = linearConversion [60,30,_bpLow,0,1,true];
 
@@ -63,7 +85,7 @@ if (ACE_player call ACEFUNC(common,isAwake)) then {
             GVAR(lowBloodFlowGreyscale) ppEffectAdjust [1,1,0,[0,0,0,0],[1,1,1,1],[1,1,1,0]];
             GVAR(lowBloodFlowSpots) ppEffectAdjust [0, 0.01, 3, 0.1, 0.1, 0];
         };
-    };
+    };*/
     /*switch (true) do {
         case (_bpLow < 60): {
             private _bpGradient = linearConversion [60,30,_bpLow,0,1,true];

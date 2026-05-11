@@ -12,16 +12,11 @@ if (!hasInterface) exitWith {};
     GVAR(originalLoadFactor) = ACEGVAR(advanced_fatigue,loadFactor);
     GVAR(originalTerrainGradientFactor) = ACEGVAR(advanced_fatigue,terrainGradientFactor);
 
-    [] call FUNC(init);
+    GVAR(injuriesPFH_lowOxygenPP) = [{
 
-    /*[QACEGVAR(medical,handleUnitVitals),{
+        call FUNC(lowBloodFlowEffectPP);
 
-        params ["_unit", "_deltaT"];
-
-        private _syncValues = false;
-
-        [_unit,_deltaT,_syncValues] call FUNC(barotrauma);
-
-    }] call CBA_fnc_addEventHandler;*/
+        }, 0, []
+    ] call CBA_fnc_addPerFrameHandler;
 
 }] call CBA_fnc_addEventHandler;

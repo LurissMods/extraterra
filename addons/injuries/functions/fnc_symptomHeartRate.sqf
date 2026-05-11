@@ -19,9 +19,8 @@ params ["_unit","_hrArray","_syncValue"];
 
 private _sum = 0;
 {
-    _sum = _sum + _x;
+    _sum = -150 max (_sum + _x) min 150;
 } forEach _hrArray;
 
 // Handled by API injected in fnc_consumeMedications
-//_unit setVariable[QGVAR(hrAdjust),_sum,_syncValue];
 SET_HR_ADJUST(_unit,_sum,_syncValue);

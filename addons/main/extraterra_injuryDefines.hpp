@@ -11,6 +11,7 @@
 #define GET_FEVER_ADJUST(unit) unit getVariable [QEGVAR(injuries,unitFeverTempAdjustment),nil]
 #define GET_HEAT_RASH_BOOL(unit) unit getVariable [QEGVAR(injuries,heatRash),nil]
 #define GET_CYANOSIS_BOOL(unit) unit getVariable [QEGVAR(injuries,cyanosis),nil]
+#define GET_SIMPLE_SPO2(unit) unit getVariable [QEGVAR(injuries,unitSimpleSpo2),nil]
 
 //  --- ARS ---
 #define GET_ARS_RAD_ARRAY(unit) unit getVariable [QEGVAR(injuries,unitRadLimArray),nil]
@@ -24,6 +25,7 @@
 #define GET_VAC_EXPOSE_TIME(unit) unit getVariable [QEGVAR(injuries,unitVacExposeTime),nil]
 #define GET_VAC_EXPOSE_ARRAY(unit) unit getVariable [QEGVAR(injuries,unitVacExposeArray),nil]
 #define GET_VAC_EXPOSE_BOOL(unit) unit getVariable [QEGVAR(injuries,unitVacExposeBool),nil]
+#define GET_VAC_EXPOSE_EFFECT_BOOL(unit) unit getVariable [QEGVAR(injuries,unitVacExposeEffectBool),nil]
 
 //  --- ACE API ---
 #define GET_HR_ADJUST(unit) unit getVariable [QEGVAR(injuries,hrAdjust),0]
@@ -39,6 +41,7 @@
 #define SET_FEVER_ADJUST(unit,value,sync) unit setVariable [QEGVAR(injuries,unitFeverTempAdjustment),value,sync]
 #define SET_HEAT_RASH_BOOL(unit,value,sync) unit setVariable [QEGVAR(injuries,heatRash),value,sync]
 #define SET_CYANOSIS_BOOL(unit,value,sync) unit setVariable [QEGVAR(injuries,cyanosis),value,sync]
+#define SET_SIMPLE_SPO2(unit,value,sync) unit setVariable [QEGVAR(injuries,unitSimpleSpo2),value,sync]
 
 //  --- ARS ---
 #define SET_ARS_RAD_ARRAY(unit,value,sync) unit setVariable [QEGVAR(injuries,unitRadLimArray),value,sync]
@@ -52,6 +55,7 @@
 #define SET_VAC_EXPOSE_TIME(unit,value,sync) unit setVariable [QEGVAR(injuries,unitVacExposeTime),value,sync]
 #define SET_VAC_EXPOSE_ARRAY(unit,value,sync) unit setVariable [QEGVAR(injuries,unitVacExposeArray),value,sync]
 #define SET_VAC_EXPOSE_BOOL(unit,value,sync) unit setVariable [QEGVAR(injuries,unitVacExposeBool),value,sync]
+#define SET_VAC_EXPOSE_EFFECT_BOOL(unit,value,sync) unit setVariable [QEGVAR(injuries,unitVacExposeEffectBool),value,sync]
 
 //  --- ACE API ---
 #define SET_HR_ADJUST(unit,value,sync) unit setVariable [QEGVAR(injuries,hrAdjust),value,sync]
@@ -91,7 +95,7 @@
 #define sID_DEAFNESS 15
 #define sID_SPO2 16
 #define sID_RASH 17
-#define sID_LESION 18
+#define sID_LIMP 18
 #define sID_CYANOSIS 19
 
 /* ---------------------------------- Ebullism defines ---------------------------------- */
@@ -138,6 +142,22 @@
 #define HYPOTHERMIA_HR_LIMIT -50
 #define HYPOTHERMIA_PAIN_LIMIT 0.2
 
+/* ---------------------------------- Asphyxiation defines ---------------------------------- */
+#define ASPHYX_BREATHE_NONE 0
+#define ASPHYX_BREATHE_PARTIAL 0.95
+#define ASPHYX_BREATHE_PARTIAL_SIMPLE 0.8
+#define ASPHYX_BREATHE_FULL 1
+#define ASPHYX_BREATHE_SUIT_NO_AIR 0.35
+#define ASPHYX_BREATHE_SUIT_NO_AIR_SIMPLE 0.45
+#define ASPHYX_HR_LIMIT 100
+#define ASPHYX_BP_LIMIT -0.6
+#define ASPHYX_LIN_CONVERSION_SPO2_START 95
+#define ASPHYX_FATIGUE_WEAKNESS_LIMIT 1
+#define ASPHYX_SPO2_CYANOSIS_LIMIT 85
+#define ASPHYX_SPO2_WALK_LIMIT 79
+#define ASPHYX_SPO2_LIMP_LIMIT 73
+#define ASPHYX_SPO2_CARDIAC_ARREST_LIMIT 67
+
 /* ---------------------------------- Symptom defines ---------------------------------- */
 
 // Fatigue ------------------------------------------
@@ -163,10 +183,10 @@
 // Fever ------------------------------------------
 #define HIGH_FEVER_CORE_TEMP 312.75
 
+// SPO2 ------------------------------------------
+#define SPO2_MAX_DELTA 1
 
-
-
-// legacy
+/* ---------------------------------- Dangerous Vitals defines ---------------------------------- */
 #define CARDIAC_ARREST_TIMEOUT 60
 #define HEART_RATE_FATAL_HIGH 205
 #define HEART_RATE_FATAL_LOW 45
@@ -177,3 +197,12 @@
 #define BLOOD_PRESSURE_LOW_LOWER 40
 #define HEART_RATE_LOW_UPPER 50
 #define HEART_RATE_LOW_LOWER 30
+#define SPO2_LOW_UPPER 95
+#define SPO2_LOW_LOWER 67
+
+/* ---------------------------------- Misc defines ---------------------------------- */
+#define ATMO_BREATHE_ERROR -1
+#define ATMO_BREATHE_NONE 0
+#define ATMO_BREATHE_FULL 1
+#define ATMO_BREATHE_PARTIAL 2
+#define ATMO_BREATHE_SUIT 3

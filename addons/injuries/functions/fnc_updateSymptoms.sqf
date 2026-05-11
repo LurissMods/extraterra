@@ -102,6 +102,7 @@ if (isPlayer _unit)  then {
         };
         case sID_PAIN: {
             _painArray pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_NAUSEA: {
             // _variable0: Severity = Mild, Moderate, Severe.  _variable1: visorType = Screen/glass
@@ -110,31 +111,48 @@ if (isPlayer _unit)  then {
         };
         case sID_FATIGUE: {
             _fatigueArray pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_WEAKNESS: {
             _weaknessArray pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_NO_RUN: {
-            if (isSprintAllowed _unit) then {
-                _unit allowSprint false;
+            if (_variable0) then {
+                if (isSprintAllowed _unit) then {
+                    _unit allowSprint false;
+                };
+            } else {
+                if !(isSprintAllowed _unit) then {
+                    _unit allowSprint true;
+                };
             };
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_NO_JOG: {
-            if !(isForcedWalk _unit) then {
-                _unit allowSprint false;
-                _unit forceWalk true;
+            if (_variable0) then {
+                if !(isForcedWalk _unit) then {
+                    _unit allowSprint false;
+                    _unit forceWalk true;
+                };
+            } else {
+                if (isForcedWalk _unit) then {
+                    _unit forceWalk false;
+                };
             };
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_BP: {
             _bpArray pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_HR: {
             _hrArray pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_FEVER: {
             _feverArray pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_HYPERVENT: {
 
@@ -155,15 +173,17 @@ if (isPlayer _unit)  then {
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_SPO2: {
+            //systemChat str _currentHashKey;
             _spo2Array pushBack _variable0;
+            _unitHashmap deleteAt _currentHashKey;
         };
         case sID_RASH: {
             SET_HEAT_RASH_BOOL(_unit,_variable0,_syncValue);
             _unitHashmap deleteAt _currentHashKey;
             //_unit setVariable [QGVAR(heatRash),_variable0,_syncValue];
         };
-        case sID_LESION: {
-
+        case sID_LIMP: {
+            [_unit,_variable0] call FUNC(symptomLimp);
         };
         case sID_CYANOSIS: {
             SET_CYANOSIS_BOOL(_unit,_variable0,_syncValue);
@@ -210,5 +230,6 @@ if (_feverArray isNotEqualTo []) then {
 
 // Average the fever value from multiple injuries
 if (_spo2Array isNotEqualTo []) then {
-    [_unit,_spo2Array] call FUNC(symptomSPO2);
+    //systemChat str _spo2Array;
+    [_unit,_deltaT,_syncValue,_spo2Array] call FUNC(symptomSPO2);
 };

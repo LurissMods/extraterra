@@ -74,8 +74,13 @@ _syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryArs);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateSymptoms);
 
 if (_unit == ACE_player) then {
-    systemChat str GET_SPO2(_unit);
-    systemChat str ACEGVAR(medical_vitals,spo2DutyList);
+    if (ACEGVAR(medical_vitals,simulateSpO2)) then {
+        systemChat str GET_SPO2(_unit);
+    } else {
+        systemChat str (GET_SIMPLE_SPO2(_unit));
+    };
+
+    //systemChat str ACEGVAR(medical_vitals,spo2DutyList);
 };
 
 //END_COUNTER(lifeSupport);

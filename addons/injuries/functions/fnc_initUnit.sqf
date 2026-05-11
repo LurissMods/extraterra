@@ -64,18 +64,13 @@ if (_isRespawn) then {
     SET_FEVER_ADJUST(_unit,0,true);
     SET_HEAT_RASH_BOOL(_unit,false,true);
     SET_CYANOSIS_BOOL(_unit,false,true);
+    SET_SIMPLE_SPO2(_unit,100,true);
 
     // Ebullism
     SET_VAC_EXPOSE_TIME(_unit,0,true);
     SET_VAC_EXPOSE_ARRAY(_unit,VAC_EXPOSE_ARRAY,true);
     SET_VAC_EXPOSE_BOOL(_unit,false,true);
-    /*_unit setVariable [QGVAR(unitVacuumExposed),false,true];
-    _unit setVariable [QGVAR(unitVacuumExposedTime),0,true];
-    _unit setVariable [QGVAR(unitBaroUncon),(random [3, 5, 10]),true];
-    _unit setVariable [QGVAR(unitBaroCardiacArrest),(random [20, 30, 40]),true];
-    _unit setVariable [QGVAR(unitBaroDeath),(random [80, 90, 120]),true];
-    _unit setVariable [QGVAR(unitBaroUnconBool),false,true];
-    _unit setVariable [QGVAR(unitBaroCardiacArrestBool),false,true];*/
+    SET_VAC_EXPOSE_EFFECT_BOOL(_unit,false,true);
 
     // ARS_
     SET_ARS_RAD_ARRAY(_unit,RAD_LIMIT_ARRAY,true);
@@ -84,25 +79,6 @@ if (_isRespawn) then {
     SET_ARS_FATIGUE_WEAKNESS_BOOL(_unit,false,true);
     SET_ARS_HYPOTENSION_BOOL(_unit,false,true);
     SET_ARS_FEVER_BOOL(_unit,false,true);
-    //_unit setVariable [QGVAR(unitArsTimer),(NO_ARS_TIMER + CBA_missionTime),true]; // Setting the value to #FFFF + current mission time
-    //_unit setVariable [QGVAR(unitArsFatigueWeakness),false,true];
-    //_unit setVariable [QGVAR(unitArsHypotension),false,true];
-    //_unit setVariable [QGVAR(unitArsFever),false,true];
-    //_unit setVariable [QGVAR(unitArsTimer),15,true];
-
-    /*private _unitRadLimArray = [
-        random [375,562.5,750],
-        random [751,1125.5,1500],
-        random [1501,2250.5,3000],
-        random [3001,4150.5,5300],
-        random [5301,6800.5,8300],
-        random [8301,9650.5,11000],
-        random [11001,13000.5,15000],
-        random [15001,22500.5,30000],
-        random [30001,37500.5,45000]
-    ];
-    _unit setVariable [QGVAR(unitRadLimArray),_unitRadLimArray,true];
-    _unit setVariable [QGVAR(unitRadLimIndex),0,true];*/
 };
 
 /*[{

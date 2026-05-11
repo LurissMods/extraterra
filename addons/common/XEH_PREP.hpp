@@ -1,1 +1,2 @@
 PREP(getStaminaSetting);
+PREP(canUnitBreathe);
