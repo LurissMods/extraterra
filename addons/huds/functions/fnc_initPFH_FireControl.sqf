@@ -24,6 +24,9 @@ GVAR(hudPFH_fireControl) = [{
 
     if !(GVAR(fireControl_IFF_cbaSetting)) exitWith {};
 
+    // Don't delete this, needs to be seperate from the hudVisibility PFH
+    if (!isNull findDisplay 312 || {!isNull findDisplay 314}) exitWith {};
+
     if !(GET_SUIT_ACTIVATED(ACE_player)) exitWith {};
 
     if ((ACE_player getVariable [QEGVAR(huds,unitBootActive),false]) && {GVAR(IFF_booted)}) exitWith {};

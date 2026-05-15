@@ -25,7 +25,7 @@ private _datalinkAddressArray = nil;
 
 switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateGroupDisplay)";
+        //systemChat "Error! No suit faction in FUNC(huds,updateGroupDisplay)";
     };
     case US_SUIT_FACTION: {
         _nameAddressArray = [

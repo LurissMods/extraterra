@@ -21,7 +21,7 @@ private _grenadeAmountAddress = nil;
 
 switch (GETVAR(ACE_player,EGVAR(lifesupport,unitSuitFaction),NO_SUIT_FACTION)) do {
     case NO_SUIT_FACTION: {
-        systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
+        //systemChat "Error! No suit faction in FUNC(huds,updateRangefinder)";
     };
     case US_SUIT_FACTION: {
         _grenadeNameAddress = (GVAR(weapon_grenade_text_US)#0);
