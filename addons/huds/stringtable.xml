@@ -303,5 +303,11 @@
         <Key ID="STR_exterra_huds_whitelistSuitsUS_cbaSetting_title">
             <English>Whitelisted Suits (United States)</English>
         </Key>
+        <Key ID="STR_exterra_huds_fireControl_IFF_cbaSetting_title">
+            <English>Enable/Disable HUD IFF System</English>
+        </Key>
+        <Key ID="STR_exterra_huds_fireControl_IFF_cbaSetting_desc">
+            <English>This toggles the nametags, IFF, and weapon crosshair.</English>
+        </Key>
     </Package>
 </Project>

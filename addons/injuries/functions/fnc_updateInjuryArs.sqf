@@ -118,8 +118,8 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
 
             // Death - 11% chance per 10 minute window (~50% chance 1 hour)
             if (random 1 < 0.11) then {
-                //_unitHashmap set [((sID_DEATH*ID_RADIX) + iID_ARS),[nil,nil,nil]];
-                systemChat "you're dead from ARS!";
+                _unitHashmap set [((sID_DEATH*ID_RADIX) + iID_ARS),[nil,nil,nil]];
+                //systemChat "you're dead from ARS!";
             };
         };
         case 8: {

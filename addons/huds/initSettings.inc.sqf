@@ -4,11 +4,9 @@
     [LSTRING(toggleBootUp_cbaSetting_title), LSTRING(toggleBootUp_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     true,
-    0,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -17,9 +15,9 @@
     [LSTRING(bootUpSpeed_cbaSetting_title), LSTRING(bootUpSpeed_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [0.01, 4, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -32,12 +30,12 @@
         [LSTRING(tempMeasurementSystem_cbaSetting_opt0), LSTRING(tempMeasurementSystem_cbaSetting_opt1), LSTRING(tempMeasurementSystem_cbaSetting_opt2)],
         0
     ],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         params ["_value"];
         GVAR(tempMeasurementSystem_cbaSetting) = _value;
     },
-    false // Needs mission restart
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -46,11 +44,12 @@
     [LSTRING(whitelistHelmetsUS_cbaSetting_title), LSTRING(whitelistHelmetsUS_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     "exterra_uniforms_usHelmet0,exterra_uniforms_usHelmet0_camo",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(whitelistHelmetsUS_cbaSetting) splitString ",";
-        {GVAR(whitelistHelmets) append [[_x, 0]]} forEach _whitelistArray;
-    }
+        {GVAR(whitelistHelmets) append [[_x, US_SUIT_FACTION]]} forEach _whitelistArray;
+    },
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -59,11 +58,12 @@
     [LSTRING(whitelistSuitsUS_cbaSetting_title), LSTRING(whitelistSuitsUS_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     "exterra_uniforms_usUndersuit,exterra_uniforms_usBDU0",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(whitelistSuitsUS_cbaSetting) splitString ",";
-        {GVAR(whitelistSuits) append [[_x, 0]]} forEach _whitelistArray;
-    }
+        {GVAR(whitelistSuits) append [[_x, US_SUIT_FACTION]]} forEach _whitelistArray;
+    },
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -71,12 +71,13 @@
     "EDITBOX",
     [LSTRING(whitelistPacksUS_cbaSetting_title), LSTRING(whitelistPacksUS_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
-    "B_AssaultPack_blk",
-    0,
+    "B_Bergen_mcamo_F,B_Carryall_blk",
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(whitelistPacksUS_cbaSetting) splitString ",";
-        {GVAR(whitelistPacks) append [[_x, 0]]} forEach _whitelistArray;
-    }
+        {GVAR(whitelistPacks) append [[_x, US_SUIT_FACTION]]} forEach _whitelistArray;
+    },
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -85,11 +86,12 @@
     [LSTRING(whitelistHelmetsPRC_cbaSetting_title), LSTRING(whitelistHelmetsPRC_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     "H_MilCap_blue",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(whitelistHelmetsPRC_cbaSetting) splitString ",";
-        {GVAR(whitelistHelmets) append [[_x, 1]]} forEach _whitelistArray;
-    }
+        {GVAR(whitelistHelmets) append [[_x, PRC_SUIT_FACTION]]} forEach _whitelistArray;
+    },
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -98,11 +100,12 @@
     [LSTRING(whitelistSuitsPRC_cbaSetting_title), LSTRING(whitelistSuitsPRC_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     "U_O_GhillieSuit",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(whitelistSuitsPRC_cbaSetting) splitString ",";
-        {GVAR(whitelistSuits) append [[_x, 1]]} forEach _whitelistArray;
-    }
+        {GVAR(whitelistSuits) append [[_x, PRC_SUIT_FACTION]]} forEach _whitelistArray;
+    },
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -111,11 +114,12 @@
     [LSTRING(whitelistPacksPRC_cbaSetting_title), LSTRING(whitelistPacksPRC_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     "B_AssaultPack_blk",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(whitelistPacksUS_cbaSetting) splitString ",";
-        {GVAR(whitelistPacks) append [[_x, 0]]} forEach _whitelistArray;
-    }
+        {GVAR(whitelistPacks) append [[_x, PRC_SUIT_FACTION]]} forEach _whitelistArray;
+    },
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -124,11 +128,9 @@
     [LSTRING(toggleHUDppEffects_cbaSetting_title), LSTRING(toggleHUDppEffects_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     true,
-    0,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -137,9 +139,9 @@
     [LSTRING(hudPixelation_power_cbaSetting_title), LSTRING(hudPixelation_power_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [10, 3000, 1200, 0],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -148,9 +150,9 @@
     [LSTRING(hudChromAb_power_cbaSetting_title), LSTRING(hudChromAb_power_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [0, 0.1, 0.005, 4],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -159,9 +161,9 @@
     [LSTRING(hudRadialBlur_power_cbaSetting_title), LSTRING(hudRadialBlur_power_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [0, 0.1, 0.005, 3],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -170,9 +172,9 @@
     [LSTRING(hudRadialBlur_offset_cbaSetting_title), LSTRING(hudRadialBlur_offset_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [0, 1, 0.3, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -181,9 +183,9 @@
     [LSTRING(filmGrain_power_cbaSetting_title), LSTRING(filmGrain_power_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [0, 1, 0.1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -192,9 +194,9 @@
     [LSTRING(fireControl_IFF_cbaSetting_title), LSTRING(fireControl_IFF_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     true,
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false // Needs mission restart
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -207,12 +209,12 @@
         [LSTRING(fireControl_datalink_cbaSetting_opt0), LSTRING(fireControl_datalink_cbaSetting_opt1), LSTRING(fireControl_datalink_cbaSetting_opt2)],
         0
     ],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         params ["_value"];
         GVAR(fireControl_datalink_cbaSetting) = _value;
     },
-    false // Needs mission restart
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -221,9 +223,9 @@
     [LSTRING(fireControl_groupColor_cbaSetting_title), LSTRING(fireControl_groupColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [1.000, 1.000, 1.000, 1.000],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -232,9 +234,9 @@
     [LSTRING(fireControl_friendColor_cbaSetting_title), LSTRING(fireControl_friendColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0, 1.000, 0.5, 1.000],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -243,9 +245,9 @@
     [LSTRING(fireControl_neutralColor_cbaSetting_title), LSTRING(fireControl_neutralColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [1.000, 1.000, 0.000, 1.000],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -254,9 +256,9 @@
     [LSTRING(fireControl_enemyColor_cbaSetting_title), LSTRING(fireControl_enemyColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [1.000, 0.200, 0.200, 1.000],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -265,9 +267,9 @@
     [LSTRING(fireControl_humanIconFriend_cbaSetting_title), LSTRING(fireControl_humanIconFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_infFriend_US_ca.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -276,9 +278,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.30, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -287,9 +289,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -298,9 +300,9 @@
     [LSTRING(fireControl_humanIconEnemy_cbaSetting_title), LSTRING(fireControl_humanIconEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_infEnemy_US_ca.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -309,9 +311,9 @@
     [LSTRING(fireControl_humanSizeEnemy_cbaSetting_title), LSTRING(fireControl_humanSizeEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.30, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -320,9 +322,9 @@
     [LSTRING(fireControl_humanSizeEnemy_cbaSetting_title), LSTRING(fireControl_humanSizeEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -331,9 +333,9 @@
     [LSTRING(fireControl_humanIconEnemy_cbaSetting_title), LSTRING(fireControl_humanIconEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_infNeutral_US_ca.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -342,9 +344,9 @@
     [LSTRING(fireControl_humanSizeEnemy_cbaSetting_title), LSTRING(fireControl_humanSizeEnemy_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.30, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -353,9 +355,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -364,9 +366,9 @@
     [LSTRING(fireControl_staticIcon_cbaSetting_title), LSTRING(fireControl_staticIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_staFriend_US_ca.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -375,9 +377,9 @@
     [LSTRING(fireControl_staticSize_cbaSetting_title), LSTRING(fireControl_staticSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.40, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -386,9 +388,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -397,9 +399,9 @@
     [LSTRING(fireControl_staticIcon_cbaSetting_title), LSTRING(fireControl_staticIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_staEnemy_US_ca.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -408,9 +410,9 @@
     [LSTRING(fireControl_staticSize_cbaSetting_title), LSTRING(fireControl_staticSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.40, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -419,9 +421,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -430,9 +432,9 @@
     [LSTRING(fireControl_staticIcon_cbaSetting_title), LSTRING(fireControl_staticIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_staNeutral_US_ca.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -441,9 +443,9 @@
     [LSTRING(fireControl_staticSize_cbaSetting_title), LSTRING(fireControl_staticSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.40, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -452,9 +454,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -463,8 +465,9 @@
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_vicFriend_US_ca.paa",
-    nil,
-    {}
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -473,9 +476,9 @@
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.6, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -484,9 +487,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1.25, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -495,8 +498,9 @@
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_vicEnemy_US_ca.paa",
-    nil,
-    {}
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -505,9 +509,9 @@
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.6, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -516,9 +520,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1.25, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -527,8 +531,9 @@
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_vicNeutral_US_ca.paa",
-    nil,
-    {}
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -537,9 +542,9 @@
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.6, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -548,9 +553,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1.25, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -559,8 +564,9 @@
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airFriend_US_ca.paa",
-    nil,
-    {}
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -569,9 +575,9 @@
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.6, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -580,9 +586,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1.5, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -591,8 +597,9 @@
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airEnemy_US_ca.paa",
-    nil,
-    {}
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -601,9 +608,9 @@
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.6, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -612,9 +619,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1.5, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -623,8 +630,9 @@
     [LSTRING(fireControl_vehicleIcon_cbaSetting_title), LSTRING(fireControl_vehicleIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_airNeutral_US_ca.paa",
-    nil,
-    {}
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -633,9 +641,9 @@
     [LSTRING(fireControl_vehicleSize_cbaSetting_title), LSTRING(fireControl_vehicleSize_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 0.6, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -644,9 +652,9 @@
     [LSTRING(fireControl_humanSizeFriend_cbaSetting_title), LSTRING(fireControl_humanSizeFriend_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.01, 10.00, 1.5, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -655,9 +663,9 @@
     [LSTRING(fireControl_crosshairIcon_cbaSetting_title), LSTRING(fireControl_crosshairIcon_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     "z\exterra\addons\huds\data\hudUI_US\exterra_huds_crosshair_US.paa",
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -666,9 +674,9 @@
     [LSTRING(fireControl_crosshairColor_cbaSetting_title), LSTRING(fireControl_crosshairColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0.5, 0.84062, 1, 0.6],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -677,9 +685,9 @@
     [LSTRING(fireControl_crosshairMaxRange_cbaSetting_title), LSTRING(fireControl_crosshairMaxRange_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [1, 1000, 250, 0],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -688,9 +696,9 @@
     [LSTRING(fireControl_crosshairMinOpacity_cbaSetting_title), LSTRING(fireControl_crosshairMinOpacity_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0, 1, 0, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -699,11 +707,10 @@
     [LSTRING(fireControl_crosshairMaxOpacity_cbaSetting_title), LSTRING(fireControl_crosshairMaxOpacity_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0, 1, 1, 2],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
-
 
 [
     QGVAR(hudOutlineColor_US_cbaSetting),
@@ -711,9 +718,9 @@
     [LSTRING(hudOutlineColor_cbaSetting_title), LSTRING(hudOutlineColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0.5, 0.84062, 1, 0.6],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -722,21 +729,10 @@
     [LSTRING(hudLinesColor_cbaSetting_title), LSTRING(hudLinesColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [1, 1, 1, 0.8],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
-
-/*[
-    QGVAR(weaponBackgroundColor_cbaSetting),
-    "COLOR",
-    [LSTRING(weaponBackgroundColor_cbaSetting_title), LSTRING(weaponBackgroundColor_cbaSetting_desc)],
-    [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
-    0,
-    {},
-    false
-] call CBA_fnc_addSetting;*/
 
 [
     QGVAR(airBarColor_US_cbaSetting),
@@ -744,9 +740,9 @@
     [LSTRING(airBarColor_cbaSetting_title), LSTRING(airBarColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 0.405354, 1, 0.6],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -755,21 +751,10 @@
     [LSTRING(battBarColor_cbaSetting_title), LSTRING(battBarColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0.700905, 0.636422, 0, 0.6],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
-
-/*[
-    QGVAR(barTextColor_cbaSetting),
-    "COLOR",
-    [LSTRING(barTextColor_cbaSetting_title), LSTRING(barTextColor_cbaSetting_desc)],
-    [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0.7, 1.0, 1.0, 0.6],
-    0,
-    {},
-    false
-] call CBA_fnc_addSetting;*/
 
 [
     QGVAR(textColor_US_cbaSetting),
@@ -777,9 +762,9 @@
     [LSTRING(textColor_cbaSetting_title), LSTRING(textColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [1, 1, 1, 0.8],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -788,9 +773,9 @@
     [LSTRING(textColor_safe_cbaSetting_title), LSTRING(textColor_safe_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0.0, 0.85, 0.0, 0.8],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -799,9 +784,9 @@
     [LSTRING(textColor_caution_cbaSetting_title), LSTRING(textColor_caution_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0.8, 0.7, 0.0, 0.8],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -810,9 +795,9 @@
     [LSTRING(textColor_danger_cbaSetting_title), LSTRING(textColor_danger_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0.85, 0.0, 0.0, 0.8],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
@@ -821,9 +806,9 @@
     [LSTRING(bootTextColor_cbaSetting_title), LSTRING(bootTextColor_cbaSetting_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [1.0, 1.0, 1.0, 1.0],
-    0,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 /*[

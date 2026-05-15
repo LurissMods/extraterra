@@ -75,9 +75,9 @@ switch _canUnitBreathe do {
             private _vacExposeTimeRelative = (CBA_missionTime - (GET_VAC_EXPOSE_TIME(_unit)));
 
             if (_vacExposeTimeRelative <= EBULLISM_RECOVERY_TIME) then {
-                systemChat str _vacExposeTimeRelative;
-                private _deafnessCoeff = linearConversion [0,EBULLISM_RECOVERY_TIME,_vacExposeTimeRelative,0,1];
-                private _fatigueWeaknessCoeff = linearConversion [0,EBULLISM_RECOVERY_TIME,_vacExposeTimeRelative,EBULLISM_FATIGUE_WEAKNESS,0];
+                //systemChat str _vacExposeTimeRelative;
+                private _deafnessCoeff = linearConversion [0,EBULLISM_RECOVERY_TIME,_vacExposeTimeRelative,0,1,true];
+                private _fatigueWeaknessCoeff = linearConversion [0,EBULLISM_RECOVERY_TIME,_vacExposeTimeRelative,EBULLISM_FATIGUE_WEAKNESS,0,true];
 
                 // Deafness
                 _unitHashmap set [((sID_DEAFNESS*ID_RADIX) + iID_INJURY_AGNOSTIC),[_deafnessCoeff,true,nil]];

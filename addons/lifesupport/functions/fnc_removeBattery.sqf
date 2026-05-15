@@ -21,6 +21,10 @@ params ["_unit"];
 
 GET_BATTERY(_unit) params ["_batteryClass","_currentSupply","_totalSupply"];
 
+private _dummyClass = getText (configFile >> "CfgMagazines" >> _batteryClass >> "exterra_equipedDummy");
+
+_unit removeItem _dummyClass;
 _unit addMagazine [_batteryClass,(GET_BATTERY_RESERVE(_unit))];
 
 SET_BATTERY(_unit,[],true);
+SET_BATTERY_BOOL(_unit,false,true);

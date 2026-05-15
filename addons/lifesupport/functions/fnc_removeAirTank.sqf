@@ -19,8 +19,17 @@
 
 params ["_unit"];
 
-GET_AIR_TANK(_unit) params ["_tankClass","_currentSupply","_totalSupply"];
+GET_AIR_TANK(_unit) params ["_airTankClass","_airTankCurrent","_airTankMax"];
 
-_unit addMagazine [_tankClass,(GET_AIR_RESERVE(_unit))];
+private _dummyClass = getText (configFile >> "CfgMagazines" >> _airTankClass >> "exterra_equipedDummy");
+
+if (GET_SUIT_ACTIVATED(_unit)) then {
+    _unit removeItem _dummyClass;
+    _unit addMagazine [_airTankClass,GET_AIR_RESERVE(_unit)];
+} else {
+    _unit removeItem _dummyClass;
+    _unit addMagazine [_airTankClass,_airTankCurrent];
+};
 
 SET_AIR_TANK(_unit,[],true);
+SET_AIR_TANK_BOOL(_unit,false,true);

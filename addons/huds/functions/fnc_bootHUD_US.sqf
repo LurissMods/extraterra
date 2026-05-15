@@ -42,7 +42,8 @@ if (GVAR(toggleHUDppEffects_cbaSetting)) then {
 // Checks if quickbooting is disabled in CBA settings
 if (GVAR(toggleBootUp_cbaSetting)) then {
 
-    ACE_player setVariable [QEGVAR(lifesupport,unitBootActive),true];
+    ACE_player setVariable [QEGVAR(huds,unitBootActive),true];
+    GVAR(IFF_booted) = true;
 
     /*
     To input an empty line, put "&#160;" in the string.
@@ -119,8 +120,6 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
                 (exterra_huds_hudBattEstTime_text_US#0)
             ];
             {_x ctrlSetFade 0; _x ctrlCommit 0;} forEach _hudElements;
-
-            call exterra_huds_fnc_initPFH_HudGeneral;
             ", 14
         ],
         [
@@ -240,7 +239,7 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
         ],
         [
             "
-            call exterra_huds_fnc_initPFH_FireControl;
+            exterra_huds_IFF_booted = false;
             ", 44
         ],
         [
@@ -275,7 +274,7 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
                 (exterra_huds_hudBootText_US#0)
             ];
             {_x ctrlSetFade 1; _x ctrlCommit 0;} forEach _hudElements;
-
+            ACE_player setVariable ['exterra_huds_unitBootActive',false];
             ", 53
         ]
     ];
@@ -294,8 +293,8 @@ if (GVAR(toggleBootUp_cbaSetting)) then {
 } else {
     playSound QGVAR(hudBootSound_US);
 
-    call FUNC(initPFH_FireControl);
-    call FUNC(initPFH_HudGeneral);
+    //call FUNC(initPFH_FireControl);
+    //call FUNC(initPFH_HudGeneral);
 
     {_x ctrlSetFade 0; _x ctrlCommit 0.5} forEach GVAR(hudElementsArray_US);
     (GVAR(helmetOutline_US)#0) ctrlSetFade 1;

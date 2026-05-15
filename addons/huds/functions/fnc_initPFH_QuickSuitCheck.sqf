@@ -17,11 +17,9 @@
 * Public: No
 */
 
-if (!hasInterface) exitWith {};
+if (!EGVAR(common,exterraEnabled)) exitWith {};
 
-GVAR(currentPlayerHelmetOutline) = -1;
-GVAR(currentPlayerMasterBool) = false;
-GVAR(currentPlayerMasterFaction) = -1;
+if (!hasInterface) exitWith {};
 
 GVAR(hudPFH_helmetOutline) = [{
 
@@ -29,10 +27,10 @@ GVAR(hudPFH_helmetOutline) = [{
     private _suitBool = false;
     private _packBool = false;
     private _masterBool = false;
-    private _helmetFaction = -1;
-    private _suitFaction = -1;
-    private _packFaction = -1;
-    private _masterFaction = -1;
+    private _helmetFaction = NO_SUIT_FACTION;
+    private _suitFaction = NO_SUIT_FACTION;
+    private _packFaction = NO_SUIT_FACTION;
+    private _masterFaction = NO_SUIT_FACTION;
 
     {
         _helmetBool = headgear ACE_player in _x;
@@ -58,7 +56,7 @@ GVAR(hudPFH_helmetOutline) = [{
     if (_helmetFaction == _suitFaction && {_helmetFaction == _packFaction}) then {
         _masterFaction = _helmetFaction;
     } else {
-        _masterFaction = 0;
+        _masterFaction = NO_SUIT_FACTION;
     };
 
     if (_helmetBool && {_suitBool && {_packBool}}) then {
@@ -67,15 +65,29 @@ GVAR(hudPFH_helmetOutline) = [{
         _masterBool = false;
     };
 
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    if (_masterBool != GVAR(currentPlayerMasterBool) || {_masterFaction != GVAR(currentPlayerMasterFaction)}) then {
-        GVAR(currentPlayerMasterBool) = _masterBool;
-        GVAR(currentPlayerMasterFaction) = _masterFaction;
+    // Deactivate the HUD if the player has an incomplete suit
+    if ((_masterBool != (GET_QUICK_SUIT_BOOL(ACE_player))) || {_masterFaction != (GET_QUICK_SUIT_FACTION(ACE_player))}) then {
+        //GVAR(currentPlayerMasterBool) = _masterBool;
+        //GVAR(currentPlayerMasterFaction) = _masterFaction;
+        SET_QUICK_SUIT_BOOL(ACE_player,_masterBool,false);
+        SET_QUICK_SUIT_FACTION(ACE_player,_masterFaction,false);
         ['exterra_lifesupport_suitDeactivated', ACE_player] call CBA_fnc_localEvent;
     };
 
-    if (_helmetFaction != GVAR(currentPlayerHelmetOutline)) then {
-        GVAR(currentPlayerHelmetOutline) = _helmetFaction;
+    // Deactivate the HUD if the player runs out of power
+    if (GET_BATTERY_RESERVE(ACE_player) <= 0) then {
+        ['exterra_lifesupport_suitDeactivated', ACE_player] call CBA_fnc_localEvent;
+    };
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //systemChat str _helmetFaction;
+
+    if (_helmetFaction != (GET_QUICK_CURRENT_OUTLINE(ACE_player))) then {
+        //GVAR(currentPlayerHelmetOutline) = _helmetFaction;
+        SET_QUICK_CURRENT_OUTLINE(ACE_player,_helmetFaction,false);
 
         switch _helmetFaction do {
             case NO_SUIT_FACTION: {

@@ -23,7 +23,7 @@ private _surroundingAirState = ATMO_BREATHE_ERROR;
 
 switch (GET_ATMO(_unit)) do {
     case ATMO_STATE_VACUUM: {
-        if !_inFullSuit then {
+        if (!_helmetBool || {!_suitBool}) then {
             _surroundingAirState = ATMO_BREATHE_NONE;
         } else {
             _surroundingAirState = ATMO_BREATHE_SUIT;

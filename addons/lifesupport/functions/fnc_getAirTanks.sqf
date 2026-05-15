@@ -24,7 +24,7 @@ private _configReturn = false;
 {
     private _currentAirTank = getNumber (configFile >> "CfgMagazines" >> (_x#0) >> "exterra_airTank");
 
-    if (((GET_SUIT_FACTION(_unit)) + FACTION_OFFSET) == _currentAirTank) exitWith {_configReturn = true};
+    if ((GET_SUIT_FACTION(_unit)) == _currentAirTank) exitWith {_configReturn = true};
 
 } forEach magazinesAmmo _unit;
 

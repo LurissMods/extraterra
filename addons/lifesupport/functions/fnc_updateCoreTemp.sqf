@@ -74,22 +74,30 @@ if (isNull objectParent _unit && {_currentSpeed > 0.1} && {isTouchingGround _uni
     };
 
     _currentMetabolicHeatWattage = [_gearMass, _terrainGradient * ACEGVAR(advanced_fatigue,terrainGradientFactor) * 0.1, _terrainFactor, _currentSpeed] call ACEFUNC(advanced_fatigue,getMetabolicCosts);
+    _currentMetabolicHeatWattage = _currentMetabolicHeatWattage max 18.83;
 };
 // Mark end ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 private _radiationHeatWattage = _sigma*((_coreTemp^4) - (_suitTemp^4));
 private _convectionTransferPower = HUMAN_SKIN_CONVECTION_COEFF*HUMAN_SURFACE_AREA*(_coreTemp - _suitTemp);
 
+// This is heat radiated EXCLUDING the metabolic heat
 private _totalRadiatedCoreHeat = _radiationHeatWattage + _convectionTransferPower;
 
+// This net heat for the bodys core temp
 private _netHeatPower = _currentMetabolicHeatWattage - _totalRadiatedCoreHeat;
 private _currentBodyHomeostatisCapacityRemaining = 0 max (_bodyHomeostatisCapacity - abs _netHeatPower);
 private _currentBodyHomeostatisUsed = _bodyHomeostatisCapacity - _currentBodyHomeostatisCapacityRemaining;
 
-if (GVAR(homeostasisDebug) && {isPlayer _unit}) then {
+// This is heat radiated INCLUDING the metabolic heat
+_totalRadiatedCoreHeat = _totalRadiatedCoreHeat + _currentMetabolicHeatWattage;
+
+if (GVAR(homeostasisDebug) && {_unit == ACE_player}) then {
     systemChat format ['Homeostatis Used: %1', _currentBodyHomeostatisUsed];
     systemChat format ['Homeostatis Remaining: %1', (_bodyHomeostatisCapacity - abs _netHeatPower)];
     systemChat format ['Core Temp: %1 C', _coreTemp - 273.15];
+    systemChat format ['Body Thermal Wattage: %1 W', _currentMetabolicHeatWattage];
+    systemChat format ['Radiated Body Heat: %1 W', _totalRadiatedCoreHeat];
 };
 
 // Handle core temp increase/decrease if not in homeostasis

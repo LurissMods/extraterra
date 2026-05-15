@@ -20,8 +20,8 @@ params ["_unit"];
 
 if (_unit != ACE_player) exitWith {};
 
-GVAR(hudPFH_fireControl) call CBA_fnc_removePerFrameHandler;
-GVAR(hudPFH_HudGeneral) call CBA_fnc_removePerFrameHandler;
+//GVAR(hudPFH_fireControl) call CBA_fnc_removePerFrameHandler;
+//GVAR(hudPFH_HudGeneral) call CBA_fnc_removePerFrameHandler;
 //GVAR(hudPFH_hudInertia) call CBA_fnc_removePerFrameHandler;
 
 GVAR(initPFH_FireControl_Activated) = false;
@@ -53,5 +53,3 @@ GVAR(bootAnimIteration) = 0;
 GVAR(displayedBootText) = [];
 
 ACE_player setVariable [QEGVAR(lifesupport,suitActivated), false, true];
-
-systemChat "Remove PFHs fired!";

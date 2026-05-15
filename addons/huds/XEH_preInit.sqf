@@ -22,6 +22,7 @@ GVAR(hudAngleY) = 0;
 GVAR(bootIteration) = 0;
 GVAR(bootAnimIteration) = 0;
 GVAR(displayedBootText) = [];
+GVAR(IFF_booted) = false;
 // ------------------------------------ DO NOT TOUCH ------------------------------------
 
 GVAR(IFF_range) = DEFAULT_IFF_RANGE; // Maybe change to a CBA setting?

@@ -17,11 +17,11 @@
 
 params ["_unit"];
 
-if (_unit != ACE_player) exitWith {systemChat format ["(initHUD) Unit not a player: %1",_unit]};
-if (!hasInterface) exitWith {systemChat format ["(initHUD) Unit client has no interface: %1",_unit]};
-if (GETVAR(_unit,GVAR(initInjuryUI_Activated),false)) exitWith {systemChat format ["initHUD_US called twice! Unit: %1",_unit]};
+if (_unit != ACE_player) exitWith {};
+if (!hasInterface) exitWith {};
+if (GETVAR(_unit,GVAR(initInjuryUI_Activated),false)) exitWith {};
 
-systemChat format ["initInjuryUI ran for unit! %1",_unit];
+//systemChat format ["initInjuryUI ran for unit! %1",_unit];
 _unit setVariable [QGVAR(initInjuryUI_Activated), true, true];
 
 QGVAR(vomit_UI) cutText ["","PLAIN",-1,false];

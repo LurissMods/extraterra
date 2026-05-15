@@ -4,36 +4,23 @@
         <Key ID="STR_exterra_modules_displayName">
             <English>modules</English>
         </Key>
-        <Key ID="STR_exterra_modules_heavySolarStorm_main_desc">
-            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
-        </Key>
-        <Key ID="STR_exterra_modules_heavySolarStorm_main_displayName">
-            <English>Heavy Solar Storm</English>
-        </Key>
-        <Key ID="STR_exterra_modules_enableExterra_main_desc">
+
+
+        <Key ID="STR_exterra_modules_enableExterra_desc">
             <English>This module enables the mod.</English>
         </Key>
-        <Key ID="STR_exterra_modules_enableExterra_main_displayName">
+        <Key ID="STR_exterra_modules_enableExterra_displayName">
             <English>Enable Extraterra</English>
         </Key>
-        <Key ID="STR_exterra_modules_lightSolarStorm_main_desc">
-            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
+
+
+        <Key ID="STR_exterra_modules_solarStorm_desc">
+            <English>This module allows you to start a solar storm. Minimum storm time = 1800 seconds. Max storm intensity = 100000 mSv. Realistic storm example: 10800 seconds, 600 mSv total.</English>
         </Key>
-        <Key ID="STR_exterra_modules_lightSolarStorm_main_displayName">
-            <English>Light Solar Storm</English>
+        <Key ID="STR_exterra_modules_solarStorm_displayName">
+            <English>Solar Storm/Solar Particle Event</English>
         </Key>
-        <Key ID="STR_exterra_modules_moderateSolarStorm_main_desc">
-            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
-        </Key>
-        <Key ID="STR_exterra_modules_moderateSolarStorm_main_displayName">
-            <English>Moderate Solar Storm</English>
-        </Key>
-        <Key ID="STR_exterra_modules_noSolarStorm_main_desc">
-            <English>This module allows for zeus placed/trigger activated solar storms. Note that this module is disposable so it deletes itself after activation.</English>
-        </Key>
-        <Key ID="STR_exterra_modules_noSolarStorm_main_displayName">
-            <English>Normal Background Radiation</English>
-        </Key>
+
         <Key ID="STR_exterra_modules_pressurizedAndRadShieldArea_atmoComp_displayName">
             <English>Atmospheric composition</English>
         </Key>

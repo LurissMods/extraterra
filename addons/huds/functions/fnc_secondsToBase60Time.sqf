@@ -25,6 +25,11 @@ private _estTimeRemainingSecConv = floor _estTimeRemainingSec % 60;
 private _estTimeRemainingMin = (_estTimeRemainingSec/60) % 60;
 private _estTimeRemainingHour = (_estTimeRemainingSec/60^2) min 99;
 
+// Done to stop a 0 divisor error when spawning in atmo
+if (_currentConsumption == -1) exitWith {
+    (_hudText) ctrlSetStructuredText parseText format["<t size='0.8'> EST TME: INFINITE"];
+};
+
 if (floor _estTimeRemainingHour < 10) then {
     if (floor _estTimeRemainingMin < 10) then {
         if (floor _estTimeRemainingSecConv < 10) then {

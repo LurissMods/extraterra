@@ -30,7 +30,7 @@ _coeff = _coeff/count _weaknessArray;
 
 switch _staminaSetting do {
     case 0: {
-        if (isPlayer _unit) then {
+        if (_unit == ACE_player) then {
             private _coeffConverted = linearConversion [0,1,_coeff,1,FATIGUE_0_MIN,true];
             ACEGVAR(advanced_fatigue,loadFactor) = GVAR(originalLoadFactor)*_coeffConverted;
             ACEGVAR(advanced_fatigue,terrainGradientFactor) = GVAR(originalTerrainGradientFactor)*_coeffConverted;

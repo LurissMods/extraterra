@@ -20,11 +20,6 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-//private _unitSuitFaction = GETVAR(_unit,GVAR(unitSuitFaction),NO_SUIT_FACTION);
-//private _currentBatteryCapacity = GETVAR(_unit,GVAR(unitMaxBatteryCapacity),nil);
-//private _currentBatteryCapacity = GETVAR(_unit,GVAR(unitCurrentBatteryCapacity),nil);
-//private _unitSuitFaction = GET_SUIT_FACTION(_unit);
-//private _currentBatteryCapacity = GET_BATTERY_RESERVE_MAX(_unit);
 private _currentBatteryCapacity = GET_BATTERY_RESERVE(_unit);
 
 private _suitTheveninVoltage = 0;
@@ -33,10 +28,8 @@ private _minPumpPowerDraw = 0;
 private _maxPumpPowerDraw = 0;
 private _suitMaxActiveCool = 0;
 private _suitMaxActiveHeat = 0;
-private _suitBatteryCapacityAmpHoursInSeconds = 0;
 private _currentPumpPowerDraw = 0;
-
-//if (GET_SUIT_FACTION(_unit) == NO_SUIT_FACTION) exitWith {};
+private _currentVisionModePowerDraw = 0;
 
 switch (GET_SUIT_FACTION(_unit)) do {
     case NO_SUIT_FACTION: {
@@ -45,11 +38,22 @@ switch (GET_SUIT_FACTION(_unit)) do {
     case US_SUIT_FACTION: {
         _suitTheveninVoltage = SUIT_THEVENIN_VOLTAGE_US;
         _basePowerDraw = SUIT_BASE_POWER_DRAW_US;
-        _minPumpPowerDraw = SUIT_MIN_PUMP_POWER_US;
-        _maxPumpPowerDraw = SUIT_MAX_PUMP_POWER_US;
+        _minPumpPowerDraw = SUIT_MIN_THERMAL_CONTROL_POWER_US;
+        _maxPumpPowerDraw = SUIT_MAX_THERMAL_CONTROL_POWER_US;
         _suitMaxActiveCool = GVAR(maxActiveCool_US);
         _suitMaxActiveHeat = GVAR(maxActiveHeat_US);
-        _suitBatteryCapacityAmpHoursInSeconds = SUIT_BATTERY_CAP_US;
+    };
+};
+
+switch (currentVisionMode _unit) do {
+    case 0: { // Normal
+    _currentVisionModePowerDraw = 0
+    };
+    case 1: { // NVGs
+    _currentVisionModePowerDraw = SUIT_NV_WATTAGE_US;
+    };
+    case 2: { // THermals
+    _currentVisionModePowerDraw = SUIT_TV_WATTAGE_US;
     };
 };
 
@@ -63,10 +67,8 @@ if (GET_ACTIVE_COOL(_unit) > 0) then {
     };
 };
 
-private _currentPowerDraw = ((_basePowerDraw +_currentPumpPowerDraw)/_suitTheveninVoltage)*_deltaT;
+private _currentPowerDraw = ((_basePowerDraw + _currentPumpPowerDraw + _currentVisionModePowerDraw)/_suitTheveninVoltage)*_deltaT;
 _currentBatteryCapacity = 0 max (_currentBatteryCapacity - _currentPowerDraw);
 
 SET_POWER_DRAW(_unit,_currentPowerDraw,_syncValue);
 SET_BATTERY_RESERVE(_unit,_currentBatteryCapacity,_syncValue);
-//_unit setVariable [QGVAR(unitPowerDraw),_currentCurrentDraw,_syncValue];
-//_unit setVariable [QGVAR(unitCurrentBatteryCapacity),_currentBatteryCapacity,_syncValue];

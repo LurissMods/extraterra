@@ -17,12 +17,6 @@
 
 /*---------------------------------- General defines ----------------------------------*/
 
-// Factions
-#define FACTION_OFFSET 100 // Quirk with the config reading non-entries as 0 causing a false positive with the air tank/battery check. If you're reading this you should really fix it properly
-#define NO_SUIT_FACTION -1
-#define US_SUIT_FACTION 0
-#define PRC_SUIT_FACTION 1
-
 // Environment
 #define NORMAL_BACKGROUND_RADIATION 0.057 // Millisieverts
 #define SOLAR_RADIATION_WATTAGE_1AU 1361 // Watt per m^2
@@ -37,8 +31,11 @@
 #define ATMO_STATE_0P3ATM 2
 
 // Local temp simulation constants
-#define IS_IN_SUN_CHECK_VECTOR_LENGTH 200
+#define IS_IN_SUN_CHECK_VECTOR_LENGTH 5000
 #define LOCAL_TEMP_VECTOR_HEIGHT_AGL 0.5
+#define ROOM_TEMP 294.15 // 21C in Kelvin
+#define DEFAULT_MIN_ENVIRON_TEMP 133.15
+#define DEFAULT_MAX_ENVIRON_TEMP 393.15
 
 #define PREBREATHE_SAFE_THRESHOLD 0.5
 #define TIME_TO_FULL_PREBREATHE 600
@@ -54,7 +51,13 @@
 #define IFF_NEARBYUNITS_OFFSET [0,0,0] // Currently not used, from updateIFF
 #define KNOWS_ABOUT_IFF_THRESHOLD 0.75
 
+#define DEFAULT_MIN_IFF_MAN_FOV 0.25
+#define DEFAULT_MIN_IFF_OTHER_FOV 0.5
+#define DEFAULT_IFF_FADE_DIST_END 5
+#define DEFAULT_IFF_FADE_DIST_START 25
+
 /*---------------------------------- Includes ----------------------------------*/
 
 #include "extraterra_lifesupportDefines.hpp"
 #include "extraterra_injuryDefines.hpp"
+#include "extraterra_factionalDefines.hpp"

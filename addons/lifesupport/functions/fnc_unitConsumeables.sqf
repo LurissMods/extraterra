@@ -14,7 +14,7 @@
 *
 * Public: No
 */
-
+/*
 params ["_unit"];
 
 private _faction = _currentSuitStatus select 1;
@@ -38,3 +38,4 @@ switch (_faction) do {
         _airTanksInInv pushBack _x;
     };
 } forEach _magsInPlayerInv;
+*/

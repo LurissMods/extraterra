@@ -45,7 +45,7 @@
     [
         [0, 1, 2, 3, 4],
         [LSTRING(localTemperatureSim_setting_opt0), LSTRING(localTemperatureSim_setting_opt1), LSTRING(localTemperatureSim_setting_opt2), LSTRING(localTemperatureSim_setting_opt3), LSTRING(localTemperatureSim_setting_opt4)],
-        2
+        0
     ],
     1,
     {
@@ -182,4 +182,26 @@
     1,
     {},
     false
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(min_environ_temp),
+    "SLIDER",
+    [LSTRING(min_environ_temp_title), LSTRING(min_environ_temp_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0, 2273.15, DEFAULT_MIN_ENVIRON_TEMP, 2],
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(max_environ_temp),
+    "SLIDER",
+    [LSTRING(max_environ_temp_title), LSTRING(max_environ_temp_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat1)],
+    [0, 2273.15, DEFAULT_MAX_ENVIRON_TEMP, 2],
+    1,
+    {},
+    true
 ] call CBA_fnc_addSetting;

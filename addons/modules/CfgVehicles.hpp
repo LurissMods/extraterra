@@ -51,86 +51,8 @@ class CfgVehicles
 
     };
 
-    #include "enableExterra.hpp"
-    #include "pressurizedAndRadShieldArea.hpp"
-    #include "solarStorm.hpp"
+    #include "mod_enableExterra.hpp"
+    #include "mod_pressurizedAndRadShieldArea.hpp"
+    #include "mod_solarStorm.hpp"
     //#include "backgroundRadiation.hpp"
-
-
-
-	/*class GVAR(noSolarStorm) : GVAR(base)
-	{
-		displayName = CSTRING(noSolarStorm_main_displayName);
-		//icon = "";
-		category = QGVAR(lifeSupportCategory);
-		function = QFUNC(noSolarStorm);
-        scope = 2;
-        scopeCurator = 1;
-		functionPriority = 5;
-        isTriggerActivated = 1;
-		isDisposable = 1;
-
-
-		class ModuleDescription : ModuleDescription
-		{
-            description = CSTRING(noSolarStorm_main_desc);
-			sync[] = { "LocationArea_F" };
-
-			class LocationArea_F
-			{
-				position = 1;
-				direction = 1;
-				optional = 1;
-				duplicate = 0;
-				synced[] = { "AnyBrain" };
-			};
-		};
-	};
-
-    class GVAR(lightSolarStorm) : GVAR(noSolarStorm)
-	{
-		displayName = CSTRING(lightSolarStorm_main_displayName);
-		//icon = "";
-		category = QGVAR(lifeSupportCategory);
-		function = QFUNC(lightSolarStorm);
-
-		class ModuleDescription : ModuleDescription
-		{
-            description = CSTRING(lightSolarStorm_main_desc);
-			sync[] = { "LocationArea_F" };
-
-			class LocationArea_F
-			{
-				position = 1;
-				direction = 1;
-				optional = 1;
-				duplicate = 0;
-				synced[] = { "AnyBrain" };
-			};
-		};
-	};
-
-    class GVAR(moderateSolarStorm) : GVAR(noSolarStorm)
-	{
-		displayName = CSTRING(moderateSolarStorm_main_displayName);
-		//icon = "";
-		category = QGVAR(lifeSupportCategory);
-		function = QFUNC(moderateSolarStorm);
-
-		class ModuleDescription : ModuleDescription
-		{
-            description = CSTRING(moderateSolarStorm_main_desc);
-			sync[] = { "LocationArea_F" };
-
-			class LocationArea_F
-			{
-				position = 1;
-				direction = 1;
-				optional = 1;
-				duplicate = 0;
-				synced[] = { "AnyBrain" };
-			};
-		};
-	};
-    */
 };

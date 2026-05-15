@@ -24,7 +24,7 @@ private _configReturn = false;
 {
     private _currentBattery = getNumber (configFile >> "CfgMagazines" >> (_x#0) >> "exterra_battery");
 
-    if (((GET_SUIT_FACTION(_unit)) + FACTION_OFFSET) == _currentBattery) exitWith {_configReturn = true};
+    if ((GET_SUIT_FACTION(_unit)) == _currentBattery) exitWith {_configReturn = true};
 
 } forEach magazinesAmmo _unit;
 

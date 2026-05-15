@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="EXTA">
     <Package name="lifesupport">
+        <Key ID="STR_exterra_lifesupport_aceInteract_lsMain">
+            <English>Life Support</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_aceInteract_equipAirTank">
+            <English>Equip Air Tank</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_aceInteract_unequipAirTank">
+            <English>Unequip Air Tank</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_aceInteract_equipBattery">
+            <English>Equip Battery</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_aceInteract_unequipBattery">
+            <English>Unequip Battery</English>
+        </Key>
+
+        <Key ID="STR_exterra_lifesupport_airTankUS_patrol0">
+            <English>M4 Patrol Tank (US)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_airTankUS_patrol0_dummy">
+            <English>M4 Patrol Tank (Equipped)</English>
+        </Key>
+
+        <Key ID="STR_exterra_lifesupport_airTankUS_combat0">
+            <English>M3 Combat Tank (US)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_airTankUS_combat0_dummy">
+            <English>M3 Combat Tank (Equipped)</English>
+        </Key>
+
+        <Key ID="STR_exterra_lifesupport_batteryUS">
+            <English>LCS Battery (US)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_batteryUS_dummy">
+            <English>LCS Battery (Equipped)</English>
+        </Key>
+
+        <Key ID="STR_exterra_lifesupport_equippedConsumeableErrorMessage">
+            <English>Equipped air tanks/batteries can't be dropped!</English>
+        </Key>
+
+
         <Key ID="STR_exterra_lifesupport_CBA_cat0">
             <English>General Settings</English>
         </Key>
@@ -99,6 +141,19 @@
         </Key>
         <Key ID="STR_exterra_lifesupport_solarIrradianceSim_title">
             <English>Enable/Disable Solar Irradiance Simulation</English>
+        </Key>
+
+        <Key ID="STR_exterra_lifesupport_min_environ_temp_title">
+            <English>Minimum Envionment Temperature</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_min_environ_temp_desc">
+            <English>Set lowest possible external temperature (In Kelvin).</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_max_environ_temp_title">
+            <English>Maximum Envionment Temperature</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_max_environ_temp_desc">
+            <English>Set highest possible external temperature (In Kelvin).</English>
         </Key>
     </Package>
 </Project>

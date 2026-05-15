@@ -23,8 +23,15 @@ private _isActivated = _this param [2,true,[true]];
 private _duration = 10 max GETVAR(_logic,duration,nil);
 private _maxDose = GETVAR(_logic,totalDose,nil);
 
+if (_duration < 1800) then {
+    _duration = 1800;
+};
+
+if (_maxDose > 10000) then {
+    _maxDose = 10000;
+};
+
 if _isActivated then {
-    systemChat "storm fired";
     [QGVAR(stormEvent), [_duration, _maxDose]] call CBA_fnc_serverEvent;
     deleteVehicle _logic;
 };

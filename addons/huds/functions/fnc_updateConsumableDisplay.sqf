@@ -54,6 +54,11 @@ switch (GET_SUIT_FACTION(ACE_player)) do {
     };
 };
 
+// Done to stop a 0 divisor error when spawning in atmo
+if (GET_ATMO(ACE_player) != ATMO_STATE_VACUUM) then {
+    _currentOxygenConsumption = -1;
+};
+
 _airBarAddress progressSetPosition (_currentOxygenSupply/_maxOxygenSupply);
 [_currentOxygenSupply,_currentOxygenConsumption,_airTextAddress,_deltaT] call FUNC(secondsToBase60Time);
 

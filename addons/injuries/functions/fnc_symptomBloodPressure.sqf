@@ -25,7 +25,7 @@ private _avg = 0;
 _avg = _avg/count _bpArray;
 
 // Range from ~30/20 to ~205/185
-private _adjustValue = linearConversion [-1,1,_avg,-BP_ADJUST_LIMITS,BP_ADJUST_LIMITS];
+private _adjustValue = linearConversion [-1,1,_avg,-BP_ADJUST_LIMITS,BP_ADJUST_LIMITS,true];
 
 // Handled by API injected in fnc_consumeMedications
 SET_BP_ADJUST(_unit,_adjustValue,_syncValue);

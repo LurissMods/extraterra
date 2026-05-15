@@ -17,7 +17,7 @@
 
 params ["_unit","_severity","_visorType"];
 
-if (!isPlayer _unit) exitWith {};
+if (_unit != ACE_player) exitWith {};
 
 switch _severity do {
     case 0: {

@@ -147,6 +147,9 @@ if (isPlayer _unit)  then {
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_HR: {
+            if (_unit == ACE_player) then {
+                //systemChat str _injuryID;
+            };
             _hrArray pushBack _variable0;
             _unitHashmap deleteAt _currentHashKey;
         };
@@ -173,14 +176,12 @@ if (isPlayer _unit)  then {
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_SPO2: {
-            //systemChat str _currentHashKey;
             _spo2Array pushBack _variable0;
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_RASH: {
             SET_HEAT_RASH_BOOL(_unit,_variable0,_syncValue);
             _unitHashmap deleteAt _currentHashKey;
-            //_unit setVariable [QGVAR(heatRash),_variable0,_syncValue];
         };
         case sID_LIMP: {
             [_unit,_variable0] call FUNC(symptomLimp);
@@ -188,7 +189,6 @@ if (isPlayer _unit)  then {
         case sID_CYANOSIS: {
             SET_CYANOSIS_BOOL(_unit,_variable0,_syncValue);
             _unitHashmap deleteAt _currentHashKey;
-            //_unit setVariable [QGVAR(cyanosis),_variable0,_syncValue];
         };
     };
     //_unitHashmap deleteAt _x;

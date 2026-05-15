@@ -24,6 +24,6 @@ private _avg = 0;
 
 _avg = _avg/count _feverArray;
 
-private _adjustValue = linearConversion [0,1,_avg,HUMAN_NATURAL_CORETEMP,HIGH_FEVER_CORE_TEMP];
+private _adjustValue = linearConversion [0,1,_avg,HUMAN_NATURAL_CORETEMP,HIGH_FEVER_CORE_TEMP,true];
 
 SET_CORE_TEMP_TARGET(_unit,_adjustValue,_syncValue);

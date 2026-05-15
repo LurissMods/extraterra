@@ -6,6 +6,8 @@ if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
 ["CBA_settingsInitialized", {
     if (!GVAR(masterToggle)) exitWith {};
 
+    call FUNC(addAceInteraction);
+
     [[
         QEGVAR(lifesupport,airTankUS),
         QEGVAR(lifesupport,batteryUS)

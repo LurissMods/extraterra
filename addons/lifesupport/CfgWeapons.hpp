@@ -1,5 +1,9 @@
 class CfgWeapons
 {
+    class ItemCore;
+    class ACE_ItemCore;
+    class CBA_MiscItem_ItemInfo;
+    //class InventoryItem_Base_F;
 	class Rifle;
 	class Rifle_Base_F : Rifle
 	{
@@ -7,10 +11,54 @@ class CfgWeapons
 		class GunParticles;
 	};
 
-	class exterra_lifesupport_compatAirTanksUS : Rifle_Base_F
+    class GVAR(consumeable_dummyBase): ACE_ItemCore {
+        scope = 1;
+        author = AUTHOR;
+        model = "";
+        picture = "";
+        displayName = "Error: consumeable_dummyBase wrong scope";
+        descriptionShort = "";
+        descriptionUse = "";
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 10;
+        };
+    };
+    class GVAR(airTankUS_patrol0_dummy): GVAR(consumeable_dummyBase) {
+        model = QPATHTOF(items\us\airTanks\placeholder\exterra_lifesupport_airTankUS.p3d);
+        picture = "";
+        displayName = CSTRING(airTankUS_patrol0_dummy);
+        descriptionShort = "";
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 302.0333;
+        };
+    };
+    class GVAR(airTankUS_combat0_dummy): GVAR(consumeable_dummyBase) {
+        model = QPATHTOF(items\us\airTanks\placeholder\exterra_lifesupport_airTankUS.p3d);
+        picture = "";
+        displayName = CSTRING(airTankUS_combat0_dummy);
+        descriptionShort = "";
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 85.9803;
+        };
+    };
+
+    class GVAR(batteryUS_dummy): ACE_ItemCore {
+        scope = 1;
+        author = AUTHOR;
+        model = QPATHTOF(items\us\airTanks\placeholder\exterra_lifesupport_airTankUS.p3d);
+        picture = "";
+        displayName = CSTRING(batteryUS_dummy);
+        descriptionShort = "";
+        descriptionUse = "";
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 154.324;
+        };
+    };
+
+	class GVAR(airTankDummyWeapon_US) : Rifle_Base_F
 	{
 		author = "Luriss";
-		_generalMacro = "exterra_lifesupport_compatAirTanksUS";
+		_generalMacro = QGVAR(airTankDummyWeapon_US);
 		scope = 1;
 		model = "";
 		displayName = "US Air Tank compat. If you're reading this something broke.";
@@ -28,9 +76,9 @@ class CfgWeapons
 		magazineReloadSwitchPhase = 1;
 		cursor = "mg";
     };
-    class exterra_lifesupport_compatBatteriesUS : exterra_lifesupport_compatAirTanksUS
+    class GVAR(batteryDummyWeapon_US) : GVAR(airTankDummyWeapon_US)
 	{
-		_generalMacro = "exterra_lifesupport_compatBatteriesUS";
+		_generalMacro = QGVAR(batteryDummyWeapon_US);
 		displayName = "US battery compat. If you're reading this something broke.";
 		magazineWell[] = { "exterra_lifesupport_magwell_usBatteries" };
     };

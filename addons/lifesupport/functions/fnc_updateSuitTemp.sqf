@@ -34,7 +34,7 @@ private _solarHeatingPower = 0;
 private _tempAroundUnit = 0;
 private _currentActiveCool = 0;
 private _currentActiveHeat = 0;
-private _moonSurfaceTemp = [223.15,366.15]; // Note: Move to CBA settings?
+private _moonSurfaceTemp = [GVAR(min_environ_temp),GVAR(max_environ_temp)];
 
 private _currentTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
 

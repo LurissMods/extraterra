@@ -119,7 +119,9 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
     drySound[] = { "z\exterra\addons\sounds\data\weaponSounds\m2Carbine\exterra_weaponSounds_m2carbine_dryFire.wss",0.4466836,1,10 };
     reloadMagazineSound[] = { "z\exterra\addons\sounds\data\weaponSounds\m2Carbine\exterra_weaponSounds_m2carbine_reload.wss",1.0,1,10 };
     changeFiremodeSound[] = { "z\exterra\addons\sounds\data\weaponSounds\m2Carbine\exterra_weaponSounds_m2carbine_fireSelect.wss",0.31622776,1,5 };
-    modes[] = {"Semi","Auto","close","short","medium","far_optic1","far_optic2"};
+
+    // MAKE SURE this lines up with the classes below
+    modes[] = {"Semi","Auto","fullauto_medium","semi_medium_optics1","semi_far_optics2"};
 
     class Semi : Mode_SemiAuto
     {

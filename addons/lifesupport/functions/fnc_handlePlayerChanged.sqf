@@ -18,4 +18,4 @@
 
 params ["_newUnit", "_oldUnit"];
 
-systemChat "I fired?";
+//systemChat "I fired?";

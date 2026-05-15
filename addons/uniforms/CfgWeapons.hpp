@@ -26,7 +26,7 @@ class CfgWeapons
 		displayName="Lunar Combat Suit"; // self explanatory
 		model="\A3\Characters_F\Common\Suitpacks\suitpack_blufor_diver"; // Always use a suitpack for this portion correct model is inherited below.
 
-        exterra_uniforms_suitMobility = 0.7;
+        exterra_uniforms_suitMobility = 0.8;
         exterra_uniforms_blackBodyEmmissive = 0.75;
         exterra_uniforms_solarAbsorptance = 0.2;
         exterra_uniforms_suitThickness = 0.003; // In metres
@@ -50,7 +50,7 @@ class CfgWeapons
 		displayName="Lunar Combat Uniform"; // self explanatory
 		model="\A3\Characters_F\Common\Suitpacks\suitpack_blufor_diver"; // Always use a suitpack for this portion correct model is inherited below.
 
-        exterra_uniforms_suitMobility = 0.7;
+        exterra_uniforms_suitMobility = 0.8;
         exterra_uniforms_blackBodyEmmissive = 0.85;
         exterra_uniforms_solarAbsorptance = 0.6;
         exterra_uniforms_suitThickness = 0.008; // In metres

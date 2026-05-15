@@ -30,7 +30,7 @@ if (_unit == ACE_player && {ACEGVAR(medical_vitals,simulateSpO2)}) then {
     // 1 is no effect, 0 is completely blocked breathing
     ACEGVAR(medical_vitals,spo2DutyList) set [QGVAR(spo2Factor), _lowest];
 } else {
-    private _deltaSpo2 = linearConversion [1,0,_lowest,SPO2_MAX_DELTA,-SPO2_MAX_DELTA]*_deltaT;
+    private _deltaSpo2 = linearConversion [1,0,_lowest,SPO2_MAX_DELTA,-SPO2_MAX_DELTA,true]*_deltaT;
     private _newSpo2 = 0 max ((GET_SIMPLE_SPO2(_unit)) + _deltaSpo2) min 100;
     SET_SIMPLE_SPO2(_unit,_newSpo2,_syncValue);
 };

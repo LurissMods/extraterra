@@ -20,56 +20,97 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-private _unitAirTank = GET_AIR_TANK(_unit);
-private _unitBattery = GET_BATTERY(_unit);
+GET_AIR_TANK(_unit) params ["_tankClass","_currentAirSupply","_totalAirSupply"];
+GET_BATTERY(_unit) params ["_batteryClass","_currentBattSupply","_totalBattSupply"];
 
-if (_unit == ACE_player) then {
-    systemChat str (count (_unit getVariable ['exterra_lifesupport_unitAirTank',[]]) != 0);
-};
+if (GET_AIR_TANK_BOOL(_unit)) then {
 
-if (count _unitAirTank != 0) then {
+    private _stateChange = false;
 
-    if !(GET_AIR_TANK_BOOL(_unit)) then {
-        _unitAirTank params ["_tankClass","_currentSupply","_totalSupply"];
+    if !(GET_AIR_TANK_STATECHANGE(_unit)) then {
         _syncValue = true;
+        _stateChange = true;
 
-        SET_AIR_RESERVE(_unit,_currentSupply,_syncValue);
-        SET_AIR_RESERVE_MAX(_unit,_totalSupply,_syncValue);
-
-        SET_AIR_TANK_BOOL(_unit,true,_syncValue);
+        SET_AIR_TANK_STATECHANGE(_unit,true,_syncValue);
     };
-} else {
-    if (GET_AIR_TANK_BOOL(_unit)) then {
-        _unitAirTank params ["_tankClass","_currentSupply","_totalSupply"];
-        _syncValue = true;
 
+    // New air tank added. Import to unit
+    if (_stateChange) then {
+        SET_AIR_RESERVE(_unit,_currentAirSupply,_syncValue);
+        SET_AIR_RESERVE_MAX(_unit,_totalAirSupply,_syncValue);
+    };
+
+    // If suit active but reserve is 0 and tank present, import the reserve
+    if (GET_SUIT_ACTIVATED(_unit) && {GET_AIR_RESERVE(_unit) == 0}) then {
+        SET_AIR_RESERVE(_unit,_currentAirSupply,_syncValue);
+    };
+
+    // If suit inactive but reserve is not 0 and tank present, set active reserve to 0
+    if (!(GET_SUIT_ACTIVATED(_unit)) && {GET_AIR_RESERVE(_unit) != 0}) then {
+        private _tankDataUpdate = [_tankClass,GET_AIR_RESERVE(_unit),_totalAirSupply];
+
+        SET_AIR_TANK(_unit,_tankDataUpdate,_syncValue);
         SET_AIR_RESERVE(_unit,0,_syncValue);
-        SET_AIR_RESERVE_MAX(_unit,1,_syncValue);
+    };
+} else {
+    private _stateChange = false;
 
-        SET_AIR_TANK_BOOL(_unit,false,_syncValue);
+    if (GET_AIR_TANK_STATECHANGE(_unit)) then {
+        _syncValue = true;
+        _stateChange = true;
+
+        SET_AIR_TANK_STATECHANGE(_unit,false,_syncValue);
+    };
+
+    // Air tank removed. Update air tank and unit
+    if (_stateChange) then {
+        private _tankDataUpdate = [_tankClass,GET_AIR_RESERVE(_unit),_totalAirSupply];
+
+        SET_AIR_TANK(_unit,_tankDataUpdate,_syncValue);
+        SET_AIR_RESERVE(_unit,0,_syncValue);
     };
 };
 
-if (count _unitBattery != 0) then {
+// ----------------------------------------- Battery ------------------------------------------------------ //
 
-    if !(GET_BATTERY_BOOL(_unit)) then {
-        _unitBattery params ["_batteryClass","_currentSupply","_totalSupply"];
+if (GET_BATTERY_BOOL(_unit)) then {
+
+    private _stateChange = false;
+
+    if !(GET_BATTERY_STATECHANGE(_unit)) then {
         _syncValue = true;
+        _stateChange = true;
 
-        SET_BATTERY_RESERVE(_unit,_currentSupply,_syncValue);
-        SET_BATTERY_RESERVE_MAX(_unit,_totalSupply,_syncValue);
-
-        SET_BATTERY_BOOL(_unit,true,_syncValue);
+        SET_BATTERY_STATECHANGE(_unit,true,_syncValue);
     };
+
+    // New battery added. Import to unit
+    if (_stateChange) then {
+        SET_BATTERY_RESERVE(_unit,_currentBattSupply,_syncValue);
+        SET_BATTERY_RESERVE_MAX(_unit,_totalBattSupply,_syncValue);
+    };
+
 } else {
-    if (GET_BATTERY_BOOL(_unit)) then {
-        _unitBattery params ["_batteryClass","_currentSupply","_totalSupply"];
+    private _stateChange = false;
+
+    if (GET_BATTERY_STATECHANGE(_unit)) then {
         _syncValue = true;
+        _stateChange = true;
 
+        SET_BATTERY_STATECHANGE(_unit,false,_syncValue);
+    };
+
+    // Battery removed. Update battery and unit
+    if (_stateChange) then {
+        private _batteryDataUpdate = [_batteryClass,GET_BATTERY_RESERVE(_unit),_totalBattSupply];
+
+        SET_BATTERY(_unit,_batteryDataUpdate,_syncValue);
         SET_BATTERY_RESERVE(_unit,0,_syncValue);
-        SET_BATTERY_RESERVE_MAX(_unit,1,_syncValue);
+    };
 
-        SET_BATTERY_BOOL(_unit,false,_syncValue);
+    // If suit is active without a battery, turn off the suit
+    if (GET_SUIT_ACTIVATED(_unit)) then {
+        SET_SUIT_ACTIVATED(_unit,false,_syncValue);
     };
 };
 

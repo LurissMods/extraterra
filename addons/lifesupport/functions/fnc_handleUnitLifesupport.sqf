@@ -75,6 +75,10 @@ _syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryArs);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryHypothermia);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateSymptoms);
 
+if (_unit == ACE_player) then {
+    //systemChat str ([_unit, EGVAR(lifesupport,STATE_MACHINE)] call CBA_statemachine_fnc_getCurrentState);
+};
+
 //END_COUNTER(lifeSupport);
 
 true

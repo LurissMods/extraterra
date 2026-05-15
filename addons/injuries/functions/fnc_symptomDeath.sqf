@@ -43,6 +43,4 @@ switch _callingInjury do {
     }
 };
 
-systemChat format ["Death called! Unit: %1 Reason: %2",_unit,_deathReason];
-
 [_unit, _deathReason, objNull, objNull] call ACEFUNC(common,setDead);

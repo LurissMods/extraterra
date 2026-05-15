@@ -10,6 +10,7 @@ PREP(updateBattery);
 PREP(handleUnitLifesupport);
 PREP(updateUnitAtmo);
 PREP(updateConsumeables);
+PREP(lockEquippedItems);
 
 PREP(getAirTanks);
 PREP(setAirTank);

@@ -18,4 +18,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgAISkill.hpp"
+//#include "CfgAISkill.hpp"

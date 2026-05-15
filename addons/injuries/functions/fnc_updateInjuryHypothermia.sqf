@@ -24,7 +24,7 @@ if (_unitCoreTemp > (HUMAN_NATURAL_CORETEMP - CORE_TEMP_ERROR)) exitWith {};
 private _unitHashmap = _unit getVariable [QGVAR(unitHashmap),nil];
 
 private _fatigueSeverity = linearConversion [HUMAN_NATURAL_CORETEMP,HYPOTHERMIA_DEATH,_unitCoreTemp,0,1,true];
-private _heartRateSeverity = linearConversion [HYPOTHERMIA_MILD,HYPOTHERMIA_DEATH,_unitCoreTemp,0,HYPOTHERMIA_HR_LIMIT];
+private _heartRateSeverity = linearConversion [HYPOTHERMIA_MILD,HYPOTHERMIA_DEATH,_unitCoreTemp,0,HYPOTHERMIA_HR_LIMIT,true];
 private _painSeverity = linearConversion [HYPOTHERMIA_MILD,HYPOTHERMIA_DEATH,_unitCoreTemp,0,HYPOTHERMIA_PAIN_LIMIT,true];
 
 switch true do {

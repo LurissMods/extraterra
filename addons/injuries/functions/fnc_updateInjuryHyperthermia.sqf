@@ -27,8 +27,10 @@ private _unitHashmap = GET_SYMPTOM_HASHMAP(_unit);
 private _fatigueSeverity = linearConversion [HUMAN_NATURAL_CORETEMP,HYPERTHERMIA_DEATH,_unitCoreTemp,0,1,true];
 private _headacheSeverity = linearConversion [HYPERTHERMIA_HEAT_CRAMPS,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HEADACHE_SEVERE,true];
 private _muscleCrampsSeverity = linearConversion [HYPERTHERMIA_HEAT_CRAMPS,HYPERTHERMIA_DEATH,_unitCoreTemp,0,MUSCLE_CRAMP_MAX,true];
-private _hypotensionSeverity = linearConversion [HYPERTHERMIA_HEAT_EXHAUSTION,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HYPERTHERMIA_BP_LIMIT];
-private _heartRateSeverity = linearConversion [HYPERTHERMIA_HEAT_EXHAUSTION,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HYPERTHERMIA_HR_LIMIT];
+private _hypotensionSeverity = linearConversion [HYPERTHERMIA_HEAT_EXHAUSTION,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HYPERTHERMIA_BP_LIMIT,true];
+private _heartRateSeverity = linearConversion [HYPERTHERMIA_HEAT_EXHAUSTION,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HYPERTHERMIA_HR_LIMIT,true];
+
+//systemChat str _heartRateSeverity;
 
 switch true do {
     case (_unitCoreTemp > HYPERTHERMIA_DEATH): {

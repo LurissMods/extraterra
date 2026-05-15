@@ -1,14 +1,15 @@
 class CfgMagazineWells
 {
 	//Pistols
-	class exterra_lifesupport_magwell_usAirTanks {
-		exterra_lifesupport_airTankUS_500L[] = {
-			"exterra_lifesupport_airTankUS"
+	class GVAR(magwell_usAirTanks) {
+		exterra_lifesupport_airTankUS[] = {
+			QGVAR(airTankUS_patrol0),
+            QGVAR(airTankUS_combat0)
 		};
 	};
-    class exterra_lifesupport_magwell_usBatteries {
-		exterra_lifesupport_batteryUS_40Ah[] = {
-			"exterra_lifesupport_batteryUS"
+    class GVAR(magwell_usBatteries) {
+		exterra_lifesupport_batteryUS[] = {
+			QGVAR(batteryUS)
 		};
 	};
 };

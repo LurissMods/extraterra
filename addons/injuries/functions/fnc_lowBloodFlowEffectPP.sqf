@@ -15,12 +15,9 @@
 * Public: No
 */
 
-//if ((CBA_missionTime - GVAR(lastUpdateTime)) < INTERVAL) exitWith {};
-//GVAR(lastUpdateTime) = CBA_missionTime;
+if (!EGVAR(common,exterraEnabled)) exitWith {};
 
-//if (true) exitWith {};
-
-if ((!isNull findDisplay 312) || {!alive ACE_player}) exitWith {
+if (!isNull findDisplay 312 || {!isNull findDisplay 314 || {!alive ACE_player}}) exitWith {
     GVAR(lowBloodFlowTunnelVision) ppEffectEnable false;
     GVAR(lowBloodFlowGreyscale) ppEffectEnable false;
     GVAR(lowBloodFlowSpots) ppEffectEnable false;

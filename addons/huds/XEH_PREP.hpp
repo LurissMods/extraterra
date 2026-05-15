@@ -23,3 +23,7 @@ PREP(initPFH_QuickSuitCheck);
 PREP(secondsToBase60Time);
 PREP(parseBootUpText);
 PREP(addBootUpLine);
+PREP(canSuitActivate);
+PREP(canSuitDeactivate);
+PREP(hideAllHuds);
+PREP(initPFH_HudVisibility);

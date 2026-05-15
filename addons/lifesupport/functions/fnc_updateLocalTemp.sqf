@@ -19,7 +19,7 @@
 * Public: No
 */
 
-params ["_unit", "_moonSurfaceTemp","_syncValue"];
+params ["_unit", "_moonSurfaceTemp", "_syncValue"];
 
 private _distCheck = [];
 private _tempAroundUnit = nil;
@@ -33,8 +33,9 @@ if (GVAR(localTemperatureSim)) then { // Checks if temp simulation is enabled in
     The theory is that due to the 2 week long lunar day/night combined with the hard vacuum, the temperature gradient between lit and shaded areas would be quite large, hence the temperature in a given area would be the average of the extremes.
     */
 
-    if (isPlayer _unit) then {
-        _presetSelection = missionNamespace getVariable [QGVAR(localTemperatureSim_setting), 2]; // This selects detail setting selected in the CBA settings.
+    if (_unit == ACE_player) then {
+        _presetSelection = missionNamespace getVariable [QGVAR(localTemperatureSim_setting), 0]; // This selects detail setting selected in the CBA settings.
+
     } else {
         _presetSelection = 4;
     };

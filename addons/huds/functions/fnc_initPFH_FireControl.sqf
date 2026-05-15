@@ -22,7 +22,11 @@ GVAR(initPFH_FireControl_Activated) = true;
 
 GVAR(hudPFH_fireControl) = [{
 
-    if (!isNull findDisplay 312) exitWith {};
+    if !(GVAR(fireControl_IFF_cbaSetting)) exitWith {};
+
+    if !(GET_SUIT_ACTIVATED(ACE_player)) exitWith {};
+
+    if ((ACE_player getVariable [QEGVAR(huds,unitBootActive),false]) && {GVAR(IFF_booted)}) exitWith {};
 
     [call FUNC(updateUnitsNearPlayer)] call FUNC(updateIFF);
     call FUNC(updateWeaponCrosshair);

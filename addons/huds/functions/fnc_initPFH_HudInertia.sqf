@@ -19,11 +19,11 @@
 
 params ["_unit"];
 
-if (!isPlayer _unit) exitWith {systemChat format ["(hudInertia) Unit not a player: %1",_unit]};
-if (!hasInterface) exitWith {systemChat format ["(hudInertia) Unit client has no interface: %1",_unit]};
-if (GETVAR(_unit,GVAR(initPFH_hudInertia_Activated),false)) exitWith {systemChat format ["initHudInertia called twice! Unit: %1",_unit]};
+if (!isPlayer _unit) exitWith {};
+if (!hasInterface) exitWith {};
+if (GETVAR(_unit,GVAR(initPFH_hudInertia_Activated),false)) exitWith {};
 
-systemChat format ["hudInertia ran for unit! %1",_unit];
+//systemChat format ["hudInertia ran for unit! %1",_unit];
 _unit setVariable [QGVAR(initPFH_hudInertia_Activated), true, true];
 
 disableSerialization;

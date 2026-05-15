@@ -9,6 +9,7 @@
 #define GET_AIR_CONSUMPTION(unit) unit getVariable [QEGVAR(lifesupport,unitAirConsumption),nil]
 #define GET_AIR_TANK(unit) unit getVariable [QEGVAR(lifesupport,unitAirTank),nil]
 #define GET_AIR_TANK_BOOL(unit) unit getVariable [QEGVAR(lifesupport,unitAirTankBool),nil]
+#define GET_AIR_TANK_STATECHANGE(unit) unit getVariable [QEGVAR(lifesupport,unitAirTankStageChange),nil]
 
 //  --- Radiation ---
 #define GET_RAD_SHIELD_CASE(unit) unit getVariable [QEGVAR(lifesupport,unitRadShieldCase),nil]
@@ -27,6 +28,7 @@
 #define GET_BATTERY_RESERVE_MAX(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryMaxReserve),nil]
 #define GET_BATTERY(unit) unit getVariable [QEGVAR(lifesupport,unitBattery),nil]
 #define GET_BATTERY_BOOL(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryBool),nil]
+#define GET_BATTERY_STATECHANGE(unit) unit getVariable [QEGVAR(lifesupport,unitBatteryStageChange),nil]
 
 //  --- Thermal ---
 #define GET_CORE_TEMP(unit) unit getVariable [QEGVAR(lifesupport,unitCoreTemp),nil]
@@ -39,6 +41,11 @@
 #define GET_ACTIVE_COOL(unit) unit getVariable [QEGVAR(lifesupport,unitActiveThermalCool),nil]
 #define GET_ACTIVE_HEAT(unit) unit getVariable [QEGVAR(lifesupport,unitActiveThermalHeat),nil]
 
+//  --- Quick Check ---
+#define GET_QUICK_CURRENT_OUTLINE(unit) unit getVariable [QEGVAR(huds,quickCurrentOutline),nil]
+#define GET_QUICK_SUIT_BOOL(unit) unit getVariable [QEGVAR(huds,quickSuitBool),nil]
+#define GET_QUICK_SUIT_FACTION(unit) unit getVariable [QEGVAR(huds,quickSuitFaction),nil]
+
 //  ------------------------------------ Set var ------------------------------------
 //  --- Air ---
 #define SET_ATMO(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitInAtmo),value,sync]
@@ -47,6 +54,7 @@
 #define SET_AIR_CONSUMPTION(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirConsumption),value,sync]
 #define SET_AIR_TANK(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirTank),value,sync]
 #define SET_AIR_TANK_BOOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirTankBool),value,sync]
+#define SET_AIR_TANK_STATECHANGE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitAirTankStageChange),value,sync]
 
 //  --- Radiation ---
 #define SET_RAD_SHIELD_CASE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitRadShieldCase),value,sync]
@@ -65,6 +73,7 @@
 #define SET_BATTERY_RESERVE_MAX(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryMaxReserve),value,sync]
 #define SET_BATTERY(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBattery),value,sync]
 #define SET_BATTERY_BOOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryBool),value,sync]
+#define SET_BATTERY_STATECHANGE(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitBatteryStageChange),value,sync]
 
 //  --- Thermal ---
 #define SET_CORE_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitCoreTemp),value,sync]
@@ -76,6 +85,11 @@
 #define SET_DELTA_TEMP(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitDeltaTemp),value,sync]
 #define SET_ACTIVE_COOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitActiveThermalCool),value,sync]
 #define SET_ACTIVE_HEAT(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitActiveThermalHeat),value,sync]
+
+//  --- Quick Check ---
+#define SET_QUICK_CURRENT_OUTLINE(unit,value,sync) unit setVariable [QEGVAR(huds,quickCurrentOutline),value,sync]
+#define SET_QUICK_SUIT_BOOL(unit,value,sync) unit setVariable [QEGVAR(huds,quickSuitBool),value,sync]
+#define SET_QUICK_SUIT_FACTION(unit,value,sync) unit setVariable [QEGVAR(huds,quickSuitFaction),value,sync]
 
 /*---------------------------------- Life support defines ----------------------------------*/
 
@@ -94,12 +108,6 @@
 #define HUMAN_SKIN_BLACKBODY_EMISSIVE 0.98
 #define HUMAN_SKIN_CONVECTION_COEFF 3
 
-#define ROOM_TEMP 294.15 // 21C in Kelvin
-    // US
-#define DEFAULT_MAX_ACTIVE_COOL_US 1000 // Watts (Thermal)
-#define DEFAULT_MAX_ACTIVE_HEAT_US 300 // Watts (Thermal)
-    // PRC
-
 // Radiation
 #define RAD_SHIELD_ERROR -1
 #define RAD_COEFF0_DEFAULT 1 // Multiplier for rad shielding. Rename?
@@ -111,19 +119,10 @@
 
 // Biologic
 #define HUMAN_MASS 70 // Kg
-#define HUMAN_BASAL_METABOLIC_RATE 101.64 // Watts (Thermal)
+#define HUMAN_BASAL_METABOLIC_RATE 18.83 // 101.64 // Watts (Thermal)
 #define AREAHUMAN_FRONT 0.5 // m^2
 #define AREAHUMAN_SIDE 0.21 // m^2
 #define AREAHUMAN_TOP 0.0827 // m^2
-
-// Electrical
-    // US
-#define SUIT_THEVENIN_VOLTAGE_US 18
-#define SUIT_BATTERY_CAP_US (40*3600) // Amp Hrs per second
-#define SUIT_BASE_POWER_DRAW_US 52 // Watts (Electrical)
-#define SUIT_MIN_PUMP_POWER_US 50 // Watts (Electrical)
-#define SUIT_MAX_PUMP_POWER_US 150 // Watts (Electrical)
-    // PRC
 
 // Suits
 #define DEFAULT_SUIT_MOBILITY 0.5

@@ -90,8 +90,8 @@ switch true do {
 
 if (_simpleSpo2Bool) then {
     if !(IN_CRDC_ARRST(_unit)) then {
-        private _hrAdjust = linearConversion [ASPHYX_LIN_CONVERSION_SPO2_START,ASPHYX_SPO2_CARDIAC_ARREST_LIMIT,_currentSpo2,0,ASPHYX_HR_LIMIT];
-        private _bpAdjust = linearConversion [ASPHYX_LIN_CONVERSION_SPO2_START,ASPHYX_SPO2_CARDIAC_ARREST_LIMIT,_currentSpo2,0,ASPHYX_BP_LIMIT];
+        private _hrAdjust = linearConversion [ASPHYX_LIN_CONVERSION_SPO2_START,ASPHYX_SPO2_CARDIAC_ARREST_LIMIT,_currentSpo2,0,ASPHYX_HR_LIMIT,true];
+        private _bpAdjust = linearConversion [ASPHYX_LIN_CONVERSION_SPO2_START,ASPHYX_SPO2_CARDIAC_ARREST_LIMIT,_currentSpo2,0,ASPHYX_BP_LIMIT,true];
         private _fatigueWeaknessCoeff = linearConversion [ASPHYX_LIN_CONVERSION_SPO2_START,ASPHYX_SPO2_CARDIAC_ARREST_LIMIT,_currentSpo2,0,ASPHYX_FATIGUE_WEAKNESS_LIMIT,true];
 
         // Heart Rate
