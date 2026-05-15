@@ -155,5 +155,12 @@
         <Key ID="STR_exterra_lifesupport_max_environ_temp_desc">
             <English>Set highest possible external temperature (In Kelvin).</English>
         </Key>
+
+        <Key ID="STR_exterra_lifesupport_breathingPain_coeff_title">
+            <English>Breathing Pain Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_breathingPain_coeff_desc">
+            <English>Multiplies pains effect on breathing.</English>
+        </Key>
     </Package>
 </Project>

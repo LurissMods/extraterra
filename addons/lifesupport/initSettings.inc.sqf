@@ -112,7 +112,7 @@
     "SLIDER",
     [LSTRING(breathingPain_coeff_title), LSTRING(breathingPain_coeff_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0, 1, RAD_COEFF0_DEFAULT, 2],
+    [0, 1, 1, 2],
     1,
     {},
     false
