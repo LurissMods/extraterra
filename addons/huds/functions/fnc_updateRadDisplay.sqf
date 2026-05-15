@@ -1,0 +1,61 @@
+#include "..\script_component.hpp"
+/*
+* Author: Luriss
+* Updates the HUD's current radiation and lifetime exposure values.
+* Called by the statemachine (lifesupport, handleUnitLifesupport).
+*
+* Arguments:
+* None
+*
+* Return Value:
+* None
+*
+* Example:
+* [] call exterra_lifeSupport_fnc_updateRadDisplay
+*
+* Public: No
+*/
+
+//params ["_unit"];
+
+private _currentRadHrtext = nil;
+private _lifeExposureText = nil;
+//private _shieldCoeff = GETVAR(ACE_player,EGVAR(lifesupport,unitRadShieldCoeff),nil);
+//private _currentLifetimeExposure = GETVAR(ACE_player,EGVAR(lifesupport,unitLifetimeRadLevel),nil);
+private _shieldCoeff = GET_RAD_SHIELD_COEFF(ACE_player);
+private _currentLifetimeExposure = GET_LIFETIME_RAD(ACE_player);
+private _currentEnvironRadPerHour = EGVAR(common,currentEnvironRadiationPerHour);
+
+switch (GET_SUIT_FACTION(ACE_player)) do {
+    case NO_SUIT_FACTION: {
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
+    };
+    case US_SUIT_FACTION: {
+        _currentRadHrtext = (GVAR(hudEnvironRad_text_US)#0);
+        _lifeExposureText = (GVAR(hudRadTotal_text_US)#0);
+    };
+};
+
+if ((_shieldCoeff*_currentEnvironRadPerHour) < 1) then {
+    _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 uSv/h", round((_shieldCoeff*_currentEnvironRadPerHour)*1000)];
+    _currentRadHrtext ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+} else {
+    if ((_shieldCoeff*_currentEnvironRadPerHour) > 1000) then {
+        _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 Sv/h", round((_shieldCoeff*_currentEnvironRadPerHour)/1000)];
+        _currentRadHrtext ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+    } else {
+        _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mSv/h", round(_shieldCoeff*_currentEnvironRadPerHour)];
+        _currentRadHrtext ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+    };
+};
+
+_lifeExposureText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mSv", round(_currentLifetimeExposure)];
+if (_currentLifetimeExposure > 1500) then {
+    _lifeExposureText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+} else {
+    if (_currentLifetimeExposure > 500) then {
+        _lifeExposureText ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+    } else {
+        _lifeExposureText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+    };
+};

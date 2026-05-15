@@ -19,7 +19,7 @@ params ["_unit"];
 
 //if (true) exitWith {};
 
-private _unitAwake = _unit call ACEFUNC(common,isAwake);
+/*private _unitAwake = _unit call ACEFUNC(common,isAwake);
 
 if (!isPlayer _unit || {!_unitAwake}) exitWith {}; // temp fix
 
@@ -38,6 +38,7 @@ if (_heartRate >= HEART_RATE_FATAL_HIGH || {_heartRate <= HEART_RATE_FATAL_LOW |
     };
 
     private _unitCardiacArrestTimer = GETVAR(_unit,GVAR(cardiacArrestTimer),CBA_missionTime);
+    systemChat "cardiac being called?";
 
     private _timer = (CBA_missionTime - _unitCardiacArrestTimer);
     systemChat str _timer;
@@ -49,4 +50,4 @@ if (_heartRate >= HEART_RATE_FATAL_HIGH || {_heartRate <= HEART_RATE_FATAL_LOW |
 
 } else {
     SETVAR(_unit,GVAR(cardiacArrestFlag),false);
-};
+};*/

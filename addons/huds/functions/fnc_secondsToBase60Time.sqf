@@ -1,26 +1,34 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Converts seconds into base 60 time for display on the HUD.
 *
 * Arguments:
-* None
+* ["_supply", "_currentConsumption", "_hudText"]    [<NUMBER>, <NUMBER>, <CONTROL>]
+* _supply = Current supply of a given consumable.
+* _currentConsumption = Current consumption rate of a given consumable.
+* _hudText = Control ID of the given timer on the HUD.
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_secondsToBase60Time
 *
 * Public: No
 */
 
-params ["_supply", "_currentConsumption", "_hudText"];
+params ["_supply", "_currentConsumption", "_hudText", "_deltaT"];
 
-private _estTimeRemainingSec = _supply/_currentConsumption;
+private _estTimeRemainingSec = (_supply/_currentConsumption)*_deltaT;
 private _estTimeRemainingSecConv = floor _estTimeRemainingSec % 60;
 private _estTimeRemainingMin = (_estTimeRemainingSec/60) % 60;
 private _estTimeRemainingHour = (_estTimeRemainingSec/60^2) min 99;
+
+// Done to stop a 0 divisor error when spawning in atmo
+if (_currentConsumption == -1) exitWith {
+    (_hudText) ctrlSetStructuredText parseText format["<t size='0.8'> EST TME: INFINITE"];
+};
 
 if (floor _estTimeRemainingHour < 10) then {
     if (floor _estTimeRemainingMin < 10) then {

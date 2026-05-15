@@ -13,7 +13,7 @@ class CfgPatches {
         };
         units[] = {};
         weapons[] = {};
-        magazines[] = {QUOTE(exterra_lifesupport_airTankUS),QUOTE(exterra_lifesupport_batteryUS)};
+        magazines[] = {QGVAR(airTankUS_patrol0),QGVAR(airTankUS_combat0),QGVAR(batteryUS)};
         VERSION_CONFIG;
     };
 };
@@ -22,3 +22,4 @@ class CfgPatches {
 #include "CfgMagazines.hpp"
 #include "CfgMagazineWells.hpp"
 #include "CfgWeapons.hpp"
+#include "CfgVehicles.hpp"

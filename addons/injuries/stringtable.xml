@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="EXTA">
     <Package name="injuries">
-        <Key ID="STR_exterra_injuries_displayName">
-            <English>injuries</English>
+        <Key ID="STR_exterra_injuries_CBA_cat0">
+            <English>General Settings</English>
         </Key>
         <Key ID="STR_exterra_injuries_CBA_title">
             <English>Extraterra - Injuries</English>
         </Key>
-        <Key ID="STR_exterra_injuries_CBA_cat0">
-            <English>General Settings</English>
+        <Key ID="STR_exterra_injuries_displayName">
+            <English>injuries</English>
         </Key>
 
-
+        <Key ID="STR_exterra_injuries_deathUnknown">
+            <English>Unknown</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathVacuumExposure">
+            <English>Vacuum Exposure</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathARS">
+            <English>Acute Radiation Syndrome</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathAsphyxiation">
+            <English>Asphyxiation</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathEbullism">
+            <English>Decompression Sickness</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathHyperthermia">
+            <English>Hyperthermia</English>
+        </Key>
+        <Key ID="STR_exterra_injuries_deathHypothermia">
+            <English>Hypothermia</English>
+        </Key>
     </Package>
 </Project>

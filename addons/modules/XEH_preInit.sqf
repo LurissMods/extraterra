@@ -6,9 +6,11 @@ PREP_RECOMPILE_END;
 
 #include "initSettings.inc.sqf"
 
-GVAR(mainLoopInitalized) = false;
-GVAR(currentEnvironRadiationPerHour) = NORMAL_BACKGROUND_RADIATION;
+GVAR(currentIntegrationInterval) = 1;
+GVAR(lastIntegrationTime) = -86400;
 GVAR(allLifeSupportAreas) = [];
+
+GVAR(testTotal) = 0;
 
 // private _category = [QUOTE(MOD_NAME), LLSTRING(displayName)];
 

@@ -1,0 +1,2 @@
+#define INJURY_POS_FULLSCREEN(x,y) [safeZoneX + (safeZoneW * 0.5) - ((107 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((107 * pixelGridBase * pixelH) * 0.5) + y,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
+#define INJURY_POS_SCREEN_BOTTOM(x,y) [safeZoneX + (safeZoneW * 0.5) - ((10.7 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 1.15) - ((10.7 * pixelGridBase * pixelH) * 1.15) + y,10.7 * pixelGridBase * pixelW,10.7 * pixelGridBase * pixelH]

@@ -74,15 +74,17 @@ class CfgMagazines
 	};
 
 	//5.56x55mm
-	class exterra_weapons_30rnd_5p56x55mmTJ : CA_Magazine
+	class exterra_weapons_30rnd_5p56x55mm : CA_Magazine
 	{
-		picture = "\z\exterra\addons\weapons\magazines\5p56Mag0\icon_exterra_weapons_5p56Mag0_ca.paa";
+		picture = "\z\exterra\addons\weapons\magazines\5p56Mag_metal\icon_exterra_weapons_5p56Mag_metal_ca.paa";
 		author = "Luriss";
 		scope = 2;
-		displayName = "5.56x55mm TJ 30 Rnd";
-		modelSpecial = "z\exterra\addons\weapons\magazines\5p56Mag0\exterra_weapons_5p56Mag0.p3d";
+		displayName = "5.56x55mm TEPR 30 Rnd";
+		modelSpecial = "z\exterra\addons\weapons\magazines\5p56Mag_metal\exterra_weapons_5p56Mag_metal.p3d";
 		modelSpecialIsProxy = 1;
-		ammo = "exterra_weapons_5p56x55mmTeflon";
+        hiddenSelections[] = {"camo"};
+        hiddenSelectionsTextures[] = { "\z\exterra\addons\weapons\magazines\5p56Mag_metal\exterra_weapons_5p56Mag_metal_co.paa" };
+		ammo = "exterra_weapons_5p56x55mm";
 		count = 30;
 		mass = 12.3;
 		initSpeed = 1348;
@@ -90,10 +92,10 @@ class CfgMagazines
 		lastRoundsTracer = 0;
 		descriptionShort = "";
 	};
-	class exterra_weapons_30rnd_5p56x55mmTJ_tracer : exterra_weapons_30rnd_5p56x55mmTJ
+	class exterra_weapons_30rnd_5p56x55mm_tracer : exterra_weapons_30rnd_5p56x55mm
 	{
-		displayName = "5.56x55mm TJ-T 30 Rnd";
-		ammo = "exterra_weapons_5p56x55mmTeflonTracer";
+		displayName = "5.56x55mm TEPR-T 30 Rnd";
+		ammo = "exterra_weapons_5p56x55mmTracer";
 		count = 30;
 		mass = 12.3;
 		initSpeed = 1348;

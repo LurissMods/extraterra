@@ -223,3 +223,6 @@
 
 // Ignore UAV/Drone AI Base Classes
 #define IGNORE_BASE_UAVPILOTS "B_UAV_AI", "O_UAV_AI", "UAV_AI_base_F"
+
+// SPO2 macro - fnc_updateOxygen
+#define BASE_OXYGEN_USE -0.25

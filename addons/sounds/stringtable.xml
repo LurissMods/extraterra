@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="EXTA">
+    <Package name="sounds">
+        <Key ID="STR_exterra_sounds_displayName">
+            <English>sounds</English>
+        </Key>
+    </Package>
+</Project>

@@ -17,8 +17,8 @@ class CfgMagazineWells
 	//Rifles
 	class exterra_weapons_magwell_stanagUS {
 		exterra_weapons_5p56x55mm_tj_30Rnd[] = {
-			"exterra_weapons_30rnd_5p56x55mmTJ",
-			"exterra_weapons_30rnd_5p56x55mmTJ_tracer"
+			"exterra_weapons_30rnd_5p56x55mm",
+			"exterra_weapons_30rnd_5p56x55mm_tracer"
 		};
 	};
 	//MGs

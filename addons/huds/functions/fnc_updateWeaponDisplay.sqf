@@ -1,0 +1,85 @@
+#include "..\script_component.hpp"
+/*
+* Author: Luriss
+* Updates the HUD's weapon info display. Run every frame.
+* Called by the General HUD PFH.
+*
+* Arguments:
+* None
+*
+* Return Value:
+* None
+*
+* Example:
+* [] call exterra_lifeSupport_fnc_updateWeaponDisplay
+*
+* Public: No
+*/
+
+private _magazinesAddress = nil;
+private _fireModeAddress = nil;
+private _zeroingAddress = nil;
+private _magCountInventory = nil;
+private _compatibleMagazines = nil;
+
+switch (GET_SUIT_FACTION(ACE_player)) do {
+    case NO_SUIT_FACTION: {
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
+    };
+    case US_SUIT_FACTION: {
+        _magazinesAddress = (GVAR(hudMagCount_text_US)#0);
+        _fireModeAddress = (GVAR(hudFireMode_text_US)#0);
+        _zeroingAddress = (GVAR(hudWeaponZero_text_US)#0);
+    };
+};
+
+private _weaponState = if (NOT_IN_VEHICLE(ACE_player)) then {
+    weaponState vehicle ACE_player
+} else {
+    weaponState [vehicle ACE_player,((assignedVehicleRole ACE_player) select 1)]
+};
+
+if (!NOT_IN_VEHICLE(ACE_player)) then {
+    if ((_weaponState select 0) != "") then {
+        _compatibleMagazines = (_weaponState select 3);
+        if ((assignedVehicleRole ACE_player) select 0 == "Cargo") then {
+            _magCountInventory = { _x in _compatibleMagazines } count (magazines ACE_player);
+            _currentWeaponMode = currentWeaponMode ACE_player;
+
+            _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+            _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
+        } else {
+            _magCountInventory = { _x in _compatibleMagazines } count (vehicle ACE_player magazinesTurret [((assignedVehicleRole ACE_player) select 1),false]);
+            if (_magCountInventory > 0) then {
+                _magCountInventory = _magCountInventory - 1;
+            };
+            _currentWeaponMode = "---";
+
+            _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+            _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
+        };
+        _magazineCapacity = getNumber(configFile >> "CfgMagazines" >> ((_weaponState select 3)) >> "count");
+    } else {
+        _magCountInventory = "--";
+        _currentWeaponMode = "---";
+
+        _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+        _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
+    };
+    _currentZeroing = "---";
+    _zeroingAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1m", _currentZeroing];
+} else {
+    if (((_weaponState) select 0) == ((_weaponState) select 1)) then {
+        _compatibleMagazines = currentWeapon vehicle ACE_player call CBA_fnc_compatibleMagazines;
+    } else {
+        _compatibleMagazines = [configFile >> "CfgWeapons" >> ((_weaponState) select 0) >> ((_weaponState) select 1)] call CBA_fnc_compatibleMagazines;
+    };
+
+    _currentZeroing = currentZeroing ACE_player;
+    _currentWeaponMode = currentWeaponMode ACE_player;
+    _magCountInventory = { _x in _compatibleMagazines } count (magazines vehicle ACE_player);
+
+    _magazinesAddress ctrlSetStructuredText parseText format["<t size='0.8'>%1", _magCountInventory];
+    _fireModeAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1",_currentWeaponMode];
+    _zeroingAddress ctrlSetStructuredText parseText format ["<t size='0.8'>%1m", _currentZeroing];
+};

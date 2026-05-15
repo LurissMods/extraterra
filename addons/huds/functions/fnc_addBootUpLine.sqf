@@ -1,25 +1,26 @@
 #include "..\script_component.hpp"
 /*
-* Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Manages a global array (not broadcasted) that presents the boot up sequence text to the player.
 *
 * Arguments:
-* None
+* ["_currentLine"] [<STRING>]
+* Feed from the bootupText array defined in the bootHUD_XX functions
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_addBootUpLine
 *
 * Public: No
 */
 
-params ["_text", "_bootUpLines", "_suitFaction"];
-if (count _bootUpLines > 45) then { // This controls the size of the list, provided it's smaller than the control group size. Default 14
-    _bootUpLines deleteAt 0; // This creates the scrolling effect - deletes "top" of list
+params ["_currentLine"];
+if (count GVAR(displayedBootText) > 23) then { // This controls the size of the list, provided it's smaller than the control group size. Default 14
+    GVAR(displayedBootText) deleteAt 0; // This creates the scrolling effect - deletes "top" of list
 };
 
-_bootUpLines pushBack [_text];
+GVAR(displayedBootText) pushBack [_currentLine];
 
-[_suitFaction,_bootUpLines] call FUNC(parseBootUpText);
+[GVAR(displayedBootText)] call FUNC(parseBootUpText);

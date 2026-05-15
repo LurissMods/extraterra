@@ -1,31 +1,34 @@
 #include "..\script_component.hpp"
 /*
-* Author: Luriss
-* Checks if player is in direct sunlight. Returns thermal heating in watts.
+* Author: Akaviri13, Luriss
+* Recieves text from the addBootUpLine function and updates the boot up text control.
 *
 * Arguments:
-* None
+* ["_bootUpLines"]  [<STRING>]
 *
 * Return Value:
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_mainLoop
+* [] call exterra_lifeSupport_fnc_parseBootUpText
 *
 * Public: No
 */
 
-params ["_suitFaction", "_bootUpLines"];
+params ["_bootUpLines"];
 
 private _bootUpTextControl = nil;
 
-switch (_suitFaction) do {
-    case 0: {
-        _bootUpTextControl = (GVAR(bootup_text_US)#0);
+switch (GET_SUIT_FACTION(ACE_player)) do {
+    case NO_SUIT_FACTION: {
+        ERROR_1("Suit faction undefined! Unit: %1",ACE_player);
+    };
+    case US_SUIT_FACTION: {
+        _bootUpTextControl = (GVAR(hudBootText_US)#0);
     };
 };
 
-private _textScale = safeZoneH / 3.5;
+private _textScale = safeZoneH / 2;
 private _structuredText = "<t align='left'" + format [" size='%1'>",_textScale] + "%1</t>";
 private _textToShow = "";
 if (count _bootUpLines == 0) exitWith {

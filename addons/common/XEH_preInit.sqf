@@ -6,6 +6,9 @@ PREP_RECOMPILE_END;
 
 #include "initSettings.inc.sqf"
 
+GVAR(exterraEnabled) = false;
+GVAR(currentEnvironRadiationPerHour) = NORMAL_BACKGROUND_RADIATION;
+
 // private _category = [QUOTE(MOD_NAME), LLSTRING(displayName)];
 
 // #include "initSettings.inc.sqf"

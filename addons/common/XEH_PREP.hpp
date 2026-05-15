@@ -1,1 +1,3 @@
-//PREP(lifeSupportArsenalTab);
+PREP(getStaminaSetting);
+PREP(canUnitBreathe);
+PREP(handlePlayerSwitch);
