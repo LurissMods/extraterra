@@ -35,8 +35,6 @@ if (GVAR(CBAset_localTemperatureSimToggle)) then { // Checks if temp simulation 
 
     if (_unit == ACE_player) then {
         _presetSelection = GVAR(CBAset_localTemperatureSimValue); // This selects detail setting selected in the CBA settings.
-        systemChat str _presetSelection;
-
     } else {
         _presetSelection = 4;
     };

@@ -35,7 +35,7 @@ if (GET_SUIT_ACTIVATED(_newUnit)) then {
     if (!_oldUnitSuitActivated) then {
         switch (GET_SUIT_FACTION(_newUnit)) do {
             case NO_SUIT_FACTION: {
-                systemChat "Switch fired case error! FUNC(common,handlePlayerSwitch)";
+                //systemChat "Switch fired case error! FUNC(common,handlePlayerSwitch)";
                 WARNING("exterra_common_fnc_handlePlayerSwitch unexpected suit faction in switch-case!");
             };
             case US_SUIT_FACTION: {
