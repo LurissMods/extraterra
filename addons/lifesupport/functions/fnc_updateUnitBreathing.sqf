@@ -37,8 +37,8 @@ private _unitMass = HUMAN_MASS + (((loadAbs _unit)/10)/2.205); // Junk on the ri
 private _respiratoryRate = nil;
 
 private _percievedPain = GET_PAIN_PERCEIVED(_unit);
-//private _painCoeff = (GVAR(breathingPain_coeff)*(0.00052652*(exp(7.26135*_percievedPain))));
-private _painCoeff = BREATHING_PAIN_FUNCTION(GVAR(breathingPain_coeff),_percievedPain);
+//private _painCoeff = (GVAR(CBAset_breathingPain)*(0.00052652*(exp(7.26135*_percievedPain))));
+private _painCoeff = BREATHING_PAIN_FUNCTION(GVAR(CBAset_breathingPain),_percievedPain);
 /*
 _painCoeff is defined by the following exponential function for 0 <= _percievedPain <= 1:
 0.00052652 e^(7.26135 x)

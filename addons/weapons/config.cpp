@@ -9,7 +9,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             QUOTE(exterra_main),
-            QUOTE(exterra_modules),
+            QUOTE(exterra_sounds),
+            QUOTE(exterra_particle_effects),
         };
         units[] = {};
         weapons[] = {QUOTE(exterra_weapons_m2Carbine)};

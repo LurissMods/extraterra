@@ -9,7 +9,6 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
 {
     author = "Luriss";
     _generalMacro = "exterra_weapons_m2Carbine_base";
-    //baseWeapon = "exterra_m2Carbine_baseWeapon";
     scope = 0;
     model = "\z\exterra\addons\weapons\weapons\m2Carbine\exterra_weapons_m2Carbine.p3d";
     displayName = "exterra_weapons_m2Carbine_base";
@@ -17,7 +16,6 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
     picture = "\z\exterra\addons\weapons\weapons\m2Carbine\icon_exterra_weapons_m2Carbine_ca.paa";
     UIPicture = "\A3\weapons_f\data\UI\icon_mg_CA.paa";
     handAnim[] = { "OFP2_ManSkeleton","\z\exterra\addons\weapons\weapons\m2Carbine\anims\exterra_weapons_m2Carbine_handAnim.rtm" };
-    //handAnim[] = { "OFP2_ManSkeleton","\z\exterra\addons\weapons\weapons\m2Carbine\anims\exterra_m2Carbine_handAnimTest.rtm" };
     overviewPicture = "";
     hiddenSelections[] = {"camo"};
     hiddenSelectionsTextures[] = { "\z\exterra\addons\weapons\weapons\m2Carbine\textures\exterra_weapons_m2Carbine_co.paa" };
@@ -74,7 +72,7 @@ class exterra_weapons_m2Carbine_base : Rifle_Base_F
         class MuzzleSlot : MuzzleSlot
         {
             linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
-            compatibleItems[] = {"exterra_sounds_vacuumMuzzle","muzzle_snds_338_black"};
+            compatibleItems[] = {"exterra_sounds_vacuumMuzzle"};
             iconPosition[] = { 0.06,0.4 };
             iconScale = 0.15;
         };
@@ -227,5 +225,6 @@ class exterra_weapons_m2Carbine : exterra_weapons_m2Carbine_base
     author = AUTHOR;
     _generalMacro = "exterra_weapons_m2Carbine";
     scope = 2;
-    displayName = "M2 Carbine";
+    displayName = CSTRING(m2Carbine_displayName);
+    descriptionShort = CSTRING(m2Carbine_descShort);
 };

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="EXTA">
     <Package name="Main">
-        <Key ID="STR_exterra_main_displayName">
-            <English>Main</English>
-        </Key>
         <Key ID="STR_exterra_main_url">
             <English>https://github.com/LurissMods/extraterra</English>
             <Czech>https://github.com/LurissMods/extraterra</Czech>

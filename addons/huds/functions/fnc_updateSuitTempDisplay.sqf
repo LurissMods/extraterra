@@ -53,12 +53,12 @@ switch (GET_SUIT_FACTION(ACE_player)) do {
         _extTempText = (GVAR(hudTempExt_text_US)#0);
         _thermalPwrBalanceText = (GVAR(hudTempWatt_text_US)#0);
         _timeUntilDangerText = (GVAR(hudTmeDangTemp_text_US)#0);
-        _suitMaxActiveCool = EGVAR(lifesupport,maxActiveCool_US);
-        _suitMaxActiveHeat = EGVAR(lifesupport,maxActiveHeat_US);
+        _suitMaxActiveCool = EGVAR(lifesupport,CBAset_maxActiveCool_US);
+        _suitMaxActiveHeat = EGVAR(lifesupport,CBAset_maxActiveHeat_US);
     };
 };
 
-switch GVAR(tempMeasurementSystem_cbaSetting) do {
+switch GVAR(CBAset_tempMeasurementSystem) do {
     case 0: {
         _intTempText ctrlSetStructuredText parseText format ["<t size='0.8'>%1°C", round(KELVIN_TO_CELCIUS(_suitTemp))];
         _extTempText ctrlSetStructuredText parseText format ["<t size='0.8'>%1°C", round(KELVIN_TO_CELCIUS(_tempAroundPlayer))];
@@ -81,12 +81,12 @@ if (_currentActiveCool == _suitMaxActiveCool && {_netHeatPower > 0}) then {
 
     if (abs _timeUntilDangerousTemp > 3600) then {
         _timeUntilDangerText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 h", round(abs _timeUntilDangerousTemp/3600)];
-        _timeUntilDangerText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
-        _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+        _timeUntilDangerText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
+        _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
     } else {
         _timeUntilDangerText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 m", floor(abs _timeUntilDangerousTemp/60) min 999];
-        _timeUntilDangerText ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
-        _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+        _timeUntilDangerText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
+        _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
     };
 
 } else {
@@ -95,37 +95,37 @@ if (_currentActiveCool == _suitMaxActiveCool && {_netHeatPower > 0}) then {
 
         if (abs _timeUntilDangerousTemp > 3600) then {
             _timeUntilDangerText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 h", round(abs _timeUntilDangerousTemp/3600)];
-            _timeUntilDangerText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
-            _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+            _timeUntilDangerText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
+            _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
         } else {
             _timeUntilDangerText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 m", floor(abs _timeUntilDangerousTemp/60) min 999];
-            _timeUntilDangerText ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
-            _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+            _timeUntilDangerText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
+            _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
         };
 
     } else {
         _timeUntilDangerText ctrlSetStructuredText parseText "<t size='0.8'>STBLE";
-        _timeUntilDangerText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
-        _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+        _timeUntilDangerText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
+        _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
     };
 };
 
 if (_suitTemp < HUMAN_DANGEROUS_TEMPS#0 || {_suitTemp > HUMAN_DANGEROUS_TEMPS#1}) then {
     _timeUntilDangerText ctrlSetStructuredText parseText "<t size='0.8'>DNGR";
-    _timeUntilDangerText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
-    _intTempText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+    _timeUntilDangerText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
+    _intTempText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
 } else {
-    _intTempText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+    _intTempText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
 };
 
 if (_suitTemp < HUMAN_DANGEROUS_TEMPS#0 && {_netHeatPower > 0}) then {
-    _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+    _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
 } else {
     if (_suitTemp > HUMAN_DANGEROUS_TEMPS#1 && {_netHeatPower < 0}) then {
-        _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+        _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
     } else {
         if (_suitTemp < HUMAN_DANGEROUS_TEMPS#0 || {_suitTemp > HUMAN_DANGEROUS_TEMPS#1}) then {
-            _thermalPwrBalanceText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+            _thermalPwrBalanceText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
         };
     };
 };

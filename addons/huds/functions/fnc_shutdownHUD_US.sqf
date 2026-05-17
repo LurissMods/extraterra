@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Shutdown the US HUD. Called by the suitDeactivated CBA local event (see (huds, CfgVehicles) and (lifesupport_statemachine, startSuitShutdown)).
+* Shutdown the US HUD. Called by the suitDeactivated CBA local event (see (huds, CfgVehicles) and (statemachine, startSuitShutdown)).
 *
 * Arguments:
 * ["_unit"]     [<UNIT>]

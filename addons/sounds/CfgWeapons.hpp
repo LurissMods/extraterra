@@ -1,12 +1,5 @@
-class Mode_SemiAuto;
-//class Zasleh2;
-//class ItemCore;
-//class muzzle_snds_H;
-//class InventoryMuzzleItem_Base_F;
-
 class CfgWeapons {
 	class ItemCore;
-    //class muzzle_snds_H;
 	class InventoryMuzzleItem_Base_F;
 
 	class exterra_sounds_vacuumMuzzle : ItemCore
@@ -14,12 +7,9 @@ class CfgWeapons {
 
 		author = AUTHOR;
         _generalMacro = QGVAR(vacuumMuzzle);
-        displayName = "DO NOT REMOVE. WILL BREAK GUN VACUUM SOUNDS.";
-		//picture="\A3\weapons_F\Data\UI\gear_acca_snds_h_CA.paa";
-        picture = "\z\exterra\addons\sounds\data\data\textures\exterra_sounds_vacuumMuzzle_ca.paa";
-		//model = "\z\exterra\addons\sounds\data\data\exterra_sounds_vacuumMuzzle.p3d";
+        displayName = CSTRING(vacuumMuzzle_displayName);
+        picture = QPATHTOF(data\data\textures\exterra_sounds_vacuumMuzzle_ca.paa);
         model = "";
-		//model = "\A3\weapons_f\acc\acca_snds_h_F";
 
         scope = 2; // Normally is 1, 2 for debugging
         inertia = 0.0; // Note: not yet tested at 0
@@ -34,7 +24,7 @@ class CfgWeapons {
 		class ItemInfo: InventoryMuzzleItem_Base_F
         {
             mass = 0;
-            soundTypeIndex = 1; /// defines the position in sound[] array in the rifle
+            soundTypeIndex = 1; // defines the position in sound[] array in the rifle
             muzzleEnd = "zaslehPoint"; // memory point in muzzle supressor's model
 			alternativeFire = "Zasleh2"; // class in cfgWeapons with model of muzzle flash
 
@@ -45,7 +35,7 @@ class CfgWeapons {
 
 			class AmmoCoef
 			{
-				// bullet ballistic modifiers
+				// Bullet ballistic modifiers
 				hit	= 1;
 				typicalSpeed = 1;
 				airFriction	= 0;
@@ -60,21 +50,6 @@ class CfgWeapons {
 
 			class MuzzleCoef
 			{
-				/*dispersionCoef = 1;
-				artilleryDispersionCoef	= 1;
-
-				fireLightCoef = 0;
-
-				recoilCoef = 1;
-				recoilProneCoef = 1;
-
-				minRangeCoef = 1;
-                minRangeProbabCoef = 1;
-				midRangeCoef = 1;
-                midRangeProbabCoef = 1;
-				maxRangeCoef = 1;
-                maxRangeProbabCoef = 1;*/
-
                 dispersionCoef = "1.0f";
 				artilleryDispersionCoef = "1.0f";
 				fireLightCoef = "0.0f";

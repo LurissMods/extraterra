@@ -38,24 +38,24 @@ switch (GET_SUIT_FACTION(ACE_player)) do {
 
 if ((_shieldCoeff*_currentEnvironRadPerHour) < 1) then {
     _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 uSv/h", round((_shieldCoeff*_currentEnvironRadPerHour)*1000)];
-    _currentRadHrtext ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+    _currentRadHrtext ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
 } else {
     if ((_shieldCoeff*_currentEnvironRadPerHour) > 1000) then {
         _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 Sv/h", round((_shieldCoeff*_currentEnvironRadPerHour)/1000)];
-        _currentRadHrtext ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+        _currentRadHrtext ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
     } else {
         _currentRadHrtext ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mSv/h", round(_shieldCoeff*_currentEnvironRadPerHour)];
-        _currentRadHrtext ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+        _currentRadHrtext ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
     };
 };
 
 _lifeExposureText ctrlSetStructuredText parseText format ["<t size='0.8'>%1 mSv", round(_currentLifetimeExposure)];
 if (_currentLifetimeExposure > 1500) then {
-    _lifeExposureText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+    _lifeExposureText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
 } else {
     if (_currentLifetimeExposure > 500) then {
-        _lifeExposureText ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+        _lifeExposureText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
     } else {
-        _lifeExposureText ctrlSetTextColor GVAR(textColor_US_cbaSetting);
+        _lifeExposureText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
     };
 };

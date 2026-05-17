@@ -19,7 +19,3 @@ PREP(removeAirTank);
 PREP(getBatteries);
 PREP(setBattery);
 PREP(removeBattery);
-
-PREP(prebreathing);
-
-PREP(handlePlayerChanged);

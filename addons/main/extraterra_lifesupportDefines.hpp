@@ -110,7 +110,7 @@
 
 // Radiation
 #define RAD_SHIELD_ERROR -1
-#define RAD_COEFF0_DEFAULT 1 // Multiplier for rad shielding. Rename?
+#define RAD_COEFF0_DEFAULT 1// Multiplier for rad shielding. Rename?
 #define RAD_COEFF1_DEFAULT 0.8
 #define RAD_COEFF2_DEFAULT 0.4
 #define RAD_COEFF3_DEFAULT 0.1

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="EXTA">
     <Package name="sounds">
-        <Key ID="STR_exterra_sounds_displayName">
-            <English>sounds</English>
+        <Key ID="STR_exterra_sounds_vacuumMuzzle_displayName">
+            <English>DO NOT REMOVE. WILL BREAK GUN VACUUM SOUNDS.</English>
         </Key>
     </Package>
 </Project>

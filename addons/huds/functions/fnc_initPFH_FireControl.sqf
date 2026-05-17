@@ -22,7 +22,7 @@ GVAR(initPFH_FireControl_Activated) = true;
 
 GVAR(hudPFH_fireControl) = [{
 
-    if !(GVAR(fireControl_IFF_cbaSetting)) exitWith {};
+    if !(GVAR(CBAset_toggleIFF)) exitWith {};
 
     // Don't delete this, needs to be seperate from the hudVisibility PFH
     if (!isNull findDisplay 312 || {!isNull findDisplay 314}) exitWith {};

@@ -1,0 +1,1 @@
+modules, fnc_updateSolarStorm:      Handles solar storm check. Deleted when finished.

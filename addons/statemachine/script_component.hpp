@@ -1,5 +1,5 @@
-#define COMPONENT lifesupport_statemachine
-#define COMPONENT_BEAUTIFIED Life Support - Statemachine
+#define COMPONENT statemachine
+#define COMPONENT_BEAUTIFIED State Machine
 #include "\z\exterra\addons\main\script_mod.hpp"
 
 #define DEBUG_MODE_FULL

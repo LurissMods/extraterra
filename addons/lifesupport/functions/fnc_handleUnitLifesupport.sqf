@@ -5,7 +5,7 @@
 *
 * Arguments:
 * [_unit] [<UNIT>]
-* _unit - nth Unit from an array of all units local to a client. Called by the statemachine (check lifesupport_statemachine)
+* _unit - nth Unit from an array of all units local to a client. Called by the statemachine (check statemachine)
 *
 * Return Value:
 * [true] [<BOOL>] - Currently not used. Used to check if function has run or not

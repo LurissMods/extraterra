@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
 * Author: Luriss
-* Boot up sequence for the US HUD. Called by the suitActivated CBA local event (see (huds, CfgVehicles) and (lifesupport_statemachine, startSuitBootUp)).
+* Boot up sequence for the US HUD. Called by the suitActivated CBA local event (see (huds, CfgVehicles) and (statemachine, startSuitBootUp)).
 *
 * Arguments:
 * None
@@ -21,26 +21,26 @@
 
 ACE_player setVariable [QEGVAR(lifesupport,suitActivated), true, true];
 
-if (GVAR(toggleHUDppEffects_cbaSetting)) then {
+if (GVAR(CBAset_toggleHUDppEffects)) then {
     GVAR(hudPixelation_PP) ppEffectEnable true;
-    GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(hudPixelation_power_cbaSetting)];
+    GVAR(hudPixelation_PP) ppEffectAdjust [GVAR(CBAset_hudPixelationPower)];
     GVAR(hudPixelation_PP) ppEffectCommit 0;
 
     GVAR(hudChromAb_PP) ppEffectEnable true;
-    GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(hudChromAb_power_cbaSetting), GVAR(hudChromAb_power_cbaSetting), true];
+    GVAR(hudChromAb_PP) ppEffectAdjust [GVAR(CBAset_hudChromAbPower), GVAR(CBAset_hudChromAbPower), true];
     GVAR(hudChromAb_PP) ppEffectCommit 0;
 
     GVAR(hudRadialBlur_PP) ppEffectEnable true;
-    GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(hudRadialBlur_power_cbaSetting), GVAR(hudRadialBlur_power_cbaSetting), GVAR(hudRadialBlur_offset_cbaSetting), GVAR(hudRadialBlur_offset_cbaSetting)];
+    GVAR(hudRadialBlur_PP) ppEffectAdjust [GVAR(CBAset_hudRadialBlurPower), GVAR(CBAset_hudRadialBlurPower), GVAR(CBAset_hudRadialBlurOffset), GVAR(CBAset_hudRadialBlurOffset)];
     GVAR(hudRadialBlur_PP) ppEffectCommit 0;
 
     GVAR(filmGrain_PP) ppEffectEnable true;
-    GVAR(filmGrain_PP) ppEffectAdjust [GVAR(filmGrain_power_cbaSetting), 1.5, 2.01, 0.75, 1.0, 0];
+    GVAR(filmGrain_PP) ppEffectAdjust [GVAR(CBAset_filmGrainPower), 1.5, 2.01, 0.75, 1.0, 0];
     GVAR(filmGrain_PP) ppEffectCommit 0;
 };
 
 // Checks if quickbooting is disabled in CBA settings
-if (GVAR(toggleBootUp_cbaSetting)) then {
+if (GVAR(CBAset_toggleBootUp)) then {
 
     ACE_player setVariable [QEGVAR(huds,unitBootActive),true];
     GVAR(IFF_booted) = true;
