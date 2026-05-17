@@ -96,12 +96,12 @@ params ["_unitsNearPlayer"];
                     _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(CBAset_infantryIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_infantryIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeFriend)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_infantryIFF_iconFriend);
                     _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(CBAset_infantryIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_infantryIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeFriend)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_infantryIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
                         case "MAIN": {+GVAR(CBAset_groupColorIFF)};
@@ -127,12 +127,12 @@ params ["_unitsNearPlayer"];
                     _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(CBAset_vehicleIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_vehicleIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeFriend)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_vehicleIFF_iconFriend);
                     _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(CBAset_vehicleIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_vehicleIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeFriend)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_vehicleIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
                         case "MAIN": {+GVAR(CBAset_groupColorIFF)};
@@ -158,12 +158,12 @@ params ["_unitsNearPlayer"];
                     _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(CBAset_aircraftIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_aircraftIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeFriend)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_aircraftIFF_iconFriend);
                     _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(CBAset_aircraftIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_aircraftIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeFriend)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_aircraftIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
                         case "MAIN": {+GVAR(CBAset_groupColorIFF)};
@@ -189,12 +189,12 @@ params ["_unitsNearPlayer"];
                     _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(CBAset_staticIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_staticIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_staticIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_staticIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_staticIFF_minSizeFriend)) / _distance) max GVAR(CBAset_staticIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_staticIFF_iconFriend);
                     _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(CBAset_staticIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_staticIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_staticIFF_maxSizeFriendly);
+                    _size = (GVAR(CBAset_staticIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_staticIFF_minSizeFriend)) / _distance) max GVAR(CBAset_staticIFF_maxSizeFriend);
                     _icon = GVAR(CBAset_staticIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
                         case "MAIN": {+GVAR(CBAset_groupColorIFF)};
