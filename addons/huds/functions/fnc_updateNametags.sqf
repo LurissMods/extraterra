@@ -20,7 +20,7 @@ private _maxDist = 15; // Consider adding CBA setting
 //private _heightOffset = 0.85; // Consider adding CBA setting
 private _size = 0.04;
 private _font = "RobotoCondensed"; // Consider adding CBA setting?
-private _colorFriendly = GVAR(fireControl_friendColor_cbaSetting);
+private _colorFriendly = GVAR(CBAset_friendColorIFF);
 // Consider adding some kind of icon option
 
 {

@@ -1,166 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="EXTA">
     <Package name="lifesupport">
-        <Key ID="STR_exterra_lifesupport_aceInteract_lsMain">
-            <English>Life Support</English>
+        <Key ID="STR_exterra_lifesupport_CBA_cat0">
+            <English>1. General Settings</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBA_cat1">
+            <English>2. Thermal Simulation Settings</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBA_cat2">
+            <English>3. Radiation Simulation Settings</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBA_title">
+            <English>Extraterra - Life Support</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_breathingPain_desc">
+            <English>Multiplies pain's effect on breathing.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_breathingPain_title">
+            <English>Breathing Pain Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_homeostasisDebug_desc">
+            <English>Displays the current homeostatic capacities and core temperature in system chat. Added to make tweaking the homeostatic power easier.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_homeostasisDebug_title">
+            <English>Toggle Homeostasis Debug</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_homeostasisPower_desc">
+            <English>(Watts) Modify the human body's natural heating/cooling ability. Used to maintain body core temperature. Less = more prone to heat stroke/hypothermia, more = less prone.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_homeostasisPower_title">
+            <English>Homeostasis Power</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimToggle_desc">
+            <English>Enable/Disable the calculations for local temperature around the player. May be performance intensive. Temperature adjusted by time of day if turned off.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimToggle_title">
+            <English>Enable/Disable Local Temperature Simulation</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_desc">
+            <English>Select the desired simulation detail for local temperature simulation. Higher detail will have a higher impact on performance (rough execution times listed).</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt0">
+            <English>64 points (~0.35 milliseconds per execution)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt1">
+            <English>48 points (~0.26 milliseconds per execution)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt2">
+            <English>32 points (~0.17 milliseconds per execution)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt3">
+            <English>16 points (~0.085 milliseconds per execution)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt4">
+            <English>8 points (~0.040 milliseconds per execution)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_title">
+            <English>Local Temperature Simulation Quality</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_maxActiveCool_US_desc">
+            <English>(Watts) Modify how powerful the cooling system is for US space suits.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_maxActiveCool_US_title">
+            <English>Suit Cooling Power (United States)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_maxActiveHeat_US_desc">
+            <English>(Watts) Modify how powerful the heating system is for US space suits.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_maxActiveHeat_US_title">
+            <English>Suit Heating Power (United States)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_maxExternalTemp_desc">
+            <English>(Kelvin) Modify the highest possible external temperature.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_maxExternalTemp_title">
+            <English>Maximum Environment Temperature</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_minExternalTemp_desc">
+            <English>(Kelvin) Modify the lowest possible external temperature.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_minExternalTemp_title">
+            <English>Minimum Environment Temperature</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield0_title">
+            <English>No Radiation Shielding Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield1_title">
+            <English>Light Radiation Shielding Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield2_title">
+            <English>Moderate Radiation Shielding Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield3_title">
+            <English>Heavy Radiation Shielding Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield4_title">
+            <English>Underground Light Radiation Shielding Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield5_title">
+            <English>Underground Heavy Radiation Shielding Coefficient</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_radShield_desc">
+            <English>Modify the coefficient for a given level of radiation shielding. This is a multiplier - Bigger = more radiation, Smaller = less radiation.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_solarIrradianceSim_desc">
+            <English>Enable/Disable the calculations for player heating from the sun. Will use a flat constant rate based on average exposed area if turned off.</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_CBAset_solarIrradianceSim_title">
+            <English>Enable/Disable Solar Irradiance Simulation</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_aceInteract_equipAirTank">
             <English>Equip Air Tank</English>
         </Key>
+        <Key ID="STR_exterra_lifesupport_aceInteract_equipBattery">
+            <English>Connect Battery</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_aceInteract_lsMain">
+            <English>Life Support</English>
+        </Key>
         <Key ID="STR_exterra_lifesupport_aceInteract_unequipAirTank">
             <English>Unequip Air Tank</English>
         </Key>
-        <Key ID="STR_exterra_lifesupport_aceInteract_equipBattery">
-            <English>Equip Battery</English>
-        </Key>
         <Key ID="STR_exterra_lifesupport_aceInteract_unequipBattery">
-            <English>Unequip Battery</English>
+            <English>Disconnect Battery</English>
         </Key>
-
-        <Key ID="STR_exterra_lifesupport_airTankUS_patrol0">
-            <English>M4 Patrol Tank (US)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_airTankUS_patrol0_dummy">
-            <English>M4 Patrol Tank (Equipped)</English>
-        </Key>
-
         <Key ID="STR_exterra_lifesupport_airTankUS_combat0">
             <English>M3 Combat Tank (US)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_airTankUS_combat0_dummy">
             <English>M3 Combat Tank (Equipped)</English>
         </Key>
-
+        <Key ID="STR_exterra_lifesupport_airTankUS_patrol0">
+            <English>M4 Patrol Tank (US)</English>
+        </Key>
+        <Key ID="STR_exterra_lifesupport_airTankUS_patrol0_dummy">
+            <English>M4 Patrol Tank (Equipped)</English>
+        </Key>
         <Key ID="STR_exterra_lifesupport_batteryUS">
             <English>LCS Battery (US)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_batteryUS_dummy">
             <English>LCS Battery (Equipped)</English>
         </Key>
-
         <Key ID="STR_exterra_lifesupport_equippedConsumeableErrorMessage">
             <English>Equipped air tanks/batteries can't be dropped!</English>
-        </Key>
-
-
-        <Key ID="STR_exterra_lifesupport_CBA_cat0">
-            <English>General Settings</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_CBA_cat1">
-            <English>Thermal</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_CBA_cat2">
-            <English>Radiation</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_CBA_title">
-            <English>Extraterra - Life Support</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_displayName">
-            <English>lifesupport</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_homeostasisDebug_desc">
-            <English>Displays the current homeostatic capacities and core temperature in system chat. Added to make tweaking the homeostatic power easier.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_homeostasisDebug_title">
-            <English>Toggle Homeostasis Debug</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_homeostasisPower_desc">
-            <English>Set the capacity of the body to maintain its core temperautre (Watts). Less = more prone to heat stroke/hypothermia, more = less prone.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_homeostasisPower_title">
-            <English>Homeostasis Power</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_desc">
-            <English>Enable/Disable the calculations for local temperature around the player. May be quite performance intensive. Will use the average of the given enivronmental temperautres if turned off.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_desc">
-            <English>Select the desired simulation detail for local temperature sim. Higher detail will have a higher impact on performace (execution times listed) - uses a primitive form of ray casting.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_opt0">
-            <English>64 points (~0.3530ms per execution)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_opt1">
-            <English>48 points (~0.2615ms per execution)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_opt2">
-            <English>32 points (~0.1743ms per execution)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_opt3">
-            <English>16 points (~0.0845ms per execution)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_opt4">
-            <English>8 points (~0.0398ms per execution)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_setting_title">
-            <English>Local Temperature Simulation Detail</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_localTemperatureSim_title">
-            <English>Enable/Disable Local Temperature Simulation</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_masterToggle_desc">
-            <English>Enable/Disable the life support system.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_masterToggle_title">
-            <English>Enable/Disable Extraterra Life Support</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_maxActiveCool_US_desc">
-            <English>Modify how powerful the cooling system is in US space suits. (Watts).</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_maxActiveCool_US_title">
-            <English>Suit Cooling Power (United States)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_maxActiveHeat_US_desc">
-            <English>Modify how powerful the heating system is in US space suits. (Watts).</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_maxActiveHeat_US_title">
-            <English>Suit Heating Power (United States)</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff0_title">
-            <English>No Radiation Shielding Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff1_title">
-            <English>Light Radiation Shielding Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff2_title">
-            <English>Moderate Radiation Shielding Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff3_title">
-            <English>Heavy Radiation Shielding Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff4_title">
-            <English>Underground Light Radiation Shielding Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff5_title">
-            <English>Underground Heavy Radiation Shielding Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_radShield_coeff_desc">
-            <English>Modify the coefficient for a given radiaiton shielding condition. This is a multiplier - higher = more radiation, lower = less radiation.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_solarIrradianceSim_desc">
-            <English>Enable/Disable the calculations for player heating from the sun. Will use a flat constant rate based on average area if turned off.</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_solarIrradianceSim_title">
-            <English>Enable/Disable Solar Irradiance Simulation</English>
-        </Key>
-
-        <Key ID="STR_exterra_lifesupport_min_environ_temp_title">
-            <English>Minimum Envionment Temperature</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_min_environ_temp_desc">
-            <English>Set lowest possible external temperature (In Kelvin).</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_max_environ_temp_title">
-            <English>Maximum Envionment Temperature</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_max_environ_temp_desc">
-            <English>Set highest possible external temperature (In Kelvin).</English>
-        </Key>
-
-        <Key ID="STR_exterra_lifesupport_breathingPain_coeff_title">
-            <English>Breathing Pain Coefficient</English>
-        </Key>
-        <Key ID="STR_exterra_lifesupport_breathingPain_coeff_desc">
-            <English>Multiplies pains effect on breathing.</English>
         </Key>
     </Package>
 </Project>

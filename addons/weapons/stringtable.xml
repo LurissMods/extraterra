@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="EXTA">
     <Package name="weapons">
-        <Key ID="STR_exterra_weapons_displayName">
-            <English>weapons</English>
+        <Key ID="STR_exterra_weapons_m2Carbine_descShort">
+            <English>US Service Rifle</English>
+        </Key>
+        <Key ID="STR_exterra_weapons_m2Carbine_displayName">
+            <English>M2 Carbine</English>
         </Key>
     </Package>
 </Project>

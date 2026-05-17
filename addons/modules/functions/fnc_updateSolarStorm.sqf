@@ -4,13 +4,15 @@
 * Changes the radiation level of the mission.
 *
 * Arguments:
-* Passed from module. Check CfgVehicles.hpp for attribute classes.
+* _duration <NUMBER>    _maxDose <NUMBER>
+* _duration - Duration of storm in seconds.
+* _maxDose - Total radiation dose of storm in mSv.
 *
 * Return Value:
 * None
 *
 * Example:
-* Called via module in CfgVehicles.hpp.
+* [_duration, _maxDose] call exterra_modules_fnc_updateSolarStorm;
 *
 * Public: No
 */
@@ -25,19 +27,13 @@ GVAR(solarStorm_PFH) = [
 
         if (_deltaT > (_duration/10)) then {
             if (GVAR(currentIntegrationInterval) < 11) then {
-                //private _duration = 60;
-                //private _maxDose = 1000;
                 private _totalIntegralArea = 1 - (1/exp(4));
 
                 private _upper = GVAR(currentIntegrationInterval)/10;
                 private _lower = (GVAR(currentIntegrationInterval) - 1)/10;
 
-                //systemChat format ["Upper: %1",_upper];
-                //systemChat format ["Lower: %1",_lower];
                 private _currentIntegral = (-exp(-4*_upper)) - (-exp(-4*_lower));
                 private _integralRatio = _currentIntegral/_totalIntegralArea;
-
-                //systemChat str _currentIntegral;
 
                 private _currentRad = (_integralRatio*_maxDose)/(_duration/10);
                 EGVAR(common,currentEnvironRadiationPerHour) = _currentRad*3600;

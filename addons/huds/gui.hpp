@@ -1,4 +1,4 @@
-class RscControlsGroupNoScrollbars;
+//class RscControlsGroupNoScrollbars;
 class RscProgress;
 class RscStructuredText;
 class RscPicture;

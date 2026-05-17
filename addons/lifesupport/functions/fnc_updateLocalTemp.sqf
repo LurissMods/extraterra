@@ -25,7 +25,7 @@ private _distCheck = [];
 private _tempAroundUnit = nil;
 private _presetSelection = nil;
 
-if (GVAR(localTemperatureSim)) then { // Checks if temp simulation is enabled in the CBA settings.
+if (GVAR(CBAset_localTemperatureSimToggle)) then { // Checks if temp simulation is enabled in the CBA settings.
     /* Behold the CPU muncher 9000. This thing is basically a primitive form of path tracing. I've locked down the user input just in case someone tries to brick their PC.
 
     This is the local temperature simulation script. It works by creating a grid of positions around the player (adjusted to 1m above ground level) and checks if that position is in shadow or not.
@@ -34,7 +34,7 @@ if (GVAR(localTemperatureSim)) then { // Checks if temp simulation is enabled in
     */
 
     if (_unit == ACE_player) then {
-        _presetSelection = missionNamespace getVariable [QGVAR(localTemperatureSim_setting), 0]; // This selects detail setting selected in the CBA settings.
+        _presetSelection = missionNamespace getVariable [QGVAR(CBAset_localTemperatureSimValue), 0]; // This selects detail setting selected in the CBA settings.
 
     } else {
         _presetSelection = 4;

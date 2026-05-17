@@ -38,10 +38,7 @@ params ["_unitsNearPlayer"];
     private _icon = nil;
     private _color = nil;
 
-    /*private _screenPosition = worldToScreen (_nearbyUnit modelToWorldVisual IFF_NEARBYUNITS_OFFSET);
-    if (_screenPosition isEqualTo []) then { continue };*/
-
-    switch GVAR(fireControl_datalink_cbaSetting) do {
+    switch GVAR(CBAset_datalink) do {
         case 0: {_datalink = _sidePlayer};
         case 1: {_datalink = side group ACE_player};
         case 2: {_datalink = ACE_player};
@@ -89,30 +86,29 @@ params ["_unitsNearPlayer"];
 
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
-                    _size = (GVAR(fireControl_humanSizeEnemy_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_MAN_FOV) / _distance) max 0.75; //max GVAR(fireControl_humanSizeEnemyMin_cbaSetting);
-                    _icon = GVAR(fireControl_humanIconEnemy_cbaSetting);
-                    _color = +GVAR(fireControl_enemyColor_cbaSetting);
-                    //systemChat format ["Pos: %1, Size: %2, Icon: %3, Color: %4",_pos,_size,_icon,_color];
+                    _size = (GVAR(CBAset_infantryIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeEnemy);
+                    _icon = GVAR(CBAset_infantryIFF_iconEnemy);
+                    _color = +GVAR(CBAset_enemyColorIFF);
                 };
                 case "NEUTRAL" : {
-                    _size = (GVAR(fireControl_humanSizeNeutral_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_MAN_FOV) / _distance) max 0.75; //max GVAR(fireControl_humanSizeNeutralMin_cbaSetting);
-                    _icon = GVAR(fireControl_humanIconNeutral_cbaSetting);
-                    _color = +GVAR(fireControl_neutralColor_cbaSetting);
+                    _size = (GVAR(CBAset_infantryIFF_maxSizeNeutral) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeNeutral)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeNeutral);
+                    _icon = GVAR(CBAset_infantryIFF_iconNeutral);
+                    _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_MAN_FOV) / _distance) max 0.75; //max GVAR(fireControl_humanSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
-                    _color = +GVAR(fireControl_friendColor_cbaSetting);
+                    _size = (GVAR(CBAset_infantryIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_infantryIFF_iconFriend);
+                    _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(fireControl_humanSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_MAN_FOV) / _distance) max 0.75; //max GVAR(fireControl_humanSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_humanIconFriend_cbaSetting);
+                    _size = (GVAR(CBAset_infantryIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_infantryIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_infantryIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_infantryIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
-                        case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
-                        case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "GREEN": {+[0,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "BLUE": {+[0,0,1,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "YELLOW": {+[1,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
+                        case "MAIN": {+GVAR(CBAset_groupColorIFF)};
+                        case "RED": {+[1,0,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "GREEN": {+[0,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "BLUE": {+[0,0,1,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "YELLOW": {+[1,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
                     };
                 };
             };
@@ -121,29 +117,29 @@ params ["_unitsNearPlayer"];
             _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["zamerny", "Memory"]);
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
-                    _size = (GVAR(fireControl_vehicleSizeEnemy_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1; //max GVAR(fireControl_vehicleSizeEnemyMin_cbaSetting);
-                    _icon = GVAR(fireControl_vehicleIconEnemy_cbaSetting);
-                    _color = +GVAR(fireControl_enemyColor_cbaSetting);
+                    _size = (GVAR(CBAset_vehicleIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeEnemy);
+                    _icon = GVAR(CBAset_vehicleIFF_iconEnemy);
+                    _color = +GVAR(CBAset_enemyColorIFF);
                 };
                 case "NEUTRAL" : {
-                    _size = (GVAR(fireControl_vehicleSizeNeutral_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1; //max GVAR(fireControl_vehicleSizeNeutralMin_cbaSetting);
-                    _icon = GVAR(fireControl_vehicleIconNeutral_cbaSetting);
-                    _color = +GVAR(fireControl_neutralColor_cbaSetting);
+                    _size = (GVAR(CBAset_vehicleIFF_maxSizeNeutral) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeNeutral)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeNeutral);
+                    _icon = GVAR(CBAset_vehicleIFF_iconNeutral);
+                    _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(fireControl_vehicleSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1; //max GVAR(fireControl_vehicleSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_vehicleIconFriend_cbaSetting);
-                    _color = +GVAR(fireControl_friendColor_cbaSetting);
+                    _size = (GVAR(CBAset_vehicleIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_vehicleIFF_iconFriend);
+                    _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(fireControl_vehicleSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1; //max GVAR(fireControl_vehicleSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_vehicleIconFriend_cbaSetting);
+                    _size = (GVAR(CBAset_vehicleIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_vehicleIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
-                        case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
-                        case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "GREEN": {+[0,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "BLUE": {+[0,0,1,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "YELLOW": {+[1,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
+                        case "MAIN": {+GVAR(CBAset_groupColorIFF)};
+                        case "RED": {+[1,0,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "GREEN": {+[0,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "BLUE": {+[0,0,1,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "YELLOW": {+[1,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
                     };
                 };
             };
@@ -152,29 +148,29 @@ params ["_unitsNearPlayer"];
             _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["zamerny", "Memory"]);
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
-                    _size = (GVAR(fireControl_aircraftSizeEnemy_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1.33; //max GVAR(fireControl_aircraftSizeEnemyMin_cbaSetting);
-                    _icon = GVAR(fireControl_aircraftIconEnemy_cbaSetting);
-                    _color = +GVAR(fireControl_enemyColor_cbaSetting);
+                    _size = (GVAR(CBAset_aircraftIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeEnemy);
+                    _icon = GVAR(CBAset_aircraftIFF_iconEnemy);
+                    _color = +GVAR(CBAset_enemyColorIFF);
                 };
                 case "NEUTRAL" : {
-                    _size = (GVAR(fireControl_aircraftSizeNeutral_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1.33; //max GVAR(fireControl_aircraftSizeNeutralMin_cbaSetting);
-                    _icon = GVAR(fireControl_aircraftIconNeutral_cbaSetting);
-                    _color = +GVAR(fireControl_neutralColor_cbaSetting);
+                    _size = (GVAR(CBAset_aircraftIFF_maxSizeNeutral) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeNeutral)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeNeutral);
+                    _icon = GVAR(CBAset_aircraftIFF_iconNeutral);
+                    _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(fireControl_aircraftSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1.33; //max GVAR(fireControl_aircraftSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_aircraftIconFriend_cbaSetting);
-                    _color = +GVAR(fireControl_friendColor_cbaSetting);
+                    _size = (GVAR(CBAset_aircraftIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_aircraftIFF_iconFriend);
+                    _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(fireControl_aircraftSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 1.33; //max GVAR(fireControl_aircraftSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_aircraftIconFriend_cbaSetting);
+                    _size = (GVAR(CBAset_aircraftIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_aircraftIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
-                        case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
-                        case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "GREEN": {+[0,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "BLUE": {+[0,0,1,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "YELLOW": {+[1,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
+                        case "MAIN": {+GVAR(CBAset_groupColorIFF)};
+                        case "RED": {+[1,0,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "GREEN": {+[0,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "BLUE": {+[0,0,1,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "YELLOW": {+[1,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
                     };
                 };
             };
@@ -183,29 +179,29 @@ params ["_unitsNearPlayer"];
             _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["osahlavne", "Memory"]);
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
-                    _size = (GVAR(fireControl_staticSizeEnemy_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 0.75; //max GVAR(fireControl_staticSizeEnemyMin_cbaSetting);
-                    _icon = GVAR(fireControl_staticIconEnemy_cbaSetting);
-                    _color = +GVAR(fireControl_enemyColor_cbaSetting);
+                    _size = (GVAR(CBAset_staticIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_staticIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_staticIFF_maxSizeEnemy);
+                    _icon = GVAR(CBAset_staticIFF_iconEnemy);
+                    _color = +GVAR(CBAset_enemyColorIFF);
                 };
                 case "NEUTRAL" : {
-                    _size = (GVAR(fireControl_staticSizeNeutral_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 0.75; //max GVAR(fireControl_staticSizeNeutralMin_cbaSetting);
-                    _icon = GVAR(fireControl_staticIconNeutral_cbaSetting);
-                    _color = +GVAR(fireControl_neutralColor_cbaSetting);
+                    _size = (GVAR(CBAset_staticIFF_maxSizeNeutral) / tan(_fov / GVAR(CBAset_staticIFF_minSizeNeutral)) / _distance) max GVAR(CBAset_staticIFF_maxSizeNeutral);
+                    _icon = GVAR(CBAset_staticIFF_iconNeutral);
+                    _color = +GVAR(CBAset_neutralColorIFF);
                 };
                 case "FRIENDLY" : {
-                    _size = (GVAR(fireControl_staticSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 0.75; //max GVAR(fireControl_staticSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_staticIconFriend_cbaSetting);
-                    _color = +GVAR(fireControl_friendColor_cbaSetting);
+                    _size = (GVAR(CBAset_staticIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_staticIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_staticIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_staticIFF_iconFriend);
+                    _color = +GVAR(CBAset_friendColorIFF);
                 };
                 case "SQUAD" : {
-                    _size = (GVAR(fireControl_staticSizeFriend_cbaSetting) / tan(_fov / DEFAULT_MIN_IFF_OTHER_FOV) / _distance) max 0.75; //max GVAR(fireControl_staticSizeFriendMin_cbaSetting);
-                    _icon = GVAR(fireControl_staticIconFriend_cbaSetting);
+                    _size = (GVAR(CBAset_staticIFF_maxSizeFriend) / tan(_fov / GVAR(CBAset_staticIFF_minSizeFriendly)) / _distance) max GVAR(CBAset_staticIFF_maxSizeFriendly);
+                    _icon = GVAR(CBAset_staticIFF_iconFriend);
                     _color = switch (assignedTeam _nearbyUnit) do {
-                        case "MAIN": {+GVAR(fireControl_groupColor_cbaSetting)};
-                        case "RED": {+[1,0,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "GREEN": {+[0,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "BLUE": {+[0,0,1,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
-                        case "YELLOW": {+[1,1,0,(GVAR(fireControl_groupColor_cbaSetting) select 3)]};
+                        case "MAIN": {+GVAR(CBAset_groupColorIFF)};
+                        case "RED": {+[1,0,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "GREEN": {+[0,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "BLUE": {+[0,0,1,(GVAR(CBAset_groupColorIFF) select 3)]};
+                        case "YELLOW": {+[1,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
                     };
                 };
             };

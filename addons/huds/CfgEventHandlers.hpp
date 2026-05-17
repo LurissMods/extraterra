@@ -19,9 +19,7 @@ class Extended_PostInit_EventHandlers {
 class Extended_Killed_EventHandlers {
     class CAManBase {
         class ADDON {
-            killed = QUOTE(
-                call FUNC(shutdownHUD_US);
-            );
+            killed = QUOTE(call FUNC(shutdownHUD_US););
             exclude[] = {IGNORE_BASE_UAVPILOTS};
         };
     };

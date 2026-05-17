@@ -26,7 +26,7 @@ private _deltaTemp = 0;
 
 private _coreTemp = GET_CORE_TEMP(_unit);
 private _suitTemp = GET_SUIT_TEMP(_unit);
-private _bodyHomeostatisCapacity = GVAR(homeostasisPower); // Defined in CBA settings
+private _bodyHomeostatisCapacity = GVAR(CBAset_homeostasisPower); // Defined in CBA settings
 
 private _targetCoreTemp = 0; // This is what injury functions will modify.
 
@@ -92,7 +92,7 @@ private _currentBodyHomeostatisUsed = _bodyHomeostatisCapacity - _currentBodyHom
 // This is heat radiated INCLUDING the metabolic heat
 _totalRadiatedCoreHeat = _totalRadiatedCoreHeat + _currentMetabolicHeatWattage;
 
-if (GVAR(homeostasisDebug) && {_unit == ACE_player}) then {
+if (GVAR(CBAset_homeostasisDebug) && {_unit == ACE_player}) then {
     systemChat format ['Homeostatis Used: %1', _currentBodyHomeostatisUsed];
     systemChat format ['Homeostatis Remaining: %1', (_bodyHomeostatisCapacity - abs _netHeatPower)];
     systemChat format ['Core Temp: %1 C', _coreTemp - 273.15];

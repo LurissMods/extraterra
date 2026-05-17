@@ -34,11 +34,11 @@ private _solarHeatingPower = 0;
 private _tempAroundUnit = 0;
 private _currentActiveCool = 0;
 private _currentActiveHeat = 0;
-private _moonSurfaceTemp = [GVAR(min_environ_temp),GVAR(max_environ_temp)];
+private _moonSurfaceTemp = [GVAR(CBAset_minExternalTemp),GVAR(CBAset_maxExternalTemp)];
 
 private _currentTemp = GETVAR(_unit,GVAR(unitSuitTemp),ROOM_TEMP);
 
-if (GVAR(solarIrradianceSim)) then {
+if (GVAR(CBAset_solarIrradianceSim)) then {
     private _isUnitInSun = [_unit,"VIEW"] checkVisibility [eyePos _unit, eyePos _unit vectorDiff ((getLighting#2) vectorMultiply IS_IN_SUN_CHECK_VECTOR_LENGTH)];
     _solarHeatingPower = [_isUnitInSun,_suitSolarAbsorptance,_unit] call FUNC(updateSolarIrradiance);
 } else {
@@ -87,8 +87,8 @@ if (GET_SUIT_ACTIVATED(_unit)) then {
             _suitMaxActiveHeat = 0;
         };
         case US_SUIT_FACTION: {
-            _suitMaxActiveCool = GVAR(maxActiveCool_US);
-            _suitMaxActiveHeat = GVAR(maxActiveHeat_US);
+            _suitMaxActiveCool = GVAR(CBAset_maxActiveCool_US);
+            _suitMaxActiveHeat = GVAR(CBAset_maxActiveHeat_US);
         };
     };
 

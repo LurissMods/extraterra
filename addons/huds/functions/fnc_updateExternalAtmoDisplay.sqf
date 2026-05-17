@@ -31,15 +31,15 @@ switch (GET_SUIT_FACTION(ACE_player)) do {
 switch (GET_ATMO(ACE_player)) do {
     case 0: {
         _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>VACUUM</t>";
-        _extAtmText ctrlSetTextColor GVAR(textColor_US_danger_cbaSetting);
+        _extAtmText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_danger);
     };
     case 1: {
         _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>1 ATM</t>";
-        _extAtmText ctrlSetTextColor GVAR(textColor_US_safe_cbaSetting);
+        _extAtmText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_safe);
     };
     case 2: {
         _extAtmText ctrlSetStructuredText parseText "<t size='1.0'>0.3 ATM</t>";
-        _extAtmText ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+        _extAtmText ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
         /*if (_prebreatheRatio < PREBREATHE_SAFE_THRESHOLD) then {
             (_extAtmText) ctrlSetTextColor GVAR(textColor_safe_cbaSetting);
         } else {

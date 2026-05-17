@@ -40,8 +40,8 @@ switch (GET_SUIT_FACTION(_unit)) do {
         _basePowerDraw = SUIT_BASE_POWER_DRAW_US;
         _minPumpPowerDraw = SUIT_MIN_THERMAL_CONTROL_POWER_US;
         _maxPumpPowerDraw = SUIT_MAX_THERMAL_CONTROL_POWER_US;
-        _suitMaxActiveCool = GVAR(maxActiveCool_US);
-        _suitMaxActiveHeat = GVAR(maxActiveHeat_US);
+        _suitMaxActiveCool = GVAR(CBAset_maxActiveCool_US);
+        _suitMaxActiveHeat = GVAR(CBAset_maxActiveHeat_US);
     };
 };
 

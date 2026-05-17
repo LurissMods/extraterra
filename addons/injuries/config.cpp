@@ -10,7 +10,6 @@ class CfgPatches {
         requiredAddons[] = {
             QUOTE(exterra_main),
             QUOTE(exterra_lifesupport),
-            QUOTE(ace_advanced_fatigue),
         };
         units[] = {};
         weapons[] = {};

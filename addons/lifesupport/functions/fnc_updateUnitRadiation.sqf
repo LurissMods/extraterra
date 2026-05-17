@@ -27,22 +27,22 @@ private _shieldCoeff = nil;
 
 switch (GET_RAD_SHIELD_CASE(_unit)) do {
     case 0: {
-        _shieldCoeff = GVAR(radShield_coeff0);
+        _shieldCoeff = GVAR(CBAset_radShield0);
     };
     case 1: {
-        _shieldCoeff = GVAR(radShield_coeff1);
+        _shieldCoeff = GVAR(CBAset_radShield1);
     };
     case 2: {
-        _shieldCoeff = GVAR(radShield_coeff2);
+        _shieldCoeff = GVAR(CBAset_radShield2);
     };
     case 3: {
-        _shieldCoeff = GVAR(radShield_coeff3);
+        _shieldCoeff = GVAR(CBAset_radShield3);
     };
     case 4: {
-        _shieldCoeff = GVAR(radShield_coeff4);
+        _shieldCoeff = GVAR(CBAset_radShield4);
     };
     case 5: {
-        _shieldCoeff = GVAR(radShield_coeff5);
+        _shieldCoeff = GVAR(CBAset_radShield5);
     };
 };
 _currentLifetimeExposure = _currentLifetimeExposure + ((_shieldCoeff*_currentEnvironRadPerHour)/3600);

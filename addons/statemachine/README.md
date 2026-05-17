@@ -1,4 +1,4 @@
-exterra_lifesupport_statemachine
+exterra_statemachine
 ===================
 
 Common functionality shared between addons.

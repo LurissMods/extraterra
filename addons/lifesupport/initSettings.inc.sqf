@@ -1,207 +1,189 @@
+
+// --------------------------------------------------------------------------- General Settings --------------------------------------------------------------------------- //
+
 [
-    QGVAR(masterToggle),
+    QGVAR(CBAset_solarIrradianceSim),
     "CHECKBOX",
-    [LSTRING(masterToggle_title), LSTRING(masterToggle_desc)],
+    [LSTRING(CBAset_solarIrradianceSim_title), LSTRING(CBAset_solarIrradianceSim_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     true,
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    true // Needs mission restart
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(solarIrradianceSim),
+    QGVAR(CBAset_localTemperatureSimToggle),
     "CHECKBOX",
-    [LSTRING(solarIrradianceSim_title), LSTRING(solarIrradianceSim_desc)],
+    [LSTRING(CBAset_localTemperatureSimToggle_title), LSTRING(CBAset_localTemperatureSimToggle_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     true,
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(localTemperatureSim),
-    "CHECKBOX",
-    [LSTRING(localTemperatureSim_title), LSTRING(localTemperatureSim_desc)],
-    [LSTRING(CBA_title), LSTRING(CBA_cat0)],
-    true,
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
-] call CBA_fnc_addSetting;
-
-[
-    QGVAR(localTemperatureSim_setting),
+    QGVAR(CBAset_localTemperatureSimValue),
     "LIST",
-    [LSTRING(localTemperatureSim_setting_title), LSTRING(localTemperatureSim_setting_desc)],
+    [LSTRING(CBAset_localTemperatureSimValue_title), LSTRING(CBAset_localTemperatureSimValue_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat0)],
     [
         [0, 1, 2, 3, 4],
-        [LSTRING(localTemperatureSim_setting_opt0), LSTRING(localTemperatureSim_setting_opt1), LSTRING(localTemperatureSim_setting_opt2), LSTRING(localTemperatureSim_setting_opt3), LSTRING(localTemperatureSim_setting_opt4)],
+        [LSTRING(CBAset_localTemperatureSimValue_opt0), LSTRING(CBAset_localTemperatureSimValue_opt1), LSTRING(CBAset_localTemperatureSimValue_opt2), LSTRING(CBAset_localTemperatureSimValue_opt3), LSTRING(CBAset_localTemperatureSimValue_opt4)],
         0
     ],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         params ["_value"];
-        GVAR(localTemperatureSim_setting) = _value;
+        GVAR(CBAset_localTemperatureSimValue) = _value;
     },
-    false // Needs mission restart
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
+// --------------------------------------------------------------------------- Thermal Settings --------------------------------------------------------------------------- //
+
 [
-    QGVAR(maxActiveCool_US),
+    QGVAR(CBAset_maxActiveCool_US),
     "SLIDER",
-    [LSTRING(maxActiveCool_US_title), LSTRING(maxActiveCool_US_desc)],
+    [LSTRING(CBAset_maxActiveCool_US_title), LSTRING(CBAset_maxActiveCool_US_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0, 3000, DEFAULT_MAX_ACTIVE_COOL_US, 0],
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(maxActiveHeat_US),
+    QGVAR(CBAset_maxActiveHeat_US),
     "SLIDER",
-    [LSTRING(maxActiveHeat_US_title), LSTRING(maxActiveHeat_US_desc)],
+    [LSTRING(CBAset_maxActiveHeat_US_title), LSTRING(CBAset_maxActiveHeat_US_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [1, 3000, DEFAULT_MAX_ACTIVE_HEAT_US, 0],
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(homeostasisPower),
+    QGVAR(CBAset_breathingPain),
     "SLIDER",
-    [LSTRING(homeostasisPower_title), LSTRING(homeostasisPower_desc)],
+    [LSTRING(CBAset_breathingPain_title), LSTRING(CBAset_breathingPain_desc)],
+    [LSTRING(CBA_title), LSTRING(CBA_cat0)],
+    [0, 1, 1, 2],
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(CBAset_homeostasisPower),
+    "SLIDER",
+    [LSTRING(CBAset_homeostasisPower_title), LSTRING(CBAset_homeostasisPower_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [1, 750, 275, 0],
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
+    {},
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(homeostasisDebug),
+    QGVAR(CBAset_homeostasisDebug),
     "CHECKBOX",
-    [LSTRING(homeostasisDebug_title), LSTRING(homeostasisDebug_desc)],
+    [LSTRING(CBAset_homeostasisDebug_title), LSTRING(CBAset_homeostasisDebug_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     false,
-    1,
-    {
-        //[QGVAR(lifeSupportEnabled), _this] call EFUNC(common,cbaSettings_settingChanged)
-    },
-    false // Needs mission restart
-] call CBA_fnc_addSetting;
-
-[
-    QGVAR(breathingPain_coeff),
-    "SLIDER",
-    [LSTRING(breathingPain_coeff_title), LSTRING(breathingPain_coeff_desc)],
-    [LSTRING(CBA_title), LSTRING(CBA_cat2)],
-    [0, 1, 1, 2],
-    1,
+    0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
+// --------------------------------------------------------------------------- Radiation Settings --------------------------------------------------------------------------- //
+
 [
-    QGVAR(radShield_coeff0),
+    QGVAR(CBAset_radShield0),
     "SLIDER",
-    [LSTRING(radShield_coeff0_title), LSTRING(radShield_coeff_desc)],
+    [LSTRING(CBAset_radShield0_title), LSTRING(CBAset_radShield_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 2, RAD_COEFF0_DEFAULT, 3],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(radShield_coeff1),
+    QGVAR(CBAset_radShield1),
     "SLIDER",
-    [LSTRING(radShield_coeff1_title), LSTRING(radShield_coeff_desc)],
+    [LSTRING(CBAset_radShield1_title), LSTRING(CBAset_radShield_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 2, RAD_COEFF1_DEFAULT, 3],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(radShield_coeff2),
+    QGVAR(CBAset_radShield2),
     "SLIDER",
-    [LSTRING(radShield_coeff2_title), LSTRING(radShield_coeff_desc)],
+    [LSTRING(CBAset_radShield2_title), LSTRING(CBAset_radShield_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 2, RAD_COEFF2_DEFAULT, 3],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(radShield_coeff3),
+    QGVAR(CBAset_radShield3),
     "SLIDER",
-    [LSTRING(radShield_coeff3_title), LSTRING(radShield_coeff_desc)],
+    [LSTRING(CBAset_radShield3_title), LSTRING(CBAset_radShield_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 2, RAD_COEFF3_DEFAULT, 3],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(radShield_coeff4),
+    QGVAR(CBAset_radShield4),
     "SLIDER",
-    [LSTRING(radShield_coeff4_title), LSTRING(radShield_coeff_desc)],
+    [LSTRING(CBAset_radShield4_title), LSTRING(CBAset_radShield_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 2, RAD_COEFF4_DEFAULT, 3],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(radShield_coeff5),
+    QGVAR(CBAset_radShield5),
     "SLIDER",
-    [LSTRING(radShield_coeff5_title), LSTRING(radShield_coeff_desc)],
+    [LSTRING(CBAset_radShield5_title), LSTRING(CBAset_radShield_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat2)],
     [0, 2, RAD_COEFF5_DEFAULT, 3],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    false
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(min_environ_temp),
+    QGVAR(CBAset_minExternalTemp),
     "SLIDER",
-    [LSTRING(min_environ_temp_title), LSTRING(min_environ_temp_desc)],
+    [LSTRING(CBAset_minExternalTemp_title), LSTRING(CBAset_minExternalTemp_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0, 2273.15, DEFAULT_MIN_ENVIRON_TEMP, 2],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    true
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;
 
 [
-    QGVAR(max_environ_temp),
+    QGVAR(CBAset_maxExternalTemp),
     "SLIDER",
-    [LSTRING(max_environ_temp_title), LSTRING(max_environ_temp_desc)],
+    [LSTRING(CBAset_maxExternalTemp_title), LSTRING(CBAset_maxExternalTemp_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
     [0, 2273.15, DEFAULT_MAX_ENVIRON_TEMP, 2],
-    1,
+    1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
-    true
+    true // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
 ] call CBA_fnc_addSetting;

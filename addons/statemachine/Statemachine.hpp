@@ -1,4 +1,4 @@
-class exterra_lifesupport_statemachine {
+class exterra_statemachine {
     list = QUOTE(call ACEFUNC(common,getLocalUnits));
     skipNull = 1;
     class Default {

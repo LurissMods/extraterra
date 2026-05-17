@@ -9,8 +9,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             QUOTE(exterra_main),
-            QUOTE(exterra_lifesupport),
-            //QUOTE(exterra_extraterra_lifeSupport)
+            QUOTE(exterra_common),
         };
         units[] = {};
         weapons[] = {};

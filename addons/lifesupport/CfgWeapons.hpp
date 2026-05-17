@@ -1,14 +1,14 @@
 class CfgWeapons
 {
-    class ItemCore;
+    //class ItemCore;
     class ACE_ItemCore;
     class CBA_MiscItem_ItemInfo;
     //class InventoryItem_Base_F;
 	class Rifle;
 	class Rifle_Base_F : Rifle
 	{
-		class WeaponSlotsInfo;
-		class GunParticles;
+		//class WeaponSlotsInfo;
+		//class GunParticles;
 	};
 
     class GVAR(consumeable_dummyBase): ACE_ItemCore {

@@ -92,7 +92,7 @@ private _prevGroupSize = GETVAR(ACE_player,GVAR(prevGroupSize),nil);
 
 private _playerGroupUnitsNoLeader = (units PLAYER_GROUP) - [leader PLAYER_GROUP];
 private _groupSize = (count units PLAYER_GROUP) min 10;
-private _transparency = GVAR(fireControl_groupColor_cbaSetting) select 3;
+private _transparency = GVAR(CBAset_groupColorIFF) select 3;
 private _groupHudText = [];
 
 if (_prevGroupSize != _groupSize) then {
@@ -129,10 +129,10 @@ if (_groupLeaderMeanBP < BLOOD_PRESSURE_NORMAL) then {
 
 if (GETVAR(leader PLAYER_GROUP,EGVAR(lifesupport,unitDatalink),false)) then {
     _groupLeaderDatalink = "TRMIT";
-    _datalinkAddressArray#0 ctrlSetTextColor GVAR(textColor_US_safe_cbaSetting);
+    _datalinkAddressArray#0 ctrlSetTextColor GVAR(CBAset_hudTextColorUS_safe);
 } else {
     _groupLeaderDatalink = "EMCON";
-    _datalinkAddressArray#0 ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+    _datalinkAddressArray#0 ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
 };
 
 _colour = switch (assignedTeam (leader PLAYER_GROUP)) do {
@@ -171,10 +171,10 @@ for "_i" from 1 to (_groupSize - 1) do {
 
     if (GETVAR(_unit,EGVAR(lifesupport,unitDatalink),false)) then {
         _currentUnitDatalink = "TRMIT";
-        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(textColor_US_safe_cbaSetting);
+        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(CBAset_hudTextColorUS_safe);
     } else {
         _currentUnitDatalink = "EMCON";
-        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(textColor_US_caution_cbaSetting);
+        (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(CBAset_hudTextColorUS_caution);
     };
 
     if (_currentUnitHeartRate < DEFAULT_HEART_RATE) then {
