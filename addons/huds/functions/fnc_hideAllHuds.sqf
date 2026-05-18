@@ -22,10 +22,6 @@ if (_unit != ACE_player) exitWith {};
 
 // ---------------------------------------------------------- US HUD ---------------------------------------------------------- //
 
-GVAR(initPFH_FireControl_Activated) = false;
-GVAR(initPFH_HudGeneral_Activated) = false;
-GVAR(initPFH_hudInertia_Activated) = false;
-
 GVAR(hudPixelation_PP) ppEffectEnable false;
 GVAR(hudPixelation_PP) ppEffectCommit 0;
 
@@ -53,13 +49,8 @@ if (_isSwitch) then {
 } else {
     (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
     (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+    (GVAR(hudBootLogo_US)#0) ctrlSetFade 1;
+    (GVAR(hudBootLogo_US)#0) ctrlCommit 0;
+    (GVAR(hudBootText_US)#0) ctrlSetFade 1;
+    (GVAR(hudBootText_US)#0) ctrlCommit 0;
 };
-
-
-
-(GVAR(hudBootText_US)#0) ctrlSetText "";
-(GVAR(hudBootText_US)#0) ctrlCommit 0;
-
-GVAR(bootIteration) = 0;
-GVAR(bootAnimIteration) = 0;
-GVAR(displayedBootText) = [];

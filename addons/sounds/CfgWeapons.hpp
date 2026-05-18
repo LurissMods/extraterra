@@ -2,6 +2,12 @@ class CfgWeapons {
 	class ItemCore;
 	class InventoryMuzzleItem_Base_F;
 
+    class GVAR(muzzleFlashVacuum): ItemCore
+	{
+		scope = 2;
+		model = "A3\data_f\proxies\muzzle_flash\muzzle_flash_GMG.p3d";
+	};
+
 	class exterra_sounds_vacuumMuzzle : ItemCore
 	{
 
@@ -26,7 +32,8 @@ class CfgWeapons {
             mass = 0;
             soundTypeIndex = 1; // defines the position in sound[] array in the rifle
             muzzleEnd = "zaslehPoint"; // memory point in muzzle supressor's model
-			alternativeFire = "Zasleh2"; // class in cfgWeapons with model of muzzle flash
+			//alternativeFire = "Zasleh2"; // class in cfgWeapons with model of muzzle flash
+            alternativeFire = QGVAR(muzzleFlashVacuum);
 
 			class MagazineCoef
 			{

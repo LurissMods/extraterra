@@ -20,5 +20,6 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 #include "CfgSounds.hpp"
-#include "ACE_Medical_Injuries.hpp"
+#include "CfgVehicles.hpp"
+//#include "ACE_Medical_Injuries.hpp"
 #include "gui.hpp"

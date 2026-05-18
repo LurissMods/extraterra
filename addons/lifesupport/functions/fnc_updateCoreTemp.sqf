@@ -56,7 +56,13 @@ if (ACEGVAR(advanced_fatigue,isProne)) then {
 
 private _terrainGradient = abs _fwdAngle;
 private _terrainFactor = 1;
-private _gearMass = 0 max (((_unit getVariable ["ace_movement_totalLoad", loadAbs _unit]) / 22.046 - 3.5) * ACEGVAR(advanced_fatigue,loadFactor));
+
+private _loadFactor = 0.166;
+if !(isNil QACEGVAR(advanced_fatigue,loadFactor)) then {
+    _loadFactor = ACEGVAR(advanced_fatigue,loadFactor); // This is to represent lunar gravity being 0.16.6% of Earths
+};
+
+private _gearMass = 0 max (((_unit getVariable ["ace_movement_totalLoad", loadAbs _unit]) / 22.046 - 3.5) * _loadFactor);
 
 if (isNull objectParent _unit && {_currentSpeed > 0.1} && {isTouchingGround _unit || {underwater _unit}}) then {
     if (!ACEGVAR(advanced_fatigue,isSwimming)) then {

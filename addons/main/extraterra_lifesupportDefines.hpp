@@ -41,10 +41,11 @@
 #define GET_ACTIVE_COOL(unit) unit getVariable [QEGVAR(lifesupport,unitActiveThermalCool),nil]
 #define GET_ACTIVE_HEAT(unit) unit getVariable [QEGVAR(lifesupport,unitActiveThermalHeat),nil]
 
-//  --- Quick Check ---
+//  --- Quick Check and HUD ---
 #define GET_QUICK_CURRENT_OUTLINE(unit) unit getVariable [QEGVAR(huds,quickCurrentOutline),nil]
 #define GET_QUICK_SUIT_BOOL(unit) unit getVariable [QEGVAR(huds,quickSuitBool),nil]
 #define GET_QUICK_SUIT_FACTION(unit) unit getVariable [QEGVAR(huds,quickSuitFaction),nil]
+#define GET_BOOT_ACTIVE(unit) unit getVariable [QEGVAR(huds,unitBootActive),nil]
 
 //  ------------------------------------ Set var ------------------------------------
 //  --- Air ---
@@ -86,10 +87,11 @@
 #define SET_ACTIVE_COOL(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitActiveThermalCool),value,sync]
 #define SET_ACTIVE_HEAT(unit,value,sync) unit setVariable [QEGVAR(lifesupport,unitActiveThermalHeat),value,sync]
 
-//  --- Quick Check ---
+//  --- Quick Check and HUD ---
 #define SET_QUICK_CURRENT_OUTLINE(unit,value,sync) unit setVariable [QEGVAR(huds,quickCurrentOutline),value,sync]
 #define SET_QUICK_SUIT_BOOL(unit,value,sync) unit setVariable [QEGVAR(huds,quickSuitBool),value,sync]
 #define SET_QUICK_SUIT_FACTION(unit,value,sync) unit setVariable [QEGVAR(huds,quickSuitFaction),value,sync]
+#define SET_BOOT_ACTIVE(unit,value,sync) unit setVariable [QEGVAR(huds,unitBootActive),value,sync]
 
 /*---------------------------------- Life support defines ----------------------------------*/
 

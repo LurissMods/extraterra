@@ -17,6 +17,8 @@
 
 params ["_unit","_hrArray","_syncValue"];
 
+//if (!IS_MEDICAL_ACTIVITY(_unit)) exitWith {};
+
 private _sum = 0;
 {
     _sum = -150 max (_sum + _x) min 150;

@@ -30,8 +30,6 @@ private _muscleCrampsSeverity = linearConversion [HYPERTHERMIA_HEAT_CRAMPS,HYPER
 private _hypotensionSeverity = linearConversion [HYPERTHERMIA_HEAT_EXHAUSTION,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HYPERTHERMIA_BP_LIMIT,true];
 private _heartRateSeverity = linearConversion [HYPERTHERMIA_HEAT_EXHAUSTION,HYPERTHERMIA_DEATH,_unitCoreTemp,0,HYPERTHERMIA_HR_LIMIT,true];
 
-//systemChat str _heartRateSeverity;
-
 switch true do {
     case (_unitCoreTemp > HYPERTHERMIA_DEATH): {
         _unitHashmap set [((sID_CARDIAC_ARREST*ID_RADIX) + iID_HYPERTHERM),[nil,nil,nil]];

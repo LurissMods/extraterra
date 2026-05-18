@@ -9,7 +9,6 @@
 
     [QGVAR(stormEventEnded),{
         GVAR(solarStorm_PFH) call CBA_fnc_removePerFrameHandler;
-        //systemChat "Solar Storm PFH removed!";
     }] call CBA_fnc_addEventHandler;
 
 }] call CBA_fnc_addEventHandler;

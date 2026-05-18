@@ -28,7 +28,7 @@ private _unitSuitFaction = GETVAR(_unit,EGVAR(lifesupport,unitSuitFaction),NO_SU
 
 switch _unitSuitFaction do {
     case NO_SUIT_FACTION: {
-        systemChat "Switch fired case error! FUNC(statemachine,startSuitBootup)";
+        //systemChat "Switch fired case error! FUNC(statemachine,startSuitBootup)";
         WARNING("exterra_statemachine_fnc_startSuitBootup unexpected suit faction in switch-case!");
     };
     case US_SUIT_FACTION: {

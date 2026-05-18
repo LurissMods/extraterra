@@ -19,3 +19,5 @@ PREP(removeAirTank);
 PREP(getBatteries);
 PREP(setBattery);
 PREP(removeBattery);
+
+PREP(activateSuitAI);

@@ -32,17 +32,12 @@
 
 params ["_unit","_deltaT","_syncValue"];
 
-//if (!isPlayer _unit) exitWith {}; // temp fix
-
 private _unitCurrentArsTimer = (GET_ARS_TIMER(_unit)) - CBA_missionTime;
 private _unitHashmap = GET_SYMPTOM_HASHMAP(_unit);
 
 private _currentRad = GET_LIFETIME_RAD(_unit); // in mSv
 private _currentRadLimIndex = GET_ARS_RAD_INDEX(_unit);
 private _currentRadLim = ((GET_ARS_RAD_ARRAY(_unit)) select _currentRadLimIndex);
-
-//systemChat str _currentRadLim;
-//systemChat str _currentRadLimIndex;
 
 if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) then {
 
@@ -119,7 +114,6 @@ if (_currentRad > _currentRadLim || {CBA_missionTime > _unitCurrentArsTimer}) th
             // Death - 11% chance per 10 minute window (~50% chance 1 hour)
             if (random 1 < 0.11) then {
                 _unitHashmap set [((sID_DEATH*ID_RADIX) + iID_ARS),[nil,nil,nil]];
-                //systemChat "you're dead from ARS!";
             };
         };
         case 8: {

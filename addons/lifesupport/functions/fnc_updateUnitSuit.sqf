@@ -118,7 +118,6 @@ if (_helmetBool && {_suitBool && {_packBool}}) then {
     //systemChat format ["Unit: %1, Suit bool false: %2",_unit,[false,_helmetBool,_suitBool,_packBool]];
 };
 
-//_unit setVariable [QGVAR(unitSuitData), _unitSuitData, _syncValue];
 SET_SUIT_DATA(_unit,_unitSuitData,_syncValue);
 
 _syncValue;

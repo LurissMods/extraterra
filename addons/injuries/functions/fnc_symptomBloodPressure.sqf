@@ -17,6 +17,8 @@
 
 params ["_unit","_bpArray","_syncValue"];
 
+//if (!IS_MEDICAL_ACTIVITY(_unit)) exitWith {};
+
 private _avg = 0;
 {
     _avg = _avg + _x;

@@ -77,7 +77,7 @@
     "EDITBOX",
     [LSTRING(CBAset_whitelistHelmetsUS_title), LSTRING(CBAset_whitelistHelmetsUS_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat1)],
-    "exterra_uniforms_usHelmet0,exterra_uniforms_usHelmet0_camo",
+    "exterra_uniforms_usHelmet0,exterra_uniforms_usHelmet0_vomit_l,exterra_uniforms_usHelmet0_vomit_m,exterra_uniforms_usHelmet0_vomit_s,exterra_uniforms_usHelmet0_camo,exterra_uniforms_usHelmet0_camo_vomit_l,exterra_uniforms_usHelmet0_camo_vomit_m,exterra_uniforms_usHelmet0_camo_vomit_s",
     1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {
         private _whitelistArray = GVAR(CBAset_whitelistHelmetsUS) splitString ",";

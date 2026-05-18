@@ -24,13 +24,7 @@ if (!alive _unit || {!local _unit}) exitWith {};
 // Exclude headless clients from the _unit array
 if (_unit isKindOf QUOTE(HeadlessClient_F)) exitWith {};
 
-/*
-// Handles solar storm calculations for the whole server, run only on the server/player host.
-// It's done this way to ensure that the calculation stays synchronized with the statemachine.
-if (isServer && {(EGVAR(modules,stormParams) select 0) == true}) then {
-    EGVAR(modules,stormParams) params ["_bool", "_duration", "_maxDose"];
-    [_duration,_maxDose] call EFUNC(modules,updateSolarStorm);
-};*/
+//if (!isPlayer _unit) exitWith {}; // testing performance
 
 if ([_unit] call EFUNC(lifesupport,handleUnitLifesupport)) then { // returns true when update ran
     //EGVAR(main,statemachineInitalized) = true;

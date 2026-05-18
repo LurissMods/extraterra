@@ -37,6 +37,8 @@ _syncValue = [_unit,_syncValue] call FUNC(updateUnitAtmo);
 // Check what suit a unit is wearing and retrieve it's stats
 _syncValue = [_unit, _syncValue] call FUNC(updateUnitSuit);
 
+[_unit, _syncValue] call FUNC(activateSuitAI); // Note: For some reason returning syncValue from this breaks everything?
+
 _syncValue = [_unit, _deltaT, _syncValue] call FUNC(updateConsumeables);
 
 // Updates current air intake for units
@@ -55,8 +57,6 @@ if (GET_SUIT_ACTIVATED(_unit)) then {
     [_unit, _deltaT, _syncValue] call FUNC(updateBattery);
 
     if (hasInterface && {_unit == ACE_player}) then {
-        //systemChat format ["%1 is ACE_player", _unit];
-        //systemChat str _deltaT;
         call EFUNC(huds,updateRadDisplay);
         call EFUNC(huds,updateExternalAtmoDisplay);
         [_deltaT] call EFUNC(huds,updateSuitTempDisplay);
@@ -65,9 +65,6 @@ if (GET_SUIT_ACTIVATED(_unit)) then {
 };
 
 // Injuries
-//[_unit, _deltaT, _syncValue] call EFUNC(injuries,barotrauma);
-//[_unit, _deltaT, _syncValue] call EFUNC(injuries,ars);
-
 _syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryEbullism);
 _syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryArs);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryAsphyxiation);
@@ -76,7 +73,7 @@ _syncValue = [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateInjuryArs);
 [_unit, _deltaT, _syncValue] call EFUNC(injuries,updateSymptoms);
 
 if (_unit == ACE_player) then {
-    //systemChat str ([_unit, EGVAR(lifesupport,STATE_MACHINE)] call CBA_statemachine_fnc_getCurrentState);
+    //systemChat str _deltaT;
 };
 
 //END_COUNTER(lifeSupport);

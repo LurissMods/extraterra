@@ -141,6 +141,7 @@ _colour = switch (assignedTeam (leader PLAYER_GROUP)) do {
     case "GREEN": {[0,1,0,_transparency]};
     case "BLUE": {[0,0,1,_transparency]};
     case "YELLOW": {[1,1,0,_transparency]};
+    default {[1,1,1,_transparency]}; // Don't touch this. Stops a weird error that can happen when in ace arsenal on another unit while your hud is on (I've got no idea either man)
 };
 
 _groupHudText set [0,format ["%1", name(leader PLAYER_GROUP)]];
@@ -195,6 +196,7 @@ for "_i" from 1 to (_groupSize - 1) do {
         case "GREEN": {[0,1,0,_transparency]};
         case "BLUE": {[0,0,1,_transparency]};
         case "YELLOW": {[1,1,0,_transparency]};
+        default {[1,1,1,_transparency]}; // Don't touch this. Stops a weird error that can happen when in ace arsenal on another unit while your hud is on (I've got no idea either man)
     };
 
     _groupHudText pushBack (format ["%1", name _unit]);

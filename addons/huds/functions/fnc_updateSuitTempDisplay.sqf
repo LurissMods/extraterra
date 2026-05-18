@@ -16,8 +16,6 @@
 * Public: No
 */
 
-//params ["_suitFaction", "_suitTemp", "_currentActiveCool", "_currentActiveHeat", "_tempAroundPlayer", "_netHeatPower", "_deltaTemp"];
-
 params ["_deltaT"];
 
 private _intTempText = "";
@@ -28,21 +26,12 @@ private _suitMaxActiveCool = 0;
 private _suitMaxActiveHeat = 0;
 private _timeUntilDangerousTemp = 0;
 
-/*private _currentActiveCool = GETVAR(ACE_player,EGVAR(lifesupport,unitActiveThermalCool),nil);
-private _currentActiveHeat = GETVAR(ACE_player,EGVAR(lifesupport,unitActiveThermalHeat),nil);
-private _suitTemp = GETVAR(ACE_player,EGVAR(lifesupport,unitSuitTemp),nil);
-private _tempAroundPlayer = GETVAR(ACE_player,EGVAR(lifesupport,unitEnvTemp),nil);
-private _netHeatPower = GETVAR(ACE_player,EGVAR(lifesupport,unitNetHeatPwr),nil);
-private _deltaTemp = GETVAR(ACE_player,EGVAR(lifesupport,unitDeltaTemp),nil);*/
-
 private _currentActiveCool = GET_ACTIVE_COOL(ACE_player);
 private _currentActiveHeat = GET_ACTIVE_HEAT(ACE_player);
 private _suitTemp = GET_SUIT_TEMP(ACE_player);
 private _tempAroundPlayer = GET_ENVIRONMENT_TEMP(ACE_player);
 private _netHeatPower = GET_NET_HEAT(ACE_player);
 private _deltaTemp = GET_DELTA_TEMP(ACE_player);
-
-//systemChat str _tempAroundPlayer;
 
 switch (GET_SUIT_FACTION(ACE_player)) do {
     case NO_SUIT_FACTION: {
