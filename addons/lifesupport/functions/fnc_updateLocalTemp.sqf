@@ -119,7 +119,7 @@ if (GVAR(CBAset_localTemperatureSimToggle)) then { // Checks if temp simulation 
     };
 
     {
-        _inSunlight = [_unit,"VIEW"] checkVisibility [_x, _x vectorDiff ((getLighting#2) vectorMultiply IS_IN_SUN_CHECK_VECTOR_LENGTH)]; // Creates a vector from each point towards the sun and checks if it is in shadow. 1 = sun, 0 = shadow. 200m long. Making it shorter improves performance but then you'll get weird edge cases.
+        _inSunlight = [_unit,"VIEW"] checkVisibility [_x, _x vectorDiff ((getLighting#2) vectorMultiply viewDistance)]; // Creates a vector from each point towards the sun and checks if it is in shadow. 1 = sun, 0 = shadow. 200m long. Making it shorter improves performance but then you'll get weird edge cases.
         _result = _result + _inSunlight; // Adds the result of the current check to a sum of all the previous checks.
     } forEach _surroundingPosArray;
 
@@ -129,5 +129,6 @@ if (GVAR(CBAset_localTemperatureSimToggle)) then { // Checks if temp simulation 
     _tempAroundUnit = linearConversion[0,1,sunOrMoon,(_moonSurfaceTemp#0),(_moonSurfaceTemp#1)]; // If local temp simulation is disabled, the temp is controlled by time of day.
 };
 
-//_unit setVariable [QGVAR(unitEnvTemp),_tempAroundUnit,_syncValue];
 _tempAroundUnit;
+
+//IS_IN_SUN_CHECK_VECTOR_LENGTH

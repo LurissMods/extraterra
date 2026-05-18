@@ -19,7 +19,8 @@
 (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
 (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
 
-ACE_player setVariable [QEGVAR(lifesupport,suitActivated), true, true];
+//ACE_player setVariable [QEGVAR(lifesupport,suitActivated), true, true];
+SET_SUIT_ACTIVATED(ACE_player,true,true);
 
 if (GVAR(CBAset_toggleHUDppEffects)) then {
     GVAR(hudPixelation_PP) ppEffectEnable true;
@@ -42,9 +43,6 @@ if (GVAR(CBAset_toggleHUDppEffects)) then {
 // Checks if quickbooting is disabled in CBA settings
 if (GVAR(CBAset_toggleBootUp)) then {
 
-    ACE_player setVariable [QEGVAR(huds,unitBootActive),true];
-    GVAR(IFF_booted) = true;
-
     /*
     To input an empty line, put "&#160;" in the string.
     < =	&lt;
@@ -60,7 +58,7 @@ if (GVAR(CBAset_toggleBootUp)) then {
         ["S Y S B O O T \ &gt; :      I N I T",0.05], //5
         ["0 0 0 2        R O M    C H E C K . . . ",2], //6
         ["0 0 0 3	       R O M    O K",0.5], //7
-        ["&#160;",0.02], // 0.05 = time before next line, 8
+        ["&#160;",0.02], //8
         ["|  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :  :   |",0.05], //9
         ["&#160;",0.05], //10
         ["0 0 0 4        P O W E R    B O O T \  &gt; :",0.05], //11
@@ -239,7 +237,7 @@ if (GVAR(CBAset_toggleBootUp)) then {
         ],
         [
             "
-            exterra_huds_IFF_booted = false;
+            exterra_huds_isFireControlBooting = false;
             ", 44
         ],
         [
@@ -279,7 +277,8 @@ if (GVAR(CBAset_toggleBootUp)) then {
         ]
     ];
 
-    (GVAR(hudBootText_US)#0) ctrlSetTextColor GVAR(bootTextColor_cbaSetting);
+    //(GVAR(hudBootText_US)#0) ctrlSetTextColor GVAR(CBAset_hudTextColorUS_normal);
+    (GVAR(hudBootText_US)#0) ctrlSetTextColor [1,1,1,1];
     (GVAR(hudBootText_US)#0) ctrlSetFade 0;
     (GVAR(hudBootText_US)#0) ctrlCommit 0;
 
@@ -288,13 +287,10 @@ if (GVAR(CBAset_toggleBootUp)) then {
 
     playSound QGVAR(hudBootSound_US);
 
-    [_bootupText,_bootUpAnims] call FUNC(initPFH_HudBoot);
+    [QGVAR(hudBootCalled), [_bootupText,_bootUpAnims]] call CBA_fnc_localEvent;
 
 } else {
     playSound QGVAR(hudBootSound_US);
-
-    //call FUNC(initPFH_FireControl);
-    //call FUNC(initPFH_HudGeneral);
 
     {_x ctrlSetFade 0; _x ctrlCommit 0.5} forEach GVAR(hudElementsArray_US);
     (GVAR(helmetOutline_US)#0) ctrlSetFade 1;

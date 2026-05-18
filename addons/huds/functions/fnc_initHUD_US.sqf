@@ -15,16 +15,6 @@
 * Public: No
 */
 
-//params ["_unit"];
-
-//if (!_isLocal) exitWith {systemChat format ["(initHUD) Unit not local: %1",_entity]};
-//if (!isPlayer _unit) exitWith {systemChat format ["(initHUD) Unit not a player: %1",_unit]};
-//if (!hasInterface) exitWith {systemChat format ["(initHUD) Unit client has no interface: %1",_unit]};
-//if (GETVAR(_unit,GVAR(initHUD_US_Activated),false)) exitWith {systemChat format ["initHUD_US called twice! Unit: %1",_unit]};
-
-//systemChat format ["initHUD ran for unit! %1",_unit];
-//_unit setVariable [QGVAR(initHUD_Activated), true, true];
-
 if (!hasInterface) exitWith {};
 
 QGVAR(HUD_US) cutText ["","PLAIN",-1,false];

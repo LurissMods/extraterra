@@ -86,6 +86,8 @@ class CfgWeapons
         ace_hearing_hasEHP = 1;
         exterra_uniforms_passiveAirReserve = 400; // Note: Not currently used. Will remove
 
+        exterra_uniforms_vomitVariants[] = { QGVAR(usHelmet0_vomit_l),QGVAR(usHelmet0_vomit_m),QGVAR(usHelmet0_vomit_s) };
+
 		class ItemInfo : HeadgearItem
 		{
 			mass = 38.36;
@@ -113,10 +115,34 @@ class CfgWeapons
 			};
         };
 	};
+    class exterra_uniforms_usHelmet0_vomit_l: exterra_uniforms_usHelmet0 {
+        scope = 1;
+        exterra_uniforms_vomitSeverity = 1;
+        exterra_uniforms_baseVariant = QGVAR(usHelmet0);
+    };
+    class exterra_uniforms_usHelmet0_vomit_m: exterra_uniforms_usHelmet0_vomit_l {
+        exterra_uniforms_vomitSeverity = 2;
+    };
+    class exterra_uniforms_usHelmet0_vomit_s: exterra_uniforms_usHelmet0_vomit_l {
+        exterra_uniforms_vomitSeverity = 3;
+    };
     class exterra_uniforms_usHelmet0_camo: exterra_uniforms_usHelmet0 {
         displayName = CSTRING(usHelmet0_camo_displayName);
         picture = QPATHTOF(data\uniforms\us\helmet0\icon_exterra_uniforms_usHelmet0_lcp_ca.paa);
         hiddenSelections[] = { "camo" };
 		hiddenSelectionsTextures[] = { "z\exterra\addons\uniforms\data\uniforms\us\helmet0\textures\exterra_uniforms_usHelmet0_camo_main_co.paa" };
+
+        exterra_uniforms_vomitVariants[] = { QGVAR(usHelmet0_camo_vomit_l),QGVAR(usHelmet0_camo_vomit_m),QGVAR(usHelmet0_camo_vomit_s) };
+    };
+    class exterra_uniforms_usHelmet0_camo_vomit_l: exterra_uniforms_usHelmet0_camo {
+        scope = 1;
+        exterra_uniforms_vomitSeverity = 1;
+        exterra_uniforms_baseVariant = QGVAR(usHelmet0_camo);
+    };
+    class exterra_uniforms_usHelmet0_camo_vomit_m: exterra_uniforms_usHelmet0_camo_vomit_l {
+        exterra_uniforms_vomitSeverity = 2;
+    };
+    class exterra_uniforms_usHelmet0_camo_vomit_s: exterra_uniforms_usHelmet0_camo_vomit_l {
+        exterra_uniforms_vomitSeverity = 3;
     };
 };

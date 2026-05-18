@@ -1,7 +1,7 @@
 
 /*---------------------------------- General defines ----------------------------------*/
 //#define UNDEF_SUIT_FACTION -1
-#define NO_SUIT_FACTION 0
+#define NO_SUIT_FACTION -1
 #define US_SUIT_FACTION 1
 #define PRC_SUIT_FACTION 2
 

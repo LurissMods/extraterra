@@ -18,8 +18,6 @@
 params ["_unit","_deltaT","_syncValue"];
 GET_SUIT_BOOLS(_unit) params ["_inFullSuit","_helmetBool","_suitBool","_packBool"];
 
-if (_unit != ACE_player) exitWith {}; // Disabled for AI. Will revist this
-
 private _unitHashmap = GET_SYMPTOM_HASHMAP(_unit);
 private _canUnitBreathe = [_unit] call EFUNC(common,canUnitBreathe);
 private _currentSpo2 = nil;

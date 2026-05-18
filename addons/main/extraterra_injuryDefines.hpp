@@ -6,8 +6,6 @@
 #define GET_SYMPTOM_HASHMAP(unit) unit getVariable [QEGVAR(injuries,unitHashmap),nil]
 
 //  --- Symptoms ---
-//#define GET_HR_ADJUST(unit) unit getVariable [QEGVAR(injuries,hrAdjust),nil]
-//#define GET_BP_ADJUST(unit) unit getVariable [QEGVAR(injuries,bpAdjust),nil]
 #define GET_FEVER_ADJUST(unit) unit getVariable [QEGVAR(injuries,unitFeverTempAdjustment),nil]
 #define GET_HEAT_RASH_BOOL(unit) unit getVariable [QEGVAR(injuries,heatRash),nil]
 #define GET_CYANOSIS_BOOL(unit) unit getVariable [QEGVAR(injuries,cyanosis),nil]
@@ -30,14 +28,13 @@
 //  --- ACE API ---
 #define GET_HR_ADJUST(unit) unit getVariable [QEGVAR(injuries,hrAdjust),0]
 #define GET_BP_ADJUST(unit) unit getVariable [QEGVAR(injuries,bpAdjust),0]
+#define IS_MEDICAL_ACTIVITY(unit) (unit getVariable [QACEGVAR(medical,medicalActivity), ACEGVAR(medical,const_medicalActivity)])
 
 //  ------------------------------------ Set var ------------------------------------
 //  --- General ---
 #define SET_SYMPTOM_HASHMAP(unit,value,sync) unit setVariable [QEGVAR(injuries,unitHashmap),value,sync]
 
 //  --- Symptoms ---
-//#define SET_HR_ADJUST(unit,value,sync) unit setVariable [QEGVAR(injuries,hrAdjust),value,sync]
-//#define SET_BP_ADJUST(unit,value,sync) unit setVariable [QEGVAR(injuries,bpAdjust),value,sync]
 #define SET_FEVER_ADJUST(unit,value,sync) unit setVariable [QEGVAR(injuries,unitFeverTempAdjustment),value,sync]
 #define SET_HEAT_RASH_BOOL(unit,value,sync) unit setVariable [QEGVAR(injuries,heatRash),value,sync]
 #define SET_CYANOSIS_BOOL(unit,value,sync) unit setVariable [QEGVAR(injuries,cyanosis),value,sync]
@@ -170,6 +167,7 @@
 #define NAUSEA_MILD 0
 #define NAUSEA_MODERATE 1
 #define NAUSEA_SEVERE 2
+#define NAUSEA_CLEANING_TIME 30
 
 // Pain ------------------------------------------
 #define HEADACHE_MILD 0.05

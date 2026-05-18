@@ -147,9 +147,6 @@ if (isPlayer _unit)  then {
             _unitHashmap deleteAt _currentHashKey;
         };
         case sID_HR: {
-            if (_unit == ACE_player) then {
-                //systemChat str _injuryID;
-            };
             _hrArray pushBack _variable0;
             _unitHashmap deleteAt _currentHashKey;
         };
@@ -230,6 +227,5 @@ if (_feverArray isNotEqualTo []) then {
 
 // Average the fever value from multiple injuries
 if (_spo2Array isNotEqualTo []) then {
-    //systemChat str _spo2Array;
     [_unit,_deltaT,_syncValue,_spo2Array] call FUNC(symptomSPO2);
 };

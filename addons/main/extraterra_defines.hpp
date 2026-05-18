@@ -46,7 +46,7 @@
 #define CORE_TEMP_ERROR 0.001
 
 // HUDs
-#define DEFAULT_IFF_RANGE 5000 // Metres
+//#define DEFAULT_IFF_RANGE 5000 // Metres
 #define HUMAN_DANGEROUS_TEMPS [288.15,312.15] // For HUD danger display. Rename
 #define IFF_NEARBYUNITS_OFFSET [0,0,0] // Currently not used, from updateIFF
 #define KNOWS_ABOUT_IFF_THRESHOLD 0.75

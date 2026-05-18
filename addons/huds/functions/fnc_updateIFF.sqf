@@ -20,12 +20,11 @@
 params ["_unitsNearPlayer"];
 
 {
-    params ["_unitsNearPlayer"];
+    _x params ["_nearbyUnit"];
 
     private _datalink = nil;
     private _unitRelationToPlayer = nil;
     private _unitIsKindOf = nil;
-    private _nearbyUnit = _x; // _unitsNearPlayer
     private _distance = (positionCameraToWorld [0,0,0]) distance _nearbyUnit;
 
     private _sideUnit = side _nearbyUnit;

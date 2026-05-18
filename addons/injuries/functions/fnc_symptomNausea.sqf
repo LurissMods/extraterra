@@ -19,28 +19,32 @@ params ["_unit","_severity","_visorType"];
 
 if (_unit != ACE_player) exitWith {};
 
+private _vomitVariant = getArray (configFile >> QUOTE(CfgWeapons) >> (headgear _unit) >> QUOTE(exterra_uniforms_vomitVariants));
+_vomitVariant params ["_light","_moderate","_severe"];
+
 switch _severity do {
     case 0: {
         playSound QGVAR(vomitMild_snd);
-        (GVAR(vomitMildScreen_UI)#0) ctrlSetFade 0;
-        (GVAR(vomitMildScreen_UI)#0) ctrlCommit 0;
+
+        if (_light != "") then {
+            removeHeadgear _unit;
+            _unit addHeadgear _light;
+        };
     };
     case 1: {
-        (GVAR(vomitMildScreen_UI)#0) ctrlSetFade 1;
-        (GVAR(vomitMildScreen_UI)#0) ctrlCommit 0;
-
         playSound QGVAR(vomitMild_snd);
-        (GVAR(vomitModerateScreen_UI)#0) ctrlSetFade 0;
-        (GVAR(vomitModerateScreen_UI)#0) ctrlCommit 0;
+
+        if (_moderate != "") then {
+            removeHeadgear _unit;
+            _unit addHeadgear _moderate;
+        };
     };
     case 2: {
-        (GVAR(vomitMildScreen_UI)#0) ctrlSetFade 1;
-        (GVAR(vomitMildScreen_UI)#0) ctrlCommit 0;
-        (GVAR(vomitModerateScreen_UI)#0) ctrlSetFade 1;
-        (GVAR(vomitModerateScreen_UI)#0) ctrlCommit 0;
-
         playSound QGVAR(vomitMild_snd);
-        (GVAR(vomitSevereScreen_UI)#0) ctrlSetFade 0;
-        (GVAR(vomitSevereScreen_UI)#0) ctrlCommit 0;
+
+        if (_severe != "") then {
+            removeHeadgear _unit;
+            _unit addHeadgear _severe;
+        };
     };
 };

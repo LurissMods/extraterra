@@ -11,7 +11,7 @@ class CfgPatches {
             QUOTE(exterra_main),
         };
         units[] = {};
-        weapons[] = {QUOTE(exterra_uniforms_usUndersuit),QUOTE(exterra_uniforms_usBDU0),QUOTE(exterra_uniforms_usHelmet0),QUOTE(exterra_uniforms_usHelmet0_camo)};
+        weapons[] = {QGVAR(usUndersuit),QGVAR(usBDU0),QGVAR(usHelmet0),QGVAR(usHelmet0_camo)};
         VERSION_CONFIG;
     };
 };

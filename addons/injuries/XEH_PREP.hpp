@@ -22,5 +22,7 @@ PREP(initInjuryUI);
 PREP(positionsInjuries);
 PREP(aceMedicalAPIs);
 PREP(lowBloodFlowEffectPP);
+PREP(canCleanVomit);
+PREP(cleanVomit);
 
 PREP(cardiacArrest);

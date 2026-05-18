@@ -20,27 +20,25 @@
 
 params ["_unit","_syncValue"];
 
-//private _unitPreviousArea = GETVAR(_unit,GVAR(unitInAtmo),nil);
 private _unitPreviousArea = GET_ATMO(_unit);
 private _unitInArea = false;
 
 {
-    if (_unit inArea (_x select 0)) then {
+    _x params ["_positionData", "_lifeSupportData"];
+    _lifeSupportData params ["_atmoValue", "_radShieldValue"];
+
+    if (_unit inArea _positionData) then {
         _unitInArea = true;
-        if (_unitPreviousArea != ((_x select 1) select 0)) then {
+        if (_unitPreviousArea != _atmoValue) then {
             _syncValue = true;
 
-            //SETPVAR(_unit,GVAR(unitInAtmo),((_x select 1) select 0));
-            //SETPVAR(_unit,GVAR(unitRadShieldCase),((_x select 1) select 1));
-            SET_ATMO(_unit,((_x select 1) select 0),_syncValue);
-            SET_RAD_SHIELD_CASE(_unit,((_x select 1) select 1),_syncValue);
+            SET_ATMO(_unit,_atmoValue,_syncValue);
+            SET_RAD_SHIELD_CASE(_unit,_radShieldValue,_syncValue);
 
             if (_unitPreviousArea == ATMO_STATE_VACUUM) then {
                 _unit removePrimaryWeaponItem QUOTE(exterra_sounds_vacuumMuzzle);
                 _unit removeSecondaryWeaponItem QUOTE(exterra_sounds_vacuumMuzzle);
             };
-
-            _syncValue;
         };
     };
 } forEach EGVAR(modules,allLifeSupportAreas);
@@ -48,8 +46,6 @@ private _unitInArea = false;
 if (!_unitInArea && {_unitPreviousArea != ATMO_STATE_VACUUM}) then {
     _syncValue = true;
 
-    //_unit setVariable [QGVAR(unitInAtmo), ATMO_STATE_VACUUM, _syncValue];
-    //_unit setVariable [QGVAR(unitRadShieldCase), 0, _syncValue];
     SET_ATMO(_unit,ATMO_STATE_VACUUM,_syncValue);
     SET_RAD_SHIELD_CASE(_unit,0,_syncValue);
 

@@ -113,10 +113,11 @@ if (_isRespawn) then {
 
     ACE_player setVariable [QEGVAR(huds,unitBootActive), false, true];
 
-    // Quick Check
+    // Quick Check and HUD
     SET_QUICK_CURRENT_OUTLINE(_unit,NO_SUIT_FACTION,true);
     SET_QUICK_SUIT_BOOL(_unit,false,true);
     SET_QUICK_SUIT_FACTION(_unit,NO_SUIT_FACTION,true);
+    SET_BOOT_ACTIVE(_unit,false,true);
 
     // Air and Pressure
     SET_ATMO(_unit,ATMO_STATE_ERROR,true);
@@ -156,6 +157,7 @@ if (_isRespawn) then {
     SET_SUIT_BOOLS(_unit,_suitBoolsInit,true);
     SET_SUIT_FACTION(_unit,NO_SUIT_FACTION,true);
     SET_SUIT_DATA(_unit,_suitDataInit,true);
+
 };
 
 /*[{

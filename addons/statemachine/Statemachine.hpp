@@ -19,6 +19,5 @@ class exterra_statemachine {
     };
     class Dead {
         // When the unit is killed it's no longer handled by the statemachine
-        //onStateEntered = QFUNC(enteredStateDeath);
     };
 };
