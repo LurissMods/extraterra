@@ -15,11 +15,51 @@
 * Public: No
 */
 
+// ----------------------------------- Temp fix
+
+private _helmetBool = false;
+private _suitBool = false;
+private _packBool = false;
+private _masterBool = false;
+private _helmetFaction = NO_SUIT_FACTION;
+private _suitFaction = NO_SUIT_FACTION;
+private _packFaction = NO_SUIT_FACTION;
+private _masterFaction = NO_SUIT_FACTION;
+private _isItemVomitHelm = getNumber (configFile >> QUOTE(CfgWeapons) >> headgear ACE_player >> QUOTE(exterra_uniforms_vomitSeverity));
+
+{
+    _helmetBool = headgear ACE_player in _x;
+    if (_helmetBool) exitWith {
+        _helmetFaction = (_x#1);
+    };
+} forEach GVAR(whitelistHelmets);
+
+{
+    _suitBool = uniform ACE_player in _x;
+    if (_suitBool) exitWith {
+        _suitFaction = (_x#1);
+    };
+} forEach EGVAR(huds,whitelistSuits);
+
+{
+    _packBool = backpack ACE_player in _x;
+    if (_packBool) exitWith {
+        _packFaction = (_x#1)
+    };
+} forEach EGVAR(huds,whitelistPacks);
+
+if (_helmetBool && {_suitBool && {_packBool}}) then {
+    _masterBool = true;
+} else {
+    _masterBool = false;
+};
+
+// ----------------------------------- Temp fix
+
 private _hudElements = [];
 private _bootElements = [];
 private _playerFaction = GET_SUIT_FACTION(ACE_player);
 private _isBootAnimPlaying = GET_BOOT_ACTIVE(ACE_player);
-GET_SUIT_BOOLS(ACE_player) params ["_inFullSuit","_helmetBool","_suitBool","_packBool"];
 
 switch (_playerFaction) do {
     case NO_SUIT_FACTION: {
