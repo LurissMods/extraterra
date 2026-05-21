@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-//if (!EGVAR(modules,mainLoopInitalized)) exitWith {};
-
 ["CBA_settingsInitialized", {
 
     call FUNC(initHUD_US);

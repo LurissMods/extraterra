@@ -3,7 +3,7 @@
 <h1 align="center">Extraterra</h1>
 <p align="center">
     <a href="https://github.com/LurissMods/extraterra/releases/latest">
-        <img src="https://img.shields.io/badge/Version-0.2.0.0-blue?style=flat-square" alt="Extraterra Version">
+        <img src="https://img.shields.io/badge/Version-0.2.x.x-blue?style=flat-square" alt="Extraterra Version">
     </a>
     <a href="https://github.com/LurissMods/extraterra/issues">
         <img src="https://img.shields.io/github/issues-raw/LurissMods/extraterra.svg?style=flat-square&label=Issues" alt="Extraterra Issues">

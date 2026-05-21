@@ -21,7 +21,6 @@
 params ["_unit","_deltaT","_syncValue"];
 
 private _sigma = HUMAN_SURFACE_AREA*HUMAN_SKIN_BLACKBODY_EMISSIVE*STEFAN_BOLTZMANN_CONSTANT;
-private _currentMetabolicHeatWattage = 0;
 private _deltaTemp = 0;
 
 private _coreTemp = GET_CORE_TEMP(_unit);
@@ -58,8 +57,10 @@ private _terrainGradient = abs _fwdAngle;
 private _terrainFactor = 1;
 
 private _loadFactor = 0.166;
-if !(isNil QACEGVAR(advanced_fatigue,loadFactor)) then {
-    _loadFactor = ACEGVAR(advanced_fatigue,loadFactor); // This is to represent lunar gravity being 0.16.6% of Earths
+private _terrainGradientFactor = 1;
+if (ACEGVAR(advanced_fatigue,enabled)) then {
+    _loadFactor = ACEGVAR(advanced_fatigue,loadFactor); // This is to represent lunar gravity being 16.6% of Earths
+    _terrainGradientFactor = ACEGVAR(advanced_fatigue,terrainGradientFactor);
 };
 
 private _gearMass = 0 max (((_unit getVariable ["ace_movement_totalLoad", loadAbs _unit]) / 22.046 - 3.5) * _loadFactor);
@@ -79,8 +80,13 @@ if (isNull objectParent _unit && {_currentSpeed > 0.1} && {isTouchingGround _uni
         };
     };
 
-    _currentMetabolicHeatWattage = [_gearMass, _terrainGradient * ACEGVAR(advanced_fatigue,terrainGradientFactor) * 0.1, _terrainFactor, _currentSpeed] call ACEFUNC(advanced_fatigue,getMetabolicCosts);
-    _currentMetabolicHeatWattage = _currentMetabolicHeatWattage max 18.83;
+    if (ACEGVAR(advanced_fatigue,enabled) && {isPlayer _unit}) then {
+        _currentMetabolicHeatWattage = [_gearMass, _terrainGradient * ACEGVAR(advanced_fatigue,terrainGradientFactor) * 0.1, _terrainFactor, _currentSpeed] call ACEFUNC(advanced_fatigue,getMetabolicCosts);
+        _currentMetabolicHeatWattage = _currentMetabolicHeatWattage max 18.83;
+    } else {
+        _currentMetabolicHeatWattage = [_unit, _gearMass, _terrainGradient * _terrainGradientFactor * 0.1, _terrainFactor, _currentSpeed] call FUNC(getSimpleMetabolicCosts);
+        _currentMetabolicHeatWattage = _currentMetabolicHeatWattage max 18.83;
+    };
 };
 // Mark end ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

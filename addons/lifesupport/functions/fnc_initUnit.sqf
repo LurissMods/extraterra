@@ -62,6 +62,8 @@ if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
     _unit addEventHandler ["Put", {
         params ["_unit", "_container", "_item"];
 
+        //systemChat format ["Unit: %1, Container: %2, Item: %3",_unit,_container,_item];
+
         // Allows player to move equiped item within inventory
         if (_container == uniformContainer _unit) exitWith {};
         if (_container == vestContainer _unit) exitWith {};
@@ -75,11 +77,6 @@ if (!_isRespawn) then { // Always add respawn EH (same as CBA's onRespawn=1)
         params ["_unit", "_container", "_item"];
 
         //systemChat format ["Unit: %1, Container: %2, Item: %3",_unit,_container,_item];
-
-        // Allows player to move equiped item within inventory
-        //if (_container == uniformContainer _unit) exitWith {};
-        //if (_container == vestContainer _unit) exitWith {};
-        //if (_container == backpackContainer _unit) exitWith {};
 
         [_unit,_container,_item,1] call FUNC(lockEquippedItems);
     }];

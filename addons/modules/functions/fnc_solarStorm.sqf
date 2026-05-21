@@ -27,8 +27,8 @@ if (_duration < 1800) then {
     _duration = 1800;
 };
 
-if (_maxDose > 10000) then {
-    _maxDose = 10000;
+if (_maxDose > 100000) then {
+    _maxDose = 100000;
 };
 
 if _isActivated then {

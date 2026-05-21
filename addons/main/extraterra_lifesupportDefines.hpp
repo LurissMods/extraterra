@@ -125,6 +125,7 @@
 #define AREAHUMAN_FRONT 0.5 // m^2
 #define AREAHUMAN_SIDE 0.21 // m^2
 #define AREAHUMAN_TOP 0.0827 // m^2
+#define BIOMECH_EFFICIENCY 0.23
 
 // Suits
 #define DEFAULT_SUIT_MOBILITY 0.5
