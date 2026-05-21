@@ -24,6 +24,5 @@ PREP(canSuitDeactivate);
 PREP(hideAllHuds);
 PREP(updateHudInertia);
 PREP(updateFireControl);
-PREP(quickSuitCheck);
 PREP(updateHudVisibility);
 PREP(hudAnimHandler);

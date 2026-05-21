@@ -26,7 +26,6 @@ GVAR(hudPFH) = [{
 
     call FUNC(updateHudInertia);
     call FUNC(updateHudVisibility);
-    call FUNC(quickSuitCheck);
     call FUNC(hudAnimHandler);
 
     if !(GET_SUIT_ACTIVATED(ACE_player)) exitWith {};

@@ -11,6 +11,7 @@ PREP(handleUnitLifesupport);
 PREP(updateUnitAtmo);
 PREP(updateConsumeables);
 PREP(lockEquippedItems);
+PREP(getSimpleMetabolicCosts);
 
 PREP(getAirTanks);
 PREP(setAirTank);

@@ -34,6 +34,31 @@ switch _case do {
                 _unit addItem _dummyClass;
                 [LLSTRING(equippedConsumeableErrorMessage),2] call ACEFUNC(common,displayTextStructured);
             };
+
+            // Checks dropped uniform/vest/bag for equipped items. Unequips item if found
+            if ((count everyContainer _container) > 0) then {
+                {
+                    _x params ["_currentContainerName", "_currentContainerObject"];
+
+                    {
+                        if (_x == _dummyClass) then {
+                            if (GET_SUIT_ACTIVATED(_unit)) then {
+                                _currentContainerObject addItemCargoGlobal [_dummyClass, -1];
+                                _currentContainerObject addMagazineAmmoCargo  [_airTankClass,1,GET_AIR_RESERVE(_unit)];
+                            } else {
+                                _currentContainerObject addItemCargoGlobal [_dummyClass, -1];
+                                _currentContainerObject addMagazineAmmoCargo  [_airTankClass,1,_airTankCurrent];
+                            };
+
+                            SET_AIR_TANK(_unit,[],true);
+                            SET_AIR_TANK_BOOL(_unit,false,true);
+                            //[LLSTRING(equippedConsumeableErrorMessage),2] call ACEFUNC(common,displayTextStructured);
+                        };
+
+                    } forEach (itemCargo _currentContainerObject);
+
+                } forEach (everyContainer _container);
+            };
         };
 
         if (GET_BATTERY_BOOL(_unit)) then {
@@ -45,6 +70,31 @@ switch _case do {
                 _container addItemCargoGlobal [_item, -1];
                 _unit addItem _dummyClass;
                 [LLSTRING(equippedConsumeableErrorMessage),2] call ACEFUNC(common,displayTextStructured);
+            };
+
+            // Checks dropped uniform/vest/bag for equipped items. Unequips item if found
+            if ((count everyContainer _container) > 0) then {
+                {
+                    _x params ["_currentContainerName", "_currentContainerObject"];
+
+                    {
+                        if (_x == _dummyClass) then {
+                            if (GET_SUIT_ACTIVATED(_unit)) then {
+                                _currentContainerObject addItemCargoGlobal [_dummyClass, -1];
+                                _currentContainerObject addMagazineAmmoCargo  [_batteryClass,1,GET_BATTERY_RESERVE(_unit)];
+                            } else {
+                                _currentContainerObject addItemCargoGlobal [_dummyClass, -1];
+                                _currentContainerObject addMagazineAmmoCargo  [_batteryClass,1,_battCurrentSupply];
+                            };
+
+                            SET_BATTERY(_unit,[],true);
+                            SET_BATTERY_BOOL(_unit,false,true);
+                            //[LLSTRING(equippedConsumeableErrorMessage),2] call ACEFUNC(common,displayTextStructured);
+                        };
+
+                    } forEach (itemCargo _currentContainerObject);
+
+                } forEach (everyContainer _container);
             };
         };
     };
