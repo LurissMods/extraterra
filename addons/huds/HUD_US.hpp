@@ -338,6 +338,7 @@ class exterra_huds_HUD_US
             text = "";
         };
     };
+};
 
 	/*class GVAR(systemMessages_US_base)
 	{
@@ -557,5 +558,5 @@ class exterra_huds_HUD_US
 				h="0.057079 * safeZoneH";
 			};
 		};
-	};*/
-};
+	};
+};*/
