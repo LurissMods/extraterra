@@ -1,6 +1,6 @@
 author = "Luriss";
 name = "Extraterra";
-description = "Extraterra - Version 0.2.3.0";
+description = "Extraterra - Version 0.2.4.0";
 overview = "";
 overviewPicture = "logo_exterra_ca.paa";
 picture = "logo_exterra.png";
