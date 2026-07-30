@@ -7,6 +7,11 @@ class CfgWeapons
     class Binocular;
     class NVGoggles: Binocular {};
 
+    class Vest_Camo_Base : ItemCore
+	{
+		class ItemInfo;
+	};
+
     class exterra_uniforms_integrated_NVG_TI_0: NVGoggles
 	{
 		scope = 1;
@@ -145,4 +150,49 @@ class CfgWeapons
     class exterra_uniforms_usHelmet0_camo_vomit_s: exterra_uniforms_usHelmet0_camo_vomit_l {
         exterra_uniforms_vomitSeverity = 3;
     };
+
+    // change this to proper base class
+    class GVAR(usVestClean): Vest_Camo_Base
+	{
+		author = AUTHOR;
+		scope = 2;
+        displayName = "test vest";
+        picture = QPATHTOF(data\uniforms\us\vest0\icon_exterra_uniforms_usVestClean_ca.paa);
+		model = QPATHTOF(data\uniforms\us\vest0\exterra_uniforms_usVestClean.p3d);
+		hiddenSelections[] = { "camo" };
+        hiddenSelectionsTextures[] = { "z\exterra\addons\uniforms\data\uniforms\us\vest0\textures\exterra_uniforms_usVestClean_co.paa" };
+		class ItemInfo : ItemInfo
+		{
+			uniformModel = QPATHTOF(data\uniforms\us\vest0\exterra_uniforms_usVestClean.p3d);
+			containerClass = "Supply0";
+			mass = 10;
+
+			class HitpointsProtectionInfo // more info at: https://community.bistudio.com/wiki/Arma_3:_Soldier_Protection
+			{
+				class Chest
+				{
+                    hitPointName = "HitChest";
+                    armor = 22; // Note: Vanilla blufor carrier rig has an armour value of 20
+                    passThrough = 0.2;
+				};
+                class Diaphragm
+				{
+					HitpointName = "HitDiaphragm";
+					armor = 22;
+					PassThrough = 0.2;
+				};
+                class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 22;
+					passThrough = 0.2;
+				};
+                class Body
+				{
+                    hitPointName = "HitBody";
+                    passThrough = 0.2;
+				};
+			};
+		};
+	};
 };
