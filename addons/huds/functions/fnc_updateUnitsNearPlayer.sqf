@@ -18,7 +18,7 @@
 */
 
 
-private _filteredUnits = [];
+//private _filteredUnits = [];
 private _nearUnits = nearestObjects [ACE_player, ["MAN","CAR","TANK","AIR","StaticWeapon"], (getObjectViewDistance select 0), true];
 _nearUnits = _nearUnits - entities QUOTE(HeadlessClient_F);
 
