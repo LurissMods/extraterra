@@ -17,17 +17,15 @@
 * Public: No
 */
 
+private _filterUnitTypes = nearestObjects [ACE_player, ["MAN","CAR","TANK","AIR","StaticWeapon"], (getObjectViewDistance select 0), true];
+_filterUnitTypes = _filterUnitTypes - entities QUOTE(HeadlessClient_F);
 
-//private _filteredUnits = [];
-private _nearUnits = nearestObjects [ACE_player, ["MAN","CAR","TANK","AIR","StaticWeapon"], (getObjectViewDistance select 0), true];
-_nearUnits = _nearUnits - entities QUOTE(HeadlessClient_F);
-
-private _nearUnitsArray = _nearUnits select {
-    alive _x && {vehicle _x != vehicle ACE_player && {!(_x isKindOf "Animal")}};
+private _filterUnitState = _filterUnitTypes select {
+    (alive _x && {lifeState _x != "INCAPACITATED"}) && {vehicle _x != vehicle ACE_player && {!(_x isKindOf "Animal")}};
 };
 
 // This is split from the check above due to being wildly CPU intensive. Ideally the check above will cull some non-valid units before it gets to this check
-private _nearUnitsLOSArray = _nearUnitsArray select {
+private _nearUnitsLOSArray = _filterUnitState select {
     private _unitBlocked = lineIntersects [eyePos ACE_player, eyePos _x, vehicle ACE_player, _x] OR terrainIntersectASL [eyePos ACE_player, eyePos _x];
     !_unitBlocked;
 };

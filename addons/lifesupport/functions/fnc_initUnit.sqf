@@ -155,6 +155,8 @@ if (_isRespawn) then {
     SET_SUIT_FACTION(_unit,NO_SUIT_FACTION,true);
     SET_SUIT_DATA(_unit,_suitDataInit,true);
 
+    _unit setVariable [QEGVAR(huds,isEmitting),true,true];
+
 };
 
 /*[{

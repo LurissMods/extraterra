@@ -28,8 +28,9 @@ if (!isNull findDisplay 312 || {!isNull findDisplay 314}) exitWith {};
 if ((ACE_player getVariable [QEGVAR(huds,unitBootActive),false]) && {GVAR(isFireControlBooting)}) exitWith {};
 
 private _unitsNearPlayer = call FUNC(updateUnitsNearPlayer);
+private _datalinkedUnits = [_unitsNearPlayer] call FUNC(updateDatalink);
 
-[_unitsNearPlayer] call FUNC(updateIFF);
-[_unitsNearPlayer] call FUNC(updateNametags);
+[_datalinkedUnits] call FUNC(updateIFF);
+//[_unitsNearPlayer] call FUNC(updateNametags);
 call FUNC(updateWeaponCrosshair);
 call FUNC(updateTargetPosInfo);

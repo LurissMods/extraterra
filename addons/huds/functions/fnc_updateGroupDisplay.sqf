@@ -127,7 +127,7 @@ if (_groupLeaderMeanBP < BLOOD_PRESSURE_NORMAL) then {
     _convertedBloodPressure = linearConversion[BLOOD_PRESSURE_NORMAL,BLOOD_PRESSURE_FATAL_HIGH,_groupLeaderMeanBP,1,0,true];
 };
 
-if (GETVAR(leader PLAYER_GROUP,EGVAR(lifesupport,unitDatalink),false)) then {
+if (GETVAR(leader PLAYER_GROUP,EGVAR(huds,isEmitting),false)) then {
     _groupLeaderDatalink = "TRMIT";
     _datalinkAddressArray#0 ctrlSetTextColor GVAR(CBAset_hudTextColorUS_safe);
 } else {
@@ -170,7 +170,7 @@ for "_i" from 1 to (_groupSize - 1) do {
     private _convertedBloodPressure = nil;
     private _currentUnitDatalink = nil;
 
-    if (GETVAR(_unit,EGVAR(lifesupport,unitDatalink),false)) then {
+    if (GETVAR(_unit,EGVAR(huds,isEmitting),false)) then {
         _currentUnitDatalink = "TRMIT";
         (_datalinkAddressArray select _i) ctrlSetTextColor GVAR(CBAset_hudTextColorUS_safe);
     } else {

@@ -26,3 +26,4 @@ PREP(updateHudInertia);
 PREP(updateFireControl);
 PREP(updateHudVisibility);
 PREP(hudAnimHandler);
+PREP(updateDatalink);

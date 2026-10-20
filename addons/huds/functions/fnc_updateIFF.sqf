@@ -17,10 +17,12 @@
 * Public: No
 */
 
-params ["_unitsNearPlayer"];
+params ["_datalinkedUnits"];
 
 {
     _x params ["_nearbyUnit"];
+
+    private _iffDrawHashmap = createHashMap;
 
     private _datalink = nil;
     private _unitRelationToPlayer = nil;
@@ -32,25 +34,28 @@ params ["_unitsNearPlayer"];
     private _hostileCheck = _sidePlayer getFriend _sideUnit;
     private _fov = getObjectFOV vehicle ACE_player;
 
-    private _pos = nil;
+    //private _pos = nil;
     private _size = nil;
     private _icon = nil;
     private _color = nil;
 
-    switch GVAR(CBAset_datalink) do {
+    /*switch GVAR(CBAset_datalink) do {
         case 0: {_datalink = _sidePlayer};
         case 1: {_datalink = side group ACE_player};
         case 2: {_datalink = ACE_player};
-    };
+    };*/
 
-    if (lifeState _nearbyUnit == "INCAPACITATED" OR lifeState _nearbyUnit == "DEAD") then {
+    // If unit is uncon/dead, skip to next unit in the array
+    /*if (lifeState _nearbyUnit == "INCAPACITATED" OR lifeState _nearbyUnit == "DEAD") then {
         continue;
-    };
+    };*/
 
-    if ((_datalink knowsAbout _nearbyUnit) < KNOWS_ABOUT_IFF_THRESHOLD) then {
+    // If unit isn't detected by the player, skip to next unit in the array
+    /*if ((_datalink knowsAbout _nearbyUnit) < KNOWS_ABOUT_IFF_THRESHOLD) then {
         continue;
-    };
+    };*/
 
+    // Figure out what kind of thing the unit is
     if (_nearbyUnit isKindOf "MAN") then {
         _unitIsKindOf = "MAN";
     } else {
@@ -65,6 +70,7 @@ params ["_unitsNearPlayer"];
         };
     };
 
+    // Figure out the unit's allegiance to the player
     if (_hostileCheck < 0.6) then {
         _unitRelationToPlayer = "ENEMY";
     } else {
@@ -81,7 +87,7 @@ params ["_unitsNearPlayer"];
 
     switch _unitIsKindOf do {
         case ("MAN"): {
-            _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition "spine3");
+            _iffDrawHashmap set ["@position", [_nearbyUnit, 1]];
 
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
@@ -109,11 +115,19 @@ params ["_unitsNearPlayer"];
                         case "BLUE": {+[0,0,1,(GVAR(CBAset_groupColorIFF) select 3)]};
                         case "YELLOW": {+[1,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
                     };
+                    _iffDrawHashmap set ["@progress", [0.005, 0.05, -0.01, 0, [0.8,0.8,0,1], [0,0.6,0,0.6]]];
+                    _iffDrawHashmap set ["@progressValue", 0.67];
+                    _iffDrawHashmap set ["@texts", [[name _nearbyUnit, 0.025, 0, 0.05, _color]]];
+                    _iffDrawHashmap set ["@drawArrows", true];
+                    _iffDrawHashmap set ["@arrowText", [name _nearbyUnit, 0.02, 0.5, 0.3, _color]];
+                    _iffDrawHashmap set ["@arrowSize", 0.06];
+                    _iffDrawHashmap set ["@arrowColor", _color];
                 };
             };
         };
         case ("VEHICLE"): {
-            _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["zamerny", "Memory"]);
+            _iffDrawHashmap set ["@position", [_nearbyUnit, 0]];
+
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
                     _size = (GVAR(CBAset_vehicleIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_vehicleIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_vehicleIFF_maxSizeEnemy);
@@ -144,7 +158,8 @@ params ["_unitsNearPlayer"];
             };
         };
         case ("AIR"): {
-            _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["zamerny", "Memory"]);
+            _iffDrawHashmap set ["@position", [_nearbyUnit, 0]];
+
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
                     _size = (GVAR(CBAset_aircraftIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_aircraftIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_aircraftIFF_maxSizeEnemy);
@@ -175,7 +190,8 @@ params ["_unitsNearPlayer"];
             };
         };
         case ("StaticWeapon"): {
-            _pos = _nearbyUnit modelToWorldVisual (_nearbyUnit selectionPosition ["osahlavne", "Memory"]);
+            _iffDrawHashmap set ["@position", [_nearbyUnit, 0]];
+
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
                     _size = (GVAR(CBAset_staticIFF_maxSizeEnemy) / tan(_fov / GVAR(CBAset_staticIFF_minSizeEnemy)) / _distance) max GVAR(CBAset_staticIFF_maxSizeEnemy);
@@ -211,6 +227,29 @@ params ["_unitsNearPlayer"];
     _colorFade = linearConversion [DEFAULT_IFF_FADE_DIST_END,DEFAULT_IFF_FADE_DIST_START,_distance,0,1,true];
     _color set [3,_colorFade];
 
-    drawIcon3D [_icon,_color,_pos,_size,_size,0,"",0,0,"RobotoCondensed","center",false];
+    _iffDrawHashmap set ["@texture", _icon];
+    _iffDrawHashmap set ["@size", 0.075];
+    _iffDrawHashmap set ["@color", _color];
+    //_iffDrawHashmap set ["@checkVisibility", true];
 
-} forEach (_unitsNearPlayer);
+    /*private _iffDrawHashmap = createHashMapFromArray
+    [
+        ["@position", [_nearbyUnit, 1]],
+        ["@texture", _icon],
+        ["@color", _color],
+        ["@texts", [[name _nearbyUnit, 0.025, 0, 0.05, _color]]],
+        ["@size", 0.075],
+        ["@drawArrows", true],
+        ["@arrowText", [name _nearbyUnit, 0.04, 0.5, 0.3, _color]],
+        ["@arrowSize", 0.06],
+        //["@fade", [10, 100]],
+        ["@checkVisibility", true],
+        ["@arrowColor", _color],
+        ["@progress", [0.005, 0.05, -0.01, 0, [0.8,0.8,0,1], [0,0.6,0,0.6]]],
+        ["@progressValue", 0.67]
+    ];*/
+    drawIcon3D _iffDrawHashmap;
+
+    //drawIcon3D [_icon,_color,_pos,_size,_size,0,"",0,0,"RobotoCondensed","center",false];
+
+} forEach (_datalinkedUnits);
