@@ -10,7 +10,7 @@ GVAR(hudRadialBlur_PP) = ppEffectCreate ["RadialBlur", 100];
 GVAR(filmGrain_PP) = ppEffectCreate ["FilmGrain", 2000];
 
 // ------------------------------------ DO NOT TOUCH ------------------------------------
-QGVAR(helmetBlindfold); // This is used to blind the player with certain helmets via cutText. The HUD image method doesn't play nice with Arma's eye adaption
+GVAR(helmetBlindfold); // This is used to blind the player with certain helmets via cutText. The HUD image method doesn't play nice with Arma's eye adaption
 GVAR(whitelistHelmets) = [];
 GVAR(whitelistSuits) = [];
 GVAR(whitelistPacks) = [];

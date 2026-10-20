@@ -140,7 +140,7 @@ if (!isNull findDisplay 312 || {!isNull findDisplay 314 || {cameraView == "GROUP
         case (cameraView == "EXTERNAL"): {
             /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
             (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
-            QGVAR(helmetBlindfold) cutText ["", "BLACK IN"];
+            QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
 
             if (GET_SUIT_ACTIVATED(ACE_player) && {!_isBootAnimPlaying}) then {
                 {_x ctrlSetFade 0; _x ctrlCommit 0} forEach _hudElements;
@@ -259,5 +259,3 @@ if (!isNull findDisplay 312 || {!isNull findDisplay 314 || {cameraView == "GROUP
         };
     };
 };
-
-// test commit
