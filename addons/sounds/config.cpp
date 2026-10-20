@@ -19,10 +19,10 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 #include "CfgWeapons.hpp"
 
-class cfgSoundShaders {
+class CfgSoundShaders {
 	#include "m2CarbineSoundShaders.hpp"
 };
 
-class cfgSoundSets {
+class CfgSoundSets {
 	#include "m2CarbineSoundSets.hpp"
 };
