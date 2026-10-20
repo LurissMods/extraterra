@@ -11,13 +11,13 @@ class exterra_huds_HUD_US
 	duration = 1e+6;
     class controlsBackground
     {
-        class helmetOutline_US : RscPicture {
+        /*class helmetOutline_US : RscPicture {
             idc = HELMET_OUTLINE_US_IDC;
             show = 1;
             text = QUOTE(z\exterra\addons\huds\data\hudUI_US\exterra_huds_helmetBackground_us_ca.paa);
             colorBackground[] = {1,1,1,1};
             color[] = {1,1,1,1};
-        };
+        };*/
         class hudOutline_US : RscPicture {
             idc = HUD_OUTLINE_US_IDC;
             show = 1;

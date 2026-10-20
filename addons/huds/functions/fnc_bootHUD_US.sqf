@@ -293,6 +293,7 @@ if (GVAR(CBAset_toggleBootUp)) then {
     playSound QGVAR(hudBootSound_US);
 
     {_x ctrlSetFade 0; _x ctrlCommit 0.5} forEach GVAR(hudElementsArray_US);
-    (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-    (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+    /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+    (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+    QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
 };

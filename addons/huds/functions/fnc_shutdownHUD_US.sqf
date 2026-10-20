@@ -42,8 +42,9 @@ GVAR(filmGrain_PP) ppEffectCommit 0;
 
 {_x ctrlSetFade 1; _x ctrlCommit 0} forEach GVAR(hudElementsArray_US);
 
-(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
-(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+/*(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+QGVAR(helmetBlindfold) cutText ["", "BLACK FADED"];
 
 (GVAR(hudBootText_US)#0) ctrlSetText "";
 (GVAR(hudBootText_US)#0) ctrlCommit 0;

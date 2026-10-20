@@ -40,15 +40,18 @@ GET_SUIT_BOOLS(_unit) params ["_inFullSuit","_helmetBool","_suitBool","_packBool
 
 if (_isSwitch) then {
     if (GET_SUIT_FACTION(_unit) == US_SUIT_FACTION && {_helmetBool}) then {
-        (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
-        (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+        /*(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
+        (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+        QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
     } else {
-        (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-        (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+        /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+        (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+        QGVAR(helmetBlindfold) cutText ["", "BLACK FADED"];
     };
 } else {
-    (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-    (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+    /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+    (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+    QGVAR(helmetBlindfold) cutText ["", "BLACK FADED"];
     (GVAR(hudBootLogo_US)#0) ctrlSetFade 1;
     (GVAR(hudBootLogo_US)#0) ctrlCommit 0;
     (GVAR(hudBootText_US)#0) ctrlSetFade 1;

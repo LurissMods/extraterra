@@ -24,7 +24,7 @@ QGVAR(HUD_US) cutRsc [QGVAR(HUD_US), "PLAIN", -1, false, false];
 with uiNamespace do {
     private _displayHUD_US = uiNamespace getVariable QGVAR(HUD_US);
 
-    GVAR(helmetOutline_US) = _displayHUD_US displayCtrl HELMET_OUTLINE_US_IDC;
+    //GVAR(helmetOutline_US) = _displayHUD_US displayCtrl HELMET_OUTLINE_US_IDC;
     GVAR(hudOutline_US) = _displayHUD_US displayCtrl HUD_OUTLINE_US_IDC;
 
     GVAR(hudBootLogo_US) = _displayHUD_US displayCtrl HUD_BOOT_LOGO_US_IDC;
@@ -111,7 +111,7 @@ with uiNamespace do {
 
 };
 
-GVAR(helmetOutline_US) = [uiNamespace getVariable QGVAR(helmetOutline_US)];
+//GVAR(helmetOutline_US) = [uiNamespace getVariable QGVAR(helmetOutline_US)];
 GVAR(hudOutline_US) = [uiNamespace getVariable QGVAR(hudOutline_US)];
 
 GVAR(hudBootLogo_US) = [uiNamespace getVariable QGVAR(hudBootLogo_US)];
@@ -199,9 +199,9 @@ GVAR(hudSquad_datalink9_text_US) = [uiNamespace getVariable QGVAR(hudSquad_datal
 //(GVAR(hudMasterControl_US)#0) ctrlSetFade 1;
 //(GVAR(hudMasterControl_US)#0) ctrlCommit 0;
 
-(GVAR(helmetOutline_US)#0) ctrlSetTextColor [1,1,1,1];
+/*(GVAR(helmetOutline_US)#0) ctrlSetTextColor [1,1,1,1];
 (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
 
 (GVAR(hudOutline_US)#0) ctrlSetTextColor GVAR(CBAset_hudOutlineColorUS);
 (GVAR(hudOutline_US)#0) ctrlSetFade 1;

@@ -19,8 +19,8 @@
 
 params ["_positionAdjustX", "_positionAdjustY"];
 
-(GVAR(helmetOutline_US)#0) ctrlSetPosition HUD_HELMET_BACKGROUND_US_POS(_positionAdjustX,_positionAdjustY);
-(GVAR(helmetOutline_US)#0) ctrlCommit 0;
+/*(GVAR(helmetOutline_US)#0) ctrlSetPosition HUD_HELMET_BACKGROUND_US_POS(_positionAdjustX,_positionAdjustY);
+(GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
 
 (GVAR(hudOutline_US)#0) ctrlSetPosition HUD_MASTER_US_POS(_positionAdjustX,_positionAdjustY);
 (GVAR(hudOutline_US)#0) ctrlCommit 0;

@@ -89,12 +89,14 @@ if (_helmetFaction != (GET_QUICK_CURRENT_OUTLINE(ACE_player))) then {
 
     switch _helmetFaction do {
         case NO_SUIT_FACTION: {
-            (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-            (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+            /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+            (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+            QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
         };
         case US_SUIT_FACTION: {
-            (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
-            (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+            /*(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
+            (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+            QGVAR(helmetBlindfold) cutText ["", "BLACK FADED"];
         };
     };
 };
@@ -136,8 +138,9 @@ if (!isNull findDisplay 312 || {!isNull findDisplay 314 || {cameraView == "GROUP
     switch true do {
         // If in 3rd person
         case (cameraView == "EXTERNAL"): {
-            (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-            (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+            /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+            (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+            QGVAR(helmetBlindfold) cutText ["", "BLACK IN"];
 
             if (GET_SUIT_ACTIVATED(ACE_player) && {!_isBootAnimPlaying}) then {
                 {_x ctrlSetFade 0; _x ctrlCommit 0} forEach _hudElements;
@@ -175,12 +178,14 @@ if (!isNull findDisplay 312 || {!isNull findDisplay 314 || {cameraView == "GROUP
 
                 switch (_playerFaction) do {
                     case NO_SUIT_FACTION: {
-                        (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-                        (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+                        /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+                        (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+                        QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
                     };
                     case US_SUIT_FACTION: {
-                        (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-                        (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+                        /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+                        (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+                        QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
                     };
                 };
             } else {
@@ -188,18 +193,21 @@ if (!isNull findDisplay 312 || {!isNull findDisplay 314 || {cameraView == "GROUP
                     if (_helmetBool) then {
                         switch (_playerFaction) do {
                             case NO_SUIT_FACTION: {
-                                (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
-                                (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+                                /*(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
+                                (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+                                QGVAR(helmetBlindfold) cutText ["", "BLACK FADED"];
                             };
                             case US_SUIT_FACTION: {
-                                (GVAR(helmetOutline_US)#0) ctrlSetFade 0;
-                                (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+                                /*(GVAR(helmetOutline_US)#0) ctrlSetFade 0;
+                                (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+                                QGVAR(helmetBlindfold) cutText ["", "BLACK FADED"];
                             };
                         };
                         GVAR(hudWasHidden) = false;
                     } else {
-                        (GVAR(helmetOutline_US)#0) ctrlSetFade 1;
-                        (GVAR(helmetOutline_US)#0) ctrlCommit 0;
+                        /*(GVAR(helmetOutline_US)#0) ctrlSetFade 1;
+                        (GVAR(helmetOutline_US)#0) ctrlCommit 0;*/
+                        QGVAR(helmetBlindfold) cutText ["", "PLAIN"];
                         GVAR(hudWasHidden) = false;
                     };
                 };

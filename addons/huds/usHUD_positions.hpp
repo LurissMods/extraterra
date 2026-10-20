@@ -1,5 +1,5 @@
 #define HUD_MASTER_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((107 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((107 * pixelGridBase * pixelH) * 0.5) + y,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
-#define HUD_HELMET_BACKGROUND_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((120 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((120 * pixelGridBase * pixelH) * 0.5) + y,120 * pixelGridBase * pixelW,120 * pixelGridBase * pixelH]
+#define HUD_HELMET_BACKGROUND_US_POS(x,y) [safeZoneX + (safeZoneW * 0.5) - ((160 * pixelGridBase * pixelW) * 0.5) + x,safeZoneY + (safeZoneH * 0.5) - ((120 * pixelGridBase * pixelH) * 0.5) + y,160 * pixelGridBase * pixelW,120 * pixelGridBase * pixelH]
 //#define HUD_OUTLINE_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
 //#define HUD_OUTLINE_LINES_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
 //#define HUD_OUTLINE_TEXT_US_POS [0,0,107 * pixelGridBase * pixelW,107 * pixelGridBase * pixelH]
