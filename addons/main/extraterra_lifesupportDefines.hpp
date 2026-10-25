@@ -46,6 +46,7 @@
 #define GET_QUICK_SUIT_BOOL(unit) unit getVariable [QEGVAR(huds,quickSuitBool),nil]
 #define GET_QUICK_SUIT_FACTION(unit) unit getVariable [QEGVAR(huds,quickSuitFaction),nil]
 #define GET_BOOT_ACTIVE(unit) unit getVariable [QEGVAR(huds,unitBootActive),nil]
+#define GET_DATALINK(unit) unit getVariable [QEGVAR(huds,isEmitting),nil];
 
 //  ------------------------------------ Set var ------------------------------------
 //  --- Air ---
@@ -92,6 +93,7 @@
 #define SET_QUICK_SUIT_BOOL(unit,value,sync) unit setVariable [QEGVAR(huds,quickSuitBool),value,sync]
 #define SET_QUICK_SUIT_FACTION(unit,value,sync) unit setVariable [QEGVAR(huds,quickSuitFaction),value,sync]
 #define SET_BOOT_ACTIVE(unit,value,sync) unit setVariable [QEGVAR(huds,unitBootActive),value,sync]
+#define SET_DATALINK(unit,value,sync) unit setVariable [QEGVAR(huds,isEmitting),value,sync];
 
 /*---------------------------------- Life support defines ----------------------------------*/
 

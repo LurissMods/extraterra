@@ -12,3 +12,8 @@ PREP_RECOMPILE_END;
 EGVAR(lifesupport,STATE_MACHINE) = (configFile >> "exterra_statemachine") call CBA_statemachine_fnc_createFromConfig;
 
 ADDON = true;
+
+GVAR(datalinkBlufor) = [];
+GVAR(datalinkOpfor) = [];
+GVAR(datalinkIndep) = [];
+GVAR(datalinkCiv) = [];

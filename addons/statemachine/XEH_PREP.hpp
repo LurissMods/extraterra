@@ -1,6 +1,6 @@
 PREP(localityChangedEH);
 PREP(resetStateDefault);
 PREP(handleStateDefault);
-//PREP(handleStateSuitActivated);
+PREP(updateDatalink);
 PREP(startSuitBootup);
 PREP(startSuitShutdown);

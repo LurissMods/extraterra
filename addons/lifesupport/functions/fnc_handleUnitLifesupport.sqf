@@ -37,7 +37,7 @@ _syncValue = [_unit,_syncValue] call FUNC(updateUnitAtmo);
 // Check what suit a unit is wearing and retrieve it's stats
 _syncValue = [_unit, _syncValue] call FUNC(updateUnitSuit);
 
-[_unit, _syncValue] call FUNC(activateSuitAI); // Note: For some reason returning syncValue from this breaks everything?
+_syncValue = [_unit, _syncValue] call FUNC(activateSuitAI);
 
 _syncValue = [_unit, _deltaT, _syncValue] call FUNC(updateConsumeables);
 
