@@ -5,7 +5,7 @@ class CfgWeapons {
     class GVAR(muzzleFlashVacuum): ItemCore
 	{
 		scope = 2;
-		model = "A3\data_f\proxies\muzzle_flash\muzzle_flash_GMG.p3d";
+		model = "A3\data_f\proxies\muzzle_flash\muzzle_flash_pistol.p3d";
 	};
 
 	class exterra_sounds_vacuumMuzzle : ItemCore
@@ -59,7 +59,7 @@ class CfgWeapons {
 			{
                 dispersionCoef = "1.0f";
 				artilleryDispersionCoef = "1.0f";
-				fireLightCoef = "0.0f";
+				fireLightCoef = "0.25f";
 				recoilCoef = "1.0f";
 				recoilProneCoef = "1.0f";
 				minRangeCoef = "1.0f";
