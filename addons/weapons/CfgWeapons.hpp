@@ -32,6 +32,6 @@ class PointerSlot_Rail;
 class CfgWeapons
 {
 
-    #include "weapons/m2carbine/m2CarbineConfig.hpp"
+    #include "weapons\m2carbine\m2CarbineConfig.hpp"
 
 };
