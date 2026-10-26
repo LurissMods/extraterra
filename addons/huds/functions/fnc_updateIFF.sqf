@@ -29,6 +29,7 @@ params ["_datalinkedUnits"];
     private _unitIsKindOf = nil;
     private _distance = (positionCameraToWorld [0,0,0]) distance _nearbyUnit;
 
+
     private _sideUnit = side _nearbyUnit;
     private _sidePlayer = side ACE_player;
     private _hostileCheck = _sidePlayer getFriend _sideUnit;
@@ -38,6 +39,8 @@ params ["_datalinkedUnits"];
     private _size = nil;
     private _icon = nil;
     private _color = nil;
+
+    private _colorFade = linearConversion [DEFAULT_IFF_FADE_DIST_START,DEFAULT_IFF_FADE_DIST_END,_distance,0,1,true];
 
     /*switch GVAR(CBAset_datalink) do {
         case 0: {_datalink = _sidePlayer};
@@ -87,7 +90,7 @@ params ["_datalinkedUnits"];
 
     switch _unitIsKindOf do {
         case ("MAN"): {
-            _iffDrawHashmap set ["@position", [_nearbyUnit, 1]];
+            _iffDrawHashmap set ["@position", [_nearbyUnit, "spine3"]];
 
             switch _unitRelationToPlayer do {
                 case "ENEMY" : {
@@ -115,11 +118,22 @@ params ["_datalinkedUnits"];
                         case "BLUE": {+[0,0,1,(GVAR(CBAset_groupColorIFF) select 3)]};
                         case "YELLOW": {+[1,1,0,(GVAR(CBAset_groupColorIFF) select 3)]};
                     };
-                    _iffDrawHashmap set ["@progress", [0.005, 0.05, -0.01, 0, [0.8,0.8,0,1], [0,0.6,0,0.6]]];
-                    _iffDrawHashmap set ["@progressValue", 0.67];
-                    _iffDrawHashmap set ["@texts", [[name _nearbyUnit, 0.025, 0, 0.05, _color]]];
+
+                    if (_nearbyUnit == cursorObject) then {
+                        _iffDrawHashmap set ["@progress", [0.004, _size, -0.006, 0, +GVAR(CBAset_airBarColorUS), +GVAR(CBAset_hudLinesColorUS)]];
+                        _iffDrawHashmap set ["@progressValue", 0.67];
+                        _iffDrawHashmap set ["@texts", [[name _nearbyUnit, _size, 0, -_size, _color]]];
+                        _colorFade = 1;
+                    } else {
+                        if (_distance < DEFAULT_IFF_FADE_DIST_START) then {
+                            _iffDrawHashmap set ["@progress", [0.004, _size, -0.006, 0, +GVAR(CBAset_airBarColorUS), +GVAR(CBAset_hudLinesColorUS)]];
+                            _iffDrawHashmap set ["@progressValue", 0.67];
+                            _iffDrawHashmap set ["@texts", [[name _nearbyUnit, _size, 0, -_size, _color]]];
+                        }
+                    };
+
                     _iffDrawHashmap set ["@drawArrows", true];
-                    _iffDrawHashmap set ["@arrowText", [name _nearbyUnit, 0.02, 0.5, 0.3, _color]];
+                    _iffDrawHashmap set ["@arrowText", [name _nearbyUnit, _size, 0.5, 0.3, _color]];
                     _iffDrawHashmap set ["@arrowSize", 0.06];
                     _iffDrawHashmap set ["@arrowColor", _color];
                 };
@@ -224,11 +238,11 @@ params ["_datalinkedUnits"];
         default {ERROR_1("Error! _unitIsKindOf unknown case! %1",_unitIsKindOf); break};
     };
 
-    _colorFade = linearConversion [DEFAULT_IFF_FADE_DIST_END,DEFAULT_IFF_FADE_DIST_START,_distance,0,1,true];
-    _color set [3,_colorFade];
+
+    _color set [3,1];
 
     _iffDrawHashmap set ["@texture", _icon];
-    _iffDrawHashmap set ["@size", 0.075];
+    _iffDrawHashmap set ["@size", _size];
     _iffDrawHashmap set ["@color", _color];
     //_iffDrawHashmap set ["@checkVisibility", true];
 

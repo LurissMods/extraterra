@@ -434,7 +434,7 @@
     "SLIDER",
     [LSTRING(CBAset_infantryIFF_maxSizeFriend_title), LSTRING(CBAset_infantryIFF_maxSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat5)],
-    [0.01, 5.00, DEFAULT_MAX_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -445,7 +445,7 @@
     "SLIDER",
     [LSTRING(CBAset_infantryIFF_minSizeFriend_title), LSTRING(CBAset_infantryIFF_minSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat5)],
-    [0.01, 5, DEFAULT_MIN_IFF_INFANTRY_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_INFANTRY_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -467,7 +467,7 @@
     "SLIDER",
     [LSTRING(CBAset_infantryIFF_maxSizeEnemy_title), LSTRING(CBAset_infantryIFF_maxSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat5)],
-    [0.01, 5, DEFAULT_MAX_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -478,7 +478,7 @@
     "SLIDER",
     [LSTRING(CBAset_infantryIFF_minSizeEnemy_title), LSTRING(CBAset_infantryIFF_minSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat5)],
-    [0.01, 5, DEFAULT_MIN_IFF_INFANTRY_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_INFANTRY_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -500,7 +500,7 @@
     "SLIDER",
     [LSTRING(CBAset_infantryIFF_maxSizeNeutral_title), LSTRING(CBAset_infantryIFF_maxSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat5)],
-    [0.01, 5, DEFAULT_MAX_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -511,7 +511,7 @@
     "SLIDER",
     [LSTRING(CBAset_infantryIFF_minSizeNeutral_title), LSTRING(CBAset_infantryIFF_minSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat5)],
-    [0.01, 5, DEFAULT_MIN_IFF_INFANTRY_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_INFANTRY_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -535,7 +535,7 @@
     "SLIDER",
     [LSTRING(CBAset_vehicleIFF_maxSizeFriend_title), LSTRING(CBAset_vehicleIFF_maxSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat6)],
-    [0.01, 5, DEFAULT_MAX_IFF_VEHICLES_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_VEHICLES_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -546,7 +546,7 @@
     "SLIDER",
     [LSTRING(CBAset_vehicleIFF_minSizeFriend_title), LSTRING(CBAset_vehicleIFF_minSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat6)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -568,7 +568,7 @@
     "SLIDER",
     [LSTRING(CBAset_vehicleIFF_maxSizeEnemy_title), LSTRING(CBAset_vehicleIFF_maxSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat6)],
-    [0.01, 5, DEFAULT_MAX_IFF_VEHICLES_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_VEHICLES_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -579,7 +579,7 @@
     "SLIDER",
     [LSTRING(CBAset_vehicleIFF_minSizeEnemy_title), LSTRING(CBAset_vehicleIFF_minSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat6)],
-    [0.01, 10.00, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -601,7 +601,7 @@
     "SLIDER",
     [LSTRING(CBAset_vehicleIFF_maxSizeNeutral_title), LSTRING(CBAset_vehicleIFF_maxSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat6)],
-    [0.01, 5, DEFAULT_MAX_IFF_VEHICLES_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_VEHICLES_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -612,7 +612,7 @@
     "SLIDER",
     [LSTRING(CBAset_vehicleIFF_minSizeNeutral_title), LSTRING(CBAset_vehicleIFF_minSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat6)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -636,7 +636,7 @@
     "SLIDER",
     [LSTRING(CBAset_aircraftIFF_maxSizeFriend_title), LSTRING(CBAset_aircraftIFF_maxSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat7)],
-    [0.01, 5, DEFAULT_MAX_IFF_AIRCRAFT_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_AIRCRAFT_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -647,7 +647,7 @@
     "SLIDER",
     [LSTRING(CBAset_aircraftIFF_minSizeFriend_title), LSTRING(CBAset_aircraftIFF_minSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat7)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -669,7 +669,7 @@
     "SLIDER",
     [LSTRING(CBAset_aircraftIFF_maxSizeEnemy_title), LSTRING(CBAset_aircraftIFF_maxSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat7)],
-    [0.01, 5, DEFAULT_MAX_IFF_AIRCRAFT_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_AIRCRAFT_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -680,7 +680,7 @@
     "SLIDER",
     [LSTRING(CBAset_aircraftIFF_minSizeEnemy_title), LSTRING(CBAset_aircraftIFF_minSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat7)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -702,7 +702,7 @@
     "SLIDER",
     [LSTRING(CBAset_aircraftIFF_maxSizeNeutral_title), LSTRING(CBAset_aircraftIFF_maxSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat7)],
-    [0.01, 5, DEFAULT_MAX_IFF_AIRCRAFT_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_AIRCRAFT_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -713,7 +713,7 @@
     "SLIDER",
     [LSTRING(CBAset_aircraftIFF_minSizeNeutral_title), LSTRING(CBAset_aircraftIFF_minSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat7)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -737,7 +737,7 @@
     "SLIDER",
     [LSTRING(CBAset_staticIFF_maxSizeFriend_title), LSTRING(CBAset_staticIFF_maxSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat8)],
-    [0.01, 5, DEFAULT_MAX_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -748,7 +748,7 @@
     "SLIDER",
     [LSTRING(CBAset_staticIFF_minSizeFriend_title), LSTRING(CBAset_staticIFF_minSizeFriend_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat8)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -770,7 +770,7 @@
     "SLIDER",
     [LSTRING(CBAset_staticIFF_maxSizeEnemy_title), LSTRING(CBAset_staticIFF_maxSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat8)],
-    [0.01, 5, DEFAULT_MAX_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -781,7 +781,7 @@
     "SLIDER",
     [LSTRING(CBAset_staticIFF_minSizeEnemy_title), LSTRING(CBAset_staticIFF_minSizeEnemy_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat8)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -803,7 +803,7 @@
     "SLIDER",
     [LSTRING(CBAset_staticIFF_maxSizeNeutral_title), LSTRING(CBAset_staticIFF_maxSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat8)],
-    [0.01, 5, DEFAULT_MAX_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MAX_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
@@ -814,7 +814,7 @@
     "SLIDER",
     [LSTRING(CBAset_staticIFF_minSizeNeutral_title), LSTRING(CBAset_staticIFF_minSizeNeutral_desc)],
     [LSTRING(CBA_title), LSTRING(CBA_cat8)],
-    [0.01, 5, DEFAULT_MIN_IFF_OTHER_FOV, 2],
+    [0.001, 0.2, DEFAULT_MIN_IFF_OTHER_FOV, 3],
     0, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {},
     false // Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>

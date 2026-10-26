@@ -19,7 +19,7 @@
 
 params ["_unit","_syncValue"];
 
-if (isPlayer _unit) exitWith {};
+if (isPlayer _unit) exitWith {_syncValue};
 
 GET_SUIT_BOOLS(_unit) params ["_inFullSuit","_helmetBool","_suitBool","_packBool"];
 
@@ -83,5 +83,9 @@ if !(GET_SUIT_ACTIVATED(_unit)) then {
     if (_inFullSuit && {(GET_BATTERY_BOOL(_unit))}) then {
         _syncValue = true;
         SET_SUIT_ACTIVATED(_unit,true,_syncValue);
+
+        SET_DATALINK(_unit,true,_syncValue);
     };
 };
+
+_syncValue;
