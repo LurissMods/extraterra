@@ -21,11 +21,15 @@
 
 params ["_unit", "_moonSurfaceTemp", "_syncValue"];
 
-private _distCheck = [];
 private _tempAroundUnit = nil;
-private _presetSelection = nil;
 
-if (GVAR(CBAset_localTemperatureSimToggle)) then { // Checks if temp simulation is enabled in the CBA settings.
+private _points = nil;
+private _rows = nil;
+private _distance = nil;
+
+private _pointsArray = [];
+
+if ((!isPlayer _unit) || {GVAR(CBAset_localTemperatureSimToggle)}) then { // Checks if temp simulation is enabled in the CBA settings.
     /* Behold the CPU muncher 9000. This thing is basically a primitive form of path tracing. I've locked down the user input just in case someone tries to brick their PC.
 
     This is the local temperature simulation script. It works by creating a grid of positions around the player (adjusted to 1m above ground level) and checks if that position is in shadow or not.
@@ -33,102 +37,186 @@ if (GVAR(CBAset_localTemperatureSimToggle)) then { // Checks if temp simulation 
     The theory is that due to the 2 week long lunar day/night combined with the hard vacuum, the temperature gradient between lit and shaded areas would be quite large, hence the temperature in a given area would be the average of the extremes.
     */
 
-    if (_unit == ACE_player) then {
-        _presetSelection = GVAR(CBAset_localTemperatureSimValue); // This selects detail setting selected in the CBA settings.
-    } else {
-        _presetSelection = 4;
-    };
-
-    switch _presetSelection do {
+    // This selects detail setting selected in the CBA settings.
+    switch GVAR(CBAset_localTemperatureSimValue) do {
         case 0: {
-            _distCheck = [50,12.5,2]; // 64 Points
+            _points = 64;
+            _rows = 4;
+            _distance = 100;
         };
         case 1: {
-            _distCheck = [50,(50/3),2]; // 48 Points
+            _points = 48;
+            _rows = 3;
+            _distance = 100;
         };
         case 2: {
-            _distCheck = [50,25,2]; // 32 Points
+            _points = 32;
+            _rows = 4;
+            _distance = 75;
         };
         case 3: {
-            _distCheck = [50,25,1]; // 16 Points
+            _points = 24;
+            _rows = 3;
+            _distance = 75;
         };
         case 4: {
-            _distCheck = [50,50,1]; // 8 Points
-        };
-    };
-    private _surroundingPosArray = []; // Initalizations. Needs to be redone every loop anyways.
-    private _result = 0;
-    private _totalI = 0;
-
-    for "_i" from 1 to (_distCheck#0/_distCheck#1) do { // For loop iterating through the number of itterations (E.g. 50/10 = 5, with points at radi of 10, 20, 30, 40, and 50 meters).
-
-        _surroundingPosArray set [_totalI, eyePos _unit vectorAdd [(_distCheck#1*_i),0]]; // Defines one position from the player and adds it to the _surroundingPosArray array.
-        _surroundingPosArray#(_totalI) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL]; // Sets the coordinate to +1m above the ground. If this isn't here the points won't conform to the terrain.
-
-        _surroundingPosArray set [_totalI+1, eyePos _unit vectorAdd [0,(_distCheck#1*_i)]];
-        _surroundingPosArray#(_totalI+1) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+1)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _surroundingPosArray set [_totalI+2, eyePos _unit vectorAdd [-1*(_distCheck#1*_i),0]];
-        _surroundingPosArray#(_totalI+2) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+2)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _surroundingPosArray set [_totalI+3, eyePos _unit vectorAdd [0,-1*(_distCheck#1*_i)]];
-        _surroundingPosArray#(_totalI+3) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+3)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _surroundingPosArray set [_totalI+4, eyePos _unit vectorAdd [(_distCheck#1*_i),(_distCheck#1*_i)]];
-        _surroundingPosArray#(_totalI+4) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+4)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _surroundingPosArray set [_totalI+5, eyePos _unit vectorAdd [-1*(_distCheck#1*_i),(_distCheck#1*_i)]];
-        _surroundingPosArray#(_totalI+5) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+5)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _surroundingPosArray set [_totalI+6, eyePos _unit vectorAdd [(_distCheck#1*_i),-1*(_distCheck#1*_i)]];
-        _surroundingPosArray#(_totalI+6) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+6)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _surroundingPosArray set [_totalI+7, eyePos _unit vectorAdd [-1*(_distCheck#1*_i),-1*(_distCheck#1*_i)]];
-        _surroundingPosArray#(_totalI+7) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+7)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-        _totalI = _totalI + 8;
-
-        if (_distCheck#2 == 2) then {
-
-            _surroundingPosArray set [_totalI, eyePos _unit vectorAdd [((_distCheck#1*_i)/(_distCheck#2*_i)),(_distCheck#1*_i)]];
-            _surroundingPosArray#(_totalI) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+1, eyePos _unit vectorAdd [-1*((_distCheck#1*_i)/(_distCheck#2*_i)),(_distCheck#1*_i)]];
-            _surroundingPosArray#(_totalI+1) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+1)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+2, eyePos _unit vectorAdd [((_distCheck#1*_i)/(_distCheck#2*_i)),-1*(_distCheck#1*_i)]];
-            _surroundingPosArray#(_totalI+2) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+2)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+3, eyePos _unit vectorAdd [-1*((_distCheck#1*_i)/(_distCheck#2*_i)),-1*(_distCheck#1*_i)]];
-            _surroundingPosArray#(_totalI+3) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+3)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+4, eyePos _unit vectorAdd [(_distCheck#1*_i), ((_distCheck#1*_i)/(_distCheck#2*_i))]];
-            _surroundingPosArray#(_totalI+4) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+4)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+5, eyePos _unit vectorAdd [(_distCheck#1*_i), -1*((_distCheck#1*_i)/(_distCheck#2*_i))]];
-            _surroundingPosArray#(_totalI+5) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+5)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+6, eyePos _unit vectorAdd [-1*(_distCheck#1*_i), ((_distCheck#1*_i)/(_distCheck#2*_i))]];
-            _surroundingPosArray#(_totalI+6) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+6)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _surroundingPosArray set [_totalI+7, eyePos _unit vectorAdd [-1*(_distCheck#1*_i), -1*((_distCheck#1*_i)/(_distCheck#2*_i))]];
-            _surroundingPosArray#(_totalI+7) set [2,(getTerrainHeightASL(_surroundingPosArray#(_totalI+7)))+LOCAL_TEMP_VECTOR_HEIGHT_AGL];
-
-            _totalI = _totalI + 8; // Done so the array doesn't get overwritten the next time this loops.
+            _points = 16;
+            _rows = 2;
+            _distance = 75;
         };
     };
 
+    private _step = _distance/_rows;
+    private _pointsPerRow = _points/_rows;
+    private _angle = 360/_pointsPerRow;
+
+    /*
+        Benchmarks:
+        Luriss specs as of testing:
+        CPU: 9800X3D
+        GPU: RTX 5070ti
+        RAM: 32 GB DDR5
+
+        64 pts: 655 μs
+        48 pts: 511 μs
+        32 pts: 362 μs
+        24 pts: 296 μs
+        16 pts: 220 μs
+    */
+
+
+
+    for "_i" from 1 to _rows do {
+
+        private _currentStep = _step*_i;
+        private _angleInc = 0;
+
+        for "_j" from 1 to _pointsPerRow do {
+
+            private _coordX = _currentStep*sin(_angleInc);
+            private _coordY = _currentStep*cos(_angleInc);
+
+            // Note: [x,y,z] LOCAL_TEMP_VECTOR_HEIGHT_AGL
+            private _vectorPos = _unit modelToWorld [_coordX,_coordY,0];
+            _vectorPos set [2,LOCAL_TEMP_VECTOR_HEIGHT_AGL]; // Set the height offest in AGL so it doesn't inherit the model space height
+
+            _vectorPos = AGLToASL _vectorPos; // Position needs to be converted to ASL
+
+            _pointsArray pushBack _vectorPos;
+
+            _angleInc = _angleInc + _angle;
+        };
+    };
+
+    private _sunlightPointsTotal = 0;
+    private _sunPos = (_pointsArray#0) vectorDiff ((getLighting#2) vectorMultiply viewDistance); // Finding the position of the sun using the first vector in the array and caching it
     {
-        _inSunlight = [_unit,"VIEW"] checkVisibility [_x, _x vectorDiff ((getLighting#2) vectorMultiply viewDistance)]; // Creates a vector from each point towards the sun and checks if it is in shadow. 1 = sun, 0 = shadow. 200m long. Making it shorter improves performance but then you'll get weird edge cases.
-        _result = _result + _inSunlight; // Adds the result of the current check to a sum of all the previous checks.
-    } forEach _surroundingPosArray;
+        // /private _sunPos = _x vectorDiff ((getLighting#2) vectorMultiply viewDistance);
+        private _inShadow = (terrainIntersectASL [_x, _sunPos] || {lineIntersects [_x, _sunPos]});
 
-    _result = _result/(count _surroundingPosArray); // Divides the result by the maximum possible value for the given array size. Ratio from 0 to 1.
-    _tempAroundUnit = linearConversion[0,1,_result,_moonSurfaceTemp#0,_moonSurfaceTemp#1]; // Uses a linearConversion to select the local temperature from the provided min and max temp range. 0.5 = mid point of provided temps.
+        if !_inShadow then {
+            _sunlightPointsTotal = _sunlightPointsTotal + 1;
+        };
+    } forEach _pointsArray;
+
+    private _sunShadowRatio = _sunlightPointsTotal/(count _pointsArray); // Divides the result by the maximum possible value for the given array size. Ratio from 0 to 1.
+    _tempAroundUnit = linearConversion[0,1,_sunShadowRatio,_moonSurfaceTemp#0,_moonSurfaceTemp#1]; // Uses a linearConversion to select the local temperature from the provided min and max temp range. 0.5 = mid point of provided temps.
 } else {
-    _tempAroundUnit = linearConversion[0,1,sunOrMoon,(_moonSurfaceTemp#0),(_moonSurfaceTemp#1)]; // If local temp simulation is disabled, the temp is controlled by time of day.
+
+    if (isPlayer _unit) then {
+        _points = 30;
+        _rows = 5;
+        _distance = 500;
+    } else {
+        _points = 18;
+        _rows = 3;
+        _distance = 300;
+    };
+
+    /*
+        Benchmarks:
+        Luriss specs as of testing:
+        CPU: 9800X3D
+        GPU: RTX 5070ti
+        RAM: 32 GB DDR5
+
+        Player: 142 μs
+        AI: 111 μs
+    */
+
+    private _step = _distance/_rows;
+    private _pointsPerRow = _points/_rows;
+    private _angle = 360/_pointsPerRow;
+
+    private _avgGradientByAngle = [];
+    private _unitHeightASL = (getPosASL _unit) select 2;
+
+    // Create an array of points around the unit, find and store their gradient relative to the player's ASL height
+    for "_i" from 1 to _rows do {
+
+        private _currentStep = _step*_i;
+        private _angleInc = 0;
+
+        for "_j" from 1 to _pointsPerRow do {
+
+            private _coordX = _currentStep*sin(_angleInc);
+            private _coordY = _currentStep*cos(_angleInc);
+
+            // Note: [x,y,z]
+            private _vectorPos = _unit modelToWorld [_coordX,_coordY,0];
+            _vectorPos set [2,0]; // Set the height offest in AGL so it doesn't inherit the model space height
+
+            _vectorPos = AGLToASL _vectorPos; // Position needs to be converted to ASL
+
+            _pointsArray pushBack [_angleInc, _vectorPos#2];
+
+            _angleInc = _angleInc + _angle;
+
+        };
+    };
+
+    // Find the average gradient according to the azimuth (i.e. all points at 10 degrees are averaged)
+    private _angleInc = 0;
+    for "_i" from 1 to _pointsPerRow do {
+
+        private _gradients = _pointsArray select {
+            _x#0 == _angleInc;
+        };
+
+        private _gradientSum = 0;
+        {
+            _gradientSum = _gradientSum + _x#1;
+
+        } forEach _gradients;
+
+        _avgGradientByAngle pushBack (((_gradientSum/_rows) - _unitHeightASL)/_distance);
+
+        _angleInc = _angleInc + _angle;
+    };
+
+    // Average all gradients around the unit into a single average
+    private _gradientsSum = 0;
+    {
+        _gradientsSum = _gradientsSum + abs(_x);
+
+    } forEach _avgGradientByAngle;
+    private _avgGradientDegrees = (_gradientsSum/_pointsPerRow)*100; // average gradient in degrees
+
+    // Find sun angle in sky via vectors
+    private _sunDirVector = getLighting#2;
+    private _sunAzimuthVector = +_sunDirVector;
+    _sunAzimuthVector set [2,0];
+
+    private _dotProduct = _sunDirVector vectorDotProduct _sunAzimuthVector;
+    private _sunAngle = acos(_dotProduct/((vectorMagnitude _sunDirVector)*(vectorMagnitude _sunAzimuthVector)));
+
+    // If sunAngle is > than the surrounding gradient, the entire area is assumed to be exposed to sunlight
+    private _approxSunShadowRatio = 1;
+    if (_sunAngle <= _avgGradientDegrees) then {
+        _approxSunShadowRatio = linearConversion [_avgGradientDegrees,0,_sunAngle,1,0,true];
+    };
+
+    _tempAroundUnit = linearConversion[0,1,_approxSunShadowRatio,_moonSurfaceTemp#0,_moonSurfaceTemp#1];
 };
 
 _tempAroundUnit;
-
-//IS_IN_SUN_CHECK_VECTOR_LENGTH

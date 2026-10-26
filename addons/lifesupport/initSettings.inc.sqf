@@ -31,7 +31,7 @@
     [
         [0, 1, 2, 3, 4],
         [LSTRING(CBAset_localTemperatureSimValue_opt0), LSTRING(CBAset_localTemperatureSimValue_opt1), LSTRING(CBAset_localTemperatureSimValue_opt2), LSTRING(CBAset_localTemperatureSimValue_opt3), LSTRING(CBAset_localTemperatureSimValue_opt4)],
-        0
+        2
     ],
     1, // 1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) <BOOL, NUMBER>
     {

@@ -32,31 +32,31 @@
             <English>Homeostasis Power</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimToggle_desc">
-            <English>Enable/Disable the calculations for local temperature around the player. May be performance intensive. Temperature adjusted by time of day if turned off.</English>
+            <English>Enable/Disable vector based calculations for local temperature around the player. Performance intensive. Less accurate but more performant gradient based calculations used if disabled.</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimToggle_title">
-            <English>Enable/Disable Local Temperature Simulation</English>
+            <English>Vector based Local Temperature Simulation</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_desc">
-            <English>Select the desired simulation detail for local temperature simulation. Higher detail will have a higher impact on performance (rough execution times listed).</English>
+            <English>Select the desired simulation detail for vector based local temperature simulation. Higher detail will have a higher impact on performance (rough performance impact listed). Gradient based detail is hard coded.</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt0">
-            <English>64 points (~0.35 milliseconds per execution)</English>
+            <English>64 points (Impact: High)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt1">
-            <English>48 points (~0.26 milliseconds per execution)</English>
+            <English>48 points (Impact: High)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt2">
-            <English>32 points (~0.17 milliseconds per execution)</English>
+            <English>32 points (Impact: Moderate)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt3">
-            <English>16 points (~0.085 milliseconds per execution)</English>
+            <English>24 points (Impact: Moderate)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt4">
-            <English>8 points (~0.040 milliseconds per execution)</English>
+            <English>16 points (Impact: Mild/Moderate)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_title">
-            <English>Local Temperature Simulation Quality</English>
+            <English>Vector based Local Temperature Simulation Quality</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_maxActiveCool_US_desc">
             <English>(Watts) Modify how powerful the cooling system is for US space suits.</English>
