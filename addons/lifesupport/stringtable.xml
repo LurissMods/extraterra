@@ -32,13 +32,13 @@
             <English>Homeostasis Power</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimToggle_desc">
-            <English>Enable/Disable vector based calculations for local temperature around the player. Performance intensive. Less accurate but more performant gradient based calculations used if disabled.</English>
+            <English>Enable/Disable raycasting based calculations for local temperature around the player. Performance intensive. A less accurate but more performant gradient based simulation is used if disabled.</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimToggle_title">
-            <English>Vector based Local Temperature Simulation</English>
+            <English>Enable/Disable Local Temperature Raycasting</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_desc">
-            <English>Select the desired simulation detail for vector based local temperature simulation. Higher detail will have a higher impact on performance (rough performance impact listed). Gradient based detail is hard coded.</English>
+            <English>Select the desired raycasting quality for local temperature simulation. Higher detail will have a higher impact on performance (rough performance impact listed).</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_opt0">
             <English>64 points (Impact: High)</English>
@@ -56,7 +56,7 @@
             <English>16 points (Impact: Mild/Moderate)</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_localTemperatureSimValue_title">
-            <English>Vector based Local Temperature Simulation Quality</English>
+            <English>Local Temperature Raycasting Quality</English>
         </Key>
         <Key ID="STR_exterra_lifesupport_CBAset_maxActiveCool_US_desc">
             <English>(Watts) Modify how powerful the cooling system is for US space suits.</English>
