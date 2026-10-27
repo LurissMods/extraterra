@@ -29,13 +29,14 @@
 **Extraterra** is a mod for Arma 3 that aims to depict a future conflict on the moon in the late 21st/early 22nd century, adhering to a (mostly) "hard Sci-Fi" ethos.
 If you have any questions or the like, feel free to contact me on the mod's <a href="https://discord.gg/hJhzNB9XtP">discord</a> server.
 
-If something here is dumb, it's probably because I have no idea how to use GitHub properly.
-
 ## Core Features
-- Feature
+- Full life support system
+- HUD and IFF datalinking system
+- Space related injuries
+- Weapons and equipment
 
 ## Contributing
-For new contributers, see the [Contributing Setup & Guidelines](./.github/CONTRIBUTING.md).
+If you want to contribute, please contact me directly via the mod's <a href="https://discord.gg/hJhzNB9XtP">discord</a> server.
 
 ## License
 Extraterra is licensed under [APL-SA](./LICENSE.md).

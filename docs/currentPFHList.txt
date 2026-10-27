@@ -1,1 +1,6 @@
-modules, fnc_updateSolarStorm:      Handles solar storm check. Deleted when finished.
+modules, fnc_updateSolarStorm:
+        Handles solar storm check. Deleted when finished.
+modules, fnc_pressureAndRadShield:
+        Handles the life support area module.
+huds, fnc_initPFH_HUD:
+        Main loop for player HUD. Run every frame, never deleted.

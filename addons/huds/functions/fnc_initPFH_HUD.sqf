@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* [] call exterra_lifeSupport_fnc_initPFH_HUD
+* [] call exterra_huds_fnc_initPFH_HUD
 *
 * Public: No
 */
